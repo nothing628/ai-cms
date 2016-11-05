@@ -14,3 +14,7 @@
 Route::get('/', function () {
     return view('welcome');
 });
+
+require('web/admin.php');
+require('web/manga.php');
+require('web/user.php');
