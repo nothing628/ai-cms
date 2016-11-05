@@ -13,14 +13,14 @@ class CreatePageTable extends Migration
      */
     public function up()
     {
-        Schema::create('page', function (Blueprint $table) {
+        Schema::create('pages', function (Blueprint $table) {
             $table->increments('id');
             $table->integer('chapter_id')->unsigned();
             $table->integer('page_num')->unsigned();
             $table->string('img_path', 255);
             $table->timestamps();
 
-            $table->foreign('chapter_id')->references('id')->on('chapter')->onDelete('CASCADE')->onUpdate('CASCADE');
+            $table->foreign('chapter_id')->references('id')->on('chapters')->onDelete('CASCADE')->onUpdate('CASCADE');
         });
     }
 
@@ -31,6 +31,6 @@ class CreatePageTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('page');
+        Schema::dropIfExists('pages');
     }
 }

@@ -13,7 +13,7 @@ class CreateChapterTable extends Migration
      */
     public function up()
     {
-        Schema::create('chapter', function(Blueprint $table)
+        Schema::create('chapters', function(Blueprint $table)
         {
             $table->increments('id');
             $table->integer('manga_id')->unsigned();
@@ -22,7 +22,7 @@ class CreateChapterTable extends Migration
             $table->timestamp('release_date')->nullable();
             $table->timestamps();
 
-            $table->foreign('manga_id')->references('id')->on('manga')->onDelete('CASCADE')->onUpdate('CASCADE');
+            $table->foreign('manga_id')->references('id')->on('mangas')->onDelete('CASCADE')->onUpdate('CASCADE');
         });
     }
 
@@ -33,6 +33,6 @@ class CreateChapterTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('chapter');
+        Schema::dropIfExists('chapters');
     }
 }
