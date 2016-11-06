@@ -31,7 +31,7 @@
 </template>
 
 <script>
-	module.exports = {
+	export default {
 		props: {
 			class: 			{ required: false, type: Array, default: function () {return [];} },
 			id: 			{ required: false, type: String, default: 'id' },
@@ -60,11 +60,11 @@
 			} },
 		},
 		computed: {
-			namecheck: function () {
+			namecheck() {
 				return this.id + '[]';
 			},
 			select_all: {
-				set: function (val) {
+				set(val) {
 					var that = this;
 					this.checks = [];
 					if (val) {
@@ -75,14 +75,14 @@
 						}
 					}
 				},
-				get: function () {
+				get() {
 					if (this.checks.length == this.rows.length && this.rows.length > 0)
 						return true;
 					return false;
 				}
 			}
 		},
-		data: function () {
+		data() {
 			return {
 				rows: [],
 				checks: []

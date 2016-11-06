@@ -18,7 +18,7 @@
 </template>
 
 <script>
-	module.exports = {
+	export default {
 		props: {
 			name:			{ required: true, type: String },
 			label:			{ required: false, type: String, default: null },
@@ -29,29 +29,29 @@
 			hidden:			{ required: false, type: Boolean, default: false }
 		},
 		computed: {
-			id: function () {
+			id() {
 				return this.name + '-file';
 			},
-			selector: function () {
+			selector() {
 				return '#' + this.id;
 			},
-			getImageUrl: function () {
+			getImageUrl() {
 				if (this.value == null)
 					return '/manga/image/thumb/dummy.png';
 				return '/manga/image/thumb/' + this.value;
 			},
-			canShowPreview: function () {
+			canShowPreview() {
 				if (!this.multiple && this.value != null && this.showPreview && !this.hidden)
 					return true;
 				return false;
 			},
-			canShowLink: function () {
+			canShowLink() {
 				if (!this.multiple && this.value != null && !this.showPreview && !this.hidden)
 					return true;
 				return false;
 			}
 		},
-		data: function () {
+		data() {
 			return {
 				valueArr: [],
 				value: null,
@@ -62,7 +62,7 @@
 			}
 		},
 		methods: {
-			dispatchInfo: function (uploadevent, progress) {
+			dispatchInfo(uploadevent, progress) {
 				var info = {
 					event: uploadevent,
 					progress: progress
@@ -70,10 +70,10 @@
 				this.$broadcast(uploadevent, this.name, progress);
 				this.$dispatch('upload-progress', info);
 			},
-			showBrowse: function () {
+			showBrowse() {
 				$(this.selector).trigger('click');
 			},
-			uploadExec: function (file) {
+			uploadExec(file) {
 				var that = this;
 				this.$http.post('/manga/upload/image',file.data,{
 					upload:file.upload
@@ -89,7 +89,7 @@
 					file.oncomplete && file.oncomplete();
 				});
 			},
-			uploadFile: function () {
+			uploadFile() {
 				var that = this;
 				var formData = new FormData;
 				var data = {};
@@ -139,7 +139,7 @@
 				}
 				this.uploadExec(data);
 			},
-			uploadStart: function (event) {
+			uploadStart(event) {
 				this.tmpFile = event.currentTarget.files;
 
 				this.valueArr = [];
@@ -152,7 +152,7 @@
 				this.dispatchInfo('progress-show');
 				this.uploadFile();
 			},
-			uploadFinish: function () {
+			uploadFinish() {
 				var that = this;
 				this.dispatchInfo('progress-complete');
 				this.dispatchInfo('progress-hide');
@@ -195,7 +195,7 @@
 					this.showBrowse();
 			}
 		},
-		ready: function () {
+		ready() {
 			var that = this;
 			$(this.selector).on('change', function (event) {
 				that.uploadStart(event);

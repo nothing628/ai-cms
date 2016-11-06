@@ -3,13 +3,13 @@
 </template>
 
 <script>
-	module.exports = {
+	export default {
 		props: {
 			name:			{ required: true, type: String },
 			hidden:			{ required: false, type: Boolean, default: false },
 			defaultValue:	{ required: false, type: Number, default: 0 }
 		},
-		data: function () {
+		data() {
 			return {
 				value: 0
 			}
@@ -20,10 +20,10 @@
 			}
 		},
 		computed: {
-			id: function () {
+			id() {
 				return this.name + '-progress';
 			},
-			selector: function () {
+			selector() {
 				return '#' + this.id;
 			}
 		},
@@ -49,7 +49,7 @@
 					this.hidden = true;
 			}
 		},
-		ready: function () {
+		ready() {
 			this.value = this.defaultValue;
 		}
 	}

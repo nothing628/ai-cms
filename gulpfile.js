@@ -1,7 +1,5 @@
 const elixir = require('laravel-elixir');
 
-elixir.extend('sourcemaps', false);
-
 require('laravel-elixir-vue');
 
 /*
@@ -15,9 +13,19 @@ require('laravel-elixir-vue');
  |
  */
 
+var del = require('del');
+
+elixir.extend('remove', function(path) {
+    new elixir.Task('remove', function() {
+        del(path);
+    });
+});
+
 elixir(mix => {
     mix.sass('app.scss');
     mix.rollup('app.js');
+    mix.copy('bundle.css', 'public/css/bundle.css');
+    mix.remove('bundle.css');
     mix.rollup('jquery.js');
     mix.rollup('vue.js');
 });

@@ -9,7 +9,7 @@
 </template>
 
 <script>
-	module.exports = {
+	export default {
 		props: {
 			name:			{ required: true, type: String },
 			label:			{ required: false, type: String, default: null },
@@ -17,12 +17,12 @@
 			value:			{ required: false, type: String, default: null },
 			placeholder:	{ required: false, type: String, default: null }
 		},
-		data: function () {
+		data() {
 			return {
 				checked: false
 			}
 		},
-		ready: function () {
+		ready() {
 			this.checked = this.defaultValue;
 		}
 	}

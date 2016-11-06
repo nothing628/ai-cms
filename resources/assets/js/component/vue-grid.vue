@@ -106,7 +106,7 @@
 </template>
 
 <script>
-	module.exports = {
+	export default {
 		props: {
 			maps:			{ required: true, type: Object },
 			isComponent:	{ required: false, type: String, default: null },
@@ -115,11 +115,11 @@
 			linkFormat: 	{ required: false, type: String, default: null }
 		},
 		computed: {
-			namecheck: function () {
+			namecheck() {
 				return this.maps.id + '[]';
 			},
 			select_all: {
-				set: function (val) {
+				set(val) {
 					var that = this;
 					this.checks = [];
 					if (val) {
@@ -128,21 +128,21 @@
 						});
 					}
 				},
-				get: function () {
+				get() {
 					if (this.checks.length == this.items.length && this.items.length > 0)
 						return true;
 					return false;
 				}
 			}
 		},
-		data: function () {
+		data() {
 			return {
 				items: [],
 				checks: []
 			}
 		},
 		methods: {
-			getLinks: function (item) {
+			getLinks(item) {
 				var target = /\{\w+\}/ig;
 				var keytarget = null;
 				var key = '';
@@ -158,7 +158,7 @@
 				}
 				return ret;
 			},
-			getBackground: function (image) {
+			getBackground(image) {
 				if (image == '')
 					return {backgroundImage:"url('/manga/image/original/dummy.png')"};
 				return {backgroundImage:"url('" + '/manga/image/thumb/' + image + "')"};
@@ -186,7 +186,7 @@
 				this.items = [];
 			}
 		},
-		ready: function () {
+		ready() {
 			if (this.canSelect) {
 				$('.sortable.grid li').on('click','.dimm', function () {
 					$(this).parent().find('input').trigger('click');

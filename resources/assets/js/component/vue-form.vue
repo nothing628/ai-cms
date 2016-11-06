@@ -25,7 +25,7 @@
 </template>
 
 <script>
-	module.exports = {
+	export default {
 		props: {
 			name: 			{ required: true, type: String },
 			action: 		{ required: false, type: String, default: null },
@@ -43,21 +43,21 @@
 			targetEdit:		{ required: false, type: String, default: null }
 		},
 		computed: {
-			selector: function () {
+			selector() {
 				return '#' + this.id;
 			},
-			id: function () {
+			id() {
 				return this.name + '-form';
 			}
 		},
-		data: function () {
+		data() {
 			return {
 				isHidden: false,
 				isDetail: false
 			}
 		},
 		methods: {
-			getFormValues: function () {
+			getFormValues() {
 				var submitdata = $(this.selector).serializeArray();
 				var objectsubmit = {};
 				$.each(submitdata, function (index, item) {
@@ -71,7 +71,7 @@
 
 				return objectsubmit;
 			},
-			submit: function (event) {
+			submit(event) {
 				if (this.preventSubmit) event.preventDefault();
 				this.$emit('form-submit');
 			}
@@ -240,7 +240,7 @@
 				this.$emit('form-refresh');
 			}
 		},
-		ready: function () {
+		ready() {
 			this.isHidden = this.hidden;
 			this.$emit('form-refresh');
 		}

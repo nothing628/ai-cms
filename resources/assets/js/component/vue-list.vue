@@ -8,7 +8,7 @@
 </template>
 
 <script>
-	module.exports = {
+	export default {
 		props: {
 			withLink: 		{ required: false, type: Boolean, default: false },
 			linkFormat: 	{ required: false, type: String, default: "{0}" },
@@ -16,17 +16,17 @@
 			column: 		{ required: false, type: String, default: 'five' },
 		},
 		computed: {
-			classDiv: function () {
+			classDiv() {
 				return [this.column, 'column'];
 			}
 		},
-		data: function () {
+		data() {
 			return {
 				items: []
 			}
 		},
 		methods: {
-			getLinks: function (item) {
+			getLinks(item) {
 				var target = /\{\w+\}/ig;
 				var keytarget = null;
 				var key = '';

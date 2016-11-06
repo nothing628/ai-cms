@@ -5,17 +5,17 @@
 </template>
 
 <script>
-	module.exports = {
+	export default {
 		props:{
 			urlAjax: {required: true, type:String},
 			class: {required:false, type:Array, default:function () {return [];}},
 			id: {required:false, type:String, default:null}
 		},
-		data: function () {
+		data() {
 			return {};
 		},
 		methods: {
-			appInput: function (data) {
+			appInput(data) {
 				if (! "type" in data) data.type="text";
 				if (! "value" in data) data.value="";
 				swal({
@@ -33,7 +33,7 @@
 					data.onconfirm && data.onconfirm.call( this, newvalue );
 				});
 			},
-			appNotify: function (data) {
+			appNotify(data) {
 				swal({
 					title:data.title,
 					text:data.text,
@@ -42,7 +42,7 @@
 					showConfirmButton:false
 				});
 			},
-			appConfirm: function (data) {
+			appConfirm(data) {
 				swal({
 					title: data.title,
 					text: data.text,
@@ -57,7 +57,7 @@
 					data.onconfirm && data.onconfirm();
 				});
 			},
-			appAjax: function (data) {
+			appAjax(data) {
 				var that = this;
 				var param = {
 					data: data.data,
@@ -80,7 +80,7 @@
 					data.onerror && data.onerror(failresponse);
 				});
 			},
-			appTitle: function (title) {
+			appTitle(title) {
 				$('title').html(title);
 			}
 		},
@@ -96,7 +96,7 @@
 			'ajax-action': function (data) {return this.appAjax(data);},
 			'title-change': function (title) {return this.appTitle(title);},
 		},
-		ready: function () {
+		ready() {
 			$('.ui.fluid.accordion').accordion({selector: {trigger   : '.title .caption'}});
 		}
 	}

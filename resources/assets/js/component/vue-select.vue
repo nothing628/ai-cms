@@ -9,7 +9,7 @@
 </template>
 
 <script>
-	module.exports = {
+	export default {
 		props: {
 			name:			{ required: true, type: String },
 			label:			{ required: false, type: String, default: null },
@@ -21,23 +21,23 @@
 			placeholder:	{ required: false, type: String, default: null }
 		},
 		computed: {
-			selector: function () {
+			selector() {
 				return '.ui.dropdown.' + this.name + '-dropdown';
 			},
-			myClass: function () {
+			myClass() {
 				return [this.name + '-dropdown'];
 			},
-			id: function () {
+			id() {
 				return this.name + '-dropdown';
 			},
-			newname: function () {
+			newname() {
 				if (this.multiple)
 					return this.name + '[]';
 				else
 					return this.name;
 			}
 		},
-		data: function () {
+		data() {
 			return {
 				options: []
 			}
@@ -80,7 +80,7 @@
 				}
 			}
 		},
-		ready: function () {
+		ready() {
 			if (this.values.length > 0) this.options = this.values;
 			this.$emit('refresh-dropdown');
 		}

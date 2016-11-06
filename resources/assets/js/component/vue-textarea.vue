@@ -6,7 +6,7 @@
 </template>
 
 <script>
-	module.exports = {
+	export default {
 		props: {
 			label:			{ required: false, type: String, default: null },
 			name:			{ required: true, type: String },
@@ -14,7 +14,7 @@
 			placeholder:	{ required: false, type: String, default: null },
 			isReadonly:		{ required: false, type: Boolean, default: false }
 		},
-		data: function () {
+		data() {
 			return {
 				value: null
 			}

@@ -6,7 +6,7 @@
 </template>
 
 <script>
-	module.exports = {
+	export default {
 		props: {
 			label:			{ required: false, type: String, default: null },
 			name:			{ required: true, type: String },
@@ -16,7 +16,7 @@
 			isReadonly:		{ required: false, type: Boolean, default: false },
 			placeholder:	{ required: false, type: String, default: null }
 		},
-		data: function() {
+		data() {
 			return {
 				value: null
 			};
@@ -30,7 +30,7 @@
 				this.value = null;
 			}
 		},
-		ready: function () {
+		ready() {
 			this.value = this.defaultValue;
 		}
 	}

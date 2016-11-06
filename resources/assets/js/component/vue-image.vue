@@ -3,23 +3,23 @@
 </template>
 
 <script>
-	module.exports = {
+	export default {
 		props: {
 			src: { required: false, type: String, default: null },
 			class: { required: false, type: Array, default: function () {return [];} },
 			dummy: { required: false, type: String, default: '/manga/image/thumb/dummy.png' }
 		},
-		data: function () {
+		data() {
 			return {
 				rsrc: null
 			}
 		},
 		methods: {
-			onError: function () {
+			onError() {
 				this.rsrc = this.dummy;
 			}
 		},
-		ready: function () {
+		ready() {
 			this.rsrc = this.src;
 		}
 	}

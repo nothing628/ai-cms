@@ -9,26 +9,26 @@
 </template>
 
 <script>
-	module.exports = {
+	export default {
 		props: {
 			maxPage:	{ required: false, type: Number, default: 0 },
 			pageNum:	{ required: false, type: Number, default: 0 }
 		},
-		data: function () {
+		data() {
 			return {
 				max_page: 0,
 				page_num: 0
 			}
 		},
 		methods: {
-			nextPage: function () {
+			nextPage() {
 				var that = this;
 				if (this.page_num < this.max_page)
 					this.page_num++;
 				
 				this.$nextTick(function () {that.$dispatch('page-changed');});
 			},
-			prevPage: function () {
+			prevPage() {
 				var that = this;
 				if (this.page_num > 1)
 					this.page_num--;
@@ -44,7 +44,7 @@
 				}
 			}
 		},
-		ready: function () {
+		ready() {
 			this.max_page = this.maxPage;
 			this.page_num = this.pageNum;
 		}
