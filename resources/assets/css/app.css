@@ -12,8 +12,34 @@ body {
 body .mt-content {
 	background-color: #0C1314;
 	opacity: 0.95;
-	padding-top: 40px;
+	padding-top: 90px;
 	padding-bottom: 40px;
+}
+
+.navbar.navbar-default {
+	background-color: transparent;
+	border-color: transparent;
+	font-size: 16px;
+	padding-top: 9px;
+}
+
+.navbar-default .navbar-nav > .active > a,
+.navbar-default .navbar-nav > .active > a:focus,
+.navbar-default .navbar-nav > .active > a:hover {
+	background: transparent;
+	color: #eee;
+	border-bottom: 3px solid #a86422;
+}
+
+.navbar-default .navbar-nav > li > a:focus,
+.navbar-default .navbar-nav > li > a:hover {
+	color: #eee;
+	border-bottom: 3px solid #a86422;
+}
+
+.navbar-default .navbar-brand {
+    color: #eee;
+    font-weight: 400;
 }
 
 .footer {
@@ -43,10 +69,16 @@ body .mt-content {
 	font-size: 14px;
 	font-weight: 300;
 	color: #98a6ba;
+	text-align: right;
 	/*text-transform: uppercase;*/
 }
 
 .h1, h1 {
     font-size: 36px;
     font-weight: 300;
+}
+
+a {
+    color: #ed9512;
+    text-decoration: none;
 }
