@@ -1,5 +1,5 @@
-*
 !sc.png
 !dummy.png
 !.gitignore
-!/cover
+!/cover/*
+bg.jpg
