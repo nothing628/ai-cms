@@ -1,0 +1,52 @@
+body {
+	background-image: url('../images/original/bg.jpg');
+	background-size: 100%;
+	background-repeat: no-repeat;
+	background-position: top center;
+	background-attachment: scroll;
+	background-color: #000;
+	font-family: raleway;
+	color: #eee;
+}
+
+body .mt-content {
+	background-color: #0C1314;
+	opacity: 0.95;
+	padding-top: 40px;
+	padding-bottom: 40px;
+}
+
+.footer {
+	border-top: 3px solid #314240;
+	text-align: left;
+	background: #182324;
+	opacity: 0.95;
+	padding: 26px 51px 70px;
+}
+
+.footer .footer-logo {
+	height:17px;
+	margin-bottom: 30px;
+	vertical-align: middle;
+}
+.footer .ui.list {
+	width:100%;
+	margin-bottom: 20px;
+}
+.footer .ui.list .item {
+	margin-left: 0.5em;
+}
+.footer .ui.list .item a .icon {
+	color: #647183;
+}
+.footer .copyright {
+	font-size: 14px;
+	font-weight: 300;
+	color: #98a6ba;
+	/*text-transform: uppercase;*/
+}
+
+.h1, h1 {
+    font-size: 36px;
+    font-weight: 300;
+}

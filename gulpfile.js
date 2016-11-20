@@ -22,7 +22,8 @@ elixir.extend('remove', function(path) {
 });
 
 elixir(mix => {
-    mix.sass('app.scss');
+	mix.styles('app.css');
+    // mix.sass('app.scss');
     mix.rollup('app.js');
     mix.copy('bundle.css', 'public/css/bundle.css');
     mix.remove('bundle.css');
