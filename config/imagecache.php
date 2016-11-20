@@ -34,6 +34,7 @@ return array(
         public_path('upload'),
         public_path('images'),
         storage_path('images'),
+        storage_path('images/cover'),
     ),
 
     /*
@@ -54,7 +55,7 @@ return array(
    
     'templates' => array(
         'small' => 'Intervention\Image\Templates\Small',
-        'medium' => 'Intervention\Image\Templates\Medium',
+        'medium' => App\Image\Medium::class,
         'large' => 'Intervention\Image\Templates\Large',
     ),
 
