@@ -23,14 +23,14 @@ class CreateMangaTable extends Migration
 
         Schema::create('mangas', function(Blueprint $table){
             $table->increments('id');
-            $table->integer('users_id')->unsigned()->nullable();
+            $table->integer('user_id')->unsigned()->nullable();
             $table->string('title', 200);
             $table->string('cover', 255);
             $table->integer('views')->unsigned()->default(0);
             $table->json('meta')->nullable();
             $table->timestamps();
 
-            $table->foreign('users_id')->references('id')->on('users')->onDelete('SET NULL')->onUpdate('CASCADE');
+            $table->foreign('user_id')->references('id')->on('users')->onDelete('SET NULL')->onUpdate('CASCADE');
         });
 
         Schema::create('category_manga', function (Blueprint $table) {
@@ -54,12 +54,12 @@ class CreateMangaTable extends Migration
 
         Schema::create('comments', function (Blueprint $table) {
             $table->increments('id');
-            $table->integer('users_id')->unsigned();
+            $table->integer('user_id')->unsigned();
 
             $table->text('comment');
             $table->timestamps();
 
-            $table->foreign('users_id')->references('id')->on('users')->onDelete('CASCADE')->onUpdate('CASCADE');
+            $table->foreign('user_id')->references('id')->on('users')->onDelete('CASCADE')->onUpdate('CASCADE');
         });
 
         Schema::create('commentable', function (Blueprint $table) {
@@ -70,11 +70,11 @@ class CreateMangaTable extends Migration
 
         Schema::create('favorites', function (Blueprint $table) {
             $table->integer('manga_id')->unsigned();
-            $table->integer('users_id')->unsigned();
+            $table->integer('user_id')->unsigned();
             $table->timestamps();
 
             $table->foreign('manga_id')->references('id')->on('mangas')->onDelete('CASCADE')->onUpdate('CASCADE');
-            $table->foreign('users_id')->references('id')->on('users')->onDelete('CASCADE')->onUpdate('CASCADE');
+            $table->foreign('user_id')->references('id')->on('users')->onDelete('CASCADE')->onUpdate('CASCADE');
         });
     }
 
@@ -85,10 +85,34 @@ class CreateMangaTable extends Migration
      */
     public function down()
     {
+    	Schema::table('favorites', function (Blueprint $table) {
+    		$table->dropForeign('favorites_manga_id_foreign');
+    		$table->dropForeign('favorites_user_id_foreign');
+    	});
+
+    	Schema::table('comments', function (Blueprint $table) {
+    		$table->dropForeign('comments_user_id_foreign');
+    	});
+
+    	Schema::table('ratings', function (Blueprint $table) {
+    		$table->dropForeign('ratings_user_id_foreign');
+    		$table->dropForeign('ratings_manga_id_foreign');
+    	});
+
+    	Schema::table('category_manga', function (Blueprint $table) {
+    		$table->dropForeign('category_manga_manga_id_foreign');
+    		$table->dropForeign('category_manga_category_id_foreign');
+    	});
+
+    	Schema::table('mangas', function (Blueprint $table) {
+    		$table->dropForeign('mangas_user_id_foreign');
+    	});
+
         Schema::dropIfExists('favorites');
         Schema::dropIfExists('commentable');
         Schema::dropIfExists('comments');
         Schema::dropIfExists('ratings');
+        Schema::dropIfExists('category_manga');
         Schema::dropIfExists('mangas');
         Schema::dropIfExists('categorys');
     }
