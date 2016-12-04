@@ -83,3 +83,9 @@ a {
     color: #ed9512;
     text-decoration: none;
 }
+
+.title {
+	margin-top: 35px;
+	margin-bottom: 35px;
+	font-weight: 500;
+}
