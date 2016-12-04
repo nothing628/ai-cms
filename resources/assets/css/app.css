@@ -21,6 +21,7 @@ body .mt-content {
 	border-color: transparent;
 	font-size: 16px;
 	padding-top: 9px;
+	transition: all 0.5s ease;
 }
 
 .navbar-default .navbar-nav > .active > a,
@@ -35,6 +36,11 @@ body .mt-content {
 .navbar-default .navbar-nav > li > a:hover {
 	color: #eee;
 	border-bottom: 3px solid #a86422;
+}
+
+.navbar.navbar-default.navbar-no-trans,
+.navbar.navbar-default.collapsed {
+	background-color: rgb(35, 45, 46);
 }
 
 .navbar-default .navbar-brand {

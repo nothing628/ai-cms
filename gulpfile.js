@@ -25,6 +25,7 @@ elixir(mix => {
 	mix.styles('app.css');
     // mix.sass('app.scss');
     mix.rollup('app.js');
+    mix.rollup('component.js');
     mix.copy('bundle.css', 'public/css/bundle.css');
     mix.remove('bundle.css');
     mix.rollup('jquery.js');

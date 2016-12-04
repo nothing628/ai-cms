@@ -16,7 +16,7 @@
 		<script type="text/javascript" src="{{ asset('js/jquery.js') }}"></script>
 		<script type="text/javascript" src="{{ asset('js/bootstrap.min.js') }}"></script>
 		<script type="text/javascript" src="{{ asset('js/vue.js') }}"></script>
-		
+		<script type="text/javascript" src="{{ asset('js/app.js') }}"></script>
 	</head>
 	<body id="app">
 		@include('layouts.navbar')
