@@ -30,7 +30,6 @@ class CreateMangaTable extends Migration
             $table->json('meta')->nullable();
             $table->timestamps();
 
-            $table->foreign('category_id')->references('id')->on('categorys')->onDelete('RESTRICT')->onUpdate('CASCADE');
             $table->foreign('users_id')->references('id')->on('users')->onDelete('SET NULL')->onUpdate('CASCADE');
         });
 
