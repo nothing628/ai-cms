@@ -17,7 +17,7 @@ class CreatePageTable extends Migration
             $table->increments('id');
             $table->integer('chapter_id')->unsigned();
             $table->integer('page_num')->unsigned();
-            $table->string('img_path', 255);
+            $table->string('path', 255);
             $table->timestamps();
 
             $table->foreign('chapter_id')->references('id')->on('chapters')->onDelete('CASCADE')->onUpdate('CASCADE');

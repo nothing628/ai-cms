@@ -17,9 +17,10 @@ class CreateChapterTable extends Migration
         {
             $table->increments('id');
             $table->integer('manga_id')->unsigned();
-            $table->integer('order')->unsigned();
-            $table->string('title')->nullable();
-            $table->timestamp('release_date')->nullable();
+            $table->string('chapter_title')
+            $table->integer('chapter_num')->unsigned();
+            $table->integer('views')->unsigned()->default(0);
+            $table->timestamp('release_at')->nullable();
             $table->timestamps();
 
             $table->foreign('manga_id')->references('id')->on('mangas')->onDelete('CASCADE')->onUpdate('CASCADE');
