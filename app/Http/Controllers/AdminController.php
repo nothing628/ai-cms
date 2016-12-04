@@ -18,7 +18,7 @@ class AdminController extends Controller
     	return view('admin.chapter');
     }
 
-    public function mangaPage($manga_id, $chapter_id) {
+    public function mangaPage($manga_id, $chapter_num) {
     	return view('admin.page');
     }
 
