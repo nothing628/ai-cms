@@ -15,10 +15,6 @@ Route::get('/', function () {
     return view('welcome');
 });
 
-Route::get('/test', function () {
-	return phpinfo();
-});
-
 require('web/admin.php');
 require('web/manga.php');
 require('web/user.php');
