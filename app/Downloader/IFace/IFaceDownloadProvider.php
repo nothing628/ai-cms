@@ -1,6 +1,6 @@
 <?php 
 
-namespace App\Downloader\Interface;
+namespace App\Downloader\IFace;
 
 interface IFaceDownloadProvider {
 	public function scan();
