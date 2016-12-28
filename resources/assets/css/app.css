@@ -3,7 +3,7 @@ body {
 	background-size: 100%;
 	background-repeat: no-repeat;
 	background-position: top center;
-	background-attachment: scroll;
+	background-attachment: fixed;
 	background-color: #000;
 	font-family: raleway;
 	color: #eee;

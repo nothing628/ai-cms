@@ -55,9 +55,9 @@ return array(
     */
    
     'templates' => array(
-        'small' => 'Intervention\Image\Templates\Small',
+        'small' => App\Image\Small::class,
         'medium' => App\Image\Medium::class,
-        'large' => 'Intervention\Image\Templates\Large',
+        'large' => App\Image\Large::class,
     ),
 
     /*

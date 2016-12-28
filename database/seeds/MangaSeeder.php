@@ -23,6 +23,7 @@ class MangaSeeder extends Seeder
 		$chapter = new Chapter();
 		$chapter->chapter_title = "CH01";
 		$chapter->chapter_num = 1;
+		$chapter->cover = "Test/Page-01.jpg";
 		$chapter->manga()->associate($manga);
 		$chapter->save();
 
