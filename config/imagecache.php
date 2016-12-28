@@ -35,6 +35,7 @@ return array(
         public_path('images'),
         storage_path('images'),
         storage_path('images/cover'),
+        storage_path('manga'),
     ),
 
     /*
