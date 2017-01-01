@@ -14,6 +14,7 @@ body .mt-content {
 	opacity: 0.95;
 	padding-top: 90px;
 	padding-bottom: 40px;
+	min-height: calc(100vh - 119px);
 }
 
 .navbar.navbar-default {
@@ -94,4 +95,26 @@ a {
 	margin-top: 35px;
 	margin-bottom: 35px;
 	font-weight: 500;
+}
+
+.form-control:focus {
+	box-shadow: inset 0px 0px 0px rgba(0,0,0,.075),0px 0px 3px rgba(102,175,233,1)
+}
+
+.form-control {
+	border-radius: 0;
+	background-color: transparent;
+	border-top: none;
+	border-left: none;
+	border-right: none;
+	border-bottom-width: 1px;
+	color: #d5d5d5;
+}
+
+.btn-flat {
+	border-radius: 0;
+}
+
+.btn-line {
+	background: transparent;
 }

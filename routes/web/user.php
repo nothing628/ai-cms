@@ -1,9 +1,9 @@
 <?php
 
-Route::group(['prefix' => 'users', 'as' => 'user.'], function () {
-	Route::get('/', ['as' => 'home']);
-});
+Route::auth();
 
-Route::get('signin', ['as' => 'signin']);
-Route::get('register', ['as' => 'register']);
-Route::get('signout', ['as' => 'signout']);
+Route::group(['prefix' => 'user', 'as' => 'user.'], function () {
+	Route::get('/',			['as' => 'home', 'uses' => 'UserController@home']);
+	Route::get('profile',	['as' => 'profile', 'uses' => 'UserController@profile']);
+	Route::get('favorite',	['as' => 'favorite', 'uses' => 'UserController@favorite']);
+});

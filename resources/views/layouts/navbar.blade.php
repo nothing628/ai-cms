@@ -26,8 +26,8 @@
 			</ul>
 
 			<ul class="nav navbar-nav navbar-right">
-				<li><a href="../navbar/">Sign Up</a></li>
-				<li><a href="../navbar-static-top/">Sign In</a></li>
+				<li><a href="{{ route('register') }}">Sign Up</a></li>
+				<li><a href="{{ route('login') }}">Sign In</a></li>
 			</ul>
 		</div><!--/.nav-collapse -->
 	</div>
