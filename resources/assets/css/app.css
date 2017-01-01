@@ -12,9 +12,9 @@ body {
 body .mt-content {
 	background-color: #0C1314;
 	opacity: 0.95;
-	padding-top: 90px;
+	padding-top: 80px;
 	padding-bottom: 40px;
-	min-height: calc(100vh - 119px);
+	min-height: calc(100vh - 118px);
 }
 
 .navbar.navbar-default {
@@ -30,13 +30,13 @@ body .mt-content {
 .navbar-default .navbar-nav > .active > a:hover {
 	background: transparent;
 	color: #eee;
-	border-bottom: 3px solid #a86422;
+	border-bottom: 2px solid #a86422;
 }
 
 .navbar-default .navbar-nav > li > a:focus,
 .navbar-default .navbar-nav > li > a:hover {
 	color: #eee;
-	border-bottom: 3px solid #a86422;
+	border-bottom: 2px solid #a86422;
 }
 
 .navbar.navbar-default.navbar-no-trans,
@@ -50,7 +50,7 @@ body .mt-content {
 }
 
 .footer {
-	border-top: 3px solid #314240;
+	border-top: 2px solid #314240;
 	text-align: left;
 	background: #182324;
 	opacity: 0.95;
