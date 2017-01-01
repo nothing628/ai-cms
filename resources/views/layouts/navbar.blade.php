@@ -16,7 +16,7 @@
 				<li class="dropdown">
 					<a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button">Browse</a>
 					<ul class="dropdown-menu">
-						<li><a href="#">Popular</a></li>
+						<li><a href="{{ route('manga.list') }}">Popular</a></li>
 						<li><a href="#">Recently Update</a></li>
 						<li><a href="#">Most View</a></li>
 						<li><a href="#">Random</a></li>
