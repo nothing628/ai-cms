@@ -11,6 +11,14 @@ class Downloader {
 		$this->app = $app;
 	}
 
+	public function getInstance($provider)
+	{
+		$class_provider = __NAMESPACE__."\\Providers\\" . $provider . "\\Provider";
+		$instance = new $class_provider($this->app);
+
+		return $instance;
+	}
+
 	public function updateDatabase($provider)
 	{
 		//
@@ -26,15 +34,17 @@ class Downloader {
 		//
 	}
 
-	public function downloadPage($url, $page_num, $dest, $provider)
+	public function downloadPage($url, $dest, $provider)
 	{
-		//
+		$instance = $this->getInstance($provider);
+
+		return $instance->downloadPage($url, $dest);
 	}
 
 	public function listPage($url_chapter, $provider)
 	{
-		$class_provider = __NAMESPACE__."\\Providers\\" . $provider . "\\Provider";
-		$instance = new $class_provider($this->app);
+		$instance = $this->getInstance($provider);
+
 		return $instance->listPage($url_chapter);
 	}
 }
