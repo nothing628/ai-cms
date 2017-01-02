@@ -16,6 +16,8 @@ class Provider implements IFaceDownloadProvider
 	protected $converter;
 
 	const base_uri = "http://www.animephile.com";
+	const type2_prefix = self::base_uri . "/gallery/";
+	const type2_replace = '/\?lzkfile=(.+jpg)/i';
 	const replace = '/(\d{3})(\.jpg$)/i';
 
 	public function __construct($app)
@@ -112,28 +114,56 @@ class Provider implements IFaceDownloadProvider
 
 	public function listPage($url_chapter)
 	{
+		$type2_prefix = self::type2_prefix;
+		$type2_replace = self::type2_replace;
+		$replace = self::replace;
 		$result = [];
 		$match = [];
 		$manga_name = "";
 		$response = $this->client->get($url_chapter);
 		$code = $response->getStatusCode();
-		$replace = self::replace;
 
 		if ($code == "200") {
 			$body = $response->getBody();
 			$content = $body->getContents();
 			$crawl = new Crawler($content);
-			//filter type 1
-			$base_image = $crawl->filterXPath($this->converter->toXPath("#mainimage"))->attr('src');
-			$manga_name = $crawl->filterXPath($this->converter->toXPath("#singlenav > .selected"))->html();
+			
+			try {
+				$test = $crawl->filterXPath($this->converter->toXPath("#mainimage"));
 
-			$each = $crawl->filterXPath($this->converter->toXPath(".selectmpg > option"))
-				->each(function (Crawler $node, $i) use ($base_image, $replace) {
-					$num = (int) $node->text();
-					$page = sprintf("%03d", $num);
-					return preg_replace($replace, $page.'$2', $base_image);
-				});
-			$result = $each;
+				if ($test->count() != 0) {
+					//filter type 1
+					$base_image = $crawl->filterXPath($this->converter->toXPath("#mainimage"))->attr('src');
+					$manga_name = $crawl->filterXPath($this->converter->toXPath("#singlenav > .selected"))->html();
+
+					$each = $crawl->filterXPath($this->converter->toXPath(".selectmpg > option"))
+						->each(function (Crawler $node, $i) use ($base_image, $replace) {
+							$num = (int) $node->text();
+							$page = sprintf("%03d", $num);
+							return preg_replace($replace, $page.'$2', $base_image);
+						});
+				} else {
+					$each = $crawl->filterXPath($this->converter->toXPath("#gallery > .thumbs a"))
+						->each(function (Crawler $node, $i) use ($type2_prefix, $type2_replace) {
+							$page = $node->attr('href');
+							$page = str_replace('+', ' ', $page);
+							$page = str_replace('%2F', '/', $page);
+							$match = [];
+							$out = preg_match($type2_replace, $page, $match);
+
+							if ($out == 1) {
+								return $type2_prefix . $match[1];
+							} else {
+								return '';
+							}
+						});
+				}
+
+				$result = $each;
+			} catch (Exception $ex) {
+				//
+			}
+			
 		}
 
 		return ['pages' => $result, 'manga_name' => $manga_name];
