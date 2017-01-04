@@ -27,7 +27,23 @@ class Provider implements IFaceDownloadProvider
 		$this->converter = new CssSelectorConverter();
 	}
 
+	public function downloadRegex($url_sample, $start_page, $end_page)
+	{
+		$url_sample = "http://www.animephile.com/mangagallery/May Not Miss Pervert Fall In Love/Volume 01/maynot_v01_*.net_*.JPG";
+		$regex = '/.+([\*]+).+/i';
+		for ($i = $start_page; $i <= $end_page; $i++) {
+			//
+		}
+
+		return $result;
+	}
+
 	public function scan()
+	{
+		//
+	}
+
+	public function downloadImg($url, $destination)
 	{
 		//
 	}
@@ -55,7 +71,7 @@ class Provider implements IFaceDownloadProvider
 				$file->makeDirectory($storage, 493, true, false);
 			}
 		} catch (Exception $ex) {
-			//ignore error
+			return $result;
 		}
 
 		foreach ($listPage['pages'] as $idx => $page) {
