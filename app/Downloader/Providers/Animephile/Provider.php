@@ -27,15 +27,30 @@ class Provider implements IFaceDownloadProvider
 		$this->converter = new CssSelectorConverter();
 	}
 
-	public function downloadRegex($url_sample, $start_page, $end_page)
+	public function downloadRegex($url, $fname, $page_num)
 	{
-		$url_sample = "http://www.animephile.com/mangagallery/May Not Miss Pervert Fall In Love/Volume 01/maynot_v01_*.net_*.JPG";
-		$regex = '/.+([\*]+).+/i';
-		for ($i = $start_page; $i <= $end_page; $i++) {
-			//
+		try {
+			$request = new Request('GET', $url);
+			$response = $this->client->send($request, ['query' => ['ch' => 'Volume 01', 'mpg' => $page_num]]);
+
+			if ($response->getStatusCode() == 200) {
+				$body = $response->getBody();
+				$content = $body->getContents();
+				$crawl = new Crawler($content);
+				$base_image = $crawl->filterXPath($this->converter->toXPath("#mainimage"))->attr('src');
+
+				$request = new Request('GET', $base_image);
+				$response = $this->client->send($request, ['sink' => $fname]);
+
+				if ($response->getStatusCode() == 200) {
+					//
+				}
+			}
+		} catch (RequestException $ex) {
+			return false;
 		}
 
-		return $result;
+		return true;
 	}
 
 	public function scan()
@@ -78,17 +93,18 @@ class Provider implements IFaceDownloadProvider
 
 			try {
 				$fname = ($idx + 1) . '.' . $this->getFormat($page);
-				$response = $this->client->request('GET', $page, ['sink' => $storage . '/' . $fname]);
-
-				if ($response->getStatusCode() != 200) {
-					$result[$page] = $response->getBody();
-				}
+				$request = new Request('GET', $page);
+				$response = $this->client->send($request, ['sink' => $storage . '/' . $fname]);
 
 				if ($response->getStatusCode() == 200) {
 					$result[$page] = $storage . '/' . $fname;
 				}
 			} catch (RequestException $ex) {
-				$result[$page] = $ex->getMessage();
+				if ($this->downloadRegex($url, $storage . '/' . $fname, $idx + 1)) {
+					$result[$page] = $storage . '/' . $fname;
+				} else {
+					$result[$page] = $ex->getMessage();
+				}
 			}
 
 		}
