@@ -12,7 +12,7 @@
 		<div id="navbar" class="navbar-collapse collapse">
 			<ul class="nav navbar-nav">
 				<li class="active"><a href="{{ url('/') }}">Home</a></li>
-				<li><a href="#about">Category</a></li>
+				<li><a href="{{ route('category.list') }}">Category</a></li>
 				<li class="dropdown">
 					<a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button">Browse</a>
 					<ul class="dropdown-menu">

@@ -13,7 +13,7 @@ class CreateMangaTable extends Migration
 	 */
 	public function up()
 	{
-		Schema::create('categorys', function (Blueprint $table) {
+		Schema::create('categories', function (Blueprint $table) {
 			$table->increments('id');
 			$table->string('category', 40)->unique();
 			$table->text('description')->nullable();
@@ -37,7 +37,7 @@ class CreateMangaTable extends Migration
 			$table->integer('category_id')->unsigned();
 			$table->integer('manga_id')->unsigned();
 
-			$table->foreign('category_id')->references('id')->on('categorys')->onDelete('CASCADE')->onUpdate('CASCADE');
+			$table->foreign('category_id')->references('id')->on('categories')->onDelete('CASCADE')->onUpdate('CASCADE');
 			$table->foreign('manga_id')->references('id')->on('mangas')->onDelete('CASCADE')->onUpdate('CASCADE');
 		});
 
@@ -114,6 +114,6 @@ class CreateMangaTable extends Migration
 		Schema::dropIfExists('ratings');
 		Schema::dropIfExists('category_manga');
 		Schema::dropIfExists('mangas');
-		Schema::dropIfExists('categorys');
+		Schema::dropIfExists('categories');
 	}
 }
