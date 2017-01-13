@@ -27,7 +27,7 @@ class CreateMangaTable extends Migration
 			$table->string('title', 200);
 			$table->string('cover', 255);
 			$table->integer('views')->unsigned()->default(0);
-			$table->json('meta')->nullable();
+			$table->text('meta')->nullable();
 			$table->timestamps();
 
 			$table->foreign('user_id')->references('id')->on('users')->onDelete('SET NULL')->onUpdate('CASCADE');
