@@ -1,6 +1,6 @@
 <?php 
 
-Route::group(['prefix' => 'admin', 'as' => 'admin.'], function () {
+Route::group(['prefix' => 'admin', 'as' => 'admin.', 'middleware' => ['auth', 'admin']], function () {
 	Route::get('/', ['as' => 'home', 'uses' => 'AdminController@index']);
 	Route::get('manga', ['as' => 'manga.index', 'uses' => 'AdminController@mangaIndex']);
 	Route::get('manga/{manga_id}', ['as' => 'manga.chapter', 'uses' => 'AdminController@mangaChapter']);
