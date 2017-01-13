@@ -44,6 +44,10 @@ body .admin .right-side > .content {
 	background-color: #131E20;
 }
 
+.content .page-content {
+	padding: 0px 15px 15px;
+}
+
 .navbar.navbar-default {
 	background-color: transparent;
 	border-color: transparent;
@@ -180,4 +184,14 @@ a {
 .collapse .nav.nav-pills.nav-stacked li > a,
 .collapsing .nav.nav-pills.nav-stacked li > a {
     padding-left: 50px !important;
+}
+
+.breadcrumb {
+    background: transparent;
+    border-bottom: 2px solid #7E7E7E;
+    border-radius: 0;
+}
+
+.breadcrumb > li {
+    font-size: 16px;
 }
