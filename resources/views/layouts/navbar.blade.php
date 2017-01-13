@@ -31,6 +31,10 @@
 				<li class="dropdown">
 					<a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button">Hi, {{ $user->username }}</a>
 					<ul class="dropdown-menu">
+						@if ($user->is_admin)
+						<li><a href="{{ route('admin.home') }}">Admin Panel</a></li>
+						<li class="nav-divider"></li>
+						@endif
 						<li><a href="{{ route('logout.get') }}">Sign Out</a></li>
 					</ul>
 				</li>

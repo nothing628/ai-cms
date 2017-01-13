@@ -17,6 +17,27 @@ body .mt-content {
 	min-height: calc(100vh - 118px);
 }
 
+body .admin {
+	background-color: #0C1314;
+	opacity: 0.95;
+	padding-top: 80px;
+	padding-bottom: 40px;
+	min-height: calc(100vh);
+}
+body .admin .left-side,
+body .admin .right-side {
+	float: left;
+	padding: 10px;
+}
+
+body .admin .left-side {
+	width: 260px;
+}
+
+body .admin .right-side {
+	width: calc(100% - 260px);
+}
+
 .navbar.navbar-default {
 	background-color: transparent;
 	border-color: transparent;
