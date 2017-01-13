@@ -12,16 +12,16 @@ body {
 body .mt-content {
 	background-color: #0C1314;
 	opacity: 0.95;
-	padding-top: 80px;
-	padding-bottom: 40px;
+	padding-top: 70px;
+	padding-bottom: 20px;
 	min-height: calc(100vh - 118px);
 }
 
 body .admin {
 	background-color: #0C1314;
 	opacity: 1;
-	padding-top: 80px;
-	padding-bottom: 40px;
+	padding-top: 70px;
+	padding-bottom: 20px;
 	min-height: calc(100vh);
 }
 body .admin .left-side,
