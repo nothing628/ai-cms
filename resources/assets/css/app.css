@@ -19,7 +19,7 @@ body .mt-content {
 
 body .admin {
 	background-color: #0C1314;
-	opacity: 0.95;
+	opacity: 1;
 	padding-top: 80px;
 	padding-bottom: 40px;
 	min-height: calc(100vh);
@@ -36,6 +36,12 @@ body .admin .left-side {
 
 body .admin .right-side {
 	width: calc(100% - 260px);
+}
+
+body .admin .left-side > .content,
+body .admin .right-side > .content {
+	width: 100%;
+	background-color: #131E20;
 }
 
 .navbar.navbar-default {
@@ -63,7 +69,12 @@ body .admin .right-side {
 
 .navbar.navbar-default.navbar-no-trans,
 .navbar.navbar-default.collapsed {
-	background-color: rgb(35, 45, 46);
+	background-color: #232d2e;
+}
+
+.navbar.navbar-default.navbar-highlight {
+	min-height: 62px;
+	background-color: #232d2e;
 }
 
 .navbar-default .navbar-brand {
@@ -154,3 +165,15 @@ a {
 .dropdown-menu > li > a {
     padding: 7px 20px;
 }
+
+.nav-pills > li > a {
+    border-radius: 0px;
+}
+
+.nav-pills > li.active > a,
+.nav-pills > li.active > a:focus,
+.nav-pills > li.active > a:hover {
+	color: #fff;
+	background-color: #232d2e;
+}
+

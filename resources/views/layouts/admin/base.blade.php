@@ -27,14 +27,14 @@
 
 		<div class="container-fluid admin">
 			<div class="left-side">
+				<div class="content">
 				@include('layouts.admin.sidebar')
+				</div>
 			</div>
 			<div class="right-side">
-				<div class="row">
-					<div class="container-fluid">
-						@section('content')
-						@show
-					</div>
+				<div class="content">
+					@section('content')
+					@show
 				</div>
 			</div>
 			
