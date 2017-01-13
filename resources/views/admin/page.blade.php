@@ -1,4 +1,4 @@
-@extends('layouts.base')
+@extends('admin.base')
 
 @section('title')
 Manga - Page List

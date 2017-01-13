@@ -177,3 +177,7 @@ a {
 	background-color: #232d2e;
 }
 
+.collapse .nav.nav-pills.nav-stacked li > a,
+.collapsing .nav.nav-pills.nav-stacked li > a {
+    padding-left: 50px !important;
+}
