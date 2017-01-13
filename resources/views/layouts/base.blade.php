@@ -7,7 +7,7 @@
 
 		<title>
 			@section('title')
-			Manga Titan
+			{{ Config::get('app.name') }}
 			@show
 		</title>
 

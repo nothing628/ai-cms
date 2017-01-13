@@ -10,7 +10,7 @@
 			</div>
 		</div>
 		<div class="col-md-6">
-			<div class="copyright">Manga Titan 2016. Support My Project At <a href="#">Github</a></div>
+			<div class="copyright">{{ Config::get('app.name') }} 2016. Support My Project At <a href="#">Github</a></div>
 		</div>
 	</div>
 </footer>
