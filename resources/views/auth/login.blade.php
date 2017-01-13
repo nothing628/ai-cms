@@ -14,16 +14,16 @@
 			<hr>
 
 			<div class="form-group">
-				<label class="col-md-3 control-label">Username</label>
+				<label class="col-md-3 control-label">Email</label>
 				<div class="col-md-9">
-					<input type="text" name="" class="form-control" placeholder="Username">
+					<input type="email" name="email" class="form-control" placeholder="Email">
 				</div>
 			</div>
 
 			<div class="form-group">
 				<label class="col-md-3 control-label">Password</label>
 				<div class="col-md-9">
-					<input type="password" name="" class="form-control" placeholder="Password">
+					<input type="password" name="password" class="form-control" placeholder="Password">
 				</div>
 			</div>
 

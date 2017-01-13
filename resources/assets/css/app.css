@@ -33,6 +33,7 @@ body .mt-content {
 	border-bottom: 2px solid #a86422;
 }
 
+.navbar-default .navbar-nav > .open > a,
 .navbar-default .navbar-nav > li > a:focus,
 .navbar-default .navbar-nav > li > a:hover {
 	color: #eee;
@@ -98,7 +99,8 @@ a {
 }
 
 .form-control:focus {
-	box-shadow: inset 0px 0px 0px rgba(0,0,0,.075),0px 0px 3px rgba(102,175,233,1)
+	box-shadow: inset 0px 0px 0px rgba(0,0,0,.075),0px 0px 3px rgba(102,175,233,1);
+	border: 1px solid #66afe9;
 }
 
 .form-control {
@@ -117,4 +119,17 @@ a {
 
 .btn-line {
 	background: transparent;
+}
+
+.navbar-nav > li > .dropdown-menu {
+    margin-top: 0;
+    border-radius: 0px;
+}
+
+.dropdown-menu {
+    font-size: 15px;
+}
+
+.dropdown-menu > li > a {
+    padding: 7px 20px;
 }

@@ -25,10 +25,22 @@
 				<li><a href="#contact">Contact Us</a></li>
 			</ul>
 
+			@if(Auth::check())
+			@set('user', Auth::user())
+			<ul class="nav navbar-nav navbar-right">
+				<li class="dropdown">
+					<a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button">Hi, {{ $user->username }}</a>
+					<ul class="dropdown-menu">
+						<li><a href="{{ route('logout.get') }}">Sign Out</a></li>
+					</ul>
+				</li>
+			</ul>
+			@else
 			<ul class="nav navbar-nav navbar-right">
 				<li><a href="{{ route('register') }}">Sign Up</a></li>
 				<li><a href="{{ route('login') }}">Sign In</a></li>
 			</ul>
+			@endif
 		</div><!--/.nav-collapse -->
 	</div>
 </nav>
