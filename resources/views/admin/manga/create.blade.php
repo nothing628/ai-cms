@@ -11,11 +11,12 @@
 @endsection
 
 @section ('page-content')
-<form method="post" class="form-horizontal">
+<form method="post" class="form-horizontal" enctype="multipart/form-data">
+	{!! csrf_field() !!}
 	<div class="form-group">
 		<label class="control-label col-md-2">Manga Title</label>
 		<div class="col-md-6">
-			<input type="text" name="title" class="form-control" placeholder="Manga Title">
+			<input type="text" name="title" class="form-control" placeholder="Manga Title" required="">
 		</div>
 	</div>
 	<div class="form-group">
@@ -23,7 +24,7 @@
 		<div class="col-md-3">
 			<input type="text" name="artist" class="form-control" placeholder="Artist">
 		</div>
-		<label class="control-label col-md-2">Artist</label>
+		<label class="control-label col-md-2">Author</label>
 		<div class="col-md-3">
 			<input type="text" name="author" class="form-control" placeholder="Author">
 		</div>
@@ -31,8 +32,8 @@
 	<div class="form-group">
 		<label class="control-label col-md-2">Category</label>
 		<div class="col-md-3">
-			<select class="form-control" name="category">
-				<option>Test</option>
+			<select class="form-control" name="category" required="">
+				<option value="1">Test</option>
 			</select>
 		</div>
 	</div>
@@ -45,7 +46,7 @@
 	<div class="form-group">
 		<label class="control-label col-md-2">Synopsis</label>
 		<div class="col-md-6">
-			<textarea class="form-control"></textarea>
+			<textarea class="form-control" name="desc" required=""></textarea>
 		</div>
 	</div>
 	<div class="form-group">

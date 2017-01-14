@@ -2,6 +2,8 @@
 
 namespace App\Http\Controllers;
 
+use Auth;
+use Image;
 use Illuminate\Http\Request;
 use Illuminate\Database\Eloquent\ModelNotFoundException;
 use App\Models\Manga;
@@ -18,6 +20,30 @@ class MangaController extends Controller
 	public function create()
 	{
 		return view('admin.manga.create');
+	}
+
+	public function store(Request $request)
+	{
+		$meta = [];
+		$meta['artist'] = $request->input('artist');
+		$meta['author'] = $request->input('author');
+		$meta['desc'] = $request->input('desc');
+
+		$manga = new Manga;
+		$manga->title = $request->input('title');
+		$manga->user_id = Auth::user()->id;
+		$manga->meta = $meta;
+
+		if ($request->file('cover')->isValid()) {
+			$cover = $request->file('cover');
+			$newfilename = snake_case($manga->title . '.' . $cover->extension());
+			$path = $cover->move(storage_path('images/cover'), $newfilename);
+			
+			$manga->cover = $newfilename;
+		}
+
+		$manga->save();
+		return redirect()->route('admin.manga.index');
 	}
 
 	public function detailManga($manga_id)
