@@ -1,7 +1,11 @@
 @extends('admin.base')
 
 @section('title')
-Dashboard
+@parent Dashboard
+@endsection
+
+@section('breadcrumb')
+<li><a>Home</a></li>
 @endsection
 
 @section('page-content')
