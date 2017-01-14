@@ -15,6 +15,11 @@ class MangaController extends Controller
 		return view('manga.index');
 	}
 
+	public function create()
+	{
+		return view('admin.manga.create');
+	}
+
 	public function detailManga($manga_id)
 	{
 		try {

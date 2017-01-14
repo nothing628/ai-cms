@@ -1,9 +1,13 @@
 @extends('layouts.admin.base')
 
+@section('title')
+Administrator Panel - 
+@endsection
+
 @section('content')
 	<ol class="breadcrumb">
-		<li><a href="#">Home</a></li>
-		<li><a href="#">Manga</a></li>
+		@section('breadcrumb')
+		@show
 	</ol>
 	<div class="clearfix"></div>
 	<div class="page-content">

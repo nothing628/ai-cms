@@ -19,7 +19,7 @@ body .mt-content {
 
 body .admin {
 	background-color: #0C1314;
-	opacity: 1;
+	opacity: 0.95;
 	padding-top: 70px;
 	padding-bottom: 20px;
 	min-height: calc(100vh);
@@ -142,9 +142,9 @@ a {
 .form-control {
 	border-radius: 0;
 	background-color: transparent;
-	border-top: none;
-	border-left: none;
-	border-right: none;
+	border-top-color: transparent;
+	border-left-color: transparent;
+	border-right-color: transparent;
 	border-bottom-width: 1px;
 	color: #d5d5d5;
 }

@@ -1,11 +1,16 @@
 @extends('admin.base')
 
 @section('title')
-Manga
+@parent Manga List
+@endsection
+
+@section('breadcrumb')
+<li><a>Home</a></li>
+<li><a>Manga</a></li>
 @endsection
 
 @section('page-content')
-<a href="#" class="btn btn-success btn-flat btn-line"><i class="fa fa-upload"></i> Upload</a>
+<a href="{{ route('admin.manga.create') }}" class="btn btn-success btn-flat btn-line"><i class="fa fa-upload"></i> Upload</a>
 
 <table class="table table-bordered" style="margin-top: 15px;">
 	<thead>
