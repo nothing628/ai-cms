@@ -1,13 +1,13 @@
 @extends('admin.base')
 
 @section('title')
-@parent Chapter List
+@parent Manga Detail
 @endsection
 
 @section('breadcrumb')
 <li><a>Home</a></li>
 <li><a>Manga</a></li>
-<li><a>Chapter List</a></li>
+<li><a>Chapter</a></li>
 @endsection
 
 @section('page-content')
