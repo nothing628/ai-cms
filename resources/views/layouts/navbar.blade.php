@@ -1,3 +1,9 @@
+@if (isRoute('manga.list'))
+@set('class', 'dropdown active')
+@else
+@set('class', 'dropdown')
+@endif
+
 <nav class="navbar navbar-default navbar-fixed-top" id="main-navbar">
 	<div class="container">
 		<div class="navbar-header">
@@ -11,18 +17,18 @@
 		</div>
 		<div id="navbar" class="navbar-collapse collapse">
 			<ul class="nav navbar-nav">
-				<li class="active"><a href="{{ url('/') }}">Home</a></li>
-				<li><a href="{{ route('category.list') }}">Category</a></li>
-				<li class="dropdown">
+				<li @if(isRoute('home')) class="active" @endif ><a href="{{ url('/') }}">Home</a></li>
+				<li @if(isRoute('category.list')) class="active" @endif ><a href="{{ route('category.list') }}">Category</a></li>
+				<li class="{{ $class }}">
 					<a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button">Browse</a>
 					<ul class="dropdown-menu">
-						<li><a href="{{ route('manga.list') }}">Popular</a></li>
-						<li><a href="#">Recently Update</a></li>
-						<li><a href="#">Most View</a></li>
-						<li><a href="#">Random</a></li>
+						<li><a href="{{ route('manga.list', ['sort' => 'popular']) }}">Popular</a></li>
+						<li><a href="{{ route('manga.list', ['sort' => 'recently']) }}">Recently Update</a></li>
+						<li><a href="{{ route('manga.list', ['sort' => 'views']) }}">Most View</a></li>
+						<li><a href="{{ route('manga.list') }}">Random</a></li>
 					</ul>
 				</li>
-				<li><a href="#contact">Contact Us</a></li>
+				<li @if(isRoute('contact.us')) class="active" @endif ><a href="{{ route('contact.us') }}">Contact Us</a></li>
 			</ul>
 
 			@if(Auth::check())

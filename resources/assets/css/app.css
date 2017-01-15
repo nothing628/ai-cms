@@ -149,6 +149,19 @@ a {
 	color: #d5d5d5;
 }
 
+#social-media > a {
+	margin-right: 5px;
+}
+
+.btn-circle {
+	border-radius: 50%;
+	width: 48px;
+	height: 48px;
+	font-size: 20px;
+	padding: 10px;
+	text-align: center;
+}
+
 .btn-flat {
 	border-radius: 0;
 }
