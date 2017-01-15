@@ -154,6 +154,10 @@ a {
 	margin-right: 5px;
 }
 
+.alert {
+	border-radius: 0px;
+}
+
 .btn-circle {
 	border-radius: 50%;
 	width: 48px;
