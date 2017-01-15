@@ -58,6 +58,7 @@
 	<div class="form-group">
 		<div class="col-md-offset-2 col-md-9">
 			<button class="btn btn-success btn-flat btn-line">Submit</button>
+			<a href="{{ route('admin.manga.index') }}" class="btn btn-danger btn-line btn-flat">Cancel</a>
 		</div>
 	</div>
 </form>

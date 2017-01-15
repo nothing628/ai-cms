@@ -22,11 +22,18 @@
 		</tr>
 	</thead>
 	<tbody>
+		@foreach($mangas as $manga)
 		<tr>
 			<td></td>
-			<td>Test</td>
-			<td>123</td>
+			<td>{{ $manga->title }}</td>
+			<td>{{ $manga->totalPage }}</td>
+			<td>
+				<a href="{{ route('admin.manga.chapter', $manga->id) }}">Detail</a>
+				<a href="{{ route('admin.manga.edit', $manga->id) }}">Edit</a>
+				<a href="{{ route('admin.manga.delete', $manga->id) }}">Delete</a>
+			</td>
 		</tr>
+		@endforeach
 	</tbody>
 </table>
 @endsection

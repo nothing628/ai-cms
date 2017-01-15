@@ -46,6 +46,28 @@ class MangaController extends Controller
 		return redirect()->route('admin.manga.index');
 	}
 
+	public function edit($manga_id)
+	{
+		//
+	}
+
+	public function update($manga_id, Request $request)
+	{
+		//
+	}
+
+	public function delete($manga_id)
+	{
+		//return null;
+	}
+
+	public function mangaChapter($manga_id)
+	{
+		$manga = Manga::find($manga_id);
+
+		return view('admin.manga.chapter', ['manga' => $manga]);
+	}
+
 	public function detailManga($manga_id)
 	{
 		try {
