@@ -12,20 +12,43 @@
 
 @section('page-content')
 <h3 class="title">Detail</h3>
-<a href="{{ route('admin.manga.index') }}" class="btn btn-danger btn-line btn-flat">Back</a>
-<a href="{{ route('admin.manga.edit', $manga->id) }}" class="btn btn-primary btn-line btn-flat"><i class="fa fa-pencil"></i> Edit</a>
-<table class="table table-bordered" style="margin-top: 15px;">
-	<tbody>
-		<tr>
-			<td width="200">Title</td>
-			<td>{{ $manga->title }}</td>
-		</tr>
-		<tr>
-			<td>Artist</td>
-			<td>{{ $manga->meta['artist'] }}</td>
-		</tr>
-	</tbody>
-</table>
+
+<div class="row">
+	<div class="col-md-3">
+		<img src="{{ url('images/small/' . $manga->cover )}}" class="img-responsive" >
+	</div>
+	<div class="col-md-9">
+		<table class="table table-bordered" style="margin-top: 15px;">
+			<tbody>
+				<tr>
+					<td width="200">Title</td>
+					<td>{{ $manga->title }}</td>
+				</tr>
+				<tr>
+					<td>Artist</td>
+					<td>{{ $manga->meta['artist'] }}</td>
+				</tr>
+				<tr>
+					<td>Author</td>
+					<td>{{ $manga->meta['author'] }}</td>
+				</tr>
+				<tr>
+					<td>Total Pages</td>
+					<td>{{ $manga->totalPage }}</td>
+				</tr>
+				<tr>
+					<td>Views</td>
+					<td>{{ $manga->views }}</td>
+				</tr>
+			</tbody>
+		</table>
+	</div>
+</div>
+
+<div style="margin-top: 15px;">
+	<a href="{{ route('admin.manga.index') }}" class="btn btn-danger btn-line btn-flat"><i class="fa fa-mail-reply"></i> Back</a>
+	<a href="{{ route('admin.manga.edit', $manga->id) }}" class="btn btn-primary btn-line btn-flat"><i class="fa fa-pencil"></i> Edit</a>
+</div>
 
 <h3 class="title">Chapter List</h3>
 <a href="#" class="btn btn-success btn-line btn-flat"><i class="fa fa-upload"></i> Upload New Chapter</a>

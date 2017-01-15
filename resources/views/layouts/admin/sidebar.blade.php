@@ -7,6 +7,7 @@
 <ul class="nav nav-pills nav-stacked">
 	<li @if(isRoute('admin.home')) class="active" @endif ><a href="{{ route('admin.home') }}">Home</a></li>
 	<li @if(isRoute('admin.manga.index')) class="active" @endif ><a href="{{ route('admin.manga.index') }}">Manga</a></li>
+	<li @if(isRoute('admin.category')) class="active" @endif ><a href="{{ route('admin.category') }}">Category</a></li>
 	<li @if(isRoute('admin.comment')) class="active" @endif ><a href="{{ route('admin.comment') }}">Comment</a></li>
 	<li>
 		<a data-toggle="collapse" data-target="#set-coll">Setting</a>

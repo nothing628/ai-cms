@@ -11,13 +11,19 @@ class AdminController extends Controller
 		return view('admin.index');
 	}
 
-	public function mangaIndex() {
+	public function manga()
+	{
 		$mangas = Manga::all();
 		return view('admin.manga', ['mangas' => $mangas]);
 	}
 
 	public function mangaPage($manga_id, $chapter_num) {
 		return view('admin.page');
+	}
+
+	public function category()
+	{
+		return view('admin.category');
 	}
 
 	public function comments() {
