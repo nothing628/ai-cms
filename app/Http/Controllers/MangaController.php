@@ -66,7 +66,6 @@ class MangaController extends Controller
 		}
 
 		return redirect()->route('admin.manga.index');
-		//
 	}
 
 	public function delete($manga_id)
