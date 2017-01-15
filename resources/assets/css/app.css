@@ -129,9 +129,10 @@ a {
 }
 
 .title {
-	margin-top: 35px;
-	margin-bottom: 35px;
+	margin-top: 15px;
+	margin-bottom: 15px;
 	font-weight: 500;
+	border-bottom: 1px solid #ddd;
 }
 
 .form-control:focus {

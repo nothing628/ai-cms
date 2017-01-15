@@ -1,6 +1,6 @@
 <div class="row">
 	<div class="col-md-12">
-		<h3 class="title">Recently Update</h3>
+		<h3 class="title">Most Popular</h3>
 
 		<div class="row">
 			<div class="col-md-2"><img src="{{ url('images/medium/Cover 001.jpg') }}" alt="" class="img-responsive"></div>

@@ -6,18 +6,31 @@
 
 @section('content')
 <div class="row">
-	<div class="col-md-3">
-		<img class="img-responsive" src="{{ url('images/medium/' . $manga->cover) }}" alt="{{ $manga->title }}">
-	</div>
-	<div class="col-md-9">
-		<table class="table table-bordered">
-			<tbody>
-				<tr>
-					<td>Title</td>
-					<td>{{ $manga->title }}</td>
-				</tr>
-			</tbody>
-		</table>
+	<div class="col-md-12">
+		<h1 class="title">{{ $manga->title }}</h1>
+		<div class="row">
+			<div class="col-md-3">
+				<img class="img-responsive" src="{{ url('images/medium/' . $manga->cover) }}" alt="{{ $manga->title }}">
+			</div>
+			<div class="col-md-9">
+				<table class="table table-bordered">
+					<tbody>
+						<tr>
+							<td>Title</td>
+							<td>{{ $manga->title }}</td>
+						</tr>
+						<tr>
+							<td>Artist</td>
+							<td>{{ $manga->meta['artist'] }}</td>
+						</tr>
+						<tr>
+							<td>Author</td>
+							<td>{{ $manga->meta['author'] }}</td>
+						</tr>
+					</tbody>
+				</table>
+			</div>
+		</div>
 	</div>
 </div>
 
