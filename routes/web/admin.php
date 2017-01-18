@@ -13,6 +13,7 @@ Route::group(['prefix' => 'admin', 'as' => 'admin.', 'middleware' => ['auth', 'a
 	Route::get('manga/{manga_id}/chapter/{chapter_num}', ['as' => 'manga.page', 'uses' => 'AdminController@mangaPage']);
 
 	Route::get('chapter/create/{manga_id}', ['as' => 'chapter.create', 'uses' => 'ChapterController@create']);
+	Route::post('chapter/create/{manga_id}', ['as' => 'chapter.store', 'uses' => 'ChapterController@store']);
 	Route::get('chapter/{chapter_id}', ['as' => 'chapter', 'uses' => 'ChapterController@index']);
 	Route::get('chapter/{chapter_id}/edit', ['as' => 'chapter.edit', 'uses' => 'ChapterController@edit']);
 

@@ -51,7 +51,9 @@
 </div>
 
 <h3 class="title">Chapter List</h3>
-<a href="#" class="btn btn-success btn-line btn-flat"><i class="fa fa-upload"></i> Upload New Chapter</a>
+<a href="{{ route('admin.chapter.create', $manga->id) }}" class="btn btn-success btn-line btn-flat">
+	<i class="fa fa-upload"></i> Upload New Chapter
+</a>
 <table class="table table-bordered" style="margin-top: 15px;">
 	<thead>
 		<tr>

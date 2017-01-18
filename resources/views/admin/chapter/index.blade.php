@@ -11,6 +11,6 @@
 <li><a>CH01</a></li>
 @endsection
 
-@section('page-title')
-
+@section('page-content')
+dd($manga)
 @endsection
