@@ -16,6 +16,10 @@ Route::group(['prefix' => 'admin', 'as' => 'admin.', 'middleware' => ['auth', 'a
 	Route::post('chapter/create/{manga_id}', ['as' => 'chapter.store', 'uses' => 'ChapterController@store']);
 	Route::get('chapter/{chapter_id}', ['as' => 'chapter', 'uses' => 'ChapterController@index']);
 	Route::get('chapter/{chapter_id}/edit', ['as' => 'chapter.edit', 'uses' => 'ChapterController@edit']);
+	Route::post('chapter/{chapter_id}/edit', ['as' => 'chapter.update', 'uses' => 'ChapterController@update']);
+	Route::get('chapter/{chapter_id}/delete', ['as' => 'chapter.delete', 'uses' => 'ChapterController@delete']);
+
+	Route::post('page/{chapter_id}', ['as' => 'page.upload', 'uses' => 'PageController@upload']);
 
 	Route::get('category', ['as' => 'category', 'uses' => 'AdminController@category']);
 	Route::get('category/create', ['as' => 'category.create', 'uses' => 'CategoryController@create']);

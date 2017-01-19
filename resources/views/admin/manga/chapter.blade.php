@@ -72,9 +72,8 @@
 			<td>{{ $chapter->chapter_num }}</td>
 			<td>{{ $chapter->pages->count() }}</td>
 			<td>
-				<a href="#">Detail</a>
-				<a href="#">Edit</a>
-				<a href="#">Delete</a>
+				<a href="{{ route('admin.chapter.edit', $chapter->id) }}">Edit</a>
+				<a href="{{ route('admin.chapter.delete', $chapter->id) }}">Delete</a>
 			</td>
 		</tr>
 		@endforeach

@@ -59,16 +59,37 @@ class ChapterController extends Controller
 
 	public function delete($chapter_id)
 	{
-		return null;
+		$chapter = Chapter::find($chapter_id);
+
+		if ($chapter) {
+			$manga_id = $chapter->manga_id;
+			$chapter->delete();
+
+			return redirect()->route('admin.manga.chapter', $manga_id);
+		}
+
+		return redirect()->back()->withErrors(['chapter' => 'Chapter Not Found']);
 	}
 
 	public function edit($chapter_id)
 	{
-		return view('admin.chapter.edit');
+		$chapter = Chapter::find($chapter_id);
+
+		if ($chapter) {
+			return view('admin.chapter.edit', ['chapter' => $chapter]);
+		}
+
+		return redirect()->back()->withErrors(['chapter' => 'Chapter Not Found.']);
 	}
 
 	public function update($chapter_id, Request $request)
 	{
-		//
+		$chapter = Chapter::find($chapter_id);
+
+		if ($chapter) {
+			//
+		}
+
+		return redirect()->back()->withErrors(['Chapter' => 'Chapter Not Found']);
 	}
 }
