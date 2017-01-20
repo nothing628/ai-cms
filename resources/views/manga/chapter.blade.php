@@ -27,6 +27,10 @@
 							<td>Author</td>
 							<td>{{ $manga->meta['author'] }}</td>
 						</tr>
+						<tr>
+							<td>Synopsis</td>
+							<td>{{ $manga->meta['desc'] }}</td>
+						</tr>
 					</tbody>
 				</table>
 			</div>

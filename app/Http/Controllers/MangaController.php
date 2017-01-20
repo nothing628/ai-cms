@@ -60,9 +60,27 @@ class MangaController extends Controller
 	public function update($manga_id, Request $request)
 	{
 		$manga = Manga::find($request->input('manga_id'));
+		$meta = [];
+		$meta['artist'] = $request->input('artist');
+		$meta['author'] = $request->input('author');
+		$meta['desc'] = $request->input('desc');
 
 		if ($manga) {
+			$manga->title = $request->input('title');
+			$manga->user_id = Auth::user()->id;
+			$manga->meta = $meta;
+
+			if ($request->hasFile('cover') && $request->file('cover')->isValid()) {
+				$cover = $request->file('cover');
+				$newfilename = snake_case($manga->title . '.' . $cover->extension());
+				$path = $cover->move(storage_path('images/cover'), $newfilename);
+
+				$manga->cover = $newfilename;
+			}
+
 			$manga->save();
+
+			return redirect()->route('admin.manga.chapter', $manga->id);
 		}
 
 		return redirect()->route('admin.manga.index');

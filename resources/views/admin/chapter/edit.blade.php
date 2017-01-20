@@ -22,6 +22,13 @@
 	</div>
 
 	<div class="form-group">
+		<label class="control-label col-md-2">Page Count</label>
+		<div class="col-md-2">
+			<input type="text" value="{{ $chapter->pages->count() }}" readonly="" class="form-control">
+		</div>
+	</div>
+
+	<div class="form-group">
 		<label class="control-label col-md-2">Cover</label>
 		<div class="col-md-6">
 			<img src="{{ url('images/small/' . $chapter->cover) }}">
@@ -41,23 +48,18 @@
 
 <a class="btn btn-success btn-line btn-flat" data-toggle="modal" data-backdrop="false" href='#modal-id'><i class="fa fa-upload"></i> Upload New Page</a>
 
-<table class="table-bordered table" style="margin-top: 15px;">
-	<thead>
-		<tr>
-			<td>#</td>
-			<td></td>
-		</tr>
-	</thead>
-
-	<tbody>
-		@foreach($chapter->pages as $page)
-		<tr>
-			<td>{{ $page->page_num }}</td>
-			<td><a href="{{ url('images/small/' . $page->path) }}">View</a></td>
-		</tr>
-		@endforeach
-	</tbody>
-</table>
+<div class="page-grid">
+	@foreach($chapter->pages as $page)
+	<div class="page">
+		<div>
+			<a href="{{ url('images/original/' . $page->path) }}">
+				<img src="{{ url('images/small/' . $page->path) }}" class="img-responsive">
+			</a>
+		</div>
+	</div>
+	@endforeach
+	<div class="clearfix"></div>
+</div>
 
 <div class="modal fade" id="modal-id">
 	<div class="modal-dialog">
