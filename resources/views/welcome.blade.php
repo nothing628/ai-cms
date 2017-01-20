@@ -1,7 +1,7 @@
 @extends ('layouts.base')
 
 @section ('title')
-Welcome to ReadmeCom
+Welcome to {{ Config::get('app.name') }}
 @endsection
 
 @section ('content')
