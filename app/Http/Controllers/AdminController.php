@@ -31,7 +31,8 @@ class AdminController extends Controller
 		return view('admin.comments');
 	}
 
-	public function setting() {
+	public function setting()
+	{
 		return view('admin.setting');
 	}
 

@@ -28,6 +28,20 @@
 	</div>
 
 	<div class="form-group">
+		<label class="control-label col-md-3">App Logo</label>
+		<div class="col-md-6">
+			<input type="file" name="app_logo">
+		</div>
+	</div>
+
+	<div class="form-group">
+		<label class="control-label col-md-3">Background</label>
+		<div class="col-md-6">
+			<input type="file" name="app_bg">
+		</div>
+	</div>
+
+	<div class="form-group">
 		<div class="col-md-2 col-md-offset-3">
 			<button type="submit" class="btn btn-flat btn-line btn-info"><i class="fa fa-save"></i> Save</button>
 		</div>
