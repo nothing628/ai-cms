@@ -14,7 +14,8 @@
 		"webpatser/laravel-uuid": "^2.0",
 		"guzzlehttp/guzzle": "^6.2",
 		"symfony/dom-crawler": "^3.2",
-		"symfony/css-selector": "^3.2"
+		"symfony/css-selector": "^3.2",
+		"anlutro/l4-settings": "0.4.9"
 	},
 	"require-dev": {
 		"fzaninotto/faker": "~1.4",

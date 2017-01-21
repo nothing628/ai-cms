@@ -180,6 +180,7 @@ return [
 
         Radic\BladeExtensions\BladeExtensionsServiceProvider::class,
         Intervention\Image\ImageServiceProvider::class,
+        anlutro\LaravelSettings\ServiceProvider::class,
     ],
 
     /*
@@ -230,6 +231,7 @@ return [
 
         'Image' => Intervention\Image\Facades\Image::class,
 		'Uuid' => Webpatser\Uuid\Uuid::class,
+        'Setting' => anlutro\LaravelSettings\Facade::class,
     ],
 
 ];
