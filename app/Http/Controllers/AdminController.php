@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\Manga;
+use Setting;
 
 class AdminController extends Controller
 {
