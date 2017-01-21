@@ -35,6 +35,15 @@ class AdminController extends Controller
 		return view('admin.setting');
 	}
 
+	public function saveSetting(Request $request)
+	{
+		Setting::set('app.name', $request->input('app_name'));
+		Setting::set('app.desc', $request->input('app_desc'));
+		Setting::save();
+
+		return redirect()->route('admin.setting.page');
+	}
+
 	public function users() {
 		return view('admin.users');
 	}

@@ -30,5 +30,6 @@ Route::group(['prefix' => 'admin', 'as' => 'admin.', 'middleware' => ['auth', 'a
 	Route::get('comment', ['as' => 'comment', 'uses' => 'AdminController@comments']);
 
 	Route::get('setting/page', ['as' => 'setting.page', 'uses' => 'AdminController@setting']);
+	Route::post('setting/page', ['as' => 'setting.page.save', 'uses' => 'AdminController@saveSetting']);
 	Route::get('setting/user', ['as' => 'setting.user', 'uses' => 'AdminController@users']);
 });

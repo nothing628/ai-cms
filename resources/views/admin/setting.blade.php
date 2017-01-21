@@ -16,14 +16,14 @@
 	<div class="form-group">
 		<label class="control-label col-md-3">App Name</label>
 		<div class="col-md-6">
-			<input type="text" name="app.name" class="form-control" value="{{ Setting::get('app.name') }}">
+			<input type="text" name="app_name" class="form-control" value="{{ Setting::get('app.name') }}">
 		</div>
 	</div>
 
 	<div class="form-group">
 		<label class="control-label col-md-3">App Description</label>
 		<div class="col-md-6">
-			<textarea class="form-control" name="app.desc">{{ Setting::get('app.desc') }}</textarea>
+			<textarea class="form-control" name="app_desc">{{ Setting::get('app.desc') }}</textarea>
 		</div>
 	</div>
 
