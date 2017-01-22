@@ -31,4 +31,24 @@ class Manga extends Model
 	{
 		return $this->hasMany(Chapter::class);
 	}
+
+	public function scopeMostView($query, $take = 20)
+	{
+		return $query->orderBy('view', 'desc')->limit($take);
+	}
+
+	public function scopePopular($query, $take = 20)
+	{
+		return $query->limit($take);
+	}
+
+	public function scopeRecent($query, $take = 20)
+	{
+		return $query->latest()->limit($take);
+	}
+
+	public function scopeRandom($query, $take = 20)
+	{
+		return $query->orderBy(DB::raw('RAND()'))->limit($take);
+	}
 }
