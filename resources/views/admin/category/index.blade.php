@@ -25,7 +25,7 @@
 		@foreach ($categories as $category)
 		<tr>
 			<td>{{ $category->category }}</td>
-			<td>0</td>
+			<td>{{ $category->mangas->count() }}</td>
 			<td>
 				<a href="#">Edit</a>
 				<a href="#">Delete</a>

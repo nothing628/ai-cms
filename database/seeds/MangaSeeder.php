@@ -16,6 +16,7 @@ class MangaSeeder extends Seeder
 	{
 		$manga = new Manga();
 		$manga->user_id = 1;
+		$manga->category_id = 1;
 		$manga->title = "Just Test";
 		$manga->cover = "Test/Page-01.jpg";
 		$manga->save();
