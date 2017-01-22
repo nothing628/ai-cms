@@ -16,5 +16,8 @@
     "vue": "^1.0.28",
     "vue-resource": "^1.0.3",
     "vue-validator": "^2.1.2"
+  },
+  "dependencies": {
+    "fine-uploader": "^5.12.0"
   }
 }
