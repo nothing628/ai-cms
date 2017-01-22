@@ -21,7 +21,7 @@ Route::group(['prefix' => 'admin', 'as' => 'admin.', 'middleware' => ['auth', 'a
 
 	Route::post('page/{chapter_id}', ['as' => 'page.upload', 'uses' => 'PageController@upload']);
 
-	Route::get('category', ['as' => 'category', 'uses' => 'AdminController@category']);
+	Route::get('category', ['as' => 'category', 'uses' => 'CategoryController@admin']);
 	Route::get('category/create', ['as' => 'category.create', 'uses' => 'CategoryController@create']);
 	Route::post('category/create', ['as' => 'category.store', 'uses' => 'CategoryController@store']);
 	Route::get('category/edit/{category_id}', ['as' => 'category.edit', 'uses' => 'CategoryController@edit']);
