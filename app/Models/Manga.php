@@ -10,6 +10,11 @@ class Manga extends Model
 		'meta' => 'array',
 	];
 
+	public function category()
+	{
+		return $this->belongsTo(Category::class);
+	}
+
 	public function getTotalPageAttribute()
 	{
 		$page = 0;

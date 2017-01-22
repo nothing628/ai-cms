@@ -6,6 +6,7 @@ use Auth;
 use Image;
 use Illuminate\Http\Request;
 use Illuminate\Database\Eloquent\ModelNotFoundException;
+use App\Models\Category;
 use App\Models\Manga;
 use App\Models\Chapter;
 use App\Models\Page;
@@ -19,7 +20,9 @@ class MangaController extends Controller
 
 	public function create()
 	{
-		return view('admin.manga.create');
+		$categories = Category::all();
+
+		return view('admin.manga.create', ['categories' => $categories]);
 	}
 
 	public function store(Request $request)
@@ -31,6 +34,7 @@ class MangaController extends Controller
 
 		$manga = new Manga;
 		$manga->title = $request->input('title');
+		$manga->category_id = $request->input('category_id');
 		$manga->user_id = Auth::user()->id;
 		$manga->meta = $meta;
 
@@ -49,9 +53,10 @@ class MangaController extends Controller
 	public function edit($manga_id)
 	{
 		$manga = Manga::find($manga_id);
+		$categories = Category::all();
 
 		if ($manga) {
-			return view('admin.manga.edit', ['manga' => $manga]);
+			return view('admin.manga.edit', ['manga' => $manga, 'categories' => $categories]);
 		}
 
 		return redirect()->back()->withErrors(['manga' => 'Manga Not Found']);
@@ -67,6 +72,7 @@ class MangaController extends Controller
 
 		if ($manga) {
 			$manga->title = $request->input('title');
+			$manga->category_id = $request->input('category_id');
 			$manga->user_id = Auth::user()->id;
 			$manga->meta = $meta;
 
