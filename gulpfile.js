@@ -1,6 +1,6 @@
 const elixir = require('laravel-elixir');
 
-require('laravel-elixir-vue');
+require('laravel-elixir-vue-2');
 
 /*
  |--------------------------------------------------------------------------
@@ -16,18 +16,16 @@ require('laravel-elixir-vue');
 var del = require('del');
 
 elixir.extend('remove', function(path) {
-    new elixir.Task('remove', function() {
-        del(path);
-    });
+	new elixir.Task('remove', function() {
+		del(path);
+	});
 });
 
 elixir(mix => {
 	mix.styles('app.css');
-    // mix.sass('app.scss');
-    mix.rollup('app.js');
-    mix.rollup('component.js');
-    mix.copy('bundle.css', 'public/css/bundle.css');
-    mix.remove('bundle.css');
-    mix.rollup('jquery.js');
-    mix.rollup('vue.js');
+	mix.rollup('app.js');
+	mix.copy('bundle.css', 'public/css/bundle.css');
+	mix.remove('bundle.css');
+	mix.rollup('jquery.js');
+	mix.rollup('vue.js');
 });

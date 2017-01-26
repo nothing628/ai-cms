@@ -1,3 +1,5 @@
+import Vuex from 'vuex';
+
 const store = new Vuex.Store({
 	state: {
 		angka: 1
@@ -8,3 +10,5 @@ const store = new Vuex.Store({
 		}
 	}
 });
+
+export default store;

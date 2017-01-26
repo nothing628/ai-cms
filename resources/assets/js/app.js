@@ -8,3 +8,5 @@ $(document).ready(function () {
 		}
 	});
 });
+
+import './component'

@@ -17,15 +17,11 @@
 		<link rel="stylesheet" type="text/css" href="{{ asset('css/bootstrap.min.css') }}">
 		<link rel="stylesheet" type="text/css" href="{{ asset('css/font-awesome.min.css') }}">
 		<link rel="stylesheet" type="text/css" href="{{ asset('css/app.css') }}">
-		<script type="text/javascript" src="{{ asset('js/jquery.js') }}"></script>
-		<script type="text/javascript" src="{{ asset('js/bootstrap.min.js') }}"></script>
-		<script type="text/javascript" src="{{ asset('js/vue.js') }}"></script>
-		<script type="text/javascript" src="{{ asset('js/app.js') }}"></script>
 	</head>
-	<body id="app">
+	<body>
 		@include('layouts.admin.navbar')
 
-		<div class="container-fluid admin">
+		<div class="container-fluid admin" id="app">
 			<div class="left-side">
 				<div class="content">
 				@include('layouts.admin.sidebar')
@@ -39,6 +35,11 @@
 			</div>
 			
 		</div>
+		
+		<script type="text/javascript" src="{{ asset('js/jquery.js') }}"></script>
+		<script type="text/javascript" src="{{ asset('js/bootstrap.min.js') }}"></script>
+		<script type="text/javascript" src="{{ asset('js/vue.js') }}"></script>
 		<script type="text/javascript" src="{{ asset('js/app.js') }}"></script>
+
 	</body>
 </html>

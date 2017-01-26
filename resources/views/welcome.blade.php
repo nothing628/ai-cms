@@ -10,6 +10,8 @@ Welcome to {{ Config::get('app.name') }}
 		<h1>Welcome to {{ Config::get('app.name') }}</h1>
 
 		<p>Empty content</p>
+
+		<router-view></router-view>
 	</div>
 </div>
 

@@ -1,4 +1,4 @@
-
+import Hello from './component/Hello.vue';
 import VueResource from 'vue-resource';
 import VueRouter from 'vue-router';
 import Vuex from 'vuex';
@@ -10,11 +10,12 @@ import Vuex from 'vuex';
  */
 Vue.use(VueResource);
 Vue.use(VueRouter);
-Vue.use(Vuex);
 
-require('./bootstrap');
-require('./router');
-require('./vuex');
+Vue.component('hello-world', Hello);
+
+import './bootstrap';
+import router from './router';
+import store from './vuex';
 
 /**
  * Next, we will create a fresh Vue application instance and attach it to
@@ -25,7 +26,7 @@ require('./vuex');
 const bus = window.bus = new Vue({});
 
 const app = new Vue({
-    el: '#app',
-    store,
-    router
+	el: '#app',
+	store,
+	router
 });
