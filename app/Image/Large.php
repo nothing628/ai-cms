@@ -5,11 +5,11 @@ namespace App\Image;
 use Intervention\Image\Image;
 use Intervention\Image\Filters\FilterInterface;
 
-class Medium implements FilterInterface
+class Large implements FilterInterface
 {
 	public function applyFilter(Image $image)
 	{
-		return $image->resize(480, null, function ($constraint) {
+		return $image->resize(null, 720, function ($constraint) {
 			$constraint->aspectRatio();
 		});
 	}

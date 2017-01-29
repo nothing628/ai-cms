@@ -7,4 +7,4 @@ Vue.http.interceptors.push((request, next) => {
     next();
 });
 
-Vue.http.options.root = 'http://mangatitan.com';
+Vue.http.options.root = 'http://aicms.id';

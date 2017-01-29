@@ -26,6 +26,9 @@ elixir(mix => {
 	mix.rollup('app.js');
 	mix.copy('bundle.css', 'public/css/bundle.css');
 	mix.remove('bundle.css');
-	mix.rollup('jquery.js');
-	mix.rollup('vue.js');
+
+	mix.scripts('base/plupload.full.min.js');
+	mix.webpack('base/chosen.js');
+	mix.webpack('base/jquery.js');
+	mix.webpack('base/vue.js');
 });

@@ -22,12 +22,8 @@
 		@include('layouts.navbar')
 
 		<div class="container-fluid mt-content" id="app">
-			<div class="row">
-				<div class="container">
-					@section('content')
-					@show
-				</div>
-			</div>
+			@section('content')
+			@show
 		</div>
 
 		<script type="text/javascript" src="{{ asset('js/jquery.js') }}"></script>
