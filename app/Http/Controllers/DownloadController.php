@@ -10,7 +10,7 @@ class DownloadController extends Controller
     public function download(Request $request) {
     	$url = $request->input('url');
     	$dest = $request->input('dest');
-    	$pages_urls = Downloader::downloadPage($url, $dest, 'Animephile');
+    	$pages_urls = Downloader::downloadPage($url, $dest, 'HentaiTwoRead');
 
     	return response()->json($pages_urls);
     }
@@ -18,7 +18,7 @@ class DownloadController extends Controller
     public function listPage(Request $request)
     {
     	$url = $request->input('url');
-    	$pages_urls = Downloader::listPage($url, 'Animephile');
+    	$pages_urls = Downloader::listPage($url, 'HentaiTwoRead');
 
     	return response()->json($pages_urls);
     }
