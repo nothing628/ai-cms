@@ -32,11 +32,21 @@
 							<td>{{ $manga->category->category }}</td>
 						</tr>
 						<tr>
+							<td>Total Views</td>
+							<td>{{ $manga->views }}</td>
+						</tr>
+						<tr>
+							<td>Total Pages</td>
+							<td>{{ $manga->total_page }}</td>
+						</tr>
+						<tr>
 							<td>Synopsis</td>
 							<td>{{ $manga->meta['desc'] }}</td>
 						</tr>
 					</tbody>
 				</table>
+
+				<button class="btn btn-line btn-flat btn-danger"><i class="fa fa-love"></i> Favorite</button>
 			</div>
 		</div>
 	</div>
