@@ -2,10 +2,13 @@
 
 namespace App\Models;
 
+use App\Tagging\Taggable;
 use Illuminate\Database\Eloquent\Model;
 
 class Manga extends Model
 {
+	use Taggable;
+
 	protected $casts = [
 		'meta' => 'array',
 	];

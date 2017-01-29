@@ -15,6 +15,7 @@ class Kernel extends ConsoleKernel
 	protected $commands = [
 		Commands\Crawl::class,
 		Commands\CrawlDownload::class,
+		Commands\GenerateTagGroup::class,
 	];
 
 	/**

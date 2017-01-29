@@ -14,9 +14,9 @@
 <form method="post" class="form-horizontal" enctype="multipart/form-data">
 	{!! csrf_field() !!}
 	<div class="form-group">
-		<label class="control-label col-md-2">Manga Title</label>
+		<label class="control-label col-md-2">Title</label>
 		<div class="col-md-6">
-			<input type="text" name="title" class="form-control" placeholder="Manga Title" required="">
+			<input type="text" name="title" class="form-control" placeholder="Title" required="">
 		</div>
 	</div>
 	<div class="form-group">
@@ -40,9 +40,9 @@
 		</div>
 	</div>
 	<div class="form-group">
-		<label class="control-label col-md-2">Genre</label>
+		<label class="control-label col-md-2">Tags</label>
 		<div class="col-md-6">
-			<input type="text" name="genre" class="form-control">
+			<input type="text" name="tags" class="form-control">
 		</div>
 	</div>
 	<div class="form-group">
