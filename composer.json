@@ -15,7 +15,8 @@
 		"guzzlehttp/guzzle": "^6.2",
 		"symfony/dom-crawler": "^3.2",
 		"symfony/css-selector": "^3.2",
-		"anlutro/l4-settings": "0.4.9"
+		"anlutro/l4-settings": "0.4.9",
+		"pion/laravel-chunk-upload": "^0.3.2"
 	},
 	"require-dev": {
 		"fzaninotto/faker": "~1.4",

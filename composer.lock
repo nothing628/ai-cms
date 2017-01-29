@@ -4,8 +4,8 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
         "This file is @generated automatically"
     ],
-    "hash": "68a8b679aee91c414fa12de9632ef91d",
-    "content-hash": "83e4c008e0cc4d9c16af4edf1a476507",
+    "hash": "49676237456810c4455af5ecd05d066f",
+    "content-hash": "eaf6a370fc0962927ec8be455f31c4a4",
     "packages": [
         {
             "name": "anahkiasen/underscore-php",
@@ -1434,6 +1434,42 @@
                 "utf8"
             ],
             "time": "2016-05-18 13:57:10"
+        },
+        {
+            "name": "pion/laravel-chunk-upload",
+            "version": "v0.3.2",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/pionl/laravel-chunk-upload.git",
+                "reference": "512eb0818044f44c1639408627dd422ece523ebd"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/pionl/laravel-chunk-upload/zipball/512eb0818044f44c1639408627dd422ece523ebd",
+                "reference": "512eb0818044f44c1639408627dd422ece523ebd",
+                "shasum": ""
+            },
+            "require": {
+                "laravel/framework": "5.1.* || 5.2.* || 5.3.*"
+            },
+            "type": "library",
+            "autoload": {
+                "psr-4": {
+                    "Pion\\Laravel\\ChunkUpload\\": "src/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Martin Kluska",
+                    "email": "martin.kluska@imakers.cz"
+                }
+            ],
+            "description": "Service for chunked upload with several js providers",
+            "time": "2017-01-17 17:38:06"
         },
         {
             "name": "psr/http-message",

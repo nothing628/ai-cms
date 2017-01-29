@@ -181,6 +181,7 @@ return [
         Radic\BladeExtensions\BladeExtensionsServiceProvider::class,
         Intervention\Image\ImageServiceProvider::class,
         anlutro\LaravelSettings\ServiceProvider::class,
+        Pion\Laravel\ChunkUpload\Providers\ChunkUploadServiceProvider::class,
     ],
 
     /*
