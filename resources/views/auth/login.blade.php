@@ -35,9 +35,15 @@ bg-white
 			</div>
 
 			<div class="form-group">
-				<div class="col-xs-6"></div>
 				<div class="col-xs-6">
-					<div class="text-right">
+					<label class="css-input switch switch-sm switch-primary">
+						<input type="checkbox" name="test" value="test">
+						<span></span>
+						Remember Me
+					</label>
+				</div>
+				<div class="col-xs-6">
+					<div class="font-s13 text-right push-5-t">
 						<a href="{{ route('register') }}">Forgot Password</a>
 						Or
 						<a href="{{ route('register') }}">Register</a>
