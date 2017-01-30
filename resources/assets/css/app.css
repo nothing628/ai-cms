@@ -373,6 +373,7 @@ a:hover, a:focus {
 .img-container img.img-responsive {
 	position: absolute;
 	top: 0;
+	width: 100%;
 }
 
 .img-container .img-overlay {
