@@ -52,6 +52,11 @@ body .admin .right-side > .content {
 	transition: all 0.5s ease;
 }
 
+.navbar-default .navbar-nav > li > a {
+	border-bottom: 2px solid;
+	border-bottom-color: transparent;
+}
+
 .navbar-default .navbar-nav > .active > a,
 .navbar-default .navbar-nav > .active > a:focus,
 .navbar-default .navbar-nav > .active > a:hover {
