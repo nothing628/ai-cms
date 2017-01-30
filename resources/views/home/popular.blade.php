@@ -1,15 +1,15 @@
 <div class="row">
 	<div class="col-xs-12">
 		<div class="block block-xs">
-			<ul class="nav nav-tabs nav-tabs-alt nav-justified" data-toggle="tabs">
-				<li class="active"><a href="#popular">Popular</a></li>
-				<li><a href="#view">Views</a></li>
-				<li><a href="#random">Random</a></li>
+			<ul class="nav nav-tabs nav-tabs-alt nav-justified">
+				<li class="active"><a data-toggle="tab" href="#popular">Most Popular</a></li>
+				<li><a data-toggle="tab" href="#view">Most Views</a></li>
+				<li><a data-toggle="tab" href="#random">Random</a></li>
 			</ul>
 			<div class="block-content tab-content remove-padding">
-				<div id="popular" class="tab-pane active">
+				<div role="tabpanel" id="popular" class="tab-pane active">
 					<div class="block-content row items-push-10 bg-white bc-xs">
-						<div class="col-md-3 col-xl-2 col-sm-4 col-xs-6" v-for="a in 4">
+						<div class="col-md-2 col-xl-2 col-sm-4 col-xs-6" v-for="a in 6">
 							<div class="img-container ribbon ribbon-modern ribbon-danger ribbon-left">
 								<img :src="'{{ url('images/medium') }}' + '/Cover 00' + a + '.jpg'" alt="" class="img-responsive">
 								<div class="ribbon-box">
@@ -38,10 +38,13 @@
 						</div>
 					</div>
 				</div>
-				<div id="view" class="tab-pane"></div>
-				<div id="random" class="tab-pane"></div>
+				<div role="tabpanel" id="view" class="tab-pane">
+					<div class="block-content row items-push-10 bg-white bc-xs"></div>
+				</div>
+				<div role="tabpanel" id="random" class="tab-pane">
+					<div class="block-content row items-push-10 bg-white bc-xs"></div>
+				</div>
 			</div>
 		</div>
-		<h3 class="title">Most Popular</h3>
 	</div>
 </div>

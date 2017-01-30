@@ -21,7 +21,7 @@
 	<body>
 		@include('layouts.navbar')
 
-		<div class="container-fluid mt-content" id="app">
+		<div class="container-fluid mt-content @yield('class')" id="app">
 			@section('content')
 			@show
 		</div>
