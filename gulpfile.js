@@ -22,7 +22,8 @@ elixir.extend('remove', function(path) {
 });
 
 elixir(mix => {
-	mix.styles('app.css');
+	mix.styles(['app.css', 'oneui.css'], 'public/css/app.css');
+	mix.scripts('oneui.js');
 	mix.rollup('app.js');
 	mix.copy('bundle.css', 'public/css/bundle.css');
 	mix.remove('bundle.css');

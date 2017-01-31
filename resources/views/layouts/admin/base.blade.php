@@ -19,13 +19,15 @@
 		<link rel="stylesheet" type="text/css" href="{{ asset('css/app.css') }}">
 	</head>
 	<body>
-		@include('layouts.admin.navbar')
+		<div id="page-container" class="sidebar-l sidebar-o side-scroll header-navbar-fixed">
+			//
+			@include('layouts.admin.sidebar')
+			@include('layouts.admin.header')
+		</div>
 
 		<div class="container-fluid admin" id="app">
 			<div class="left-side">
-				<div class="content">
-				@include('layouts.admin.sidebar')
-				</div>
+				
 			</div>
 			<div class="right-side">
 				<div class="content">
@@ -40,6 +42,7 @@
 		<script type="text/javascript" src="{{ asset('js/bootstrap.min.js') }}"></script>
 		<script type="text/javascript" src="{{ asset('js/vue.js') }}"></script>
 		<script type="text/javascript" src="{{ asset('js/app.js') }}"></script>
+		<script type="text/javascript" src="{{ asset('js/oneui.js') }}"></script>
 
 	</body>
 </html>

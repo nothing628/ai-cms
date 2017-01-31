@@ -4,54 +4,82 @@
 @parent - Register
 @endsection
 
+@section('class')
+bg-white
+@endsection
+
 @section('content')
 <div class="row">
-	<div class="col-md-6 col-md-offset-3">
+	<div class="col-md-6 col-lg-4 col-lg-offset-4 col-md-offset-3">
+		<div class="text-center">
+			<h1>Register</h1>
+			<p class="text-muted push-15-t">Register is free.</p>
+		</div>
 		<form class="form-horizontal" method="post">
 			{!! csrf_field() !!}
-			<h1>Register</h1>
-			<p>Register completely free. You can use free account to access many Manga.</p>
-			<hr>
-
 			<div class="form-group">
-				<label class="col-md-3 control-label">Username</label>
-				<div class="col-md-9">
-					<input type="text" name="" class="form-control" placeholder="Username">
+				<div class="col-xs-12">
+					<div class="form-material form-material-success">
+						<input type="text" name="username" class="form-control" placeholder="Please input username...">
+						<label>Username</label>
+					</div>
 				</div>
 			</div>
 
 			<div class="form-group">
-				<label class="col-md-3 control-label">Password</label>
-				<div class="col-md-9">
-					<input type="password" name="" class="form-control" placeholder="Password">
+				<div class="col-xs-12">
+					<div class="form-material form-material-success">
+						<input type="password" name="password" class="form-control" placeholder="Please input password...">
+						<label>Password</label>
+					</div>
 				</div>
 			</div>
 
 			<div class="form-group">
-				<label class="col-md-3 control-label">Repeat Password</label>
-				<div class="col-md-9">
-					<input type="password" name="" class="form-control" placeholder="Repeat Password">
+				<div class="col-xs-12">
+					<div class="form-material form-material-success">
+						<input type="password" name="repeat_password" class="form-control" placeholder="Please repeat password...">
+						<label>Repeat Password</label>
+					</div>
 				</div>
 			</div>
 
 			<div class="form-group">
-				<label class="col-md-3 control-label">E-Mail</label>
-				<div class="col-md-9">
-					<input type="email" name="" class="form-control" placeholder="E-Mail">
+				<div class="col-xs-12">
+					<div class="form-material form-material-success">
+						<input type="email" name="email" class="form-control" placeholder="Please input valid E-mail...">
+						<label>E-Mail</label>
+					</div>
 				</div>
 			</div>
 
 			<div class="form-group">
-				<label class="col-md-3 control-label">Fullname</label>
-				<div class="col-md-9">
-					<input type="text" name="" class="form-control" placeholder="Fullname">
+				<div class="col-xs-12">
+					<div class="form-material form-material-success">
+						<input type="text" name="fullname" class="form-control" placeholder="Please input your fullname...">
+						<label>Fullname</label>
+					</div>
 				</div>
 			</div>
 
 			<div class="form-group">
-				<div class="col-md-9 col-md-offset-3">
-					<button class="btn btn-success btn-flat btn-line" type="submit">Register</button>
-					<a class="btn btn-warning btn-flat btn-line" href="{{ route('login') }}">Already register</a>
+				<div class="col-xs-7 col-sm-8">
+					<label class="css-input switch switch-sm switch-primary">
+						<input type="checkbox" name="test" value="test">
+						<span></span>
+						I agree with terms & conditions
+					</label>
+				</div>
+				<div class="col-xs-5 col-sm-4">
+					<div class="font-s13 text-right push-5-t">
+						<a href="#">View Terms</a>
+					</div>
+				</div>
+			</div>
+
+			<div class="form-group">
+				<div class="col-xs-12 col-sm-6 col-sm-offset-3">
+					<button class="btn btn-sm btn-block btn-success" type="submit">Register</button>
 				</div>
 			</div>
 		</form>

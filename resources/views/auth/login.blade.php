@@ -11,11 +11,12 @@ bg-white
 @section('content')
 <div class="row">
 	<div class="col-md-6 col-lg-4 col-lg-offset-4 col-md-offset-3">
+		<div class="text-center">
+			<h1>Sign In</h1>
+			<p class="text-muted push-15-t">Please login to access all manga</p>
+		</div>
 		<form class="form-horizontal" method="post">
 			{!! csrf_field() !!}
-			<h1>Sign In</h1>
-			<p>Please login to access all manga</p>
-
 			<div class="form-group">
 				<div class="col-xs-12">
 					<div class="form-material form-material-primary floating">
