@@ -3,6 +3,8 @@
 /public/css/app.css.map
 /public/css/app.css
 /public/css/bundle.css
+/public/css/slick.css
+/public/css/slick.css.map
 /public/js/*
 !/public/js/bootstrap.min.js
 /vendor

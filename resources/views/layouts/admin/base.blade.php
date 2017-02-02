@@ -16,33 +16,37 @@
 		<link rel="stylesheet" type="text/css" href="{{ asset('css/lato.css') }}">
 		<link rel="stylesheet" type="text/css" href="{{ asset('css/bootstrap.min.css') }}">
 		<link rel="stylesheet" type="text/css" href="{{ asset('css/font-awesome.min.css') }}">
+		<link rel="stylesheet" type="text/css" href="{{ asset('css/slick.css') }}">
 		<link rel="stylesheet" type="text/css" href="{{ asset('css/app.css') }}">
 	</head>
 	<body>
 		<div id="page-container" class="sidebar-l sidebar-o side-scroll header-navbar-fixed">
-			//
+			@include('layouts.admin.aside')
 			@include('layouts.admin.sidebar')
 			@include('layouts.admin.header')
+
+			<main id="main-container">
+				@section('content')
+				@show
+			</main>
 		</div>
 
-		<div class="container-fluid admin" id="app">
-			<div class="left-side">
-				
-			</div>
-			<div class="right-side">
-				<div class="content">
-					@section('content')
-					@show
-				</div>
-			</div>
-			
-		</div>
+		<div id="app"></div>
 		
 		<script type="text/javascript" src="{{ asset('js/jquery.js') }}"></script>
 		<script type="text/javascript" src="{{ asset('js/bootstrap.min.js') }}"></script>
 		<script type="text/javascript" src="{{ asset('js/vue.js') }}"></script>
 		<script type="text/javascript" src="{{ asset('js/app.js') }}"></script>
 		<script type="text/javascript" src="{{ asset('js/oneui.js') }}"></script>
+		<script type="text/javascript" src="{{ asset('js/slick.js') }}"></script>
+		<script type="text/javascript">
+			$(document).ready(function () {
+				$('button[data-toggle="dropdown"]').dropdown();
+				$(function(){
+					App.initHelpers('slick');
+				});
+			});
+		</script>
 
 	</body>
 </html>
