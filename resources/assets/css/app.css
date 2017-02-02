@@ -299,6 +299,10 @@ a:hover, a:focus {
 	width: 100%;
 }
 
+.img-container.ribbon .img-overlay:after {
+	background-image: none;
+}
+
 .img-container .img-overlay {
 	position: absolute;
 	z-index: 999;
