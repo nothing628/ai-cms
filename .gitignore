@@ -1,10 +1,9 @@
 /node_modules
 /public/storage
-/public/css/app.css.map
-/public/css/app.css
-/public/css/bundle.css
-/public/css/slick.css
-/public/css/slick.css.map
+/public/css/*
+!/public/css/bootstrap.min.css
+!/public/css/font-awesome.min.css
+!/public/css/lato.css
 /public/js/*
 !/public/js/bootstrap.min.js
 /vendor
