@@ -21,28 +21,18 @@ body .admin {
 	min-height: calc(100vh);
 }
 
-body .admin .left-side,
-body .admin .right-side {
-	float: left;
-	padding: 10px;
+.content .block {
+	margin-bottom: 16px !important;
 }
 
-body .admin .left-side {
-	width: 260px;
+.content .block-xs {
+	margin-bottom: 0 !important;
 }
 
-body .admin .right-side {
-	width: calc(100% - 260px);
-}
-
-body .admin .left-side > .content,
-body .admin .right-side > .content {
-	width: 100%;
-	background-color: #131E20;
-}
-
-.content .page-content {
-	padding: 0px 15px 15px;
+.padding-none-bmk {
+	padding-left: 0 !important;
+	padding-right: 0 !important;
+	padding-top: 1px !important;
 }
 
 .navbar.navbar-default {
