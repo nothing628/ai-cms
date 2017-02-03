@@ -25,7 +25,7 @@ elixir(mix => {
 	mix.less('./node_modules/slick-carousel/slick/slick.less');
 	mix.scripts('./node_modules/slick-carousel/slick/slick.js');
 
-	mix.styles(['app.css', 'oneui.css'], 'public/css/app.css');
+	mix.styles(['app.css', 'oneui.css', 'modern.css'], 'public/css/app.css');
 	mix.scripts('oneui.js');
 	mix.rollup('app.js');
 	mix.copy('bundle.css', 'public/css/bundle.css');

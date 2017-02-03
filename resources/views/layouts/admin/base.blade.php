@@ -13,11 +13,13 @@
 		</title>
 
 		<!-- Fonts -->
-		<link rel="stylesheet" type="text/css" href="{{ asset('css/lato.css') }}">
-		<link rel="stylesheet" type="text/css" href="{{ asset('css/bootstrap.min.css') }}">
-		<link rel="stylesheet" type="text/css" href="{{ asset('css/font-awesome.min.css') }}">
-		<link rel="stylesheet" type="text/css" href="{{ asset('css/slick.css') }}">
-		<link rel="stylesheet" type="text/css" href="{{ asset('css/app.css') }}">
+		<div id="css-main" style="display: none;">
+			<link rel="stylesheet" type="text/css" href="{{ asset('css/lato.css') }}">
+			<link rel="stylesheet" type="text/css" href="{{ asset('css/bootstrap.min.css') }}">
+			<link rel="stylesheet" type="text/css" href="{{ asset('css/font-awesome.min.css') }}">
+			<link rel="stylesheet" type="text/css" href="{{ asset('css/slick.css') }}">
+			<link rel="stylesheet" type="text/css" href="{{ asset('css/app.css') }}">
+		</div>
 	</head>
 	<body>
 		<div id="page-container" class="sidebar-l sidebar-o side-scroll header-navbar-fixed">
@@ -29,6 +31,8 @@
 				@section('content')
 				@show
 			</main>
+
+			@include('layouts.admin.footer')
 		</div>
 
 		<div id="app"></div>

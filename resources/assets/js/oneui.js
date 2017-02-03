@@ -6544,7 +6544,7 @@ var App = function() {
     , w = function() {
         var a = new Date
           , b = jQuery(".js-year-copy");
-        2015 === a.getFullYear() ? b.html("2015") : b.html("2015-" + a.getFullYear().toString().substr(2, 2))
+        2016 === a.getFullYear() ? b.html("2016") : b.html("2016-" + a.getFullYear().toString().substr(2, 2))
     }
     , x = function(a) {
         var c = jQuery("#page-loader");
