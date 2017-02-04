@@ -3,7 +3,7 @@ body {
 	color: #333;
 }
 
-.content {
+.content.main-content {
     padding-right: 15px;
     padding-left: 15px;
     padding-top: 10px;

@@ -14,7 +14,7 @@ Welcome to {{ Config::get('app.name') }}
 	</section>
 </div>
 <div class="bg-gray-lighter">
-	<section class="content">
+	<section class="content main-content">
 		@include('home.popular')
 		@include('home.recent')
 	</section>
