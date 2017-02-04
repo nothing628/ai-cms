@@ -16,6 +16,9 @@
 						<a class="active" href="{{ route('home') }}"><i class="si si-home"></i><span class="sidebar-mini-hide">Home</span></a>
 					</li>
 					<li>
+						<a href=""><i class="si si-magnifier"></i><span class="sidebar-mini-hide">Advanced Search</span></a>
+					</li>
+					<li>
 						<a href=""><i class="si si-grid"></i><span class="sidebar-mini-hide">Browse</span></a>
 					</li>
 					<li>

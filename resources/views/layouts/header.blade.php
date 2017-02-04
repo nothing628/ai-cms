@@ -9,6 +9,7 @@
 					</div>
 				</form>
 			</li>
+			@if (Auth::check())
 			<li>
 				<div class="btn-group">
 					<button class="btn btn-image dropdown-toggle" data-toggle="dropdown" type="button" aria-expanded="false">
@@ -22,8 +23,8 @@
 						<li><a tabindex="-1"><i class="si si-settings pull-right"></i>Settings</a></li>
 						<li class="divider"></li>
 						<li class="dropdown-header">Actions</li>
-						<li><a tabindex="-1"><i class="si si-lock pull-right"></i>Lock Account</a></li>
-						<li><a tabindex="-1"><i class="si si-logout pull-right"></i>Log out</a></li>
+						<li><a tabindex="-1" href="{{ route('admin.home') }}"><i class="si si-lock pull-right"></i>Admin Panel</a></li>
+						<li><a tabindex="-1" href="{{ route('logout') }}"><i class="si si-logout pull-right"></i>Log out</a></li>
 					</ul>
 				</div>
 			</li>
@@ -32,6 +33,10 @@
 					<i class="fa fa-tasks"></i>
 				</button>
 			</li>
+			@else
+			<li><a class="h5" href="{{ route('login') }}"><span class="h5 font-w500">Sign In</span></a></li>
+			<li><a class="h5" href="{{ route('register') }}"><span class="h5 font-w500">Register</span></a></li>
+			@endif
 		</ul>
 		<ul class="nav-header pull-left">
 			<li class="header-content">
