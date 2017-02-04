@@ -16,7 +16,7 @@
 		@section('styles')
 		@show
 		<div id="css-main" style="display: none;">
-			<link rel="stylesheet" type="text/css" href="{{ asset('css/lato.css') }}">
+			<link rel="stylesheet" type="text/css" href="{{ asset('css/font.css') }}">
 			<link rel="stylesheet" type="text/css" href="{{ asset('css/bootstrap.min.css') }}">
 			<link rel="stylesheet" type="text/css" href="{{ asset('css/font-awesome.min.css') }}">
 			<link rel="stylesheet" type="text/css" href="{{ asset('css/slick.css') }}">

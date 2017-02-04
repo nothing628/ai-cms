@@ -33,14 +33,9 @@
 	</div>
 </nav>
 
-<nav class="navbar navbar-default navbar-fixed-top" id="main-navbar">
+<!--nav class="navbar navbar-default navbar-fixed-top" id="main-navbar">
 	<div class="container">
 		<div id="navbar" class="navbar-collapse collapse">
-			<ul class="nav navbar-nav">
-				<li @if(isRoute('category.list')) class="active" @endif ><a href="{{ route('category.list') }}">Category</a></li>
-				<li @if(isRoute('contact.us')) class="active" @endif ><a href="{{ route('contact.us') }}">Contact Us</a></li>
-			</ul>
-
 			@if(Auth::check())
 			@set('user', Auth::user())
 			<ul class="nav navbar-nav navbar-right">
@@ -63,6 +58,6 @@
 				<li><a href="{{ route('login') }}">Sign In</a></li>
 			</ul>
 			@endif
-		</div><!--/.nav-collapse -->
+		</div>
 	</div>
-</nav>
+</nav-->
