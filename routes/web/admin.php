@@ -9,6 +9,9 @@ Route::group(['prefix' => 'admin', 'as' => 'admin.', 'middleware' => ['auth', 'a
 	Route::post('manga/edit/{manga_id}', ['as' => 'manga.update', 'uses' => 'MangaController@update']);
 	Route::get('manga/delete/{manga_id}', ['as' => 'manga.delete', 'uses' => 'MangaController@delete']);
 
+	Route::get('manga/staff_pick', ['as' => 'manga.staff', 'uses' => 'MangaController@staffPick']);
+	Route::get('manga/crawl', ['as' => 'manga.crawl', 'uses' => 'MangaController@crawl']);
+
 	Route::get('manga/{manga_id}', ['as' => 'manga.chapter', 'uses' => 'MangaController@mangaChapter']);
 	Route::get('manga/{manga_id}/chapter/{chapter_num}', ['as' => 'manga.page', 'uses' => 'AdminController@mangaPage']);
 

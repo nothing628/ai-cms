@@ -16,11 +16,11 @@
 					</li>
 					<li class="nav-main-heading"><span class="sidebar-mini-hide">User Interface</span></li>
 					<li>
-						<a class="nav-submenu" data-toggle="nav-submenu" href="#"><i class="si si-docs"></i><span class="sidebar-mini-hide">Manga List</span></a>
+						<a class="nav-submenu" data-toggle="nav-submenu" href="#"><i class="si si-docs"></i><span class="sidebar-mini-hide">Manga</span></a>
 						<ul>
-							<li><a href="">All Manga</a></li>
-							<li><a href="">Staff Pick</a></li>
-							<li><a href="">Download</a></li>
+							<li><a href="{{ route('admin.manga.index') }}">All Manga</a></li>
+							<li><a href="{{ route('admin.manga.staff') }}">Staff Pick</a></li>
+							<li><a href="{{ route('admin.manga.crawl') }}">Crawl</a></li>
 						</ul>
 					</li>
 					<li>

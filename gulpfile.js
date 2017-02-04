@@ -15,6 +15,8 @@ require('laravel-elixir-vue-2');
 
 var del = require('del');
 
+elixir.extend('sourcemaps', false);
+
 elixir.extend('remove', function(path) {
 	new elixir.Task('remove', function() {
 		del(path);
@@ -27,9 +29,7 @@ elixir(mix => {
 
 	mix.styles(['app.css', 'oneui.css', 'modern.css'], 'public/css/app.css');
 	mix.scripts('oneui.js');
-	mix.rollup('app.js');
-	mix.copy('bundle.css', 'public/css/bundle.css');
-	mix.remove('bundle.css');
+	mix.webpack('app.js');
 
 	mix.scripts('base/plupload.full.min.js');
 	mix.webpack('base/chosen.js');

@@ -181,14 +181,6 @@ a:hover, a:focus {
 	text-align: center;
 }
 
-.btn-flat {
-	border-radius: 0;
-}
-
-.btn-line {
-	background: transparent;
-}
-
 .navbar-nav > li > .dropdown-menu {
 	margin-top: 0;
 	border-radius: 0px;
@@ -417,16 +409,6 @@ a.link-effect::before {
 .collapse .nav.nav-pills.nav-stacked li > a,
 .collapsing .nav.nav-pills.nav-stacked li > a {
 	padding-left: 50px !important;
-}
-
-.breadcrumb {
-	background: transparent;
-	border-bottom: 2px solid #7E7E7E;
-	border-radius: 0;
-}
-
-.breadcrumb > li {
-	font-size: 16px;
 }
 
 .page-grid {

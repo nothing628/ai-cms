@@ -26,7 +26,7 @@ import store from './vuex';
 const bus = window.bus = new Vue({});
 
 const app = new Vue({
-	el: '#app',
+	el: '#page-container',
 	store,
 	router
 });

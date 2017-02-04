@@ -35,8 +35,6 @@
 			@include('layouts.admin.footer')
 		</div>
 
-		<div id="app"></div>
-		
 		<script type="text/javascript" src="{{ asset('js/jquery.js') }}"></script>
 		<script type="text/javascript" src="{{ asset('js/bootstrap.min.js') }}"></script>
 		<script type="text/javascript" src="{{ asset('js/vue.js') }}"></script>
