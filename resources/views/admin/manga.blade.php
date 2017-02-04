@@ -1,7 +1,7 @@
 @extends('admin.base')
 
 @section('title')
-Manga List
+@parent Manga List
 @endsection
 
 @section('breadcrumb')
@@ -11,7 +11,7 @@ Manga List
 
 @section('page-content')
 <div class="block">
-	<div class="block-header">
+	<div class="block-header bg-gray-lighter">
 		<h3 class="block-title">All Manga</h3>
 	</div>
 	<div class="block-content">
@@ -30,7 +30,7 @@ Manga List
 			</thead>
 			<tbody>
 				@foreach($mangas as $manga)
-				<tr v-for="i in 20">
+				<tr>
 					<td>{{ $manga->title }}</td>
 					<td><span class="label label-warning">Completed</span></td>
 					<td class="hidden-xs text-center">13/11/2015</td>

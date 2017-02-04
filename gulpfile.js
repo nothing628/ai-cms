@@ -25,7 +25,9 @@ elixir.extend('remove', function(path) {
 
 elixir(mix => {
 	mix.less('./node_modules/slick-carousel/slick/slick.less');
-	mix.scripts('./node_modules/slick-carousel/slick/slick.js');
+	mix.scripts('./node_modules/slick-carousel/slick/slick.min.js');
+	mix.styles('./node_modules/select2/dist/css/select2.min.css');
+	mix.scripts('./node_modules/select2/dist/js/select2.full.min.js');
 
 	mix.styles(['app.css', 'oneui.css', 'modern.css'], 'public/css/app.css');
 	mix.scripts('oneui.js');

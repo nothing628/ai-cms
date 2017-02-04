@@ -12,7 +12,7 @@
 			<div class="side-content">
 				<ul class="nav-main">
 					<li>
-						<a class="active" href="base_pages_dashboard.php"><i class="si si-speedometer"></i><span class="sidebar-mini-hide">Dashboard</span></a>
+						<a class="active" href="{{ route('admin.home') }}"><i class="si si-speedometer"></i><span class="sidebar-mini-hide">Dashboard</span></a>
 					</li>
 					<li class="nav-main-heading"><span class="sidebar-mini-hide">User Interface</span></li>
 					<li>

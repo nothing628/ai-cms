@@ -13,6 +13,8 @@
 		</title>
 
 		<!-- Fonts -->
+		@section('styles')
+		@show
 		<div id="css-main" style="display: none;">
 			<link rel="stylesheet" type="text/css" href="{{ asset('css/lato.css') }}">
 			<link rel="stylesheet" type="text/css" href="{{ asset('css/bootstrap.min.css') }}">
@@ -40,15 +42,12 @@
 		<script type="text/javascript" src="{{ asset('js/vue.js') }}"></script>
 		<script type="text/javascript" src="{{ asset('js/app.js') }}"></script>
 		<script type="text/javascript" src="{{ asset('js/oneui.js') }}"></script>
-		<script type="text/javascript" src="{{ asset('js/slick.js') }}"></script>
+		@section('scripts')
+		@show
 		<script type="text/javascript">
 			$(document).ready(function () {
 				$('button[data-toggle="dropdown"]').dropdown();
-				$(function(){
-					App.initHelpers('slick');
-				});
 			});
 		</script>
-
 	</body>
 </html>

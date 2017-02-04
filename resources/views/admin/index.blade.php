@@ -439,3 +439,14 @@
 	</div>
 </div>
 @endsection
+
+@section('scripts')
+<script type="text/javascript" src="{{ asset('js/slick.min.js') }}"></script>
+<script type="text/javascript">
+	$(document).ready(function () {
+		$(function(){
+			App.initHelpers('slick');
+		});
+	});
+</script>
+@endsection

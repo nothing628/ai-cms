@@ -11,57 +11,93 @@
 @endsection
 
 @section ('page-content')
-<form method="post" class="form-horizontal" enctype="multipart/form-data">
-	{!! csrf_field() !!}
-	<div class="form-group">
-		<label class="control-label col-md-2">Title</label>
-		<div class="col-md-6">
-			<input type="text" name="title" class="form-control" placeholder="Title" required="">
-		</div>
+<div class="block">
+	<div class="block-header bg-gray-lighter">
+		<h3 class="block-title">Upload New Manga</h3>
 	</div>
-	<div class="form-group">
-		<label class="control-label col-md-2">Artist</label>
-		<div class="col-md-3">
-			<input type="text" name="artist" class="form-control" placeholder="Artist">
-		</div>
-		<label class="control-label col-md-2">Author</label>
-		<div class="col-md-3">
-			<input type="text" name="author" class="form-control" placeholder="Author">
-		</div>
+	<div class="block-content block-content-narrow">
+		<form method="post" class="form-horizontal push-10-t" enctype="multipart/form-data">
+			{!! csrf_field() !!}
+			<div class="form-group">
+				<div class="col-md-6">
+					<div class="form-material form-material-primary">
+						<input type="text" name="title" class="form-control" required="" placeholder="Manga Title">
+						<label for="field-title">Manga Title</label>
+					</div>
+				</div>
+			</div>
+			<div class="form-group">
+				<div class="col-md-5">
+					<div class="form-material form-material-primary">
+						<input type="text" placeholder="Artist" name="artist" class="form-control">
+						<label for="field-artist">Artist</label>
+					</div>
+				</div>
+				<div class="col-md-5">
+					<div class="form-material form-material-primary">
+						<input type="text" placeholder="Author" name="author" class="form-control">
+						<label>Author</label>
+					</div>
+				</div>
+			</div>
+			<div class="form-group">
+				<div class="col-md-5">
+					<div class="form-material form-material-primary">
+						<select class="form-control js-select2" data-placeholder="Category" name="category_id" required="" id="field-category">
+							<option></option>
+							@foreach($categories as $category)
+							<option value="{{ $category->id }}">{{ $category->category }}</option>
+							@endforeach
+						</select>
+						<label for="field-category">Category</label>
+					</div>
+				</div>
+				<div class="col-md-5">
+					<div class="form-material form-material-primary">
+						<select multiple class="form-control js-select2" data-placeholder="Tags" style="width: 100%;" name="tags[]" id="field-tags">
+							<option value="AL">Alabama</option>
+							<option value="WY">Wyoming</option>
+						</select>
+						<label for="field-tags">Tags</label>
+					</div>
+				</div>
+			</div>
+			<div class="form-group">
+				<div class="col-md-6">
+					<div class="form-material form-material-primary">
+						<textarea class="form-control" rows="3" name="desc" required="" placeholder="Please write synopsis"></textarea>
+						<label>Synopsis</label>
+					</div>
+				</div>
+			</div>
+			<div class="form-group">
+				<label class="control-label col-md-2">Cover</label>
+				<div class="col-md-6">
+					<input type="file" name="cover" accept="image/*">
+				</div>
+			</div>
+			<div class="form-group">
+				<div class="col-md-offset-2 col-md-9">
+					<button class="btn btn-success btn-flat btn-line">Submit</button>
+					<a href="{{ route('admin.manga.index') }}" class="btn btn-danger btn-line btn-flat">Cancel</a>
+				</div>
+			</div>
+		</form>
 	</div>
-	<div class="form-group">
-		<label class="control-label col-md-2">Category</label>
-		<div class="col-md-3">
-			<select class="form-control" name="category_id" required="">
-				@foreach($categories as $category)
-				<option value="{{ $category->id }}">{{ $category->category }}</option>
-				@endforeach
-			</select>
-		</div>
-	</div>
-	<div class="form-group">
-		<label class="control-label col-md-2">Tags</label>
-		<div class="col-md-6">
-			<input type="text" name="tags" class="form-control">
-		</div>
-	</div>
-	<div class="form-group">
-		<label class="control-label col-md-2">Synopsis</label>
-		<div class="col-md-6">
-			<textarea class="form-control" name="desc" required=""></textarea>
-		</div>
-	</div>
-	<div class="form-group">
-		<label class="control-label col-md-2">Cover</label>
-		<div class="col-md-6">
-			<input type="file" name="cover" accept="image/*">
-		</div>
-	</div>
-	<div class="form-group">
-		<div class="col-md-offset-2 col-md-9">
-			<button class="btn btn-success btn-flat btn-line">Submit</button>
-			<a href="{{ route('admin.manga.index') }}" class="btn btn-danger btn-line btn-flat">Cancel</a>
-		</div>
-	</div>
-</form>
+</div>
+@endsection
+
+@section('styles')
+<link rel="stylesheet" type="text/css" href="{{ asset('css/select2.min.css') }}">
+@endsection
+
+@section('scripts')
+<script type="text/javascript" src="{{ asset('js/select2.full.min.js') }}"></script>
+<script type="text/javascript">
+	$(document).ready(function () {
+		$(function(){
+			App.initHelpers('select2');
+		});
+	});
+</script>
 @endsection
