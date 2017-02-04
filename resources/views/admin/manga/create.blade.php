@@ -71,9 +71,11 @@
 				</div>
 			</div>
 			<div class="form-group">
-				<label class="control-label col-md-2">Cover</label>
 				<div class="col-md-6">
-					<input type="file" name="cover" accept="image/*">
+					<div class="form-material form-material-primary">
+						<input type="file" name="cover" accept="image/*">
+						<label>Cover</label>
+					</div>
 				</div>
 			</div>
 			<div class="form-group">

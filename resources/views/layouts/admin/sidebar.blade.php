@@ -26,8 +26,8 @@
 					<li>
 						<a class="nav-submenu" data-toggle="nav-submenu" href="#"><i class="si si-tag"></i> Tag Management</a>
 						<ul>
-							<li><a href="">Tags</a></li>
-							<li><a href="">Category</a></li>
+							<li><a href="{{ route('admin.category') }}">Tags</a></li>
+							<li><a href="{{ route('admin.tags') }}">Category</a></li>
 						</ul>
 					</li>
 					<li>
@@ -51,9 +51,9 @@
 					<li>
 						<a class="nav-submenu" data-toggle="nav-submenu" href="#"><i class="si si-settings"></i><span class="sidebar-mini-hide">Settings</span></a>
 						<ul>
-							<li><a href="">Users</a></li>
-							<li><a href="">Page Setting</a></li>
-							<li><a href="">Widgets</a></li>
+							<li><a href="{{ route('admin.setting.page') }}">Users</a></li>
+							<li><a href="{{ route('admin.setting.user') }}">Page Setting</a></li>
+							<li><a href="{{ route('admin.setting.widget') }}">Widgets</a></li>
 						</ul>
 					</li>
 				</ul>

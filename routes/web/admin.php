@@ -24,6 +24,8 @@ Route::group(['prefix' => 'admin', 'as' => 'admin.', 'middleware' => ['auth', 'a
 
 	Route::post('page/{chapter_id}', ['as' => 'page.upload', 'uses' => 'PageController@upload']);
 
+	Route::get('tags', ['as' => 'tags', 'uses' => 'CategoryController@tags']);
+
 	Route::get('category', ['as' => 'category', 'uses' => 'CategoryController@admin']);
 	Route::get('category/create', ['as' => 'category.create', 'uses' => 'CategoryController@create']);
 	Route::post('category/create', ['as' => 'category.store', 'uses' => 'CategoryController@store']);
@@ -35,4 +37,5 @@ Route::group(['prefix' => 'admin', 'as' => 'admin.', 'middleware' => ['auth', 'a
 	Route::get('setting/page', ['as' => 'setting.page', 'uses' => 'AdminController@setting']);
 	Route::post('setting/page', ['as' => 'setting.page.save', 'uses' => 'AdminController@saveSetting']);
 	Route::get('setting/user', ['as' => 'setting.user', 'uses' => 'AdminController@users']);
+	Route::get('setting/widget', ['as' => 'setting.widget', 'uses' => 'AdminController@widget']);
 });
