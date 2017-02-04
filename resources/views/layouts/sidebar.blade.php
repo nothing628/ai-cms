@@ -32,32 +32,3 @@
 		</div>
 	</div>
 </nav>
-
-<!--nav class="navbar navbar-default navbar-fixed-top" id="main-navbar">
-	<div class="container">
-		<div id="navbar" class="navbar-collapse collapse">
-			@if(Auth::check())
-			@set('user', Auth::user())
-			<ul class="nav navbar-nav navbar-right">
-				<li class="dropdown">
-					<a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button">Hi, {{ $user->username }}</a>
-					<ul class="dropdown-menu">
-						@if ($user->is_admin)
-						<li><a href="{{ route('admin.home') }}">Admin Panel</a></li>
-						<li class="nav-divider"></li>
-						@endif
-						<li><a href="{{ route('user.home') }}">My Profile</a></li>
-						<li><a href="{{ route('user.password') }}">Change Password</a></li>
-						<li><a href="{{ route('logout.get') }}">Sign Out</a></li>
-					</ul>
-				</li>
-			</ul>
-			@else
-			<ul class="nav navbar-nav navbar-right">
-				<li><a href="{{ route('register') }}">Sign Up</a></li>
-				<li><a href="{{ route('login') }}">Sign In</a></li>
-			</ul>
-			@endif
-		</div>
-	</div>
-</nav-->

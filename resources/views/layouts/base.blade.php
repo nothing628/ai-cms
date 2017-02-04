@@ -23,9 +23,11 @@
 		</div>
 	</head>
 	<body>
-		<div id="page-container" class="sidebar-l sidebar-mini sidebar-o side-scroll header-navbar-fixed header-navbar-transparent header-navbar-scroll">
+		<div id="page-container" class="sidebar-l sidebar-mini sidebar-o side-scroll">
+			@include('layouts.aside')
 			@include('layouts.sidebar')
 			@include('layouts.header')
+
 			<main id="main-container">
 				@section('content')
 				@show
