@@ -29,6 +29,10 @@ body .admin {
 	margin-bottom: 0 !important;
 }
 
+.block-content > div {
+	margin-bottom: 15px;
+}
+
 .padding-none-bmk {
 	padding-left: 0 !important;
 	padding-right: 0 !important;
@@ -334,7 +338,7 @@ a:hover, a:focus {
 	position: relative;
 	padding: 12px 8px 8px 71px;
 	display: block;
-	min-height: 62px;
+	min-height: 43px;
 	font-weight: 600;
 	border-bottom: 1px solid #f3f3f3;
 }
@@ -378,16 +382,6 @@ a.link-effect::before {
 	transform: scaleX(0);
 	-webkit-transition: -webkit-transform .12s ease-out;
 	transition: transform .12s ease-out;
-}
-
-.chapter-list a {
-	padding: 8px 8px 4px 10px;
-	min-height: 30px;
-}
-
-.chapter-list .text-ellipsis {
-	font-size: 14px;
-	font-weight: normal;
 }
 
 .arf-small {

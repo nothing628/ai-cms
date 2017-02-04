@@ -1,7 +1,7 @@
 <div class="row">
 	<div class="col-xs-12">
-		<div class="block">
-			<div class="block-header bg-black">
+		<div class="block block-themed">
+			<div class="block-header bg-modern-dark">
 				<h3 class="block-title"><i class="fa fa-upload"></i> Recently Upload</h3>
 			</div>
 
@@ -22,7 +22,7 @@
 								[Category here]
 							</b>
 						</a>
-						<ul class="chapter-list">
+						<ul class="nav-users">
 							<li>
 								<a href="" class="link-effect">
 									<h6 class="text-ellipsis">

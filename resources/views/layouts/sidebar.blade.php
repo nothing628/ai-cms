@@ -1,33 +1,43 @@
-@if (isRoute('manga.list'))
-@set('class', 'dropdown active')
-@else
-@set('class', 'dropdown')
-@endif
+<nav id="sidebar">
+	<div id="sidebar-scroll">
+		<div class="sidebar-content">
+			<div class="side-header side-content">
+				<button class="btn btn-link text-gray pull-right visible-xs visible-sm" type="button" data-toggle="layout" data-action="sidebar_close">
+					<i class="fa fa-times"></i>
+				</button>
+
+				<a class="h5 text-white" href="{{ route('home') }}">
+					<span class="h4 font-w500 sidebar-mini-hide">{{ Setting::get('app.name') }}</span>
+				</a>
+			</div>
+			<div class="side-content">
+				<ul class="nav-main">
+					<li>
+						<a class="active" href="{{ route('home') }}"><i class="si si-home"></i><span class="sidebar-mini-hide">Home</span></a>
+					</li>
+					<li>
+						<a href=""><i class="si si-grid"></i><span class="sidebar-mini-hide">Browse</span></a>
+					</li>
+					<li>
+						<a href=""><i class="si si-tag"></i><span class="sidebar-mini-hide">Tag Directory</span></a>
+					</li>
+					<li>
+						<a href=""><i class="si si-question"></i><span class="sidebar-mini-hide">FAQs</span></a>
+					</li>
+					<li>
+						<a href=""><i class="si si-bubble"></i><span class="sidebar-mini-hide">Contact Us</span></a>
+					</li>
+				</ul>
+			</div>
+		</div>
+	</div>
+</nav>
 
 <nav class="navbar navbar-default navbar-fixed-top" id="main-navbar">
 	<div class="container">
-		<div class="navbar-header">
-			<button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
-				<span class="sr-only">Toggle navigation</span>
-				<span class="icon-bar"></span>
-				<span class="icon-bar"></span>
-				<span class="icon-bar"></span>
-			</button>
-			<a class="navbar-brand" href="#">{{ Config::get('app.name') }}</a>
-		</div>
 		<div id="navbar" class="navbar-collapse collapse">
 			<ul class="nav navbar-nav">
-				<li @if(isRoute('home')) class="active" @endif ><a href="{{ url('/') }}">Home</a></li>
 				<li @if(isRoute('category.list')) class="active" @endif ><a href="{{ route('category.list') }}">Category</a></li>
-				<li class="{{ $class }}">
-					<a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button">Browse</a>
-					<ul class="dropdown-menu">
-						<li><a href="{{ route('manga.list', ['sort' => 'popular']) }}">Popular</a></li>
-						<li><a href="{{ route('manga.list', ['sort' => 'recently']) }}">Recently Update</a></li>
-						<li><a href="{{ route('manga.list', ['sort' => 'views']) }}">Most View</a></li>
-						<li><a href="{{ route('manga.list') }}">Random</a></li>
-					</ul>
-				</li>
 				<li @if(isRoute('contact.us')) class="active" @endif ><a href="{{ route('contact.us') }}">Contact Us</a></li>
 			</ul>
 

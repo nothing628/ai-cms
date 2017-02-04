@@ -13,24 +13,38 @@
 		</title>
 
 		<!-- Fonts -->
-		<link rel="stylesheet" type="text/css" href="{{ asset('css/lato.css') }}">
-		<link rel="stylesheet" type="text/css" href="{{ asset('css/bootstrap.min.css') }}">
-		<link rel="stylesheet" type="text/css" href="{{ asset('css/font-awesome.min.css') }}">
-		<link rel="stylesheet" type="text/css" href="{{ asset('css/app.css') }}">
+		@section('styles')
+		@show
+		<div id="css-main" style="display: none;">
+			<link rel="stylesheet" type="text/css" href="{{ asset('css/lato.css') }}">
+			<link rel="stylesheet" type="text/css" href="{{ asset('css/bootstrap.min.css') }}">
+			<link rel="stylesheet" type="text/css" href="{{ asset('css/font-awesome.min.css') }}">
+			<link rel="stylesheet" type="text/css" href="{{ asset('css/app.css') }}">
+		</div>
 	</head>
 	<body>
-		@include('layouts.navbar')
+		<div id="page-container" class="sidebar-l sidebar-mini sidebar-o side-scroll header-navbar-fixed header-navbar-transparent header-navbar-scroll">
+			@include('layouts.sidebar')
+			@include('layouts.header')
+			<main id="main-container">
+				@section('content')
+				@show
+			</main>
 
-		<div class="container-fluid mt-content @yield('class')" id="app">
-			@section('content')
-			@show
+			@include('layouts.footer')
 		</div>
 
 		<script type="text/javascript" src="{{ asset('js/jquery.js') }}"></script>
 		<script type="text/javascript" src="{{ asset('js/bootstrap.min.js') }}"></script>
 		<script type="text/javascript" src="{{ asset('js/vue.js') }}"></script>
 		<script type="text/javascript" src="{{ asset('js/app.js') }}"></script>
-
-		@include('layouts.footer')
+		<script type="text/javascript" src="{{ asset('js/oneui.js') }}"></script>
+		@section('scripts')
+		@show
+		<script type="text/javascript">
+			$(document).ready(function () {
+				$('button[data-toggle="dropdown"]').dropdown();
+			});
+		</script>
 	</body>
 </html>
