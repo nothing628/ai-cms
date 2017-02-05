@@ -35,6 +35,7 @@
 
 			@include('layouts.footer')
 		</div>
+		@include('layouts.laravel')
 
 		<script type="text/javascript" src="{{ asset('js/jquery.js') }}"></script>
 		<script type="text/javascript" src="{{ asset('js/bootstrap.min.js') }}"></script>

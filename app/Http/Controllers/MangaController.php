@@ -18,36 +18,16 @@ class MangaController extends Controller
 		return view('manga.index');
 	}
 
+	public function admin()
+	{
+		return view('admin.manga.index');
+	}
+
 	public function create()
 	{
 		$categories = Category::all();
 
 		return view('admin.manga.create', ['categories' => $categories]);
-	}
-
-	public function store(Request $request)
-	{
-		$meta = [];
-		$meta['artist'] = $request->input('artist');
-		$meta['author'] = $request->input('author');
-		$meta['desc'] = $request->input('desc');
-
-		$manga = new Manga;
-		$manga->title = $request->input('title');
-		$manga->category_id = $request->input('category_id');
-		$manga->user_id = Auth::user()->id;
-		$manga->meta = $meta;
-
-		if ($request->file('cover')->isValid()) {
-			$cover = $request->file('cover');
-			$newfilename = snake_case($manga->title . '.' . $cover->extension());
-			$path = $cover->move(storage_path('images/cover'), $newfilename);
-			
-			$manga->cover = $newfilename;
-		}
-
-		$manga->save();
-		return redirect()->route('admin.manga.index');
 	}
 
 	public function edit($manga_id)
@@ -60,47 +40,6 @@ class MangaController extends Controller
 		}
 
 		return redirect()->back()->withErrors(['manga' => 'Manga Not Found']);
-	}
-
-	public function update($manga_id, Request $request)
-	{
-		$manga = Manga::find($request->input('manga_id'));
-		$meta = [];
-		$meta['artist'] = $request->input('artist');
-		$meta['author'] = $request->input('author');
-		$meta['desc'] = $request->input('desc');
-
-		if ($manga) {
-			$manga->title = $request->input('title');
-			$manga->category_id = $request->input('category_id');
-			$manga->user_id = Auth::user()->id;
-			$manga->meta = $meta;
-
-			if ($request->hasFile('cover') && $request->file('cover')->isValid()) {
-				$cover = $request->file('cover');
-				$newfilename = snake_case($manga->title . '.' . $cover->extension());
-				$path = $cover->move(storage_path('images/cover'), $newfilename);
-
-				$manga->cover = $newfilename;
-			}
-
-			$manga->save();
-
-			return redirect()->route('admin.manga.chapter', $manga->id);
-		}
-
-		return redirect()->route('admin.manga.index');
-	}
-
-	public function delete($manga_id)
-	{
-		$manga = Manga::find($manga_id);
-
-		if ($manga) {
-			$manga->delete();
-		}
-
-		return redirect()->route('admin.manga.index');
 	}
 
 	public function mangaChapter($manga_id)

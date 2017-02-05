@@ -1,5 +1,5 @@
 <?php 
 
-Route::get('user', function (Request $request) {
+Route::get('user', ['as' => 'user', 'uses' => function (Request $request) {
     return $request->user();
-})->middleware('auth:api');
+}])->middleware('auth:api');

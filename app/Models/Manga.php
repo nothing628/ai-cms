@@ -9,6 +9,10 @@ class Manga extends Model
 {
 	use Taggable;
 
+	protected $appends = [
+		'totalPage'
+	];
+
 	protected $casts = [
 		'meta' => 'array',
 	];

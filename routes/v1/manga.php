@@ -1,6 +1,7 @@
 <?php 
 
 Route::group(['prefix' => 'manga', 'as' => 'manga.'], function () {
+	Route::get('/', ['as' => 'get', 'uses' => 'MangaController@get']);
 	Route::post('store', ['as' => 'store', 'uses' => 'MangaController@store']);
 	Route::put('update', ['as' => 'update', 'uses' => 'MangaController@update']);
 	Route::delete('delete', ['as' => 'delete', 'uses' => 'MangaController@delete']);
