@@ -26,8 +26,8 @@
 					<li>
 						<a class="nav-submenu" data-toggle="nav-submenu" href="#"><i class="si si-tag"></i> Tag Management</a>
 						<ul>
-							<li><a href="{{ route('admin.category') }}">Tags</a></li>
-							<li><a href="{{ route('admin.tags') }}">Category</a></li>
+							<li><a href="{{ route('admin.tags') }}">Tags</a></li>
+							<li><a href="{{ route('admin.category') }}">Category</a></li>
 						</ul>
 					</li>
 					<li>

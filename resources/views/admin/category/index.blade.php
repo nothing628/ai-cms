@@ -30,6 +30,10 @@
 				</div>
 			</vue-table-body>
 		</vue-table>
+
+		<nav class="text-right">
+			<vue-pagination :data-max-page="20" :data-page="1"></vue-pagination>
+		</nav>
 	</vue-block-content>
 </vue-block>
 @endsection
