@@ -7,6 +7,13 @@ Route::group(['prefix' => 'manga', 'as' => 'manga.'], function () {
 	Route::delete('delete', ['as' => 'delete', 'uses' => 'MangaController@delete']);
 });
 
+Route::group(['prefix' => 'category', 'as' => 'category.'], function () {
+	Route::get('/', ['as' => 'get', 'uses' => 'CategoryController@get']);
+	Route::post('store', ['as' => 'store', 'uses' => 'CategoryController@store']);
+	Route::put('update', ['as' => 'update', 'uses' => 'CategoryController@update']);
+	Route::delete('delete', ['as' => 'delete', 'uses' => 'CategoryController@delete']);
+});
+
 Route::group(['prefix' => 'chapter', 'as' => 'chapter.'], function () {
 	Route::post('store', ['as' => 'store', 'uses' => 'ChapterController@store']);
 	Route::put('update', ['as' => 'update', 'uses' => 'ChapterController@update']);

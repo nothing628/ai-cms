@@ -21,7 +21,7 @@
 		<div class="font-s12 push-20 clearfix">
 			<hr class="remove-margin-t">
 			<div class="pull-right">
-				Crafted with <i class="fa fa-heart text-city"></i> by <a class="font-w600" href="http://goo.gl/vNS3I" target="_blank">nothing628</a>
+				Crafted with <i class="fa fa-heart text-city"></i> by <a class="font-w600" target="_blank">nothing628</a>
 			</div>
 			<div class="pull-left">
 				<a class="font-w600" target="_blank">AI-CMS</a> &copy; <span class="js-year-copy"></span>
