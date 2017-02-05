@@ -39,10 +39,7 @@
 		</vue-table>
 
 		<nav class="text-right">
-			<ul class="pagination pagination-sm">
-				<li class="active"><a>1</a></li>
-				<li><a>2</a></li>
-			</ul>
+			<vue-pagination :data-max-page="20" :data-page="1"></vue-pagination>
 		</nav>
 	</vue-block-content>
 </vue-block>

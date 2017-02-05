@@ -7,6 +7,8 @@ Vue.component('vue-block-content',	require('./Grid/Block-Content.vue'));
 Vue.component('vue-form',		require('./Form/Form.vue'));
 Vue.component('vue-form-group', require('./Form/Form-Group.vue'));
 
+Vue.component('vue-pagination',	require('./Element/Pagination.vue'));
+
 Vue.component('vue-input',		require('./Input/Input.vue'));
 Vue.component('vue-file',		require('./Input/File.vue'));
 Vue.component('vue-select',		require('./Input/Select.vue'));
