@@ -53,12 +53,14 @@
 				this.items = mappedResult;
 			},
 			refreshData() {
+				var that = this;
+
 				switch (this.dataMethod.toUpperCase()) {
 					case 'GET':
-						this.$http.get(this.dataSource, this.dataOptions).then(this.successResponse, this.errorResponse);
+						this.$http.get(that.dataSource, {params: that.dataOptions}).then(that.successResponse, that.errorResponse);
 						break;
 					case 'POST':
-						this.$http.post(this.dataSource, this.dataOptions).then(this.successResponse, this.errorResponse);
+						this.$http.post(that.dataSource, {body: that.dataOptions}).then(that.successResponse, that.errorResponse);
 						break;
 				}
 			}
