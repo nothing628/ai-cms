@@ -7,7 +7,7 @@
 @section('breadcrumb')
 <li><a>Home</a></li>
 <li><a>Manga</a></li>
-<li><a>Upload New Manga</a></li>
+<li><a class="link-effect">Upload New Manga</a></li>
 @endsection
 
 @section ('page-content')
@@ -16,75 +16,33 @@
 		<h3 class="block-title">Upload New Manga</h3>
 	</div>
 	<div class="block-content block-content-narrow">
-		<form method="post" class="form-horizontal push-10-t" enctype="multipart/form-data">
+		<vue-form :data-class="['form-horizontal', 'push-10-t']">
 			{!! csrf_field() !!}
-			<div class="form-group">
-				<div class="col-md-6">
-					<div class="form-material form-material-primary">
-						<input type="text" name="title" class="form-control" required="" placeholder="Manga Title">
-						<label for="field-title">Manga Title</label>
-					</div>
-				</div>
-			</div>
-			<div class="form-group">
-				<div class="col-md-5">
-					<div class="form-material form-material-primary">
-						<input type="text" placeholder="Artist" name="artist" class="form-control">
-						<label for="field-artist">Artist</label>
-					</div>
-				</div>
-				<div class="col-md-5">
-					<div class="form-material form-material-primary">
-						<input type="text" placeholder="Author" name="author" class="form-control">
-						<label>Author</label>
-					</div>
-				</div>
-			</div>
-			<div class="form-group">
-				<div class="col-md-5">
-					<div class="form-material form-material-primary">
-						<select class="form-control js-select2" data-placeholder="Category" name="category_id" required="" id="field-category">
-							<option></option>
-							@foreach($categories as $category)
-							<option value="{{ $category->id }}">{{ $category->category }}</option>
-							@endforeach
-						</select>
-						<label for="field-category">Category</label>
-					</div>
-				</div>
-				<div class="col-md-5">
-					<div class="form-material form-material-primary">
-						<select multiple class="form-control js-select2" data-placeholder="Tags" style="width: 100%;" name="tags[]" id="field-tags">
-							<option value="AL">Alabama</option>
-							<option value="WY">Wyoming</option>
-						</select>
-						<label for="field-tags">Tags</label>
-					</div>
-				</div>
-			</div>
-			<div class="form-group">
-				<div class="col-md-6">
-					<div class="form-material form-material-primary">
-						<textarea class="form-control" rows="3" name="desc" required="" placeholder="Please write synopsis"></textarea>
-						<label>Synopsis</label>
-					</div>
-				</div>
-			</div>
-			<div class="form-group">
-				<div class="col-md-6">
-					<div class="form-material form-material-primary">
-						<input type="file" name="cover" accept="image/*">
-						<label>Cover</label>
-					</div>
-				</div>
-			</div>
-			<div class="form-group">
+			<vue-form-group>
+				<vue-input data-name="title" data-label="Manga Title" :data-required="true" data-placeholder="Manga Title"></vue-input>
+			</vue-form-group>
+			<vue-form-group>
+				<vue-input data-name="artist" data-label="Artist" :data-required="false" data-placeholder="Artist" :data-col="['col-md-5']"></vue-input>
+				<vue-input data-name="author" data-label="Author" :data-required="false" data-placeholder="Author" :data-col="['col-md-5']"></vue-input>
+			</vue-form-group>
+			<vue-form-group>
+				<vue-select data-source="a" data-name="category_id" data-label="Category" :data-required="true" data-placeholder="Category" :data-col="['col-md-5']"></vue-select>
+				<vue-select data-source="a" data-name="tags[]" :data-multiple="true" data-label="Tags" :data-required="false" data-placeholder="Tags" :data-col="['col-md-5']"></vue-select>
+			</vue-form-group>
+			<vue-form-group>
+				<vue-textarea data-name="desc" data-label="Synopsis" :data-required="true" data-placeholder="Please write synopsis"></vue-textarea>
+			</vue-form-group>
+			<vue-form-group>
+				<vue-file data-name="cover" data-label="Cover"></vue-file>
+			</vue-form-group>
+			<vue-form-group>
 				<div class="col-md-offset-2 col-md-9">
-					<button class="btn btn-success btn-flat btn-line">Submit</button>
-					<a href="{{ route('admin.manga.index') }}" class="btn btn-danger btn-line btn-flat">Cancel</a>
+					<button class="btn btn-success">Submit</button>
+					<a href="{{ route('admin.manga.index') }}" class="btn btn-default">Cancel</a>
 				</div>
-			</div>
-		</form>
+			</vue-form-group>
+			<div class="clearfix"></div>
+		</vue-form>
 	</div>
 </div>
 @endsection

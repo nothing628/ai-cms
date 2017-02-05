@@ -14,4 +14,4 @@ $(document).ready(function () {
 	})
 });
 
-import './component'
+import './init'
