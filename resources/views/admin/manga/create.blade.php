@@ -20,6 +20,7 @@
 			{!! csrf_field() !!}
 			<vue-form-group>
 				<vue-input data-name="title" data-label="Manga Title" :data-required="true" data-placeholder="Manga Title"></vue-input>
+				<vue-select :data-col="['col-md-4']" :data-value="1" :data-custom-source="[{key:'Complete', value:1}, {key:'On Going', value:0}]" data-name="status" data-label="Status" :data-required="true" data-placeholder="Status"></vue-select>
 			</vue-form-group>
 			<vue-form-group>
 				<vue-input data-name="artist" data-label="Artist" :data-required="false" data-placeholder="Artist" :data-col="['col-md-5']"></vue-input>

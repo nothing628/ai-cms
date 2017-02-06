@@ -27,7 +27,7 @@
 			dataPlaceholder: { type: String, required: false, default: ''},
 			dataRequired: { type: Boolean, required: false, default: false},
 			dataSource: { type: String, required: false, default: 'custom' },
-			dataValue: { type: Object, required: false, default: null},
+			dataValue: { type: String, required: false, default: ''},
 			isFloating: { type: Boolean, required: false, default: false}
 		},
 		computed: {
@@ -53,7 +53,7 @@
 			}
 		},
 		mounted() {
-			//
+			$("select[name='" + this.dataName + "']").val(this.dataValue).trigger('change');
 		}
 	}
 </script>

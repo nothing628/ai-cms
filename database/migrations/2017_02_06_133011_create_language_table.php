@@ -4,7 +4,7 @@ use Illuminate\Support\Facades\Schema;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class AddMangaField extends Migration
+class CreateLanguageTable extends Migration
 {
 	/**
 	 * Run the migrations.
@@ -13,9 +13,14 @@ class AddMangaField extends Migration
 	 */
 	public function up()
 	{
+		Schema::create('languages', function (Blueprint $table) {
+			$table->string('id', 2)->primary();
+			$table->string('lang', 20);
+			$table->timestamps();
+		});
+
 		Schema::table('mangas', function (Blueprint $table) {
-			$table->integer('category_id')->unsigned()->after('user_id');
-			$table->boolean('is_completed')->default(true)->after('views');
+			$table->string('lang_id', 2)->default('en');
 		});
 	}
 
@@ -27,8 +32,9 @@ class AddMangaField extends Migration
 	public function down()
 	{
 		Schema::table('mangas', function (Blueprint $table) {
-			$table->dropColumn('is_completed');
-			$table->dropColumn('category_id');
+			$table->dropColumn('lang_id');
 		});
+
+		Schema::drop('languages');
 	}
 }
