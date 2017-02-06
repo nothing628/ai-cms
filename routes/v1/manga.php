@@ -7,6 +7,9 @@ Route::group(['prefix' => 'manga', 'as' => 'manga.'], function () {
 	Route::delete('delete', ['as' => 'delete', 'uses' => 'MangaController@delete']);
 });
 
+Route::get('lang/get', ['as' => 'lang.get', 'uses' => 'MangaController@lang']);
+Route::get('tags/get', ['as' => 'tags.get', 'uses' => 'CategoryController@tags']);
+
 Route::group(['prefix' => 'category', 'as' => 'category.'], function () {
 	Route::get('/', ['as' => 'get', 'uses' => 'CategoryController@get']);
 	Route::post('store', ['as' => 'store', 'uses' => 'CategoryController@store']);

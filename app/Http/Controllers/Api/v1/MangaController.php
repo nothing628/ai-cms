@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Api\v1;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use App\Models\Manga;
+use App\Models\Language;
 
 class MangaController extends Controller
 {
@@ -79,5 +80,15 @@ class MangaController extends Controller
 		}
 
 		return redirect()->route('admin.manga.index');
+	}
+
+	public function lang()
+	{
+		$languages = Language::all();
+		$response = $languages->map(function ($value) {
+			return ['value' => $value->id, 'key' => $value->lang];
+		});
+
+		return response()->json($response);
 	}
 }

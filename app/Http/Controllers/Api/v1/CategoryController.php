@@ -5,13 +5,27 @@ namespace App\Http\Controllers\Api\v1;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use App\Models\Category;
+use App\Models\Tag;
 
 class CategoryController extends Controller
 {
-	public function get(Request $request)
+	public function get()
 	{
-		$categories = Category::all();
+		$category = Category::all();
+		$result = $category->map(function ($value) {
+			return ['value' => $value->id, 'key' => $value->category];
+		});
 
-		return response()->json($categories);
+		return $result;
+	}
+
+	public function tags()
+	{
+		$tags = Tag::all();
+		$result = $tags->map(function ($value) {
+			return ['value' => $value->slug, 'key' => $value->name];
+		});
+
+		return response()->json($result);
 	}
 }
