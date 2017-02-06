@@ -27,12 +27,12 @@
 				<vue-input data-name="author" data-label="Author" :data-required="false" data-placeholder="Author" :data-col="['col-md-5']"></vue-input>
 			</vue-form-group>
 			<vue-form-group>
-				<vue-select data-source="{{ route('api.category.get') }}" data-name="category_id" data-label="Category" :data-required="true" data-placeholder="Category" :data-col="['col-md-5']"></vue-select>
-				<vue-select data-source="{{ route('api.tags.get') }}" data-name="tags[]" :data-multiple="true" data-label="Tags" :data-required="false" data-placeholder="Tags" :data-col="['col-md-5']"></vue-select>
+				<vue-select data-source="{{ route('api.category.get.select') }}" data-name="category_id" data-label="Category" :data-required="true" data-placeholder="Category" :data-col="['col-md-5']"></vue-select>
+				<vue-select data-source="{{ route('api.tags.get.select') }}" data-name="tags[]" :data-multiple="true" data-label="Tags" :data-required="false" data-placeholder="Tags" :data-col="['col-md-5']"></vue-select>
 			</vue-form-group>
 			<vue-form-group>
 				<vue-textarea data-name="desc" data-label="Synopsis" :data-required="true" data-placeholder="Please write synopsis"></vue-textarea>
-				<vue-select data-source="{{ route('api.lang.get') }}" data-name="lang_id" data-label="Language" :data-required="true" data-placeholder="Language" :data-col="['col-md-4']" data-value="en"></vue-select>
+				<vue-select data-source="{{ route('api.lang.get.select') }}" data-name="lang_id" data-label="Language" :data-required="true" data-placeholder="Language" :data-col="['col-md-4']" data-value="en"></vue-select>
 			</vue-form-group>
 			<vue-form-group>
 				<vue-file data-name="cover" data-label="Cover"></vue-file>

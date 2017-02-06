@@ -11,6 +11,11 @@ class CategoryController extends Controller
 {
 	public function get()
 	{
+		//
+	}
+
+	public function getSelect()
+	{
 		$category = Category::all();
 		$result = $category->map(function ($value) {
 			return ['value' => $value->id, 'key' => $value->category];
