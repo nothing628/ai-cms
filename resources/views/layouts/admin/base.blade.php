@@ -33,6 +33,7 @@
 				@section('content')
 				@show
 			</main>
+			<div id="page-loader"></div>
 
 			@include('layouts.admin.footer')
 		</div>
@@ -40,9 +41,9 @@
 
 		<script type="text/javascript" src="{{ asset('js/jquery.js') }}"></script>
 		<script type="text/javascript" src="{{ asset('js/bootstrap.min.js') }}"></script>
+		<script type="text/javascript" src="{{ asset('js/oneui.js') }}"></script>
 		<script type="text/javascript" src="{{ asset('js/vue.js') }}"></script>
 		<script type="text/javascript" src="{{ asset('js/app.js') }}"></script>
-		<script type="text/javascript" src="{{ asset('js/oneui.js') }}"></script>
 		@section('scripts')
 		@show
 		<script type="text/javascript">
