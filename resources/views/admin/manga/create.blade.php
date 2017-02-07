@@ -39,7 +39,7 @@
 			</vue-form-group>
 			<vue-form-group>
 				<div class="col-md-offset-2 col-md-9">
-					<button class="btn btn-success">Submit</button>
+					<vue-form-submit :data-class="['btn-success']">Submit</vue-form-submit>
 					<a href="{{ route('admin.manga.index') }}" class="btn btn-default">Cancel</a>
 				</div>
 			</vue-form-group>

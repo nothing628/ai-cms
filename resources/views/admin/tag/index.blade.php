@@ -13,8 +13,8 @@
 <vue-block>
 	<vue-block-head :data-class="['bg-gray-lighter']">Tag List</vue-block-head>
 	<vue-block-content>
-		<a href="{{ route('admin.tag.create') }}" class="btn btn-success btn-flat btn-line"><i class="fa fa-plus"></i> Add</a>
-		
+		<vue-modal-button data-target="modal-test" :data-class="['btn', 'btn-success']"><i class="fa fa-plus"></i> Add</vue-modal-button>
+
 		<vue-table :data-class="['push-15-t']">
 			<vue-table-head :data-column="[
 			{value:'Tag', class:'text-center'},
@@ -36,4 +36,20 @@
 		</nav>
 	</vue-block-content>
 </vue-block>
+
+<vue-modal data-name="modal-test" :data-class="['modal-dialog-top']" :is-fade="true">
+	<vue-modal-head>Add New Tag</vue-modal-head>
+	<vue-modal-body>
+		<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
+		tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,
+		quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo
+		consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse
+		cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non
+		proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
+	</vue-modal-body>
+	<vue-modal-footer slot="footer">
+		<button class="btn btn-sm btn-default" type="button" data-dismiss="modal">Close</button>
+		<button class="btn btn-sm btn-primary" type="button" data-dismiss="modal"><i class="fa fa-check"></i> Ok</button>
+	</vue-modal-footer>
+</vue-modal>
 @endsection

@@ -18,11 +18,6 @@ class CategoryController extends Controller
 		return view('admin.category.index');
 	}
 
-	public function tags()
-	{
-		return view('admin.tag.index');
-	}
-
 	public function create()
 	{
 		return view('admin.category.create');

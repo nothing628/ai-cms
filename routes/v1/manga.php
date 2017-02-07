@@ -18,6 +18,10 @@ Route::group(['prefix' => 'category', 'as' => 'category.'], function () {
 	Route::delete('delete', ['as' => 'delete', 'uses' => 'CategoryController@delete']);
 });
 
+Route::group(['prefix' => 'tag', 'as' => 'tag.'], function () {
+	Route::get('/', ['as' => 'get', 'uses' => 'TagController@get']);
+});
+
 Route::group(['prefix' => 'chapter', 'as' => 'chapter.'], function () {
 	Route::post('store', ['as' => 'store', 'uses' => 'ChapterController@store']);
 	Route::put('update', ['as' => 'update', 'uses' => 'ChapterController@update']);
