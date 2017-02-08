@@ -41,16 +41,16 @@
 <vue-modal data-name="modal-test" :data-class="['modal-dialog-top']" :is-fade="true">
 	<vue-modal-head>Add New Tag</vue-modal-head>
 	<vue-modal-body>
-		<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
-		tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,
-		quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo
-		consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse
-		cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non
-		proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
+		<vue-form :data-class="['form-horizontal', 'push-10-t']" data-action="{{ route('api.tag.store') }}" data-name="form-tag-add" data-method="post">
+			{!! csrf_field() !!}
+			<vue-form-group>
+				<vue-input data-name="slug" :data-col="['col-md-12']" data-label="Slug" :data-required="true" data-placeholder="Slug"></vue-input>
+			</vue-form-group>
+		</vue-form>
 	</vue-modal-body>
 	<vue-modal-footer slot="footer">
-		<button class="btn btn-sm btn-default" type="button" data-dismiss="modal">Close</button>
-		<button class="btn btn-sm btn-primary" type="button" data-dismiss="modal"><i class="fa fa-check"></i> Ok</button>
+		<button class="btn btn-sm btn-danger" type="button" data-dismiss="modal"><i class="fa fa-times"></i> Close</button>
+		<vue-form-submit data-dismiss="modal" :data-class="['btn-success', 'btn-sm']" data-target="form-tag-add"><i class="fa fa-check"></i> Submit</vue-form-submit>
 	</vue-modal-footer>
 </vue-modal>
 @endsection

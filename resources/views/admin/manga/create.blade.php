@@ -12,9 +12,7 @@
 
 @section ('page-content')
 <div class="block">
-	<div class="block-header bg-gray-lighter">
-		<h3 class="block-title">Upload New Manga</h3>
-	</div>
+	<vue-block-head :data-class="['bg-gray-lighter']">Upload New Manga</vue-block-head>
 	<div class="block-content block-content-narrow">
 		<vue-form :data-class="['form-horizontal', 'push-10-t']">
 			{!! csrf_field() !!}

@@ -23,14 +23,4 @@ class CategoryController extends Controller
 
 		return $result;
 	}
-
-	public function tags()
-	{
-		$tags = Tag::all();
-		$result = $tags->map(function ($value) {
-			return ['value' => $value->slug, 'key' => $value->name];
-		});
-
-		return response()->json($result);
-	}
 }

@@ -11,4 +11,19 @@ class TagController extends Controller
 	{
 		return [];
 	}
+
+	public function tags()
+	{
+		$tags = Tag::all();
+		$result = $tags->map(function ($value) {
+			return ['value' => $value->slug, 'key' => $value->name];
+		});
+
+		return response()->json($result);
+	}
+
+	public function store(Request $request)
+	{
+		return response()->json(['success' => true]);
+	}
 }

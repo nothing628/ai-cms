@@ -8,7 +8,6 @@ Route::group(['prefix' => 'manga', 'as' => 'manga.'], function () {
 });
 
 Route::get('lang/get/select', ['as' => 'lang.get.select', 'uses' => 'MangaController@lang']);
-Route::get('tags/get/select', ['as' => 'tags.get.select', 'uses' => 'CategoryController@tags']);
 Route::get('category/get/select', ['as' => 'category.get.select', 'uses' => 'CategoryController@getSelect']);
 
 Route::group(['prefix' => 'category', 'as' => 'category.'], function () {
@@ -20,6 +19,8 @@ Route::group(['prefix' => 'category', 'as' => 'category.'], function () {
 
 Route::group(['prefix' => 'tag', 'as' => 'tag.'], function () {
 	Route::get('/', ['as' => 'get', 'uses' => 'TagController@get']);
+	Route::get('get/select', ['as' => 'get.select', 'uses' => 'TagController@tags']);
+	Route::post('store', ['as' => 'store', 'uses' => 'TagController@store']);
 });
 
 Route::group(['prefix' => 'chapter', 'as' => 'chapter.'], function () {

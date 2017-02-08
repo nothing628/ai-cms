@@ -10,7 +10,7 @@
 			return {};
 		},
 		props: {
-			dataTarget: { type: String, required: false, default: null },
+			dataTarget: { type: String, required: false, default: '' },
 			dataClass: { type: Array, required: false, default() { return []; } }
 		},
 		methods: {
