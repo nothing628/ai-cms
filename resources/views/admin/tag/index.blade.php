@@ -10,6 +10,7 @@
 @endsection
 
 @section('page-content')
+<swal></swal>
 <vue-block>
 	<vue-block-head :data-class="['bg-gray-lighter']">Tag List</vue-block-head>
 	<vue-block-content>

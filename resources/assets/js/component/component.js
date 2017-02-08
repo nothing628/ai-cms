@@ -1,5 +1,7 @@
 Vue.component('hello-world',	require('./Hello.vue'));
 
+Vue.component('swal',			require('./Alert/Alert.vue'));
+
 Vue.component('vue-block',		require('./Grid/Block.vue'));
 Vue.component('vue-block-head',	require('./Grid/Block-Head.vue'));
 Vue.component('vue-block-content',	require('./Grid/Block-Content.vue'));
