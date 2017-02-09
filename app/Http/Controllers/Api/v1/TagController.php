@@ -24,6 +24,6 @@ class TagController extends Controller
 
 	public function store(Request $request)
 	{
-		return response()->json(['success' => true]);
+		return response()->json(['success' => true, 'message' => 'Success save tag']);
 	}
 }

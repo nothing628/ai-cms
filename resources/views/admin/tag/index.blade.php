@@ -38,7 +38,7 @@
 	</vue-block-content>
 </vue-block>
 
-<vue-modal data-name="modal-test" :data-class="['modal-dialog-top']" :is-fade="true">
+<vue-modal data-name="modal-test" :data-class="['modal-dialog-slideup']" :is-fade="true">
 	<vue-modal-head>Add New Tag</vue-modal-head>
 	<vue-modal-body>
 		<vue-form :data-class="['form-horizontal', 'push-10-t']" data-action="{{ route('api.tag.store') }}" data-name="form-tag-add" data-method="post">
@@ -50,7 +50,7 @@
 	</vue-modal-body>
 	<vue-modal-footer slot="footer">
 		<button class="btn btn-sm btn-danger" type="button" data-dismiss="modal"><i class="fa fa-times"></i> Close</button>
-		<vue-form-submit data-dismiss="modal" :data-class="['btn-success', 'btn-sm']" data-target="form-tag-add"><i class="fa fa-check"></i> Submit</vue-form-submit>
+		<vue-form-submit :data-class="['btn-success', 'btn-sm']" data-target="form-tag-add"><i class="fa fa-check"></i> Submit</vue-form-submit>
 	</vue-modal-footer>
 </vue-modal>
 @endsection

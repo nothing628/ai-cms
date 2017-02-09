@@ -54,17 +54,17 @@
 		},
 		methods: {
 			showModal(target) {
-				if (this.dataName == target) {
+				if (this.dataName == target || target == '') {
 					$(this.nameSelect).modal('show');
 				}
 			},
 			hideModal(target) {
-				if (this.dataName == target) {
+				if (this.dataName == target || target == '') {
 					$(this.nameSelect).modal('hide');
 				}
 			},
 			toggleModal(target) {
-				if (this.dataName == target) {
+				if (this.dataName == target || target == '') {
 					$(this.nameSelect).modal('toggle');
 				}
 			}
