@@ -3,6 +3,8 @@
 Route::group(['prefix' => 'admin', 'as' => 'admin.', 'middleware' => ['auth', 'admin']], function () {
 	Route::get('/', ['as' => 'home', 'uses' => 'AdminController@index']);
 
+	Route::get('test', function () {return view('test');});
+
 	Route::get('manga', ['as' => 'manga.index', 'uses' => 'MangaController@admin']);
 	Route::get('manga/create', ['as' => 'manga.create', 'uses' => 'MangaController@create']);
 	Route::get('manga/edit/{manga_id}', ['as' => 'manga.edit', 'uses' => 'MangaController@edit']);

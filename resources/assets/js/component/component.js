@@ -1,4 +1,6 @@
 Vue.component('hello-world',	require('./Hello.vue'));
+Vue.component('parent',			require('./Test/parent.vue'));
+Vue.component('child',			require('./Test/child.vue'));
 
 Vue.component('swal',			require('./Alert/Alert.vue'));
 
