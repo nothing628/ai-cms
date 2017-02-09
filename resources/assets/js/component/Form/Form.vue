@@ -57,7 +57,11 @@
 				}
 			},
 			onFailed(response) {
+				var code = response.status.toString();
+				var msg = response.statusText;
+
 				bus.$emit('hide-modal', '');
+				bus.$emit('alert-show', {title: code, text: msg, type: 'error'});
 			},
 			submit() {
 				//Handle Submit Here

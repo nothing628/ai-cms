@@ -1,7 +1,7 @@
 @extends('admin.base')
 
 @section('title')
-@parent Category List
+@parent Tag List
 @endsection
 
 @section('breadcrumb')
