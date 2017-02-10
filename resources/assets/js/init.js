@@ -1,3 +1,4 @@
+import MyPlugin from './plugin/Event';
 import VueResource from 'vue-resource';
 import VueRouter from 'vue-router';
 import Vuex from 'vuex';
@@ -9,6 +10,7 @@ import Vuex from 'vuex';
  */
 Vue.use(VueResource);
 Vue.use(VueRouter);
+Vue.use(MyPlugin);
 
 import './component/component';
 import './bootstrap';
