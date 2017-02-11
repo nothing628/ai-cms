@@ -5,7 +5,9 @@
 		</tr>
 		<tr v-for="item in items" v-else>
 			<td v-for="col in item" :class="col.class" v-html="col.value"></td>
-			<td v-if="isAction" class="text-center"><slot></slot></td>
+			<td v-if="isAction" class="text-center">
+				<component is="vue-table-action" :data-item="item"></component>
+			</td>
 			<td v-else></td>
 		</tr>
 	</tbody>
@@ -37,11 +39,28 @@
 		},
 		methods: {
 			errorResponse(response) {
-				//
+				console.log(response);
 			},
 			successResponse(response) {
 				var that = this;
-				var mappedResult = response.data.map(function (val) {
+				var data = response.data;
+				var from = ("from" in data)?data.from: 0;
+				var to = ("to" in data)?data.to: 0;
+				var total = ("total" in data)?data.total: 0;
+
+				if (!"data" in data) return;
+				if (this.dataPagination != '') {
+					if (!"current_page" in data ||
+						!"last_page" in data) return;
+
+					var page = data.current_page;
+					var maxPage = data.last_page;
+
+					bus.$emit('pagination-max-page', {name: this.dataPagination, page: maxPage});
+					bus.$emit('pagination-page', {name: this.dataPagination, page: page});
+				}
+
+				var mappedResult = data.data.map(function (val) {
 					var objres = that.dataMap.map(function (mapval) {
 						var format = '{0}';
 
@@ -79,7 +98,7 @@
 			}
 		},
 		created() {
-			this.$on('refresh', this.refreshData);
+			bus.$on('refresh', this.refreshData);
 		},
 		mounted() {
 			this.refreshData();

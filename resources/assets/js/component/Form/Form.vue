@@ -54,7 +54,7 @@
 
 					bus.$emit('hide-modal', '');
 					bus.$emit('alert-show', {title:title, text: text, type: type});
-					bus.$emit('refresh');
+					bus.$emit('refresh', {});
 				}
 			},
 			onFailed(response) {
@@ -63,7 +63,7 @@
 
 				bus.$emit('hide-modal', '');
 				bus.$emit('alert-show', {title: code, text: msg, type: 'error'});
-				bus.$emit('refresh');
+				bus.$emit('refresh', {});
 			},
 			submit() {
 				//Handle Submit Here

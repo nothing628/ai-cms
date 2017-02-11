@@ -29,7 +29,6 @@
 		methods: {
 			valueChanged(e) {
 				this.currentVal = e.target.files;
-				console.log(this.currentVal);
 			}
 		},
 		mounted() {

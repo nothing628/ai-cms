@@ -28,3 +28,4 @@ Vue.component('vue-modal-button',	require('./Modal/Modal-Button.vue'));
 Vue.component('vue-table',		require('./Table/Table.vue'));
 Vue.component('vue-table-head', require('./Table/Table-Head.vue'));
 Vue.component('vue-table-body', require('./Table/Table-Body.vue'));
+Vue.component('vue-table-action',	require('./Table/Table-Action.vue'));

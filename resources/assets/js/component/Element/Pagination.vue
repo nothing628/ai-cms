@@ -28,9 +28,9 @@
 		props: {
 			dataClass: { type: Array, required: false, default() { return ['pagination-sm']; } },
 			dataName: { type: String, required: true },
-			dataMaxPage: { type: Number, required: false, default: 1 },
+			dataMaxPage: { type: Number, required: false, default: 0 },
 			dataPageView: { type: Number, required: false, default: 5, validator(value) { return value >= 3 && value % 2 == 1; } },
-			dataPage: { type: Number, required: false, default: 1 },
+			dataPage: { type: Number, required: false, default: 0 },
 			dataShowNextPrev: { type: Boolean, required: false, default: true }
 		},
 		computed: {

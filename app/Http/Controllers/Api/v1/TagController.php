@@ -4,26 +4,29 @@ namespace App\Http\Controllers\Api\v1;
 
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
+use App\Models\Tag;
+use App\Tagging\Util;
+use Exception;
 
 class TagController extends Controller
 {
-	public function get()
+	public function get(Request $request)
 	{
-		return [];
-	}
-
-	public function tags()
-	{
-		$tags = Tag::all();
-		$result = $tags->map(function ($value) {
-			return ['value' => $value->slug, 'key' => $value->name];
-		});
-
-		return response()->json($result);
+		$tags = Tag::orderBy('name', 'asc')->paginate(15);
+		return response()->json($tags);
 	}
 
 	public function store(Request $request)
 	{
-		return response()->json(['success' => true, 'message' => 'Success save tag']);
+		try {
+			$tag = new Tag();
+			$tag->slug = Util::slug($request->tag);
+			$tag->name = $request->tag;
+			$tag->save();
+
+			return response()->json(['success' => true, 'message' => 'Success save tag']);
+		} catch (Exception $ex) {
+			return response()->json(['success' => false, 'message' => $ex->getMessage() ]);
+		}
 	}
 }
