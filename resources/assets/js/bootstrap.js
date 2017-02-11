@@ -7,4 +7,4 @@ Vue.http.interceptors.push((request, next) => {
     next();
 });
 
-Vue.http.options.root = 'http://ai-cms.id';
+Vue.http.options.root = Laravel.root;

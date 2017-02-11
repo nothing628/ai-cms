@@ -26,7 +26,7 @@
 			</vue-form-group>
 			<vue-form-group>
 				<vue-select data-source="{{ route('api.category.get.select') }}" data-name="category_id" data-label="Category" :data-required="true" data-placeholder="Category" :data-col="['col-md-5']"></vue-select>
-				<vue-select data-source="{{ route('api.tags.get.select') }}" data-name="tags[]" :data-multiple="true" data-label="Tags" :data-required="false" data-placeholder="Tags" :data-col="['col-md-5']"></vue-select>
+				<vue-select data-source="{{ route('api.tag.get.select') }}" data-name="tags[]" :data-multiple="true" data-label="Tags" :data-required="false" data-placeholder="Tags" :data-col="['col-md-5']"></vue-select>
 			</vue-form-group>
 			<vue-form-group>
 				<vue-textarea data-name="desc" data-label="Synopsis" :data-required="true" data-placeholder="Please write synopsis"></vue-textarea>

@@ -73,6 +73,8 @@
 				//Load Data From url;
 				var that = this;
 
+				if (this.dataSource == 'custom') return;
+
 				switch (this.dataMethod.toUpperCase()) {
 					case 'GET':
 						this.$http.get(this.dataSource, {params: that.dataOptions}).then(that.successResponse, that.errorResponse);

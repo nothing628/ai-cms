@@ -16,6 +16,16 @@ class TagController extends Controller
 		return response()->json($tags);
 	}
 
+	public function tags(Request $request)
+	{
+		$tags = Tag::orderBy('name', 'asc')->get();
+		$result = $tags->map(function ($value) {
+			return ['value' => $value->slug, 'key' => $value->name];
+		});
+
+		return response()->json($result);
+	} 
+
 	public function store(Request $request)
 	{
 		try {
