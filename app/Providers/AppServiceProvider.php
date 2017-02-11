@@ -3,6 +3,8 @@
 namespace App\Providers;
 
 use App\Contracts\TaggingUtility;
+use App\Models\Tag;
+use App\Observers\TagObserver;
 use App\Tagging\Util;
 use Illuminate\Support\ServiceProvider;
 
@@ -15,7 +17,7 @@ class AppServiceProvider extends ServiceProvider
 	 */
 	public function boot()
 	{
-		//
+		Tag::observe(TagObserver::class);
 	}
 
 	/**
