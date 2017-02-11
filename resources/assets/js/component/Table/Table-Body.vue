@@ -17,7 +17,8 @@
 	export default {
 		data() {
 			return {
-				items: []
+				items: [],
+				currentPage: 1
 			};
 		},
 		props: {
@@ -25,7 +26,6 @@
 			dataMethod: { type: String, required: false, default: 'get' },
 			dataOptions: { type: Object, required: false, default() { return {}; } },
 			dataSource: { type: String, required: false, default: '' },
-			dataPagination: { type: String, required: false, default: '' },
 			isAction: { type: Boolean, required: false, default: false }
 		},
 		computed: {
@@ -40,6 +40,7 @@
 		methods: {
 			errorResponse(response) {
 				console.log(response);
+				this.items = [];
 			},
 			successResponse(response) {
 				var that = this;
@@ -48,17 +49,16 @@
 				var to = ("to" in data)?data.to: 0;
 				var total = ("total" in data)?data.total: 0;
 
-				if (!"data" in data) return;
-				if (this.dataPagination != '') {
-					if (!"current_page" in data ||
-						!"last_page" in data) return;
+				if (!"data" in data ||
+					!"current_page" in data ||
+					!"last_page" in data) return;
 
-					var page = data.current_page;
-					var maxPage = data.last_page;
+				var page = data.current_page;
+				var maxPage = data.last_page;
 
-					bus.$emit('pagination-max-page', {name: this.dataPagination, page: maxPage});
-					bus.$emit('pagination-page', {name: this.dataPagination, page: page});
-				}
+				this.$dispatch('pagination-max-page', {page: maxPage});
+				this.$dispatch('pagination-page', {page: page});
+				this.$dispatch('record-state', {from: from, to: to, total: total });
 
 				var mappedResult = data.data.map(function (val) {
 					var objres = that.dataMap.map(function (mapval) {
@@ -86,19 +86,29 @@
 			},
 			refreshData() {
 				var that = this;
+				var merge = Object.assign({page: this.currentPage}, this.dataOptions);
 
 				switch (this.dataMethod.toUpperCase()) {
 					case 'GET':
-						this.$http.get(that.dataSource, {params: that.dataOptions}).then(that.successResponse, that.errorResponse);
+						this.$http.get(that.dataSource, {params: merge}).then(that.successResponse, that.errorResponse);
 						break;
 					case 'POST':
-						this.$http.post(that.dataSource, {body: that.dataOptions}).then(that.successResponse, that.errorResponse);
+						this.$http.post(that.dataSource, {body: merge}).then(that.successResponse, that.errorResponse);
 						break;
 				}
+			},
+			changePage(page) {
+				var that = this;
+
+				this.currentPage = page;
+				this.$nextTick(function () {
+					that.refreshData();
+				});
 			}
 		},
 		created() {
-			bus.$on('refresh', this.refreshData);
+			this.$catch('refresh', this.refreshData);
+			this.$catch('change-page', this.changePage);
 		},
 		mounted() {
 			this.refreshData();

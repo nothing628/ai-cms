@@ -12,6 +12,7 @@ Vue.component('vue-form',		require('./Form/Form.vue'));
 Vue.component('vue-form-group', require('./Form/Form-Group.vue'));
 Vue.component('vue-form-submit',	require('./Form/Form-Submit.vue'));
 
+Vue.component('record-status',	require('./Element/Record-Status.vue'));
 Vue.component('vue-pagination',	require('./Element/Pagination.vue'));
 
 Vue.component('vue-input',		require('./Input/Input.vue'));

@@ -1,8 +1,3 @@
-body {
-	font-size: 15px;
-	color: #333;
-}
-
 .content.main-content {
     padding-right: 15px;
     padding-left: 15px;
@@ -124,10 +119,6 @@ a:hover, a:focus {
 	text-decoration: none;
 }
 
-.text-gray {
-	color: #c9c9c9;
-}
-
 .text-warning {
 	color: #e49e36;
 }
@@ -186,77 +177,19 @@ a:hover, a:focus {
 	padding: 7px 20px;
 }
 
-.bg-black {
-	background-color: #232c32 !important;
-}
-
-.bg-white {
-	background-color: #ffffff !important;
-}
-
-.ribbon {
-	position: relative;
-	min-height: 56px;
-}
-
-.ribbon-danger .ribbon-box {
-	background-color: #d26a5c;
-}
-
-.ribbon-left .ribbon-box {
-	right: auto;
-	left: 0;
-}
-
 .ribbon-box {
-	position: absolute;
-	top: 10px;
-	right: 0;
 	padding: 0 5px;
 	height: 26px;
 	line-height: 26px;
-	color: #fff;
-	z-index: 500;
-}
-
-.ribbon-modern .ribbon-box {
-	top: 0;
-}
-
-.ribbon-danger.ribbon-modern.ribbon-left .ribbon-box::before {
-	border-color: #d26a5c;
-	border-right-color: transparent;
-	border-bottom-color: transparent;
-}
-
-.ribbon-danger.ribbon-modern .ribbon-box::before {
-	border-color: #d26a5c;
-	border-left-color: transparent;
-	border-bottom-color: transparent;
-}
-
-.ribbon-left.ribbon-modern .ribbon-box::before {
-	right: auto;
-	left: 100%;
 }
 
 .ribbon-modern .ribbon-box::before {
-	top: 0;
-	right: 100%;
 	border: 13px solid;
 }
 
 .ribbon-link {
 	color: #EEE;
 	transition: color .12s ease-out;
-}
-
-.ribbon-box::before {
-	position: absolute;
-	display: block;
-	width: 0;
-	height: 0;
-	content: "";
 }
 
 .img-container {
@@ -393,6 +326,22 @@ a.link-effect::before {
 	padding-left: 50px !important;
 }
 
+div.dataTables_info {
+    padding-top: 18px;
+    white-space: nowrap;
+}
+
+div.dataTables_paginate {
+    margin: 0;
+    white-space: nowrap;
+    text-align: right;
+}
+
+div.dataTables_paginate ul.pagination {
+    margin: 12px 0;
+    white-space: nowrap;
+}
+
 .page-grid {
 	margin-top: 15px;
 }
@@ -408,12 +357,4 @@ a.link-effect::before {
 	width: 100%;
 	height: 100%;
 	background-color: white;
-}
-
-.push-5-t {
-	margin-top: 5px !important;
-}
-
-.font-s13 {
-	font-size: 13px !important;
 }

@@ -15,21 +15,22 @@
 	<vue-block-content>
 		<vue-modal-button data-target="modal-test" :data-class="['btn', 'btn-success']"><i class="fa fa-plus"></i> Add</vue-modal-button>
 
-		<vue-table :data-class="['push-15-t']">
+		<vue-table :data-class="['push-15-t']" data-name="table" data-target="bdata">
 			<vue-table-head :data-column="[
-			{value:'Tag', class:'text-center'},
+			{value:'Tag'},
 			{value:'Count', class:'text-center'},
 			{value:'Action', class:'text-center'}]"></vue-table-head>
-			<vue-table-body data-source="{{ route('api.tag.get') }}" data-pagination="pagination"
+			<vue-table-body data-source="{{ route('api.tag.get') }}"
 			:data-map="[
-			{key: 'name', class: 'text-center'},
+			{key: 'name'},
 			{key: 'count', class: 'text-center'}]" :is-action="true">
 			</vue-table-body>
 		</vue-table>
 
-		<nav class="text-right">
-			<vue-pagination data-name="pagination"></vue-pagination>
-		</nav>
+		<div class="row">
+			<div class="col-md-6"><record-status data-name="bdata"></record-status></div>
+			<div class="col-md-6"><vue-pagination data-name="bdata" data-target="table"></vue-pagination></div>
+		</div>
 	</vue-block-content>
 </vue-block>
 

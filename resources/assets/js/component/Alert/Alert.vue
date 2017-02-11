@@ -9,7 +9,10 @@
 		},
 		methods: {
 			alertShow(opts) {
-				swal(opts);
+				swal(opts).then(
+					function () {},
+					function (dismiss) {}
+				);
 			},
 			confirmShow(opts) {
 				var data = Object.assign({}, opts, {

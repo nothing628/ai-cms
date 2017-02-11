@@ -30,7 +30,9 @@
 			},
 			methodName() {
 				return this.dataMethod.toUpperCase();
-			},
+			}
+		},
+		methods: {
 			formObject() {
 				var form = document.forms[this.dataName];
 				var formData = new FormData(form);
@@ -41,9 +43,7 @@
 				});
 
 				return emp;
-			}
-		},
-		methods: {
+			},
 			onSuccess(response) {
 				var res = response.data;
 
@@ -53,8 +53,9 @@
 					var type = res.hasOwnProperty('type')?res.type:'success';
 
 					bus.$emit('hide-modal', '');
-					bus.$emit('alert-show', {title:title, text: text, type: type});
-					bus.$emit('refresh', {});
+					bus.$emit('alert-show', {title:title, text: text, type: type, timer: 800});
+					bus.$emit('refresh');
+					bus.$emit('input-clear');
 				}
 			},
 			onFailed(response) {
@@ -63,12 +64,13 @@
 
 				bus.$emit('hide-modal', '');
 				bus.$emit('alert-show', {title: code, text: msg, type: 'error'});
-				bus.$emit('refresh', {});
+				bus.$emit('refresh');
+				bus.$emit('input-clear');
 			},
 			submit() {
 				//Handle Submit Here
 
-				var formData = this.formObject;
+				var formData = this.formObject();
 				switch (this.methodName) {
 					case 'POST':
 						this.$http.post(this.dataAction, formData, {

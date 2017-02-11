@@ -1,13 +1,15 @@
 <template>
-	<ul class="pagination" :class="dataClass">
-		<li v-if="dataShowNextPrev" :class="{'disabled': disabledFirst}"><a class="with-cursor" @click="goFirst"><i class="fa fa-angle-double-left"></i></a></li>
-		<li v-if="dataShowNextPrev" :class="{'disabled': disabledFirst}"><a class="with-cursor" @click="goPrev"><i class="fa fa-angle-left"></i></a></li>
-		<li v-for="i in pageRender" :class="{'active':((i+startPage-1)==page)}">
-			<a class="with-cursor" @click="changePage(i+startPage-1)">{{ i+startPage-1 }}</a>
-		</li>
-		<li v-if="dataShowNextPrev" :class="{'disabled': disabledEnd}"><a class="with-cursor" @click="goNext"><i class="fa fa-angle-right"></i></a></li>
-		<li v-if="dataShowNextPrev" :class="{'disabled': disabledEnd}"><a class="with-cursor" @click="goEnd"><i class="fa fa-angle-double-right"></i></a></li>
-	</ul>
+	<div class="dataTables_paginate">
+		<ul class="pagination" :class="dataClass">
+			<li v-if="dataShowNextPrev" :class="{'disabled': disabledFirst}"><a class="with-cursor" @click="goFirst"><i class="fa fa-angle-double-left"></i></a></li>
+			<li v-if="dataShowNextPrev" :class="{'disabled': disabledFirst}"><a class="with-cursor" @click="goPrev"><i class="fa fa-angle-left"></i></a></li>
+			<li v-for="i in pageRender" :class="{'active':((i+startPage-1)==page)}">
+				<a class="with-cursor" @click="changePage(i+startPage-1)">{{ i+startPage-1 }}</a>
+			</li>
+			<li v-if="dataShowNextPrev" :class="{'disabled': disabledEnd}"><a class="with-cursor" @click="goNext"><i class="fa fa-angle-right"></i></a></li>
+			<li v-if="dataShowNextPrev" :class="{'disabled': disabledEnd}"><a class="with-cursor" @click="goEnd"><i class="fa fa-angle-double-right"></i></a></li>
+		</ul>
+	</div>
 </template>
 
 <style type="text/css">
@@ -25,9 +27,18 @@
 				pagePerView: 0
 			};
 		},
+		watch: {
+			page: function(newvalue, oldvalue) {
+				if (oldvalue == 0) return;
+				if (this.dataTarget != '') {
+					bus.$emit('change-page', {name: this.dataTarget, page: newvalue});
+				}
+			}
+		},
 		props: {
-			dataClass: { type: Array, required: false, default() { return ['pagination-sm']; } },
+			dataClass: { type: Array, required: false, default() { return []; } },
 			dataName: { type: String, required: true },
+			dataTarget: { type: String, required: false, default: '' },
 			dataMaxPage: { type: Number, required: false, default: 0 },
 			dataPageView: { type: Number, required: false, default: 5, validator(value) { return value >= 3 && value % 2 == 1; } },
 			dataPage: { type: Number, required: false, default: 0 },
