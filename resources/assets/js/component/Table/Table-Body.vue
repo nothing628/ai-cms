@@ -1,6 +1,9 @@
 <template>
 	<tbody>
-		<tr v-for="item in items">
+		<tr v-if = "items.length == 0">
+			<td :colspan="colspan" class="text-center text-muted">No Data Found</td>
+		</tr>
+		<tr v-for="item in items" v-else>
 			<td v-for="col in item" :class="col.class" v-html="col.value"></td>
 			<td v-if="isAction" class="text-center"><slot></slot></td>
 			<td v-else></td>
@@ -20,7 +23,17 @@
 			dataMethod: { type: String, required: false, default: 'get' },
 			dataOptions: { type: Object, required: false, default() { return {}; } },
 			dataSource: { type: String, required: false, default: '' },
+			dataPagination: { type: String, required: false, default: '' },
 			isAction: { type: Boolean, required: false, default: false }
+		},
+		computed: {
+			colspan() {
+				if (this.isAction) {
+					return this.dataMap.length + 1;
+				} else {
+					return this.dataMap.length;
+				}
+			}
 		},
 		methods: {
 			errorResponse(response) {
@@ -64,6 +77,9 @@
 						break;
 				}
 			}
+		},
+		created() {
+			this.$on('refresh', this.refreshData);
 		},
 		mounted() {
 			this.refreshData();

@@ -58,8 +58,6 @@ const MyPlugin = {
 				if (!this.$event) {
 					this.$event = Object.create(null);
 				}
-
-				console.log('Created!');
 			}
 		});
 	}

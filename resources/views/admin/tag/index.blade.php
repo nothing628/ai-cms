@@ -10,7 +10,6 @@
 @endsection
 
 @section('page-content')
-<swal></swal>
 <vue-block>
 	<vue-block-head :data-class="['bg-gray-lighter']">Tag List</vue-block-head>
 	<vue-block-content>
@@ -33,7 +32,7 @@
 		</vue-table>
 
 		<nav class="text-right">
-			<vue-pagination :data-max-page="20" :data-page="1"></vue-pagination>
+			<vue-pagination :data-max-page="20" :data-page="1" data-name="pagination"></vue-pagination>
 		</nav>
 	</vue-block-content>
 </vue-block>
@@ -44,7 +43,7 @@
 		<vue-form :data-class="['form-horizontal', 'push-10-t']" data-action="{{ route('api.tag.store') }}" data-name="form-tag-add" data-method="post">
 			{!! csrf_field() !!}
 			<vue-form-group>
-				<vue-input data-name="slug" :data-col="['col-md-12']" data-label="Slug" :data-required="true" data-placeholder="Slug"></vue-input>
+				<vue-input data-name="tag" :data-col="['col-md-12']" data-label="Tag" :data-required="true" data-placeholder="Tag"></vue-input>
 			</vue-form-group>
 		</vue-form>
 	</vue-modal-body>

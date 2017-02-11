@@ -34,6 +34,7 @@
 			</main>
 			<div id="page-loader"></div>
 
+			<swal></swal>
 			@include('layouts.footer')
 		</div>
 		@include('layouts.laravel')

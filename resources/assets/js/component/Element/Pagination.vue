@@ -27,6 +27,7 @@
 		},
 		props: {
 			dataClass: { type: Array, required: false, default() { return ['pagination-sm']; } },
+			dataName: { type: String, required: true },
 			dataMaxPage: { type: Number, required: false, default: 1 },
 			dataPageView: { type: Number, required: false, default: 5, validator(value) { return value >= 3 && value % 2 == 1; } },
 			dataPage: { type: Number, required: false, default: 1 },
@@ -91,7 +92,57 @@
 				if (this.page - 1 < 1) return;
 
 				this.page--;
+			},
+			'event-page': function(data) {
+				if (typeof data == 'undefined' || !("name" in data) || !("page" in data)) return;
+
+				if (data.name == this.dataName) {
+					this.changePage(data.page);
+				}
+			},
+			'event-max-page': function(data) {
+				if (typeof data == 'undefined' || !("name" in data) || !("page" in data)) return;
+
+				if (data.name == this.dataName) {
+					this.maxPage = data.page;
+				}
+			},
+			'event-next': function(data) {
+				if (typeof data == 'undefined' || !"name" in data) return;
+
+				if (data.name == this.dataName) {
+					this.goNext();
+				}
+			},
+			'event-prev': function(data) {
+				if (typeof data == 'undefined' || !"name" in data) return;
+
+				if (data.name == this.dataName) {
+					this.goPrev();
+				}
+			},
+			'event-first': function(data) {
+				if (typeof data == 'undefined' || !"name" in data) return;
+
+				if (data.name == this.dataName) {
+					this.goFirst();
+				}
+			},
+			'event-end': function (data) {
+				if (typeof data == 'undefined' || !"name" in data) return;
+
+				if (data.name == this.dataName) {
+					this.goEnd();
+				}
 			}
+		},
+		created() {
+			bus.$on('pagination-page', this['event-page']);
+			bus.$on('pagination-next', this['event-next']);
+			bus.$on('pagination-prev', this['event-prev']);
+			bus.$on('pagination-first', this['event-first']);
+			bus.$on('pagination-end', this['event-end']);
+			bus.$on('pagination-max-page', this['event-max-page']);
 		},
 		mounted() {
 			this.pagePerView = this.dataPageView;

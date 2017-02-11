@@ -21,7 +21,7 @@
 				swal(data).then(opts.onOK, opts.Cancel);
 			}
 		},
-		mounted() {
+		created() {
 			bus.$on('alert-show', this.alertShow);
 			bus.$on('confirm-show', this.confirmShow);
 		}

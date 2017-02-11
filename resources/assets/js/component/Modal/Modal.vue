@@ -69,7 +69,7 @@
 				}
 			}
 		},
-		mounted() {
+		created() {
 			bus.$on('show-modal', this.showModal);
 			bus.$on('hide-modal', this.hideModal);
 			bus.$on('toggle-modal', this.toggleModal);
