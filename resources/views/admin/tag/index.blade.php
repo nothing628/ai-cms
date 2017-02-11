@@ -13,7 +13,7 @@
 <vue-block>
 	<vue-block-head :data-class="['bg-gray-lighter']">Tag List</vue-block-head>
 	<vue-block-content>
-		<vue-modal-button data-target="modal-test" :data-class="['btn', 'btn-success']"><i class="fa fa-plus"></i> Add</vue-modal-button>
+		<vue-modal-button data-target="modal-form" :data-class="['btn', 'btn-success']"><i class="fa fa-plus"></i> Add</vue-modal-button>
 
 		<vue-table :data-class="['push-15-t']" data-name="table" data-target="bdata">
 			<vue-table-head :data-column="[
@@ -24,6 +24,12 @@
 			:data-map="[
 			{key: 'name'},
 			{key: 'count', class: 'text-center'}]" :is-action="true">
+				<template scope="props">
+					<div class="btn-group btn-group-xs">
+						<vue-action :data-item = "props.item" :is-modal="true" data-target="modal-form"><i class="fa fa-pencil text-primary"></i></vue-action>
+						<vue-action :data-item = "props.item" :is-delete="true" data-link="{{ route('api.tag.delete') }}{0}"><i class="fa fa-times text-danger"></i></vue-action>
+					</div>
+				</template>
 			</vue-table-body>
 		</vue-table>
 
@@ -34,7 +40,7 @@
 	</vue-block-content>
 </vue-block>
 
-<vue-modal data-name="modal-test" :data-class="['modal-dialog-slideup']" :is-fade="true">
+<vue-modal data-name="modal-form" :data-class="['modal-dialog-slideup']" :is-fade="true">
 	<vue-modal-head>Add New Tag</vue-modal-head>
 	<vue-modal-body>
 		<vue-form :data-class="['form-horizontal', 'push-10-t']" data-action="{{ route('api.tag.store') }}" data-name="form-tag-add" data-method="post">

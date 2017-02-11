@@ -4,9 +4,9 @@
 			<td :colspan="colspan" class="text-center text-muted">No Data Found</td>
 		</tr>
 		<tr v-for="item in items" v-else>
-			<td v-for="col in item" :class="col.class" v-html="col.value"></td>
+			<td v-for="col in item.column" :class="col.class" v-html="col.value"></td>
 			<td v-if="isAction" class="text-center">
-				<component is="vue-table-action" :data-item="item"></component>
+				<slot :item="item"></slot>
 			</td>
 			<td v-else></td>
 		</tr>
@@ -61,6 +61,7 @@
 				this.$dispatch('record-state', {from: from, to: to, total: total });
 
 				var mappedResult = data.data.map(function (val) {
+					var datamap = {};
 					var objres = that.dataMap.map(function (mapval) {
 						var format = '{0}';
 
@@ -78,7 +79,10 @@
 						}
 					});
 
-					return objres;
+					datamap.column = objres;
+					datamap.origin = val;
+
+					return datamap;
 				});
 
 				this.items = [];

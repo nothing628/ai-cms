@@ -9,19 +9,20 @@
 		},
 		methods: {
 			alertShow(opts) {
-				swal(opts).then(
-					function () {},
-					function (dismiss) {}
-				);
+				swal(opts).catch(swal.noop);
 			},
 			confirmShow(opts) {
 				var data = Object.assign({}, opts, {
 					allowEscapeKey: true,
 					allowOutsideClick: true,
-					showCloseButton: true
+					showCloseButton: true,
+					showCancelButton: true
 				});
 
-				swal(data).then(opts.onOK, opts.Cancel);
+				delete data['onOK'];
+				delete data['onCancel'];
+
+				swal(data).then(opts.onOK, opts.onCancel);
 			}
 		},
 		created() {

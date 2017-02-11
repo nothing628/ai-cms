@@ -21,6 +21,7 @@ Route::group(['prefix' => 'tag', 'as' => 'tag.'], function () {
 	Route::get('/', ['as' => 'get', 'uses' => 'TagController@get']);
 	Route::get('get/select', ['as' => 'get.select', 'uses' => 'TagController@tags']);
 	Route::post('store', ['as' => 'store', 'uses' => 'TagController@store']);
+	Route::delete('delete', ['as' => 'delete', 'uses' => 'TagController@delete']);
 });
 
 Route::group(['prefix' => 'chapter', 'as' => 'chapter.'], function () {

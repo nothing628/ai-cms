@@ -67,6 +67,12 @@ trait Taggable
 	public function getTagsAttribute()
 	{
 		return $this->tagged->map(function($item){
+			if (is_null($item->tag)) {
+				//remove tagg
+				$this->removeTag($item->tag_name);
+				return;
+			}
+
 			return $item->tag;
 		});
 	}

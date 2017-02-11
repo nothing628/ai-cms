@@ -1,9 +1,11 @@
 html.swal2-in {
     overflow-y: hidden;
+    height: auto;
 }
 
 body.swal2-in {
     overflow-y: hidden;
+    height: auto;
 }
 
 body.swal2-iosfix {
