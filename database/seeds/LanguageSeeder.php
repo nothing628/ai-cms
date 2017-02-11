@@ -21,5 +21,10 @@ class LanguageSeeder extends Seeder
 		$language->id = 'jp';
 		$language->lang = 'Japan';
 		$language->save();
+
+		$language = new Language();
+		$language->id = 'id';
+		$language->lang = 'Indonesia';
+		$language->save();
 	}
 }

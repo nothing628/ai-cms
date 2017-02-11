@@ -19,10 +19,10 @@
 			dataName: { type: String, required: false, default: '' },
 			dataAction: { type: String, required: false, default: '' },
 			dataTimeout: { type: Number, required: false, default: 15000 },
-			dataEnctype: { type: String, required: false, default: 'application/x-www-form-urlencoded' }
+			dataEnctype: { type: String, required: false, default: 'application/x-www-form-urlencoded' },
+			isFollowRedirect: { type: Boolean, default: true }
 			//application/x-www-form-urlencoded
 			//multipart/form-data
-			//text/plain
 		},
 		computed: {
 			selectorName() {
@@ -33,9 +33,14 @@
 			}
 		},
 		methods: {
-			formObject() {
+			formData() {
 				var form = document.forms[this.dataName];
 				var formData = new FormData(form);
+
+				return formData;
+			},
+			formObject() {
+				var formData = this.formData();
 				var emp = {};
 
 				formData.forEach(function (value, key) {
@@ -46,6 +51,7 @@
 			},
 			onSuccess(response) {
 				var res = response.data;
+				var redirect_url = ('redirect_url' in res)?res.redirect_url:'';
 
 				if (res.success) {
 					var title = res.hasOwnProperty('title')?res.title:'Success';
@@ -57,6 +63,10 @@
 					bus.$emit('refresh');
 					bus.$emit('input-clear');
 				}
+
+				if (this.isFollowRedirect && redirect_url != '') {
+					window.location = redirect_url;
+				}
 			},
 			onFailed(response) {
 				var code = response.status.toString();
@@ -65,12 +75,17 @@
 				bus.$emit('hide-modal', '');
 				bus.$emit('alert-show', {title: code, text: msg, type: 'error'});
 				bus.$emit('refresh');
-				bus.$emit('input-clear');
 			},
 			submit() {
 				//Handle Submit Here
+				var formData = {};
 
-				var formData = this.formObject();
+				if (this.dataEnctype == 'multipart/form-data') {
+					formData = this.formData();
+				} else {
+					formData = this.formObject();
+				}
+
 				switch (this.methodName) {
 					case 'POST':
 						this.$http.post(this.dataAction, formData, {

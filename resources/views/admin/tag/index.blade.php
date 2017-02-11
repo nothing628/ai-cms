@@ -27,7 +27,7 @@
 				<template scope="props">
 					<div class="btn-group btn-group-xs">
 						<vue-action :data-item = "props.item" :is-modal="true" data-target="modal-form"><i class="fa fa-pencil text-primary"></i></vue-action>
-						<vue-action :data-item = "props.item" :is-delete="true" data-link="{{ route('api.tag.delete') }}{0}"><i class="fa fa-times text-danger"></i></vue-action>
+						<vue-action :data-item = "props.item" :is-delete="true" data-link="{{ route('api.tag.delete') }}"><i class="fa fa-times text-danger"></i></vue-action>
 					</div>
 				</template>
 			</vue-table-body>

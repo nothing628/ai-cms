@@ -15,7 +15,7 @@
 	<vue-block-content>
 		<a href="{{ route('admin.manga.create') }}" class="btn btn-success"><i class="fa fa-upload"></i> Upload</a>
 
-		<vue-table :data-class="['push-15-t']">
+		<vue-table :data-class="['push-15-t']" data-name="table" data-target="bdata">
 			<vue-table-head :data-column="[
 			'Title',
 			{value:'Status', class:'text-center'},
@@ -30,17 +30,18 @@
 			{key: 'totalPage', class: 'text-center'},
 			{key: 'views', class: 'text-center'}
 			]" :is-action="true">
-				<div class="btn-group btn-group-xs">
-					<a data-toggle="tooltip" title="" class="btn btn-default" data-original-title="View"><i class="fa fa-eye"></i></a>
-					<a data-toggle="tooltip" title="" class="btn btn-default" data-original-title="Edit"><i class="fa fa-pencil text-primary"></i></a>
-					<a data-toggle="tooltip" title="" class="btn btn-default" data-original-title="Delete"><i class="fa fa-times text-danger"></i></a>
-				</div>
+				<template scope="props">
+					<div class="btn-group btn-group-xs">
+						<vue-action :data-item = "props.item" :is-delete="true" data-link="{{ route('api.manga.delete') }}"><i class="fa fa-times text-danger"></i></vue-action>
+					</div>
+				</template>
 			</vue-table-body>
 		</vue-table>
 
-		<nav class="text-right">
-			<vue-pagination :data-max-page="20" :data-page="1"></vue-pagination>
-		</nav>
+		<div class="row">
+			<div class="col-md-6"><record-status data-name="bdata"></record-status></div>
+			<div class="col-md-6"><vue-pagination data-name="bdata" data-target="table"></vue-pagination></div>
+		</div>
 	</vue-block-content>
 </vue-block>
 @endsection

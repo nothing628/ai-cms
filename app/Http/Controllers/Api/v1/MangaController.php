@@ -6,18 +6,21 @@ use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use App\Models\Manga;
 use App\Models\Language;
+use Exception;
+use Auth;
 
 class MangaController extends Controller
 {
 	public function get(Request $request)
 	{
-		$manga = Manga::all();
+		$manga = Manga::orderBy('created_at', 'desc')->paginate(15);
 
 		return response()->json($manga);
 	}
 
     public function store(Request $request)
 	{
+		$tags = $request->input('tags');
 		$meta = [];
 		$meta['artist'] = $request->input('artist');
 		$meta['author'] = $request->input('author');
@@ -27,6 +30,8 @@ class MangaController extends Controller
 		$manga->title = $request->input('title');
 		$manga->category_id = $request->input('category_id');
 		$manga->user_id = Auth::user()->id;
+		$manga->lang_id = $request->input('lang_id');
+		$manga->is_completed = $request->input('status');
 		$manga->meta = $meta;
 
 		if ($request->file('cover')->isValid()) {
@@ -37,8 +42,13 @@ class MangaController extends Controller
 			$manga->cover = $newfilename;
 		}
 
-		$manga->save();
-		return redirect()->route('admin.manga.index');
+		try {
+			$manga->save();
+			$manga->tag($tags);
+			return response()->json(['success' => true, 'message' => 'Success save manga', 'redirect_url' => route('admin.manga.index')]);
+		} catch (Exception $ex) {
+			return response()->json(['success' => false, 'message' => $ex->getMessage()]);
+		}
 	}
 
 	public function update($manga_id, Request $request)
