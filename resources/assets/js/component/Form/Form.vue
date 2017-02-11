@@ -2,6 +2,7 @@
 	<form :enctype="dataEnctype"
 	:action="dataAction"
 	:class="dataClass" :method = "dataMethod" @submit.stop.prevent="submit" :id="dataName">
+		<button type="submit" style="display: none;"></button>
 		<slot></slot>
 	</form>
 </template>
@@ -76,7 +77,7 @@
 				bus.$emit('alert-show', {title: code, text: msg, type: 'error'});
 				bus.$emit('refresh');
 			},
-			submit() {
+			submit(e) {
 				//Handle Submit Here
 				var formData = {};
 
@@ -120,7 +121,8 @@
 			formSubmit(target) {
 				if (this.dataName == target) {
 					//Need to submit
-					this.submit();
+					//this.submit();
+					document.querySelector('#' + this.dataName +' > button').click();
 				}
 			}
 		},
