@@ -1,10 +1,10 @@
 <template>
 	<div :class="dataCol">
 		<div class="form-material form-material-primary" :class="{'floating':isFloating}">
-			<input v-if="dataType == 'text'" type="text" :name="dataName" :class="dataClass" :required="dataRequired" :placeholder="valPlaceholder" v-model="currentVal">
-			<input v-if="dataType == 'password'" type="password" :name="dataName" :class="dataClass" :required="dataRequired" :placeholder="valPlaceholder" v-model="currentVal">
-			<input v-if="dataType == 'email'" type="email" :name="dataName" :class="dataClass" :required="dataRequired" :placeholder="valPlaceholder" v-model="currentVal">
-			<label for="field-title">{{ dataLabel }}</label>
+			<input v-if="dataType == 'text'" type="text" :name="dataName" :id="dataName" :class="dataClass" :required="dataRequired" :placeholder="valPlaceholder" v-model="currentVal">
+			<input v-if="dataType == 'password'" type="password" :name="dataName" :id="dataName" :class="dataClass" :required="dataRequired" :placeholder="valPlaceholder" v-model="currentVal">
+			<input v-if="dataType == 'email'" type="email" :name="dataName" :id="dataName" :class="dataClass" :required="dataRequired" :placeholder="valPlaceholder" v-model="currentVal">
+			<label :for="dataName">{{ dataLabel }}</label>
 		</div>
 	</div>
 </template>

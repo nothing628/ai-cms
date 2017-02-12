@@ -32,6 +32,7 @@
 			]" :is-action="true">
 				<template scope="props">
 					<div class="btn-group btn-group-xs">
+						<vue-action :data-item = "props.item" data-link="{{ route('admin.manga.chapter') }}/{0}"><i class="fa fa-pencil text-primary"></i></vue-action>
 						<vue-action :data-item = "props.item" :is-delete="true" data-link="{{ route('api.manga.delete') }}"><i class="fa fa-times text-danger"></i></vue-action>
 					</div>
 				</template>

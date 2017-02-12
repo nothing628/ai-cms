@@ -17,27 +17,17 @@ bg-white
 					<h1>Sign In</h1>
 					<p class="text-muted push-15-t">Please login to access all manga</p>
 				</div>
-				<form class="form-horizontal" method="post">
+				<vue-form :data-class="['form-horizontal']" data-enctype="multipart/form-data" data-name="form-create" :is-raw="true">
 					{!! csrf_field() !!}
-					<div class="form-group">
-						<div class="col-xs-12">
-							<div class="form-material form-material-primary floating">
-								<input type="email" name="email" class="form-control">
-								<label>Email</label>
-							</div>
-						</div>
-					</div>
+					<vue-form-group>
+						<vue-input data-name="email" data-type="email" data-label="Email" :data-required="true" :data-col="['col-xs-12']" :is-floating="true"></vue-input>
+					</vue-form-group>
 
-					<div class="form-group">
-						<div class="col-xs-12">
-							<div class="form-material form-material-primary floating">
-								<input type="password" name="password" class="form-control">
-								<label>Password</label>
-							</div>
-						</div>
-					</div>
+					<vue-form-group>
+						<vue-input data-name="password" data-type="password" data-label="Password" :data-required="true" :data-col="['col-xs-12']" :is-floating="true"></vue-input>
+					</vue-form-group>
 
-					<div class="form-group">
+					<vue-form-group>
 						<div class="col-xs-6">
 							<label class="css-input switch switch-sm switch-primary">
 								<input type="checkbox" name="test" value="test">
@@ -52,14 +42,14 @@ bg-white
 								<a href="{{ route('register') }}">Register</a>
 							</div>
 						</div>
-					</div>
+					</vue-form-group>
 
-					<div class="form-group">
+					<vue-form-group>
 						<div class="col-xs-12 col-sm-6 col-sm-offset-3 col-md-4 col-md-offset-4">
-							<button class="btn btn-block btn-success btn-flat" type="submit">Sign In</button>
+							<vue-form-submit :data-class="['btn-success', 'btn-block']">Sign In</vue-form-submit>
 						</div>
-					</div>
-				</form>
+					</vue-form-group>
+				</vue-form>
 			</div>
 		</div>
 	</section>

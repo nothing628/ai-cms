@@ -1,6 +1,6 @@
 <template>
 	<form :enctype="dataEnctype"
-	:action="dataAction"
+	:action="actionUrl"
 	:class="dataClass" :method = "dataMethod" @submit.stop.prevent="submit" :id="dataName">
 		<button type="submit" style="display: none;"></button>
 		<slot></slot>
@@ -21,11 +21,19 @@
 			dataAction: { type: String, required: false, default: '' },
 			dataTimeout: { type: Number, required: false, default: 15000 },
 			dataEnctype: { type: String, required: false, default: 'application/x-www-form-urlencoded' },
-			isFollowRedirect: { type: Boolean, default: true }
+			isFollowRedirect: { type: Boolean, default: true },
+			isRaw: { type: Boolean, default: false }
 			//application/x-www-form-urlencoded
 			//multipart/form-data
 		},
 		computed: {
+			actionUrl() {
+				if (this.dataAction == '') {
+					return window.location.href;
+				}
+
+				return this.dataAction;
+			},
 			selectorName() {
 				return '#' + this.dataName;
 			},
@@ -55,15 +63,16 @@
 				var redirect_url = ('redirect_url' in res)?res.redirect_url:'';
 
 				if (res.success) {
-					var title = res.hasOwnProperty('title')?res.title:'Success';
-					var text = res.hasOwnProperty('message')?res.message:'Success save your data';
-					var type = res.hasOwnProperty('type')?res.type:'success';
-
 					bus.$emit('hide-modal', '');
-					bus.$emit('alert-show', {title:title, text: text, type: type, timer: 800});
 					bus.$emit('refresh');
 					bus.$emit('input-clear');
 				}
+
+				var title = res.hasOwnProperty('title')?res.title:'Success';
+				var text = res.hasOwnProperty('message')?res.message:'Success save your data';
+				var type = res.hasOwnProperty('type')?res.type:'success';
+
+				bus.$emit('alert-show', {title:title, text: text, type: type, timer: 800});
 
 				if (this.isFollowRedirect && redirect_url != '') {
 					window.location = redirect_url;
@@ -81,6 +90,11 @@
 				//Handle Submit Here
 				var formData = {};
 
+				if (this.isRaw) {
+					document.forms[this.dataName].submit();
+					return;
+				}
+
 				if (this.dataEnctype == 'multipart/form-data') {
 					formData = this.formData();
 				} else {
@@ -89,30 +103,30 @@
 
 				switch (this.methodName) {
 					case 'POST':
-						this.$http.post(this.dataAction, formData, {
+						this.$http.post(this.actionUrl, formData, {
 							timeout: this.dataTimeout,
 							emulateJSON: true
 						}).then(this.onSuccess, this.onFailed);
 					break;
 					case 'GET':
-						this.$http.get(this.dataAction, {
+						this.$http.get(this.actionUrl, {
 							body: formData,
 							timeout: this.dataTimeout
 						}).then(this.onSuccess, this.onFailed);
 					break;
 					case 'DELETE':
-						this.$http.delete(this.dataAction, {
+						this.$http.delete(this.actionUrl, {
 							body: formData,
 							timeout: this.dataTimeout
 						}).then(this.onSuccess, this.onFailed);
 					break;
 					case 'PUT':
-						this.$http.put(this.dataAction, formData, {
+						this.$http.put(this.actionUrl, formData, {
 							timeout: this.dataTimeout
 						}).then(this.onSuccess, this.onFailed);
 					break;
 					case 'PATCH':
-						this.$http.patch(this.dataAction, formData, {
+						this.$http.patch(this.actionUrl, formData, {
 							timeout: this.dataTimeout
 						}).then(this.onSuccess, this.onFailed);
 					break;

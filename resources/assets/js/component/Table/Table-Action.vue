@@ -31,6 +31,7 @@
 				return this.dataLink.replace(/\{0\}/gi,'');
 			},
 			link() {
+				var format = this.dataLink;
 				var keyval = this.keyval;
 				var linkme = format.format(keyval);
 
@@ -90,13 +91,14 @@
 				var res = response.data;
 
 				if (res.success) {
-					var title = res.hasOwnProperty('title')?res.title:'Success';
-					var text = res.hasOwnProperty('message')?res.message:'Success delete your data';
-					var type = res.hasOwnProperty('type')?res.type:'success';
-
-					bus.$emit('alert-show', {title:title, text: text, type: type, timer: 800});
 					bus.$emit('refresh');
 				}
+
+				var title = res.hasOwnProperty('title')?res.title:'Success';
+				var text = res.hasOwnProperty('message')?res.message:'Success delete your data';
+				var type = res.hasOwnProperty('type')?res.type:'success';
+
+				bus.$emit('alert-show', {title:title, text: text, type: type, timer: 800});
 			},
 			deleteFailed(response) {
 				var code = response.status.toString();

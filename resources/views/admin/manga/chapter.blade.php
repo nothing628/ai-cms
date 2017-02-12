@@ -77,7 +77,6 @@
 			<td>{{ $chapter->pages->count() }}</td>
 			<td>
 				<a href="{{ route('admin.chapter.edit', $chapter->id) }}">Edit</a>
-				<a href="{{ route('admin.chapter.delete', $chapter->id) }}">Delete</a>
 			</td>
 		</tr>
 		@endforeach
