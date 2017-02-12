@@ -36,7 +36,7 @@ class MangaController extends Controller
 
 		if ($request->file('cover')->isValid()) {
 			$cover = $request->file('cover');
-			$newfilename = snake_case($manga->title . '.' . $cover->extension());
+			$newfilename = str_slug($manga->title) . '.' . $cover->extension();
 			$path = $cover->move(storage_path('images/cover'), $newfilename);
 			
 			$manga->cover = $newfilename;
@@ -47,7 +47,7 @@ class MangaController extends Controller
 			$manga->tag($tags);
 			return response()->json(['success' => true, 'message' => 'Success save manga', 'redirect_url' => route('admin.manga.index')]);
 		} catch (Exception $ex) {
-			return response()->json(['success' => false, 'message' => $ex->getMessage()]);
+			return response()->json(['success' => false, 'message' => $ex->getMessage(), 'type' => 'error']);
 		}
 	}
 
@@ -81,15 +81,17 @@ class MangaController extends Controller
 		return redirect()->route('admin.manga.index');
 	}
 
-	public function delete($manga_id)
+	public function delete(Request $request)
 	{
-		$manga = Manga::find($manga_id);
+		$manga = Manga::find($request->id);
 
 		if ($manga) {
 			$manga->delete();
+
+			return response()->json(['success' => true, 'message' => 'Success delete manga']);
 		}
 
-		return redirect()->route('admin.manga.index');
+		return response()->json(['success' => false, 'message' => 'Manga Not Found', 'type' => 'error']);
 	}
 
 	public function lang()

@@ -50,6 +50,6 @@ class TagController extends Controller
 			return response()->json(['success' => true, 'message' => 'Success delete tag']);
 		}
 
-		return response()->json(['success' => false, 'message' => 'Tag Not Found']);		
+		return response()->json(['success' => false, 'message' => 'Tag Not Found', 'type' => 'error']);
 	}
 }

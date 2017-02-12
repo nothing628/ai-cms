@@ -12,7 +12,7 @@ Route::group(['prefix' => 'admin', 'as' => 'admin.', 'middleware' => ['auth', 'a
 	Route::get('manga/staff_pick', ['as' => 'manga.staff', 'uses' => 'MangaController@staffPick']);
 	Route::get('manga/crawl', ['as' => 'manga.crawl', 'uses' => 'MangaController@crawl']);
 
-	Route::get('manga/{manga_id}', ['as' => 'manga.chapter', 'uses' => 'MangaController@mangaChapter']);
+	Route::get('manga/{manga_id?}', ['as' => 'manga.chapter', 'uses' => 'MangaController@mangaChapter']);
 	Route::get('manga/{manga_id}/chapter/{chapter_num}', ['as' => 'manga.page', 'uses' => 'AdminController@mangaPage']);
 
 	Route::get('chapter/{chapter_id}', ['as' => 'chapter', 'uses' => 'ChapterController@index']);
