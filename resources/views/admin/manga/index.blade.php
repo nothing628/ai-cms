@@ -10,8 +10,8 @@
 @endsection
 
 @section('page-content')
-<vue-block>
-	<vue-block-head :data-class="['bg-gray-lighter']">All Manga</vue-block-head>
+<vue-block :is-themed="true">
+	<vue-block-head :data-class="['bg-modern-dark']">All Manga</vue-block-head>
 	<vue-block-content>
 		<a href="{{ route('admin.manga.create') }}" class="btn btn-success"><i class="fa fa-upload"></i> Upload</a>
 

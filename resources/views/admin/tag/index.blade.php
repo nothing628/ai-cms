@@ -10,8 +10,8 @@
 @endsection
 
 @section('page-content')
-<vue-block>
-	<vue-block-head :data-class="['bg-gray-lighter']">Tag List</vue-block-head>
+<vue-block :is-themed="true">
+	<vue-block-head :data-class="['bg-modern-dark']" :with-refresh="true">Tag List</vue-block-head>
 	<vue-block-content>
 		<vue-modal-button data-target="modal-form" :data-class="['btn', 'btn-success']"><i class="fa fa-plus"></i> Add</vue-modal-button>
 

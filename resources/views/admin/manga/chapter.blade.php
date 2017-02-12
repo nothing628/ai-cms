@@ -11,8 +11,8 @@
 @endsection
 
 @section('page-content')
-<vue-block>
-	<vue-block-head :data-class="['bg-gray-lighter']">Detail</vue-block-head>
+<vue-block :is-themed="true">
+	<vue-block-head :data-class="['bg-modern-dark']">Detail</vue-block-head>
 	<vue-block-content>
 		<div class="row">
 			<div class="col-md-3">
@@ -57,8 +57,8 @@
 	</vue-block-content>
 </vue-block>
 
-<vue-block>
-	<vue-block-head :data-class="['bg-gray-lighter']" :with-options="true">Chapter List</vue-block-head>
+<vue-block :is-themed="true">
+	<vue-block-head :data-class="['bg-modern-dark']" :with-refresh="true">Chapter List</vue-block-head>
 	<vue-block-content>
 		<a href="{{ route('admin.chapter.create', $manga->id) }}" class="btn btn-success btn-line btn-flat">
 			<i class="fa fa-upload"></i> Upload New Chapter
