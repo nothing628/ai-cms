@@ -3,14 +3,12 @@
 		<div class="drop-area">
 			<label for="fileselect">Files to upload:</label>
 			<input v-show="false" type="file" @change.prevent.stop="FileSelectHandler" id="fileselect" name="fileselect[]" multiple="multiple" />
-			<div @click="FileBrowse" class="dropzone dz-clickable" 
+			<div @click="FileBrowse" class="dropzone dz-clickable" id="list"
 			@dragover.prevent.stop="FileDragHover"
 			@dragleave.prevent.stop="FileDragHover"
 			@drop.prevent.stop="FileSelectHandler">
 				<div class="dz-default dz-message"><span>Drop files here to upload</span></div>
 			</div>
-
-			<div id="list"></div>
 		</div>
 	</div>
 </template>
@@ -19,6 +17,16 @@
 	.dropzone .dz-message {
 		text-align: center;
 		margin: 2em 0;
+	}
+
+	.dropzone .dz-preview .dz-image {
+		border-radius: 20px;
+		overflow: hidden;
+		width: 150px;
+		height: 150px;
+		position: relative;
+		display: block;
+		z-index: 10;
 	}
 
 	.dz-clickable {
@@ -59,7 +67,8 @@
 				var that = this;
 
 				reader.onload = function (e) {
-					var span = document.createElement('span');
+					var span = document.createElement('div');
+					var dzimage = document.createElement('div');
 					var img = document.createElement("img");
 
 					img.onload = function () {
@@ -95,10 +104,16 @@
 						var thumbnail = canvas.toDataURL("image/png");
 
 						thumb.src = thumbnail;
-						span.insertBefore(thumb, null);
+						dzimage.insertBefore(thumb, null);
 					}
 
 					img.src = e.target.result;
+
+					dzimage.classList.add('dz-image');
+					span.classList.add('dz-preview');
+					span.classList.add('dz-processing');
+					span.classList.add('dz-image-preview');
+					span.insertBefore(dzimage, null);
 
 					document.getElementById('list').insertBefore(span, null);
 				};
@@ -158,8 +173,6 @@
 				for(var i = 0; i < files.length; i++) {
 					this.CreateThumbnail(files[i]);
 				}
-
-				console.log(files);
 			}
 		},
 		mounted() {
