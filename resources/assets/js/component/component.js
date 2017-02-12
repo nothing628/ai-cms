@@ -19,6 +19,7 @@ Vue.component('vue-input',		require('./Input/Input.vue'));
 Vue.component('vue-file',		require('./Input/File.vue'));
 Vue.component('vue-select',		require('./Input/Select.vue'));
 Vue.component('vue-textarea',	require('./Input/Textarea.vue'));
+Vue.component('vue-dropzone',	require('./Input/Dropzone.vue'));
 
 Vue.component('vue-modal',		require('./Modal/Modal.vue'));
 Vue.component('vue-modal-head',	require('./Modal/Modal-Head.vue'));
