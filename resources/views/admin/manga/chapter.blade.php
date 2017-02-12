@@ -58,7 +58,7 @@
 </vue-block>
 
 <vue-block>
-	<vue-block-head :data-class="['bg-gray-lighter']">Chapter List</vue-block-head>
+	<vue-block-head :data-class="['bg-gray-lighter']" :with-options="true">Chapter List</vue-block-head>
 	<vue-block-content>
 		<a href="{{ route('admin.chapter.create', $manga->id) }}" class="btn btn-success btn-line btn-flat">
 			<i class="fa fa-upload"></i> Upload New Chapter
