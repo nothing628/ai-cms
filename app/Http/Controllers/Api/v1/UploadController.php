@@ -7,5 +7,8 @@ use App\Http\Controllers\Controller;
 
 class UploadController extends Controller
 {
-    //
+	public function page(Request $request)
+	{
+		return response()->json(['success' => true]);
+	}
 }

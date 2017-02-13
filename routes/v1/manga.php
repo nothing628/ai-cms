@@ -34,3 +34,7 @@ Route::group(['prefix' => 'download', 'as' => 'download.'], function () {
 	Route::post('/', ['uses' => 'DownloadController@download', 'as' => 'download']);
 	Route::post('list', ['uses' => 'DownloadController@listPage', 'as' => 'download.list']);
 });
+
+Route::group(['prefix' => 'upload', 'as' => 'upload.'], function () {
+	Route::post('page', ['uses' => 'UploadController@page', 'as' => 'page']);
+});
