@@ -25,7 +25,7 @@
 				<vue-file data-name="cover" data-label="Cover" :data-col="['col-md-6', 'col-md-offset-3']"></vue-file>
 			</vue-form-group>
 			<vue-form-group>
-				<vue-dropzone></vue-dropzone>
+				<vue-dropzone :data-col="['col-md-9','col-md-offset-3']"></vue-dropzone>
 			</vue-form-group>
 			<vue-form-group>
 				<div class="col-md-offset-2 col-md-9">
