@@ -27,8 +27,7 @@
 	export default {
 		data() {
 			return {
-				files: [],
-				uploader: null
+				files: []
 			};
 		},
 		props: {
@@ -83,6 +82,9 @@
 			Error(up, err) {
 				//
 			}
+		},
+		created() {
+			this.uploader = null;
 		},
 		mounted() {
 			if (!this.isAdvancedUpload()) {
