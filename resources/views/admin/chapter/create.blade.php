@@ -26,12 +26,18 @@
 			</vue-form-group>
 			<vue-form-group>
 				<vue-dropzone :data-col="['col-md-9','col-md-offset-3']"
-				data-upload="{{ route('api.upload.page') }}"></vue-dropzone>
+				data-upload="{{ route('api.upload.page') }}"
+				data-name="pages"
+				:data-options="{path:'manga'}"
+				:submit-after-complete="true"></vue-dropzone>
+				<div class="col-md-3 col-md-offset-3">
+					<vue-dropzone-button><i class="fa fa-upload"></i> Upload</vue-dropzone-button>
+				</div>
 			</vue-form-group>
 			<vue-form-group>
-				<div class="col-md-offset-2 col-md-9">
-					<button class="btn btn-success btn-flat btn-line">Submit</button>
-					<a href="{{ route('admin.manga.chapter', $manga->id) }}" class="btn btn-danger btn-line btn-flat">Cancel</a>
+				<div class="col-md-offset-3 col-md-9">
+					<button class="btn btn-success">Submit</button>
+					<a href="{{ route('admin.manga.chapter', $manga->id) }}" class="btn btn-danger">Cancel</a>
 				</div>
 			</vue-form-group>
 		</form>

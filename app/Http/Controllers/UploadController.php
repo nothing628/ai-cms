@@ -3,7 +3,6 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-use App\UploadHandler;
 use Pion\Laravel\ChunkUpload\Receiver\FileReceiver;
 use Pion\Laravel\ChunkUpload\Handler\ChunksInRequestUploadHandler;
 use Pion\Laravel\ChunkUpload\Handler\HandlerFactory;

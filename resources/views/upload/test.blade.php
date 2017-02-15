@@ -30,7 +30,7 @@
 		headers: {
 			'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
 		},
-
+		file_data_name: 'file',
 		filters: {
 			max_file_size: '100mb',
 			mime_types: [{
