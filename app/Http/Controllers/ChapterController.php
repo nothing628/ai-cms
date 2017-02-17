@@ -31,32 +31,6 @@ class ChapterController extends Controller
 		return redirect()->back()->withErrors(['manga' => 'Manga Not Found']);
 	}
 
-	public function store(Request $request)
-	{
-		$manga = Manga::find($request->input('manga_id'));
-
-		if ($manga) {
-			$chapter = new Chapter;
-			$chapter->manga_id = $manga->id;
-			$chapter->chapter_title = $request->input('title');
-			$chapter->chapter_num = $manga->chapters->count() + 1;
-
-			if ($request->file('cover')->isValid()) {
-				$cover = $request->file('cover');
-				$newfilename = snake_case($manga->title . '.' . $chapter->chapter_title . '.' . $cover->extension());
-				$path = $cover->move(storage_path('images/cover'), $newfilename);
-
-				$chapter->cover = $newfilename;
-			}
-
-			$chapter->save();
-
-			return redirect()->route('admin.manga.chapter', $manga->id);
-		}
-
-		return redirect()->back()->withErrors(['manga' => 'Manga Not Found']);
-	}
-
 	public function delete($chapter_id)
 	{
 		$chapter = Chapter::find($chapter_id);

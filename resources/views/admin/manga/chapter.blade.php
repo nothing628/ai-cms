@@ -63,30 +63,34 @@
 		<a href="{{ route('admin.chapter.create', $manga->id) }}" class="btn btn-success btn-line btn-flat">
 			<i class="fa fa-upload"></i> Upload New Chapter
 		</a>
-		<table class="table table-bordered" style="margin-top: 15px;">
-			<thead>
-				<tr>
-					<th>#</th>
-					<th>Chapter Title</th>
-					<th>Chapter Number</th>
-					<th>Page</th>
-					<th>Action</th>
-				</tr>
-			</thead>
-			<tbody>
-				@foreach($manga->chapters as $chapter)
-				<tr>
-					<td></td>
-					<td>{{ $chapter->chapter_title }}</td>
-					<td>{{ $chapter->chapter_num }}</td>
-					<td>{{ $chapter->pages->count() }}</td>
-					<td>
-						<a href="{{ route('admin.chapter.edit', $chapter->id) }}">Edit</a>
-					</td>
-				</tr>
-				@endforeach
-			</tbody>
-		</table>
+
+		<vue-table :data-class="['push-15-t']" data-name="table" data-target="bdata">
+			<vue-table-head :data-column="[
+			'Chapter Title',
+			{value:'Chapter Number', class:'text-center'},
+			{value:'Page', class:'text-center'},
+			{value:'Release At', class:'text-center'},
+			{value:'Action', class:'text-center'}]"></vue-table-head>
+			<vue-table-body data-source="{{ route('api.chapter.get') }}"
+			:data-options="{'manga_id': {{$manga->id}} }"
+			:data-map="[
+			'chapter_title',
+			{key: 'chapter_num', class: 'text-center'},
+			{key: 'page', class: 'text-center'},
+			{key: 'release_at', class: 'text-center'}
+			]" :is-action="true">
+				<template scope="props">
+					<div class="btn-group btn-group-xs">
+						<vue-action :data-item = "props.item" :is-delete="true" data-link="{{ route('api.chapter.delete') }}"><i class="fa fa-times text-danger"></i></vue-action>
+					</div>
+				</template>
+			</vue-table-body>
+		</vue-table>
+
+		<div class="row">
+			<div class="col-md-6"><record-status data-name="bdata"></record-status></div>
+			<div class="col-md-6"><vue-pagination data-name="bdata" data-target="table"></vue-pagination></div>
+		</div>
 	</vue-block-content>
 </vue-block>
 @endsection
