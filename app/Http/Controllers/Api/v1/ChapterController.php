@@ -43,6 +43,11 @@ class ChapterController extends Controller
 		return response()->json(['success' => false, 'message' => 'Manga Not Found', 'type' => 'error']);
 	}
 
+	public function update(Request $request)
+	{
+		//
+	}
+
 	public function delete(Request $request)
 	{
 		$chapter = Chapter::find($request->id);

@@ -302,8 +302,16 @@
 	display:block;
 	z-index:10
 }
-.dropzone .dz-preview .dz-image img {
+.dropzone .dz-preview .dz-image img,
+.dropzone .dz-preview .dz-image span {
 	display:block
+}
+
+.dropzone .dz-preview .dz-image span {
+	width: 120px;
+	height: 120px;
+	text-align: center;
+	padding: 23px;
 }
 .dropzone .dz-preview.dz-success .dz-success-mark {
 	-webkit-animation:passing-through 3s cubic-bezier(.77,0,.175,1);

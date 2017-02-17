@@ -15,11 +15,8 @@ Route::group(['prefix' => 'admin', 'as' => 'admin.', 'middleware' => ['auth', 'a
 	Route::get('manga/{manga_id?}', ['as' => 'manga.chapter', 'uses' => 'MangaController@mangaChapter']);
 	Route::get('manga/{manga_id}/chapter/{chapter_num}', ['as' => 'manga.page', 'uses' => 'AdminController@mangaPage']);
 
-	Route::get('chapter/{chapter_id}', ['as' => 'chapter', 'uses' => 'ChapterController@index']);
 	Route::get('chapter/create/{manga_id}', ['as' => 'chapter.create', 'uses' => 'ChapterController@create']);
-	Route::get('chapter/{chapter_id}/edit', ['as' => 'chapter.edit', 'uses' => 'ChapterController@edit']);
-
-	Route::post('page/{chapter_id}', ['as' => 'page.upload', 'uses' => 'PageController@upload']);
+	Route::get('chapter/upload/{chapter_id?}', ['as' => 'chapter.upload', 'uses' => 'ChapterController@upload']);
 
 	Route::get('tags', ['as' => 'tags', 'uses' => 'TagController@index']);
 	Route::get('tags/create', ['as' => 'tags.create', 'uses' => 'TagController@create']);

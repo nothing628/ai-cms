@@ -1,6 +1,9 @@
 <template>
 	<div class="dz-preview dz-processing dz-image-preview" :class="classme">
-		<div class="dz-image"><img :alt="name" :src="thumbnail"></div>
+		<div class="dz-image">
+			<img v-if="needthumb" :alt="name" :src="thumbnail">
+			<span v-else><i class="fa fa-5x" :class="icon_thumb"></i></span>
+		</div>
 		<div class="dz-details">
 			<div class="dz-size"><span><strong>{{ size }}</strong> MB</span></div>
 			<div class="dz-filename"><span>{{ name }}</span></div>
@@ -30,7 +33,8 @@
 				error_msg: '',
 				is_error: false,
 				is_uploading: false,
-				thumbnail: null
+				thumbnail: null,
+				icon_thumb: 'fa-file'
 			};
 		},
 		props: {
@@ -46,6 +50,27 @@
 			isComplete: { type: Boolean, required: false, default: true }
 		},
 		computed: {
+			needthumb() {
+				var result = false;
+
+				if (this.enableThumb) {
+					switch (this.dataFile.type) {
+						case 'image/jpeg':
+						case 'image/png':
+							this.CreateThumbnail(this.dataFile);
+							result = true;
+						break;
+						case 'application/zip':
+						case 'application/x-rar':
+							this.icon_thumb = 'fa-archive';
+						break;
+						default:
+						//generate default thumbnail
+					}
+				}
+
+				return result;
+			},
 			size() {
 				return (this.dataSize / Math.pow(1024, 2)).toFixed(1);
 			},
@@ -154,21 +179,6 @@
 		},
 		mounted() {
 			this.error_msg = this.dataError;
-
-			if (this.enableThumb) {
-				switch (this.dataFile.type) {
-					case 'image/jpeg':
-					case 'image/png':
-						this.CreateThumbnail(this.dataFile);
-					break;
-					case 'application/zip':
-					case 'application/x-rar':
-						console.log('this file is archive');
-					break;
-					default:
-					//generate default thumbnail
-				}
-			}
 		}
 	}
 </script>

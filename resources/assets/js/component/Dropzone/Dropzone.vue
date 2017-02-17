@@ -2,7 +2,7 @@
 	<div :class="dataCol">
 		<div class="drop-area">
 			<label for="fileselect">Files to upload:</label>
-			<input v-show="false" type="file" @change.prevent.stop="FileSelectHandler" id="fileselect" multiple="multiple" />
+			<input v-show="false" type="file" :accept="dataAccept" @change.prevent.stop="FileSelectHandler" id="fileselect" multiple="multiple" />
 			<div @click="FileBrowse" class="dropzone dz-clickable" :class="classme"
 			@dragover.prevent.stop="FileDragHover"
 			@dragleave.prevent.stop="FileDragHover"
@@ -36,7 +36,7 @@
 		},
 		props: {
 			dataCol: { type: Array, required: false, default() { return ['col-md-6']; }},
-			dataAllow: { type: Array, required: false, default() { return ['image/jpeg', 'image/png']; }},
+			dataAccept: { type: String, default: 'image/*' },
 			dataUpload: { type: String, required: true },
 			dataName: { type: String, required: true },
 			dataMaxSize: { type: String, default: '100mb' },
@@ -81,7 +81,7 @@
 						message_err: ''
 					};
 
-					if (this.dataAllow.indexOf(files[i].type) == -1) {
+					if (files[i].type.match(this.dataAccept) == null) {
 						console.log('this file is not allowed');
 						continue;
 					}

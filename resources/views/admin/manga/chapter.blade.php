@@ -80,7 +80,8 @@
 			{key: 'release_at', class: 'text-center'}
 			]" :is-action="true">
 				<template scope="props">
-					<div class="btn-group btn-group-xs">
+					<div class="btn-group btn-group-sm">
+						<vue-action :data-item = "props.item" data-link="{{ route('admin.chapter.upload') }}/{0}"><i class="fa fa-upload text-primary"></i></vue-action>
 						<vue-action :data-item = "props.item" :is-delete="true" data-link="{{ route('api.chapter.delete') }}"><i class="fa fa-times text-danger"></i></vue-action>
 					</div>
 				</template>
