@@ -43,6 +43,7 @@
 			dataOptions: { type: Object, default() { return {}; }},
 			dataChunkSize: { type: String, default: '500kb' },
 			dataMessage: { type: String, default: 'Drop files here to upload' },
+			isAutoUpload: { type: Boolean, default: false },
 			submitAfterComplete: { type: Boolean, default: false }
 		},
 		computed: {
@@ -88,21 +89,25 @@
 
 					this.files.push(obj);
 				}
+
+				if (this.isAutoUpload) {
+					this.StartUpload();
+				}
 			},
 			FileUploaded(up, file, result) {
-				console.log('fileuploaded', file, result);
+				this.$broadcast('file-complete', { name: file.name, status: result.status });
 			},
 			UploadProgress(up, file) {
-				console.log('progress', file);
+				this.$broadcast('file-progress', { name: file.name, progress: file.percent });
 			},
 			Error(up, err) {
-				console.log('error', err);
+				this.$broadcast('file-error', { name: err.file.name, message: err.response });
 			},
 			StartUpload() {
 				console.log('upload started...');
 
 				if (this.uploader.state == 1) {
-					//Uploader is stop
+					//if Uploader is stop
 					var that = this;
 
 					this.files.forEach(function (value) {
@@ -135,7 +140,7 @@
 				url: this.dataUpload,
 				chunk_size: this.dataChunkSize,
 				http_method: 'POST',
-				max_retries: 0,
+				max_retries: 3,
 				multipart: true,
 				multipart_params: this.dataOptions,
 				send_chunk_number: true,

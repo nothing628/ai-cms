@@ -8,7 +8,7 @@
 			<div class="dz-size"><span><strong>{{ size }}</strong> MB</span></div>
 			<div class="dz-filename"><span>{{ name }}</span></div>
 		</div>
-		<div class="dz-progress"><span class="dz-upload" style="width: 90%;"></span></div>
+		<div class="dz-progress"><span class="dz-upload" :style="progressstyle"></span></div>
 		<div class="dz-error-message"><span>{{ error_msg }}</span></div>
 		<div class="dz-success-mark">
 			<span class="fa-stack fa-2x">
@@ -32,7 +32,8 @@
 				progress: 0,
 				error_msg: '',
 				is_error: false,
-				is_uploading: false,
+				is_success: false,
+				is_complete: false,
 				thumbnail: null,
 				icon_thumb: 'fa-file'
 			};
@@ -47,9 +48,14 @@
 			enableThumb: { type: Boolean, required: false, default: false },
 			isError: { type: Boolean, required: false, default: false },
 			isSuccess: { type: Boolean, required: false, default: false },
-			isComplete: { type: Boolean, required: false, default: true }
+			isComplete: { type: Boolean, required: false, default: false }
 		},
 		computed: {
+			progressstyle() {
+				return {
+					width: this.progress + "%"
+				};
+			},
 			needthumb() {
 				var result = false;
 
@@ -80,9 +86,9 @@
 			classme() {
 				var classres = [];
 
-				if (this.isError) classres.push('dz-error');
-				if (this.isSuccess) classres.push('dz-success');
-				if (this.isComplete) classres.push('dz-complete');
+				if (this.is_error) classres.push('dz-error');
+				if (this.is_success) classres.push('dz-success');
+				if (this.is_complete) classres.push('dz-complete');
 
 				return classres;
 			}
@@ -175,10 +181,36 @@
 				info.srcY = (file.height - info.srcHeight) / 2;
 
 				return info;
+			},
+			FileProgress(file) {
+				if (file.name == this.name) {
+					this.progress = file.progress;
+				}
+			},
+			FileError(file) {
+				if (file.name == this.name) {
+					this.error_msg = file.message;
+					this.is_error = true;
+					this.is_complete = true;
+				}
+			},
+			FileComplete(file) {
+				if (file.name == this.name) {
+					this.is_success = true;
+					this.is_complete = true;
+				}
 			}
+		},
+		created() {
+			this.$catch('file-progress', this.FileProgress);
+			this.$catch('file-error', this.FileError);
+			this.$catch('file-complete', this.FileComplete);
 		},
 		mounted() {
 			this.error_msg = this.dataError;
+			this.is_error = this.isError;
+			this.is_success = this.isSuccess;
+			this.is_complete = this.isComplete;
 		}
 	}
 </script>

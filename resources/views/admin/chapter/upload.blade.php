@@ -23,7 +23,9 @@
 				data-upload="{{ route('api.upload.page') }}"
 				data-name="pages"
 				data-accept="application/zip"
+				data-chunk-size="750kb"
 				:data-options="{path:'manga'}"
+				:is-auto-upload="true"
 				:submit-after-complete="true"></vue-dropzone>
 			</vue-form-group>
 			<vue-form-group></vue-form-group>
