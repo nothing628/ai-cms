@@ -4,10 +4,14 @@ namespace App\Http\Controllers\Api\v1;
 
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
+use App\Models\Chapter;
+use App\Models\Page;
+use Pion\Laravel\ChunkUpload\Exceptions\UploadMissingFileException;
 use Pion\Laravel\ChunkUpload\Receiver\FileReceiver;
 use Pion\Laravel\ChunkUpload\Handler\ChunksInRequestUploadHandler;
 use Pion\Laravel\ChunkUpload\Handler\HandlerFactory;
 use Zipper;
+use File;
 
 class UploadController extends Controller
 {
@@ -53,9 +57,20 @@ class UploadController extends Controller
 
 	public function saveFile($file, $request)
 	{
-		$str_path = $request->has('path')?$request->path:'images';
-		$file->move(storage_path($str_path), $request->name);
-		return response()->json(['success' => 'Success upload file', 'filename' => $request->name]);
+		$chapter = Chapter::find($request->chapter_id);
+
+		if ($chapter) {
+			$manga = $chapter->manga;
+			$destination = storage_path('manga/' . str_slug($manga->title) . '/' . str_slug($chapter->chapter_title));
+			$source = $destination . '/' . $request->name;
+
+			$file->move($destination, $request->name);		//Move file to folder manga
+			$files = $this->extractTo($source, $destination);
+
+			return response()->json(['success' => true, 'message' => 'Success upload file', 'filename' => $files]);
+		} else {
+			return response()->json(['success' => false, 'message' => 'Chapter Not Found']);
+		}
 	}
 
 	public function extractTo($filepath, $destination)
@@ -63,5 +78,12 @@ class UploadController extends Controller
 		$zipper = Zipper::make($filepath);
 		$zipper->folder('')->extractTo($destination);
 		$zipper->close();
+
+		$files = File::files($destination);
+
+		natcasesort($files);					//Order by natural order
+		$files = array_values($files);
+
+		return $files;
 	}
 }

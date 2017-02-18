@@ -24,7 +24,7 @@
 				data-name="pages"
 				data-accept="application/zip"
 				data-chunk-size="750kb"
-				:data-options="{path:'manga'}"
+				:data-options="{chapter_id: {{$chapter->id}} }"
 				:is-auto-upload="true"
 				:submit-after-complete="true"></vue-dropzone>
 			</vue-form-group>

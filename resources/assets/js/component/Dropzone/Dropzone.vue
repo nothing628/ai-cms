@@ -95,12 +95,15 @@
 				}
 			},
 			FileUploaded(up, file, result) {
+				console.log('uploaded:',file, result)
 				this.$broadcast('file-complete', { name: file.name, status: result.status });
 			},
 			UploadProgress(up, file) {
+				console.log('progress:',file)
 				this.$broadcast('file-progress', { name: file.name, progress: file.percent });
 			},
 			Error(up, err) {
+				console.log(err)
 				this.$broadcast('file-error', { name: err.file.name, message: err.response });
 			},
 			StartUpload() {
@@ -140,16 +143,16 @@
 				url: this.dataUpload,
 				chunk_size: this.dataChunkSize,
 				http_method: 'POST',
-				max_retries: 3,
-				multipart: true,
+				//max_retries: 3,
+				//multipart: true,
 				multipart_params: this.dataOptions,
-				send_chunk_number: true,
-				send_file_name: true,
+				//send_chunk_number: true,
+				//send_file_name: true,
 				headers: {
 					'X-CSRF-TOKEN': Laravel.csrfToken,
 					'Authorization': Laravel.apiToken
 				},
-				required_features: 'chunks',
+				//required_features: 'chunks',
 				file_data_name: this.dataName,
 				filters: {
 					max_file_size: this.dataMaxSize,
