@@ -7,6 +7,7 @@ use App\Http\Controllers\Controller;
 use Pion\Laravel\ChunkUpload\Receiver\FileReceiver;
 use Pion\Laravel\ChunkUpload\Handler\ChunksInRequestUploadHandler;
 use Pion\Laravel\ChunkUpload\Handler\HandlerFactory;
+use Zipper;
 
 class UploadController extends Controller
 {
@@ -55,5 +56,12 @@ class UploadController extends Controller
 		$str_path = $request->has('path')?$request->path:'images';
 		$file->move(storage_path($str_path), $request->name);
 		return response()->json(['success' => 'Success upload file', 'filename' => $request->name]);
+	}
+
+	public function extractTo($filepath, $destination)
+	{
+		$zipper = Zipper::make($filepath);
+		$zipper->folder('')->extractTo($destination);
+		$zipper->close();
 	}
 }

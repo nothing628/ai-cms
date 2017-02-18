@@ -4,8 +4,8 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
         "This file is @generated automatically"
     ],
-    "hash": "49676237456810c4455af5ecd05d066f",
-    "content-hash": "eaf6a370fc0962927ec8be455f31c4a4",
+    "hash": "fc0f077d5c5e941b6b8f94f387cb951c",
+    "content-hash": "2d8b8088ec2533173d34d04568ed773a",
     "packages": [
         {
             "name": "anahkiasen/underscore-php",
@@ -102,6 +102,56 @@
             ],
             "description": "Persistent settings in Laravel.",
             "time": "2016-08-24 14:06:54"
+        },
+        {
+            "name": "chumper/zipper",
+            "version": "v1.0.1",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/Chumper/Zipper.git",
+                "reference": "210c17a1596a5ec462b5f9fd9866853f3240b25a"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/Chumper/Zipper/zipball/210c17a1596a5ec462b5f9fd9866853f3240b25a",
+                "reference": "210c17a1596a5ec462b5f9fd9866853f3240b25a",
+                "shasum": ""
+            },
+            "require": {
+                "illuminate/filesystem": "^5.0",
+                "illuminate/support": "^5.0",
+                "php": ">=5.6.0"
+            },
+            "require-dev": {
+                "mockery/mockery": "^0.9.4",
+                "phpunit/phpunit": "^5.7"
+            },
+            "type": "library",
+            "autoload": {
+                "psr-0": {
+                    "Chumper\\Zipper": "src/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "Apache2"
+            ],
+            "authors": [
+                {
+                    "name": "Nils Plaschke",
+                    "email": "github@nilsplaschke.de",
+                    "homepage": "http://nilsplaschke.de",
+                    "role": "Developer"
+                }
+            ],
+            "description": "This is a little neat helper for the ZipArchive methods with handy functions",
+            "homepage": "http://github.com/Chumper/zipper",
+            "keywords": [
+                "archive",
+                "laravel",
+                "zip"
+            ],
+            "time": "2017-02-01 05:26:05"
         },
         {
             "name": "classpreloader/classpreloader",
