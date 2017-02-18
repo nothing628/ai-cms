@@ -66,7 +66,6 @@ class UploadController extends Controller
 
 			$file->move($destination, $request->name);		//Move file to folder manga
 			$files = $this->extractTo($source, $destination);
-			File::delete($destination . '/' . $request->name);	//Delete zip after extract
 
 			return response()->json(['success' => true, 'message' => 'Success upload file', 'files' => $files]);
 		} else {
@@ -80,9 +79,10 @@ class UploadController extends Controller
 		$zipper->folder('')->extractTo($destination);
 		$zipper->close();
 
+		File::delete($filepath);	//Delete zip after extract
 		$files = File::files($destination);
 
-		natcasesort($files);					//Order by natural order
+		natcasesort($files);								//Order by natural order
 		$files = array_values($files);
 		$files = array_map(function ($value) {
 			return str_replace(storage_path('manga/'), '', $value);

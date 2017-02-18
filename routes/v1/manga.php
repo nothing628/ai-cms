@@ -27,7 +27,7 @@ Route::group(['prefix' => 'tag', 'as' => 'tag.'], function () {
 Route::group(['prefix' => 'chapter', 'as' => 'chapter.'], function () {
 	Route::get('/', ['as' => 'get', 'uses' => 'ChapterController@get']);
 	Route::post('store', ['as' => 'store', 'uses' => 'ChapterController@store']);
-	Route::put('update', ['as' => 'update', 'uses' => 'ChapterController@update']);
+	Route::post('update', ['as' => 'update', 'uses' => 'ChapterController@update']);
 	Route::delete('delete', ['as' => 'delete', 'uses' => 'ChapterController@delete']);
 });
 

@@ -38,7 +38,11 @@ class ChapterController extends Controller
 
 			$chapter->save();
 
-			return response()->json(['success' => true, 'message' => 'Success Save Chapter', 'redirect_url' => route('admin.manga.chapter', ['manga_id' => $manga->id])]);
+			return response()->json([
+				'success' => true,
+				'message' => 'Success Save Chapter',
+				'redirect_url' => route('admin.manga.chapter', ['manga_id' => $manga->id])
+			]);
 		}
 
 		return response()->json(['success' => false, 'message' => 'Manga Not Found', 'type' => 'error']);
@@ -47,15 +51,28 @@ class ChapterController extends Controller
 	public function update(Request $request)
 	{
 		$chapter = Chapter::find($request->id);
-dd($request->all());
+
 		if ($chapter) {
 			if ($request->has('pages')) {
 				$pages = $request->pages;
+				$count_page = $chapter->page;
+
+				foreach ($pages as $index => $page_path) {
+					$page = new Page;
+					$page->chapter_id = $chapter->id;
+					$page->page_num = $index + $count_page + 1;
+					$page->path = $page_path;
+					$page->save();
+				}
 			}
 
 			$chapter->save();
 
-			return response()->json(['success' => true, 'message' => 'Success update chapter']);
+			return response()->json([
+				'success' => true,
+				'message' => 'Success update chapter',
+				'redirect_url' => route('admin.manga.chapter', ['manga_id' => $chapter->manga_id])
+			]);
 		}
 
 		return response()->json(['success' => false, 'message' => 'Chapter Not Found', 'type' => 'error']);
