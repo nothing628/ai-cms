@@ -10,7 +10,8 @@ class Manga extends Model
 	use Taggable;
 
 	protected $appends = [
-		'totalPage'
+		'totalPage',
+		'status'
 	];
 
 	protected $casts = [
@@ -20,6 +21,15 @@ class Manga extends Model
 	public function category()
 	{
 		return $this->belongsTo(Category::class);
+	}
+
+	public function getStatusAttribute()
+	{
+		if ($this->is_completed) {
+			return '<span class=\'label label-success\'>Completed</span>';
+		} else {
+			return '<span class=\'label label-warning\'>On Going</span>';
+		}
 	}
 
 	public function getTotalPageAttribute()

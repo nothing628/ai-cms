@@ -25,7 +25,7 @@
 			{value:'Action', class:'text-center'}]"></vue-table-head>
 			<vue-table-body data-source="{{ route('api.manga.get') }}" :data-map="[
 			'title',
-			{key: 'totalPage', class: 'text-center', format: '<span class=\'label label-warning\'>{0}</span>'},
+			{key: 'status', class: 'text-center'},
 			{key: 'created_at', class: ['hidden-xs', 'text-center']},
 			{key: 'totalPage', class: 'text-center'},
 			{key: 'views', class: 'text-center'}
