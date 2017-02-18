@@ -16,6 +16,9 @@
 					:enable-thumb="true"
 					></vue-dropzone-preview>
 			</div>
+
+			<input type="hidden" :name="inputname" :value="file" v-for="file in additional_file">
+			<input type="hidden" :name="inputname" :value="file" v-for="file in complete_file">
 		</div>
 		<div v-show="false">
 			<button :id="dataName + 'button_'"></button>
@@ -31,7 +34,9 @@
 		data() {
 			return {
 				files: [],
-				current_file: null
+				current_file: null,
+				additional_file: [],
+				complete_file: []
 			};
 		},
 		props: {
@@ -53,6 +58,9 @@
 				}
 
 				return [];
+			},
+			inputname() {
+				return this.dataName + "[]";
 			}
 		},
 		methods: {
@@ -95,15 +103,13 @@
 				}
 			},
 			FileUploaded(up, file, result) {
-				console.log('uploaded:',file, result)
+				this.UploadedResponse(file, result.response);
 				this.$broadcast('file-complete', { name: file.name, status: result.status });
 			},
 			UploadProgress(up, file) {
-				console.log('progress:',file)
 				this.$broadcast('file-progress', { name: file.name, progress: file.percent });
 			},
 			Error(up, err) {
-				console.log(err)
 				this.$broadcast('file-error', { name: err.file.name, message: err.response });
 			},
 			StartUpload() {
@@ -119,6 +125,22 @@
 					});
 
 					this.uploader.start();
+				}
+			},
+			UploadedResponse(file, response) {
+				try {
+					var that = this;
+					var objresponse = JSON.parse(response);
+
+					if ("files" in objresponse) {
+						objresponse.files.forEach(function (value) {
+							that.additional_file.push(value);
+						});
+					}
+
+					console.log(objresponse);
+				} catch (err) {
+					console.log(err);
 				}
 			}
 		},

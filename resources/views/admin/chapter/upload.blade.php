@@ -16,8 +16,9 @@
 	<vue-block-head :data-class="['bg-modern-dark']">Upload Page file</vue-block-head>
 	<vue-block-content>
 		<vue-form :data-class="['form-horizontal', 'push-10-t']" data-enctype="multipart/form-data"
-		data-action="{{ route('api.chapter.store') }}" data-name="form-create">
+		data-action="{{ route('api.chapter.update') }}" data-method="put" data-name="form-create">
 			{!! csrf_field() !!}
+			<input type="hidden" name="id" value="{{ $chapter->id }}">
 			<vue-form-group>
 				<vue-dropzone :data-col="['col-md-8','col-md-offset-2']"
 				data-upload="{{ route('api.upload.page') }}"

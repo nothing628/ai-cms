@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use App\Models\Manga;
 use App\Models\Chapter;
+use App\Models\Page;
 
 class ChapterController extends Controller
 {
@@ -45,7 +46,19 @@ class ChapterController extends Controller
 
 	public function update(Request $request)
 	{
-		//
+		$chapter = Chapter::find($request->id);
+dd($request->all());
+		if ($chapter) {
+			if ($request->has('pages')) {
+				$pages = $request->pages;
+			}
+
+			$chapter->save();
+
+			return response()->json(['success' => true, 'message' => 'Success update chapter']);
+		}
+
+		return response()->json(['success' => false, 'message' => 'Chapter Not Found', 'type' => 'error']);
 	}
 
 	public function delete(Request $request)
