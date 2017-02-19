@@ -10,8 +10,10 @@ class Manga extends Model
 	use Taggable;
 
 	protected $appends = [
-		'totalPage',
-		'status'
+		'total_page',
+		'status',
+		'rating',
+		'rating_by',
 	];
 
 	protected $casts = [
@@ -21,6 +23,26 @@ class Manga extends Model
 	public function category()
 	{
 		return $this->belongsTo(Category::class);
+	}
+
+	public function ratings()
+	{
+		return $this->hasMany(Rating::class);
+	}
+
+	public function getRatingAttribute()
+	{
+		$ratings = $this->ratings;
+		$avg = $ratings->avg('rating');
+
+		if (is_null($avg)) $avg = 0;
+
+		return $avg;
+	}
+
+	public function getRatingByAttribute()
+	{
+		return $this->ratings->count();
 	}
 
 	public function getStatusAttribute()
