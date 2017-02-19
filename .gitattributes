@@ -1,3 +1,4 @@
 * text=auto
 *.scss linguist-vendored
 .htaccess linguist-vendored
+(^|/)bootstrap([^.]*)\.(js|css|less|scss|styl)$ linguist-vendored
