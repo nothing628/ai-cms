@@ -62,6 +62,7 @@
 				var res = response.data;
 				var redirect_url = ('redirect_url' in res)?res.redirect_url:'';
 
+				this.$dispatch('block-loading', false);
 				if (res.success) {
 					bus.$emit('hide-modal', '');
 					bus.$emit('refresh');
@@ -82,6 +83,7 @@
 				var code = response.status.toString();
 				var msg = response.statusText;
 
+				this.$dispatch('block-loading', false);
 				bus.$emit('hide-modal', '');
 				bus.$emit('alert-show', {title: code, text: msg, type: 'error'});
 				bus.$emit('refresh');
@@ -95,6 +97,7 @@
 					return;
 				}
 
+				this.$dispatch('block-loading', true);
 				if (this.dataEnctype == 'multipart/form-data') {
 					formData = this.formData();
 				} else {

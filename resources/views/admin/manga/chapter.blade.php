@@ -77,7 +77,7 @@
 			'chapter_title',
 			{key: 'chapter_num', class: 'text-center'},
 			{key: 'page', class: 'text-center'},
-			{key: 'release_at', class: 'text-center'}
+			{key: 'release_date', class: 'text-center'}
 			]" :is-action="true">
 				<template scope="props">
 					<div class="btn-group btn-group-sm">

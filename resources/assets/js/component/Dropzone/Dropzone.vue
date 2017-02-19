@@ -118,8 +118,6 @@
 				this.$broadcast('file-error', { name: err.file.name, message: err.response });
 			},
 			StartUpload() {
-				console.log('upload started...');
-
 				if (this.uploader.state == 1) {
 					//if Uploader is stop
 					var that = this;
@@ -142,8 +140,6 @@
 							that.additional_file.push(value);
 						});
 					}
-
-					console.log(objresponse);
 				} catch (err) {
 					console.log(err);
 				}

@@ -6,7 +6,10 @@ use Illuminate\Database\Eloquent\Model;
 
 class Chapter extends Model
 {
-	protected $appends = ['page'];
+	protected $appends = ['page','release_date'];
+	protected $casts = [
+		'release_at' => 'date'
+	];
 
 	public function manga()
 	{
@@ -21,5 +24,10 @@ class Chapter extends Model
 	public function getPageAttribute()
 	{
 		return $this->pages()->count();
+	}
+
+	public function getReleaseDateAttribute()
+	{
+		return $this->release_at->diffForHumans();
 	}
 }

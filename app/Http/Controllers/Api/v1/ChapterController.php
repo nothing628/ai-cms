@@ -26,7 +26,7 @@ class ChapterController extends Controller
 			$chapter->manga_id = $manga->id;
 			$chapter->chapter_title = $request->title;
 			$chapter->chapter_num = $request->has('chapter_num')?$request->chapter_num:($manga->chapters->count() + 1);
-			$chapter->release_at = date("Y-m-d");
+			$chapter->release_at = date('Y-m-d H:i:s');
 
 			if ($request->file('cover')->isValid()) {
 				$cover = $request->file('cover');
