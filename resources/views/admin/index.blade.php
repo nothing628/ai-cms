@@ -4,8 +4,8 @@
 <!-- Banner -->
 <div class="content bg-image overflow-hidden" style="background-image: url('images/large/bg.jpg'); background-position: top center">
 	<div class="push-50-t push-15">
-		<h1 class="h2 text-white" data-toggle="appear" data-class="animated zoomIn">Dashboard</h1>
-		<h2 class="h5 text-white-op" data-toggle="appear" data-class="animated zoomIn">Welcome Administrator</h2>
+		<h1 class="h2 font-w300 text-white" data-toggle="appear" data-class="animated zoomIn">Dashboard</h1>
+		<h2 class="h5 font-w300 text-white-op" data-toggle="appear" data-class="animated zoomIn">Welcome Administrator</h2>
 	</div>
 </div>
 <!-- Statistic -->
