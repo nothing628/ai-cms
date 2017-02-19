@@ -1,5 +1,5 @@
 <template>
-	<div class="block-content">
+	<div class="block-content" :class="dataClass">
 		<slot></slot>
 	</div>
 </template>

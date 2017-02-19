@@ -16,6 +16,45 @@
 	margin-bottom: 15px;
 }
 
+.background-layer {
+	background-image: url('/images/original/banner.jpg');
+	background-position-x: center;
+	background-position-y: 0px;
+	background-size: 100%;
+	background-repeat: no-repeat;
+	position: absolute;
+	top: 0;
+	left: 0;
+	right: 0;
+	bottom: 0;
+}
+
+.background-layer .overlay {
+	position: absolute;
+	top: 0;
+	width: 100%;
+	bottom: 0;
+	transition: all 0.2s;
+	background-color: rgba(0,0,0,0.4);
+}
+
+.banner:hover .background-layer {
+	filter: blur(1px);
+}
+
+.banner:hover .background-layer .overlay {
+	background-color: rgba(0,0,0,0.6);
+}
+
+.half-rating {
+	background: -webkit-linear-gradient(0deg, transparent 50%, transparent 50%, #c9c9c9 0);
+	background: -moz-linear-gradient(90deg, transparent 50%, transparent 50%, #c9c9c9 0);
+	background: linear-gradient(90deg, transparent 50%, transparent 50%, #c9c9c9 0);
+	background-color: #e49e36;
+	background-clip: text;
+	color: transparent;
+}
+
 .padding-none-bmk {
 	padding-left: 0 !important;
 	padding-right: 0 !important;

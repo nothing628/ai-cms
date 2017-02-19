@@ -9,6 +9,11 @@ String.prototype.format = String.prototype.f = function() {
 };
 
 $(document).ready(function () {
+	$("[data-toggle=\'appear\']").each(function (idx,elm) {
+		var elment = $(elm);
+		elment.addClass(elment.data('class'));
+	});
+
 	$(".form-material.floating > .form-control").each(function() {
 		var a = $(this);
 		var d = a.parent(".form-material");
