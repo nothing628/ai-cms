@@ -5,3 +5,4 @@ public/css/bootstrap* linguist-vendored
 public/css/font-awesome* linguist-vendored
 public/css/font* linguist-vendored
 resources/assets/js/base/* linguist-vendored
+tests/* linguist-vendored
