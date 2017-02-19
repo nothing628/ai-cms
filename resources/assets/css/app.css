@@ -269,9 +269,10 @@ a:hover, a:focus {
 	line-height: 1.34em;
 	padding-top: 0.2em;
 	overflow: hidden;
-	white-space: nowrap;
+	/*white-space: nowrap;*/
 	text-overflow: ellipsis;
-	word-break: break-all;
+	/*word-break: break-all;*/
+	word-break: normal;
 	word-wrap: break-word;
 }
 

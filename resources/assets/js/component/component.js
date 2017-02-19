@@ -36,3 +36,5 @@ Vue.component('vue-action',		require('./Table/Table-Action.vue'));
 
 Vue.component('manga-list',			require('./Manga/List/List.vue'));
 Vue.component('manga-list-content',	require('./Manga/List/List-Content.vue'));
+Vue.component('manga-grid',			require('./Manga/Grid/Grid.vue'));
+Vue.component('manga-grid-content',	require('./Manga/Grid/Grid-Content.vue'));

@@ -13,6 +13,24 @@ class MangaController extends Controller
 {
 	public function get(Request $request)
 	{
+		if ($request->has('scope')) {
+			$result = [];
+
+			switch ($request->scope) {
+				case 'popular':
+					$result = $this->popular();
+				break;
+				case 'view':
+					$result = $this->views();
+				break;
+				case 'random':
+					$result = $this->random();
+				break;
+			}
+
+			return response()->json($result);
+		}
+
 		$manga = Manga::orderBy('created_at', 'desc')->paginate(15);
 
 		return response()->json($manga);
@@ -102,5 +120,26 @@ class MangaController extends Controller
 		});
 
 		return response()->json($response);
+	}
+
+	public function popular()
+	{
+		$manga = Manga::popular()->paginate(25);
+
+		return $manga;
+	}
+
+	public function views()
+	{
+		$manga = Manga::mostView()->paginate(25);
+
+		return $manga;
+	}
+
+	public function random()
+	{
+		$manga = Manga::random()->paginate(25);
+
+		return $manga;
 	}
 }

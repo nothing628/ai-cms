@@ -113,7 +113,7 @@
 					break;
 					case 'GET':
 						this.$http.get(this.actionUrl, {
-							body: formData,
+							params: formData,
 							timeout: this.dataTimeout
 						}).then(this.onSuccess, this.onFailed);
 					break;

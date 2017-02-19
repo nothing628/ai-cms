@@ -4,6 +4,7 @@ namespace App\Models;
 
 use App\Tagging\Taggable;
 use Illuminate\Database\Eloquent\Model;
+use DB;
 
 class Manga extends Model
 {
@@ -14,6 +15,7 @@ class Manga extends Model
 		'status',
 		'rating',
 		'rating_by',
+		'thumb_url',
 	];
 
 	protected $casts = [
@@ -25,14 +27,43 @@ class Manga extends Model
 		return $this->belongsTo(Category::class);
 	}
 
+	public function user()
+	{
+		return $this->belongsTo(User::class);
+	}
+
+	public function chapters()
+	{
+		return $this->hasMany(Chapter::class);
+	}
+
 	public function ratings()
 	{
 		return $this->hasMany(Rating::class);
 	}
 
+	public function getCategoryNameAttribute()
+	{
+		$category = $this->category;
+
+		return $category->category;
+	}
+
+	public function getUploaderAttribute()
+	{
+		$user = $this->user;
+
+		return $user->username;
+	}
+
+	public function getThumbUrlAttribute()
+	{
+		return url('images/medium/' . $this->cover);
+	}
+
 	public function getRatingAttribute()
 	{
-		$ratings = $this->ratings;
+		$ratings = $this->ratings()->get();
 		$avg = $ratings->avg('rating');
 
 		if (is_null($avg)) $avg = 0;
@@ -42,7 +73,7 @@ class Manga extends Model
 
 	public function getRatingByAttribute()
 	{
-		return $this->ratings->count();
+		return $this->ratings()->get()->count();
 	}
 
 	public function getStatusAttribute()
@@ -57,7 +88,7 @@ class Manga extends Model
 	public function getTotalPageAttribute()
 	{
 		$page = 0;
-		$chapters = $this->chapters;
+		$chapters = $this->chapters()->get();
 
 		foreach ($chapters as $chapter) {
 			$page += $chapter->pages->count();
@@ -65,29 +96,29 @@ class Manga extends Model
 		
 		return $page;
 	}
-	
-	public function chapters()
+
+	public function scopeWithCategory($query)
 	{
-		return $this->hasMany(Chapter::class);
+		return $query->with('category', 'user');
 	}
 
-	public function scopeMostView($query, $take = 20)
+	public function scopeMostView($query)
 	{
-		return $query->orderBy('view', 'desc')->limit($take);
+		return $this->scopeWithCategory($query)->orderBy('views', 'desc');
 	}
 
-	public function scopePopular($query, $take = 20)
+	public function scopePopular($query)
 	{
-		return $query->limit($take);
+		return $this->scopeWithCategory($query);
 	}
 
-	public function scopeRecent($query, $take = 20)
+	public function scopeRecent($query)
 	{
-		return $query->latest()->limit($take);
+		return $this->scopeWithCategory($query)->latest();
 	}
 
-	public function scopeRandom($query, $take = 20)
+	public function scopeRandom($query)
 	{
-		return $query->orderBy(DB::raw('RAND()'))->limit($take);
+		return $this->scopeWithCategory($query)->orderBy(DB::raw('RAND()'));
 	}
 }

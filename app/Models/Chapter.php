@@ -28,6 +28,10 @@ class Chapter extends Model
 
 	public function getReleaseDateAttribute()
 	{
+		if (is_null($this->release_at)) {
+			return "";
+		}
+
 		return $this->release_at->diffForHumans();
 	}
 }
