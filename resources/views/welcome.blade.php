@@ -10,7 +10,7 @@ Welcome to {{ Setting::get('app.name') }}
 		<div class="overlay"></div>
 	</div>
 	<section class="content content-full content-boxed overflow-hidden">
-		<div class="push-100-t push-100 text-center">
+		<div class="push-50-t push-50 text-center">
 			<h1 class="h1 text-white push-10" data-toggle="appear" data-class="animated fadeInDown">Welcome to {{ Setting::get('app.name') }}</h1>
 			<h2 class="h4 text-white-op" data-toggle="appear" data-class="animated fadeInUp">{{ Setting::get('app.desc') }}</h2>
 		</div>
