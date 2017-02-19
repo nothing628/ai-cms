@@ -398,3 +398,13 @@ div.dataTables_paginate ul.pagination {
 	height: 100%;
 	background-color: white;
 }
+
+@media (min-width: 992px) {
+	.col-md-20p {
+		width: 20%;
+	}
+
+	.col-md-20p {
+		float: left;
+	}
+}
