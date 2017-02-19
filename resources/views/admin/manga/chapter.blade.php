@@ -39,7 +39,7 @@
 						</tr>
 						<tr>
 							<td>Total Pages</td>
-							<td>{{ $manga->totalPage }}</td>
+							<td>{{ $manga->total_page }}</td>
 						</tr>
 						<tr>
 							<td>Views</td>

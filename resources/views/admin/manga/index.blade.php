@@ -27,7 +27,7 @@
 			'title',
 			{key: 'status', class: 'text-center'},
 			{key: 'created_at', class: ['hidden-xs', 'text-center']},
-			{key: 'totalPage', class: 'text-center'},
+			{key: 'total_page', class: 'text-center'},
 			{key: 'views', class: 'text-center'}
 			]" :is-action="true">
 				<template scope="props">
