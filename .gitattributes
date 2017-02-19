@@ -1,6 +1,7 @@
 * text=auto
 *.scss linguist-vendored
 *.css linguist-vendored
+*.js linguist-vendored
 .htaccess linguist-vendored
 public/css/bootstrap* linguist-vendored
 public/css/font-awesome* linguist-vendored
