@@ -29,7 +29,12 @@
 </template>
 
 <script>
-	import plupload from '../../base/plupload';
+	import mOxie from 'mOxie/bin/js/moxie.js';
+	import plupload from 'plupload/js/plupload.dev.js';
+
+	if (typeof window.mOxie == "undefined") window.mOxie = mOxie;
+	if (typeof window.plupload == "undefined") window.plupload = plupload;
+
 	export default {
 		data() {
 			return {

@@ -33,7 +33,6 @@ elixir(mix => {
 	mix.scripts('oneui.js');
 	mix.webpack('app.js');
 
-	mix.scripts('base/plupload.js');
 	mix.webpack('base/chosen.js');
 	mix.webpack('base/jquery.js');
 	mix.webpack('base/vue.js');
