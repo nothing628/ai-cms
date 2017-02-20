@@ -1,15 +1,60 @@
 <template>
 	<ul class="nav-users">
-		<li class="js-lts-grp ribbon ribbon-modern ribbon-primary ribbon-right" v-for="m in 4">
-			<slot :item="m"></slot>
-		</li>
+		<manga-list-content v-for="item in items" :item="item"></manga-list-content>
 	</ul>
 </template>
 
 <script>
 	export default {
 		data() {
-			return {};
+			return {
+				items: []
+			};
+		},
+		props: {
+			dataSource: { type: String, required: true },
+			dataOptions: { type: Object, required: false, default() { return {}; } },
+			dataMethod: { type: String, required: false, default: 'get' },
+			dataTimeout: { type: Number, required: false, default: 15000 }
+		},
+		computed: {
+			methodName() {
+				return this.dataMethod.toUpperCase();
+			}
+		},
+		methods: {
+			refreshGrid() {
+				switch (this.methodName) {
+					case 'POST':
+						this.$http.post(this.dataSource, this.dataOptions, {
+							timeout: this.dataTimeout,
+							emulateJSON: true
+						}).then(this.onSuccess, this.onFailed);
+					break;
+					case 'GET':
+						this.$http.get(this.dataSource, {
+							params: this.dataOptions,
+							timeout: this.dataTimeout
+						}).then(this.onSuccess, this.onFailed);
+					break;
+				}
+			},
+			onSuccess(response) {
+				var data = response.data;
+				var that = this;
+
+				this.items = [];
+
+				data.data.forEach(function (value) {
+					that.items.push(value);
+				});
+			},
+			onFailed(response) {
+				console.log(response);
+			}
+		},
+		mounted() {
+			this.refreshGrid();
 		}
 	}
 </script>

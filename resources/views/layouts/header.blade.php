@@ -34,8 +34,8 @@
 				</button>
 			</li>
 			@else
-			<li><a class="h5" href="{{ route('login') }}"><span class="h5 font-w500">Sign In</span></a></li>
-			<li><a class="h5" href="{{ route('register') }}"><span class="h5 font-w500">Register</span></a></li>
+			<li><a class="h5" href="{{ route('login') }}"><span class="h5 font-w300">Sign In</span></a></li>
+			<li><a class="h5" href="{{ route('register') }}"><span class="h5 font-w300">Register</span></a></li>
 			@endif
 		</ul>
 		<ul class="nav-header pull-left">

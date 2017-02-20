@@ -48,11 +48,9 @@
 				data.data.forEach(function (value) {
 					that.items.push(value);
 				});
-
-				console.log();
 			},
 			onFailed(response) {
-				//
+				console.log(response);
 			}
 		},
 		mounted() {

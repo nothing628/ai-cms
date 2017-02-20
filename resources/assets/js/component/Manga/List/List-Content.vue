@@ -1,9 +1,9 @@
 <template>
-	<div>
+	<li>
 		<div class="ribbon-box"><i class="fa fa-fw fa-heartbeat"></i></div>
-		<a href="#" class="link-effect">
-			<img src="images/small/bg.jpg" class="img-avatar" alt="">
-			Title Here
+		<a :href="item.manga_url" class="link-effect">
+			<img :src="item.thumb_url" class="img-avatar" alt="">
+			{{ item.title }}
 			<br>
 			<b class="arf-small">
 				<i class="fa fa-star text-warning"></i>
@@ -11,28 +11,40 @@
 				<i class="fa fa-star text-warning"></i>
 				<i class="fa fa-star text-warning"></i>
 				<i class="fa fa-star half-rating"></i>
-				[Category here]
+				{{ item.category.category }}
 			</b>
 		</a>
 		<ul class="nav-users">
-			<li>
+			<li v-for="chapter in sortChapter(item.chapters)">
 				<a href="" class="link-effect">
 					<h6 class="text-ellipsis">
-						1
+						{{ chapter.chapter_num }}
 						<i class="fa fa-angle-double-right"></i>
-						Chapter Title
-						<span class="pull-right">2 days ago</span>
+						{{ chapter.chapter_title }}
+						<span class="pull-right">{{ chapter.release_date }}</span>
 					</h6>
 				</a>
 			</li>
 		</ul>
-	</div>
+	</li>
 </template>
 
 <script>
 	export default {
 		data() {
 			return {};
+		},
+		props: {
+			item: { type: Object, required: true }
+		},
+		methods: {
+			sortChapter(chapters) {
+				return chapters.sort(function (a, b) {
+					if (a.chapter_num > b.chapter_num) return -1;
+					if (a.chapter_num < b.chapter_num) return 1;
+					return 0;
+				});
+			}
 		}
 	}
 </script>

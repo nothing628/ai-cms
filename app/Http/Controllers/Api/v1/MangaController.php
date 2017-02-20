@@ -8,6 +8,7 @@ use App\Models\Manga;
 use App\Models\Language;
 use Exception;
 use Auth;
+use DB;
 
 class MangaController extends Controller
 {
@@ -25,6 +26,9 @@ class MangaController extends Controller
 				break;
 				case 'random':
 					$result = $this->random();
+				break;
+				case 'recent':
+					$result = $this->recent();
 				break;
 			}
 
@@ -124,8 +128,9 @@ class MangaController extends Controller
 
 	public function popular()
 	{
+		//DB::enableQueryLog();
 		$manga = Manga::popular()->paginate(25);
-
+		//dd(DB::getQueryLog());
 		return $manga;
 	}
 
@@ -139,6 +144,13 @@ class MangaController extends Controller
 	public function random()
 	{
 		$manga = Manga::random()->paginate(25);
+
+		return $manga;
+	}
+
+	public function recent()
+	{
+		$manga = Manga::recent()->paginate(10);
 
 		return $manga;
 	}

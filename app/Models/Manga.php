@@ -16,6 +16,7 @@ class Manga extends Model
 		'rating',
 		'rating_by',
 		'thumb_url',
+		'manga_url',
 	];
 
 	protected $casts = [
@@ -54,6 +55,11 @@ class Manga extends Model
 		$user = $this->user;
 
 		return $user->username;
+	}
+
+	public function getMangaUrlAttribute()
+	{
+		return route('manga.detail', ['manga_id' => $this->id]);
 	}
 
 	public function getThumbUrlAttribute()
@@ -99,7 +105,7 @@ class Manga extends Model
 
 	public function scopeWithCategory($query)
 	{
-		return $query->with('category', 'user');
+		return $query->with(['category', 'user', 'chapters']);
 	}
 
 	public function scopeMostView($query)
