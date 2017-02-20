@@ -17,7 +17,8 @@
 		"symfony/css-selector": "^3.2",
 		"anlutro/l4-settings": "0.4.9",
 		"pion/laravel-chunk-upload": "^0.3.2",
-		"chumper/zipper": "^1.0"
+		"chumper/zipper": "^1.0",
+		"cocur/slugify": "^2.4"
 	},
 	"require-dev": {
 		"fzaninotto/faker": "~1.4",

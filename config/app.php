@@ -183,6 +183,7 @@ return [
 		anlutro\LaravelSettings\ServiceProvider::class,
 		Pion\Laravel\ChunkUpload\Providers\ChunkUploadServiceProvider::class,
 		Chumper\Zipper\ZipperServiceProvider::class,
+		Cocur\Slugify\Bridge\Laravel\SlugifyServiceProvider::class,
 	],
 
 	/*
@@ -235,6 +236,7 @@ return [
 		'Uuid' => Webpatser\Uuid\Uuid::class,
 		'Setting' => anlutro\LaravelSettings\Facade::class,
 		'Zipper' => Chumper\Zipper\Zipper::class,
+		'Slugify' => Cocur\Slugify\Bridge\Laravel\SlugifyFacade::class,
 	],
 
 ];

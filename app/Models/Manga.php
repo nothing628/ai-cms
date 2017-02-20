@@ -2,14 +2,20 @@
 
 namespace App\Models;
 
-use App\Tagging\Taggable;
+use App\Traits\Taggable;
+use App\Traits\Sluggable;
 use Illuminate\Database\Eloquent\Model;
 use DB;
 
 class Manga extends Model
 {
 	use Taggable;
+	use Sluggable;
 
+	protected $slug = [
+		'source' => 'title',
+		'max_length' => 64
+	];
 	protected $appends = [
 		'total_page',
 		'status',
@@ -18,7 +24,6 @@ class Manga extends Model
 		'thumb_url',
 		'manga_url',
 	];
-
 	protected $casts = [
 		'meta' => 'array',
 	];

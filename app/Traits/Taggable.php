@@ -1,11 +1,12 @@
 <?php 
 
-namespace App\Tagging;
+namespace App\Traits;
 
 use App\Contracts\TaggingUtility;
 use App\Events\TagAdded;
 use App\Events\TagRemoved;
 use App\Models\Tagged;
+use App\Tagging\Util;
 use Illuminate\Database\Eloquent\Collection;
 
 trait Taggable
