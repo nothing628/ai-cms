@@ -16,7 +16,7 @@
 		</a>
 		<ul class="nav-users">
 			<li v-for="chapter in sortChapter(item.chapters)">
-				<a href="" class="link-effect">
+				<a :href="chapter.chapter_url" class="link-effect">
 					<h6 class="text-ellipsis">
 						{{ chapter.chapter_num }}
 						<i class="fa fa-angle-double-right"></i>

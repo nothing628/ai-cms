@@ -37,6 +37,6 @@ class Chapter extends Model
 
 	public function getChapterUrlAttribute()
 	{
-		return true;
+		return route('manga.read', ['manga_slug' => $this->manga->slug, 'chapter_num' => $this->chapter_num]);
 	}
 }

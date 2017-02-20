@@ -60,11 +60,12 @@ class MangaController extends Controller
 		}
 	}
 
-	public function readManga($manga_id, $chapter_id, $page_num = 1)
+	public function readManga($manga_slug, $chapter_num, $page_num = 1)
 	{
 		try {
-			$chapter = Chapter::where('chapter_num', $chapter_id)->where('manga_id', $manga_id)->firstOrFail();
-			$page = Page::where('chapter_id', $chapter->id)->where('page_num', $page_num)->firstOrFail();
+			$manga = Manga::where('slug', $manga_slug)->firstOrFail();
+			$chapter = $manga->chapters()->where('chapter_num', $chapter_num)->firstOrFail();
+			$page = $chapter->pages()->where('page_num', $page_num)->firstOrFail();
 
 			return view('manga.read', ['chapter' => $chapter, 'page' => $page]);
 		} catch (ModelNotFoundException $ex) {
