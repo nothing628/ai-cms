@@ -67,7 +67,7 @@ class MangaController extends Controller
 			$chapter = $manga->chapters()->where('chapter_num', $chapter_num)->firstOrFail();
 			$page = $chapter->pages()->where('page_num', $page_num)->firstOrFail();
 
-			return view('manga.read', ['chapter' => $chapter, 'page' => $page]);
+			return view('manga.read', ['manga' => $manga, 'chapter' => $chapter, 'page' => $page]);
 		} catch (ModelNotFoundException $ex) {
 			return redirect()->route('manga.list');
 		}

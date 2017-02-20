@@ -14,7 +14,7 @@
 		<div class="row" id="mainimage">
 			<div class="col-md-8 col-md-offset-2">
 				@if (!is_null($page->next_page->id))
-				<a href="{{ route('manga.read', ['manga_id' => $chapter->manga_id, 'chapter_num' => $chapter->chapter_num, 'page_num' => $page->next_page->page_num ]) }}">
+				<a href="{{ route('manga.read', ['manga_slug' => $manga->slug, 'chapter_num' => $chapter->chapter_num, 'page_num' => $page->next_page->page_num ]) }}">
 					<img src="{{ url('images/original/' . $page->path) }}" class="img-responsive">
 				</a>
 				@else
