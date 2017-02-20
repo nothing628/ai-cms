@@ -4,8 +4,8 @@ Route::get('category', ['as' => 'category.list', 'uses' => 'CategoryController@i
 
 Route::group(['prefix' => 'manga', 'as' => 'manga.'], function () {
 	Route::get('/', ['as' => 'list', 'uses' => 'MangaController@browseManga']);
-	Route::get('{manga_id}', ['as' => 'detail', 'uses' => 'MangaController@detailManga']);
-	Route::get('{manga_id}/{chapter_id}/{page_num?}', ['as' => 'read', 'uses' => 'MangaController@readManga']);
+	Route::get('{manga_slug}', ['as' => 'detail', 'uses' => 'MangaController@detailManga']);
+	Route::get('{manga_slug}/{chapter_id}/{page_num?}', ['as' => 'read', 'uses' => 'MangaController@readManga']);
 });
 
 Route::group(['middleware' => 'auth'], function () {

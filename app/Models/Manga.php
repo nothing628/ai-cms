@@ -12,10 +12,10 @@ class Manga extends Model
 	use Taggable;
 	use Sluggable;
 
-	protected $slug = [
-		'source' => 'title',
-		'max_length' => 64
-	];
+	public $slug_field = 'slug';
+	// public $slug_max_length = 120;
+	public $slug_source = 'title';
+
 	protected $appends = [
 		'total_page',
 		'status',
@@ -64,7 +64,7 @@ class Manga extends Model
 
 	public function getMangaUrlAttribute()
 	{
-		return route('manga.detail', ['manga_id' => $this->id]);
+		return route('manga.detail', ['manga_slug' => $this->slug]);
 	}
 
 	public function getThumbUrlAttribute()

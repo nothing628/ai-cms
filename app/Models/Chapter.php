@@ -6,7 +6,7 @@ use Illuminate\Database\Eloquent\Model;
 
 class Chapter extends Model
 {
-	protected $appends = ['page','release_date'];
+	protected $appends = ['page','release_date', 'chapter_url'];
 	protected $casts = [
 		'release_at' => 'date'
 	];
@@ -33,5 +33,10 @@ class Chapter extends Model
 		}
 
 		return $this->release_at->diffForHumans();
+	}
+
+	public function getChapterUrlAttribute()
+	{
+		return true;
 	}
 }

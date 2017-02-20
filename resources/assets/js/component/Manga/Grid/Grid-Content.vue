@@ -7,7 +7,7 @@
 				<i class="fa fa-fw fa-fire"></i>{{ item.views }}
 			</div>
 			<div class="img-overlay text-center">
-				<a href="#">
+				<a :href="item.manga_url">
 					<h2 class="rf-title">{{ item.title }}</h2>
 				</a>
 				<div class="rf-info">

@@ -49,10 +49,11 @@ class MangaController extends Controller
 		return view('admin.manga.chapter', ['manga' => $manga]);
 	}
 
-	public function detailManga($manga_id)
+	public function detailManga($manga_slug)
 	{
 		try {
-			$manga = Manga::findOrFail($manga_id);
+			$manga = Manga::where('slug', $manga_slug)->firstOrFail();
+
 			return view('manga.chapter', ['manga' => $manga]);
 		} catch (ModelNotFoundException $ex) {
 			return redirect()->route('manga.list');
