@@ -32,7 +32,7 @@ body.swal2-iosfix {
 }
 
 .swal2-container:not(.swal2-in) {
-    pointer-events: none;
+    /*pointer-events: none;*/
 }
 
 .swal2-container.swal2-fade {
