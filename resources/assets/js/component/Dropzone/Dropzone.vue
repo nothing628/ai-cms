@@ -30,7 +30,7 @@
 
 <script>
 	import mOxie from 'mOxie/bin/js/moxie.js';
-	import plupload from 'plupload/js/plupload.dev.js';
+	import plupload from 'plupload/js/plupload.min.js';
 
 	if (typeof window.mOxie == "undefined") window.mOxie = mOxie;
 	if (typeof window.plupload == "undefined") window.plupload = plupload;
