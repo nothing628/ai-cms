@@ -62,7 +62,7 @@ trait Sluggable
 		while ($this->isSlugExists($slug)) {
 			//Find slug .
 			$counter_str = "-" . $counter;
-			$slug = substr($slug, 0, -(strlen($coutner_str)));
+			$slug = substr($slug, 0, -(strlen($counter_str)));
 
 			$counter++;
 		}
