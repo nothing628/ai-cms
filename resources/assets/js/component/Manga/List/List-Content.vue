@@ -15,7 +15,7 @@
 			</b>
 		</a>
 		<ul class="nav-users">
-			<li v-for="chapter in sortChapter(item.chapters)">
+			<li v-for="chapter in sortChapter">
 				<a :href="chapter.chapter_url" class="link-effect">
 					<h6 class="text-ellipsis">
 						{{ chapter.chapter_num }}
@@ -37,14 +37,18 @@
 		props: {
 			item: { type: Object, required: true }
 		},
-		methods: {
-			sortChapter(chapters) {
+		computed: {
+			sortChapter() {
+				var chapters = this.item.chapters;
+
 				return chapters.sort(function (a, b) {
 					if (a.chapter_num > b.chapter_num) return -1;
 					if (a.chapter_num < b.chapter_num) return 1;
 					return 0;
 				});
 			}
+		},
+		methods: {
 		}
 	}
 </script>
