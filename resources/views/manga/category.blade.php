@@ -31,8 +31,8 @@
 					<ul class="nav-users">
 						@foreach ($categories as $key => $category)
 						<li class="col-xs-6 col-sm-4 col-md-3 fl-category">
-							<a href="http://hentai2read.com/hentai-list/category/Adult/" class="link-effect">
-								<img class="img-avatar" src="//hentaicdn.com/cdn/v2/assets/img/other/tag.png?x86889" alt="">
+							<a class="link-effect">
+								<img class="img-avatar" src="" alt="">
 								<span>{{ $category->category }}</span>
 								<div class="font-w400 text-muted"><small>[Category]</small></div>
 							</a>
@@ -56,8 +56,8 @@
 				<div class="block-content row remove-padding bg-white bc-xs">
 					<ul class="nav-users">
 						<li class="col-xs-6 col-sm-4 fl-tag">
-							<a href="http://hentai2read.com/hentai-list/category/Young%20Master/" class="link-effect text-ellipsis">
-								<img class="img-avatar" src="//hentaicdn.com/cdn/v2/assets/img/other/tag.png?x86889" alt="">
+							<a>
+								<img class="img-avatar" src="" alt="">
 								<span>Young Master</span>
 								<div class="font-w400 text-muted"><small>[Tag]</small></div>
 							</a>
@@ -80,8 +80,8 @@
 				<div class="block-content row remove-padding bg-white bc-xs">
 					<ul class="nav-users">
 						<li class="col-xs-6 col-sm-4 fl-parody">
-							<a href="http://hentai2read.com/hentai-list/category/Yumekui%20Merry%20dj./" class="link-effect text-ellipsis">
-								<img class="img-avatar" src="//hentaicdn.com/cdn/v2/assets/img/other/tag.png?x86889" alt="">
+							<a>
+								<img class="img-avatar" src="" alt="">
 								<span>Yumekui Merry dj.</span>
 								<div class="font-w400 text-muted"><small>[Parody]</small></div>
 							</a>

@@ -2,7 +2,7 @@
 	<div class="content-boxed">
 		<ul class="nav-header pull-right">
 			<li class="js-header-search header-search">
-				<form class="form-horizontal" action="http://hentai2read.com/hentai-list/search/" method="post">
+				<form class="form-horizontal" method="post">
 					<div class="form-material form-material-primary input-group remove-margin-t remove-margin-b">
 						<input class="form-control rf-search" type="text" placeholder="Search.." autocomplete="off">
 						<span class="input-group-addon"><i class="si si-magnifier"></i></span>

@@ -12,6 +12,24 @@ use DB;
 
 class MangaController extends Controller
 {
+	public function read(Request $request)
+	{
+		$manga_id = $request->manga_id;
+		$manga = Manga::find($manga_id);
+		$response = ['success' => false, 'message' => 'Manga Not Found'];
+
+		if ($manga) {
+			$chapters = $manga->chapters()->withPages()->get();
+			$response['chapters'] = $chapters;
+			$response['success'] = true;
+			$response['message'] = "";
+
+			return response()->json($response);
+		}
+
+		return response()->json($response);
+	}
+
 	public function get(Request $request)
 	{
 		if ($request->has('scope')) {

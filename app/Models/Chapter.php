@@ -37,6 +37,13 @@ class Chapter extends Model
 
 	public function getChapterUrlAttribute()
 	{
-		return route('manga.read', ['manga_slug' => $this->manga->slug, 'chapter_num' => $this->chapter_num]);
+		return route('manga.read', ['manga_slug' => $this->manga()->first()->slug, 'chapter_num' => $this->chapter_num]);
+	}
+
+	public function scopeWithPages($query)
+	{
+		return $query->with(['pages' => function ($subquery) {
+			$subquery->orderBy('page_num', 'ASC');
+		}]);
 	}
 }

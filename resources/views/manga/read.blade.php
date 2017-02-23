@@ -5,25 +5,18 @@
 @endsection
 
 @section('content')
-<div class="row">
-	<div class="col-md-12">
-		<div class="row" id="control">
-			<div class="col-md-12">
-			</div>
-		</div>
-		<div class="row" id="mainimage">
-			<div class="col-md-8 col-md-offset-2">
-				@if (!is_null($page->next_page->id))
-				<a href="{{ route('manga.read', ['manga_slug' => $manga->slug, 'chapter_num' => $chapter->chapter_num, 'page_num' => $page->next_page->page_num ]) }}">
-					<img src="{{ url('images/original/' . $page->path) }}" class="img-responsive">
-				</a>
-				@else
-				<a href="{{ route('manga.detail', ['manga_id' => $chapter->manga_id ]) }}">
-					<img src="{{ url('images/original/' . $page->path) }}" class="img-responsive">
-				</a>
-				@endif
-			</div>
+<div class="content bg-gray-lighter">
+	<div class="row items-push">
+		<div class="col-sm-7">
+			<h1 class="page-heading">
+				{{ $manga->title }} <small>{{ $chapter->chapter_title }}</small>
+			</h1>
 		</div>
 	</div>
+</div>
+
+<div class="content">
+	<reader data-manga="{{ $manga->id }}" :data-chapter="{{ $chapter->chapter_num }}"
+		:data-page="{{ $page->page_num }}" data-source="{{ route('api.manga.read') }}"></reader>
 </div>
 @endsection
