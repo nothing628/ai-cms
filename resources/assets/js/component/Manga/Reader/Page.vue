@@ -1,17 +1,6 @@
 <template>
-	<div class="row" id="mainimage">
-		<div class="col-md-12">
-			<a>
-				<img src="" class="img-responsive">
-			</a>
-			<select class="form-control">
-				<option v-for="chapter in chapters" :value="chapter.chapter_num">{{ chapter.chapter_title }}</option>
-			</select>
-			<select class="form-control" v-if="activeChapter!=null">
-				<option v-for="page in activeChapter.pages" :value="page.page_num">{{ page.page_num }}</option>
-			</select>
-		</div>
-	</div>
+	<img v-if="activePage == null" :src="fallbackImage" class="img-responsive">
+	<img v-else :src="activePage.page_url" class="img-responsive">
 </template>
 
 <script>
@@ -23,11 +12,32 @@
 				current_page: 1
 			};
 		},
+		props: {
+			fallbackImage: { type: String, default: '' }
+		},
 		computed: {
 			activeChapter() {
 				var that = this;
 				var result = this.chapters.filter(function (value) {
 					return (value.chapter_num == that.current_chapter);
+				});
+
+				if (result.length > 0) {
+					return result[0];
+				} else {
+					return null;
+				}
+			},
+			activePage() {
+				var that = this;
+				var activeChapter = this.activeChapter;
+
+				if (activeChapter == null) {
+					return null;
+				}
+
+				var result = activeChapter.pages.filter(function (value) {
+					return (value.page_num == that.current_page);
 				});
 
 				if (result.length > 0) {
@@ -48,9 +58,13 @@
 				data.chapters.forEach(function (value, index) {
 					that.chapters.push(value);
 				});
+			},
+			setPage(data) {
+				//
 			}
 		},
 		created() {
+			this.$catch('set-page', this.setPage);
 			this.$catch('refresh-page', this.refreshData);
 		}
 	}

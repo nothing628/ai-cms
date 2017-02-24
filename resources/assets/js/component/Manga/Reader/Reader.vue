@@ -1,8 +1,8 @@
 <template>
 	<div class="col-md-10 col-md-offset-1">
-		<reader-control></reader-control>
-		<reader-page></reader-page>
-		<reader-control></reader-control>
+		<div class="block block-bordered block-themed">
+			<slot></slot>
+		</div>
 	</div>
 </template>
 
@@ -56,7 +56,7 @@
 				this.$broadcast('refresh-page', {
 					chapters: this.chapters,
 					chapter_num: this.current_chapter,
-					page_num: this.page_num
+					page_num: this.current_page
 				});
 			},
 			onSuccess(response) {

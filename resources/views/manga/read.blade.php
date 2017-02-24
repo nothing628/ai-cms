@@ -17,6 +17,10 @@
 
 <div class="content">
 	<reader data-manga="{{ $manga->id }}" :data-chapter="{{ $chapter->chapter_num }}"
-		:data-page="{{ $page->page_num }}" data-source="{{ route('api.manga.read') }}"></reader>
+		:data-page="{{ $page->page_num }}" data-source="{{ route('api.manga.read') }}">
+		<reader-control></reader-control>
+		<reader-page fallback-image = "{{ url('images/original/dummy.png') }}"></reader-page>
+		<reader-control></reader-control>
+	</reader>
 </div>
 @endsection

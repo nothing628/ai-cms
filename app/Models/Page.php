@@ -6,19 +6,17 @@ use Illuminate\Database\Eloquent\Model;
 
 class Page extends Model
 {
+	protected $appends = ['page_url'];
+
 	public function Chapter()
 	{
 		return $this->belongsTo(Chapter::class);
 	}
 
-	public function getNextPageAttribute()
+	public function getPageUrlAttribute()
 	{
-		$page = Page::where('chapter_id', $this->chapter_id)->where('page_num', $this->page_num + 1)->get();
+		$path_image = $this->path;
 
-		if ($page->count() > 0) {
-			return $page->first();
-		}
-
-		return new Page();
+		return url('images/original/' . $path_image);
 	}
 }

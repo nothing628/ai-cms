@@ -12,6 +12,14 @@
 	padding-bottom: 20px;
 }
 
+.block-options.pull-left {
+	margin: -3px 15px -3px 0;
+}
+
+.block-options > li > button {
+	min-width: 24px;
+}
+
 .banner .background-layer {
 	background-image: url('/images/original/banner.jpg');
 	background-position-x: center;
