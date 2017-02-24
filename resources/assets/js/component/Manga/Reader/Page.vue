@@ -40,6 +40,7 @@
 			};
 		},
 		props: {
+			dataControl: { type: String, default: '' },
 			fallbackImage: { type: String, default: '' }
 		},
 		computed: {
@@ -118,10 +119,10 @@
 				});
 			},
 			nextPage() {
-				this.$dispatch('next-page');
+				this.$dispatch('next-page', {name: this.dataControl });
 			},
 			prevPage() {
-				this.$dispatch('prev-page');
+				this.$dispatch('prev-page', {name: this.dataControl });
 			}
 		},
 		created() {

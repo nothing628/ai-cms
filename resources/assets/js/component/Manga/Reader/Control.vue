@@ -47,6 +47,9 @@
 				current_page: 1
 			};
 		},
+		props: {
+			dataName: { type: String, default: '' }
+		},
 		computed: {
 			activeChapter() {
 				var that = this;
@@ -143,13 +146,23 @@
 						this.nextPage();
 						break;
 				}
+			},
+			handleNext(e) {
+				if (e.name == this.dataName) {
+					this.nextPage();
+				}
+			},
+			handlePrev(e) {
+				if (e.name == this.dataName) {
+					this.prevPage();
+				}
 			}
 		},
 		created() {
 			this.$catch('set-page', this.setPage);
 			this.$catch('refresh-page', this.refreshData);
-			this.$catch('next-page', this.nextPage);
-			this.$catch('prev-page', this.prevPage);
+			this.$catch('next-page', this.handleNext);
+			this.$catch('prev-page', this.handlePrev);
 		},
 		mounted() {
 			if (typeof (document.onkeydown) == 'object' && document.onkeydown == null) {

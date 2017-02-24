@@ -96,11 +96,11 @@
 			setPage(data) {
 				this.$broadcast('set-page', data);
 			},
-			prevPage() {
-				this.$broadcast('prev-page');
+			prevPage(e) {
+				this.$broadcast('prev-page', e);
 			},
-			nextPage() {
-				this.$broadcast('next-page');
+			nextPage(e) {
+				this.$broadcast('next-page', e);
 			}
 		},
 		created() {
