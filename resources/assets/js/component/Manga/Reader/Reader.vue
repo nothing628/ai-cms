@@ -95,9 +95,17 @@
 			},
 			setPage(data) {
 				this.$broadcast('set-page', data);
+			},
+			prevPage() {
+				this.$broadcast('prev-page');
+			},
+			nextPage() {
+				this.$broadcast('next-page');
 			}
 		},
 		created() {
+			this.$catch('prev-page', this.prevPage);
+			this.$catch('next-page', this.nextPage);
 			this.$catch('set-page', this.setPage);
 		},
 		mounted() {

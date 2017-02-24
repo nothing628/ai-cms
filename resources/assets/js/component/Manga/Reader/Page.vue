@@ -1,7 +1,34 @@
 <template>
-	<img v-if="activePage == null" :src="fallbackImage" id="mainimage" class="img-responsive">
-	<img v-else :src="activePage.page_url" id="mainimage" class="img-responsive">
+	<div class="comp-page-container">
+		<img v-if="activePage == null" :src="fallbackImage" id="mainimage" class="img-responsive">
+		<img v-else :src="activePage.page_url" id="mainimage" class="img-responsive">
+
+		<div class="overlay">
+			<div @click="prevPage"></div>
+			<div @click="nextPage"></div>
+		</div>
+	</div>
 </template>
+
+<style type="text/css">
+	.comp-page-container {
+		position: relative;
+	}
+
+	.comp-page-container .overlay {
+		position: absolute;
+		top: 0;
+		left: 0;
+		bottom: 0;
+		right: 0;
+	}
+
+	.comp-page-container .overlay > div {
+		height: 100%;
+		width: 50%;
+		float: left;
+	}
+</style>
 
 <script>
 	export default {
@@ -89,6 +116,12 @@
 						scrollTop: $("#mainimage").offset().top
 					}, 200);
 				});
+			},
+			nextPage() {
+				this.$dispatch('next-page');
+			},
+			prevPage() {
+				this.$dispatch('prev-page');
 			}
 		},
 		created() {

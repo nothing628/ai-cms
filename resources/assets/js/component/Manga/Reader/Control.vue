@@ -148,6 +148,8 @@
 		created() {
 			this.$catch('set-page', this.setPage);
 			this.$catch('refresh-page', this.refreshData);
+			this.$catch('next-page', this.nextPage);
+			this.$catch('prev-page', this.prevPage);
 		},
 		mounted() {
 			if (typeof (document.onkeydown) == 'object' && document.onkeydown == null) {
