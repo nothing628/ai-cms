@@ -2,13 +2,13 @@
 	<div class="block-header bg-primary-dark">
 		<ul class="block-options">
 			<li>
-				<button type="button" data-toggle="tooltip" title="Previous">
+				<button @click="prevPage" type="button">
 					<i class="fa fa-angle-left"></i>
 				</button>
 			</li>
 			<li><button>{{ current_page }} / {{ totalPages }}</button></li>
 			<li>
-				<button type="button" data-toggle="tooltip" title="Next">
+				<button @click="nextPage" type="button">
 					<i class="fa fa-angle-right"></i>
 				</button>
 			</li>
@@ -20,7 +20,7 @@
 		</ul>
 		<ul class="block-options pull-left">
 			<li>
-				<button type="button" data-toggle="tooltip" title="Previous">
+				<button @click="prevChapter" type="button">
 					<i class="fa fa-angle-left"></i>
 				</button>
 			</li>
@@ -30,7 +30,7 @@
 				</button>
 			</li>
 			<li>
-				<button type="button" data-toggle="tooltip" title="Next">
+				<button @click="nextChapter" type="button">
 					<i class="fa fa-angle-right"></i>
 				</button>
 			</li>
@@ -69,6 +69,9 @@
 				} else {
 					return activeChapter.pages.length;
 				}
+			},
+			totalChapter() {
+				return this.chapters.length;
 			}
 		},
 		methods: {
@@ -83,8 +86,63 @@
 					that.chapters.push(value);
 				});
 			},
+			broadcastEvent() {
+				var data = {
+					page: this.current_page,
+					chapter: this.current_chapter
+				};
+
+				this.$dispatch('set-page', data);
+			},
 			setPage(data) {
-				//
+				this.current_page = data.page;
+				this.current_chapter = data.chapter;
+			},
+			nextChapter() {
+				if (this.current_chapter + 1 > this.totalChapter) {
+					return;
+				}
+
+				this.current_page = 1;
+				this.current_chapter++;
+				this.broadcastEvent();
+			},
+			prevChapter() {
+				if (this.current_chapter - 1 <= 0 ) {
+					return;
+				}
+
+				this.current_chapter--;
+				this.current_page = this.totalPages;
+				this.broadcastEvent();
+			},
+			nextPage() {
+				if (this.current_page + 1 > this.totalPages) {
+					this.nextChapter();
+					return;
+				}
+
+				this.current_page++;
+				this.broadcastEvent();
+			},
+			prevPage() {
+				if (this.current_page - 1 <= 0) {
+					this.prevChapter();
+					return;
+				}
+
+				this.current_page--;
+				this.broadcastEvent();
+			},
+			handleKey(e) {
+				switch(e.keyCode) {
+					case 37:
+						this.prevPage();
+						break;
+					case 39:
+						this.nextPage();
+						break;
+				}
 			}
 		},
 		created() {
@@ -92,7 +150,9 @@
 			this.$catch('refresh-page', this.refreshData);
 		},
 		mounted() {
-			//
+			if (typeof (document.onkeydown) == 'object' && document.onkeydown == null) {
+				document.onkeydown = this.handleKey;
+			}
 		}
 	}
 </script>

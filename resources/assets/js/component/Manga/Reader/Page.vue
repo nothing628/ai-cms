@@ -1,6 +1,6 @@
 <template>
-	<img v-if="activePage == null" :src="fallbackImage" class="img-responsive">
-	<img v-else :src="activePage.page_url" class="img-responsive">
+	<img v-if="activePage == null" :src="fallbackImage" id="mainimage" class="img-responsive">
+	<img v-else :src="activePage.page_url" id="mainimage" class="img-responsive">
 </template>
 
 <script>
@@ -60,7 +60,35 @@
 				});
 			},
 			setPage(data) {
-				//
+				if (this.current_chapter < data.chapter || this.current_page < data.page) {
+					//scroll top
+					this.scrollTop();
+				} else {
+					//scroll down
+					this.scrollDown();
+				}
+
+				this.current_page = data.page;
+				this.current_chapter = data.chapter;
+			},
+			scrollDown() {
+				this.$nextTick(function () {
+					var inner = window.innerHeight;
+					var height = $('#mainimage').height();
+					var offset = $('#mainimage').offset().top;
+					var scrollY = offset + height - inner;
+
+					$('html, body').animate({
+						scrollTop: scrollY
+					}, 200);
+				});
+			},
+			scrollTop() {
+				this.$nextTick(function () {
+					$('html, body').animate({
+						scrollTop: $("#mainimage").offset().top
+					}, 200);
+				});
 			}
 		},
 		created() {

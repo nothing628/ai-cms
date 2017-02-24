@@ -92,7 +92,13 @@
 				var msg = response.statusText;
 
 				bus.$emit('alert-show', {title: code, text: msg, type: 'error'});
+			},
+			setPage(data) {
+				this.$broadcast('set-page', data);
 			}
+		},
+		created() {
+			this.$catch('set-page', this.setPage);
 		},
 		mounted() {
 			this.current_chapter = this.dataChapter;
