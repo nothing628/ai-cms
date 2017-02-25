@@ -28,7 +28,7 @@
 						</a>
 					</li>
 					<li>
-						<a href="{{ route('tag') }}">
+						<a href="{{ route('tag.directory') }}">
 							<i class="si si-tag"></i>
 							<span class="sidebar-mini-hide">Tag Directory</span>
 						</a>
