@@ -1,7 +1,7 @@
 <template>
 	<div class="comp-page-container">
 		<img v-if="activePage == null" :src="fallbackImage" id="mainimage" class="img-responsive">
-		<img v-else :src="activePage.page_url" id="mainimage" class="img-responsive">
+		<img v-else :src="pageUrl" id="mainimage" @load="onLoad" @error="onError" class="img-responsive">
 
 		<div class="overlay">
 			<div @click="prevPage"></div>
@@ -43,6 +43,7 @@
 			dataControl: { type: String, default: '' },
 			fallbackImage: { type: String, default: '' }
 		},
+		watch: {},
 		computed: {
 			activeChapter() {
 				var that = this;
@@ -73,9 +74,18 @@
 				} else {
 					return null;
 				}
+			},
+			pageUrl() {
+				return (this.activePage != null)?this.activePage.page_url:null;
 			}
 		},
 		methods: {
+			onError(e) {
+				//
+			},
+			onLoad(e) {
+				//
+			},
 			refreshData(data) {
 				var that = this;
 
