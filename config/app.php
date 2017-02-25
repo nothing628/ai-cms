@@ -184,7 +184,7 @@ return [
 		Pion\Laravel\ChunkUpload\Providers\ChunkUploadServiceProvider::class,
 		Chumper\Zipper\ZipperServiceProvider::class,
 		Artesaos\SEOTools\Providers\SEOToolsServiceProvider::class,
-		Cocur\Slugify\Bridge\Laravel\SlugifyServiceProvider::class,
+		Cviebrock\EloquentSluggable\ServiceProvider::class,
 	],
 
 	/*
@@ -241,7 +241,6 @@ return [
 		'OpenGraph' => Artesaos\SEOTools\Facades\OpenGraph::class,
 		'SEO' => Artesaos\SEOTools\Facades\SEOTools::class,
 		'Twitter'   => Artesaos\SEOTools\Facades\TwitterCard::class,
-		'Slugify' => Cocur\Slugify\Bridge\Laravel\SlugifyFacade::class,
 	],
 
 ];

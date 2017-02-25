@@ -3,7 +3,7 @@
 namespace App\Models;
 
 use App\Traits\Taggable;
-use App\Traits\Sluggable;
+use Cviebrock\EloquentSluggable\Sluggable;
 use Illuminate\Database\Eloquent\Model;
 use DB;
 
@@ -11,10 +11,6 @@ class Manga extends Model
 {
 	use Taggable;
 	use Sluggable;
-
-	public $slug_field = 'slug';
-	// public $slug_max_length = 120;
-	public $slug_source = 'title';
 
 	protected $appends = [
 		'total_page',
@@ -27,6 +23,20 @@ class Manga extends Model
 	protected $casts = [
 		'meta' => 'array',
 	];
+
+	/**
+	 * Return the sluggable configuration array for this model.
+	 *
+	 * @return array
+	 */
+	public function sluggable()
+	{
+		return [
+			'slug' => [
+				'source' => 'title'
+			]
+		];
+	}
 
 	public function category()
 	{
