@@ -709,6 +709,7 @@ function(a) {
     }
     return b(function() {})
 });
+
 var App = function() {
     var a, b, c, d, e, f, g, h, i, j, k = function() {
         a = jQuery("html"),
