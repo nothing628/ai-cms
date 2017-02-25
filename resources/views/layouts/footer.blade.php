@@ -17,6 +17,20 @@
 					<li><a class="font-w600" href="">Github</a></li>
 				</ul>
 			</div>
+			<div class="col-md-4">
+				<h3 class="h5 font-w600 text-uppercase push-20">Get In Touch</h3>
+				<div class="font-s13 push">
+					<strong>Company, Inc.</strong>
+					<br> 980 Folsom Ave, Suite 1230
+					<br> San Francisco, CA 94107
+					<br>
+					<abbr title="Phone">P:</abbr> (123) 456-7890
+					<div></div>
+				</div>
+				<div class="font-s13">
+					<i class="si si-envelope-open"></i> company@example.com
+				</div>
+			</div>
 		</div>
 		<div class="font-s12 push-20 clearfix">
 			<hr class="remove-margin-t">
