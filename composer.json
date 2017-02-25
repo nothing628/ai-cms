@@ -18,7 +18,8 @@
 		"anlutro/l4-settings": "0.4.9",
 		"pion/laravel-chunk-upload": "^0.3.2",
 		"chumper/zipper": "^1.0",
-		"cocur/slugify": "^2.4"
+		"cocur/slugify": "^2.4",
+		"artesaos/seotools": "^0.10.0"
 	},
 	"require-dev": {
 		"fzaninotto/faker": "~1.4",

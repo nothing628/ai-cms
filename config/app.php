@@ -183,6 +183,7 @@ return [
 		anlutro\LaravelSettings\ServiceProvider::class,
 		Pion\Laravel\ChunkUpload\Providers\ChunkUploadServiceProvider::class,
 		Chumper\Zipper\ZipperServiceProvider::class,
+		Artesaos\SEOTools\Providers\SEOToolsServiceProvider::class,
 		Cocur\Slugify\Bridge\Laravel\SlugifyServiceProvider::class,
 	],
 
@@ -236,6 +237,10 @@ return [
 		'Uuid' => Webpatser\Uuid\Uuid::class,
 		'Setting' => anlutro\LaravelSettings\Facade::class,
 		'Zipper' => Chumper\Zipper\Zipper::class,
+		'SEOMeta'   => Artesaos\SEOTools\Facades\SEOMeta::class,
+		'OpenGraph' => Artesaos\SEOTools\Facades\OpenGraph::class,
+		'SEO' => Artesaos\SEOTools\Facades\SEOTools::class,
+		'Twitter'   => Artesaos\SEOTools\Facades\TwitterCard::class,
 		'Slugify' => Cocur\Slugify\Bridge\Laravel\SlugifyFacade::class,
 	],
 
