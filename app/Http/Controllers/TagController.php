@@ -15,4 +15,9 @@ class TagController extends Controller
     {
     	return view('admin.tag.create');
     }
+
+    public function directory()
+    {
+    	return view('home.tag');
+    }
 }

@@ -16,19 +16,34 @@
 						<a class="active" href="{{ route('home') }}"><i class="si si-home"></i><span class="sidebar-mini-hide">Home</span></a>
 					</li>
 					<li>
-						<a href=""><i class="si si-magnifier"></i><span class="sidebar-mini-hide">Advanced Search</span></a>
+						<a href="{{ route('search') }}">
+							<i class="si si-magnifier"></i>
+							<span class="sidebar-mini-hide">Advanced Search</span>
+						</a>
 					</li>
 					<li>
-						<a href=""><i class="si si-grid"></i><span class="sidebar-mini-hide">Browse</span></a>
+						<a href="{{ route('browse') }}">
+							<i class="si si-grid"></i>
+							<span class="sidebar-mini-hide">Browse</span>
+						</a>
 					</li>
 					<li>
-						<a href=""><i class="si si-tag"></i><span class="sidebar-mini-hide">Tag Directory</span></a>
+						<a href="{{ route('tag') }}">
+							<i class="si si-tag"></i>
+							<span class="sidebar-mini-hide">Tag Directory</span>
+						</a>
 					</li>
 					<li>
-						<a href=""><i class="si si-question"></i><span class="sidebar-mini-hide">FAQs</span></a>
+						<a href="{{ route('faq') }}">
+							<i class="si si-question"></i>
+							<span class="sidebar-mini-hide">FAQs</span>
+						</a>
 					</li>
 					<li>
-						<a href=""><i class="si si-bubble"></i><span class="sidebar-mini-hide">Contact Us</span></a>
+						<a href="{{ route('contact.us') }}">
+							<i class="si si-bubble"></i>
+							<span class="sidebar-mini-hide">Contact Us</span>
+						</a>
 					</li>
 				</ul>
 			</div>

@@ -8,11 +8,21 @@ class HomeController extends Controller
 {
 	public function index()
 	{
-		return view('welcome');
+		return view('home.index');
+	}
+
+	public function search()
+	{
+		return view('home.search');
 	}
 
 	public function contactUs()
 	{
-		return view('contactus');
+		return view('home.contactus');
+	}
+
+	public function faq()
+	{
+		return view('home.faq');
 	}
 }

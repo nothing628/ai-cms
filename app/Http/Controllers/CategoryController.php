@@ -7,12 +7,6 @@ use App\Models\Category;
 
 class CategoryController extends Controller
 {
-	public function index()
-	{
-		$categories = Category::all();
-		return view('manga.category', ['categories' => $categories]);
-	}
-
 	public function admin()
 	{
 		return view('admin.category.index');
