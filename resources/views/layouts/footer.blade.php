@@ -28,7 +28,7 @@
 					<div></div>
 				</div>
 				<div class="font-s13">
-					<i class="si si-envelope-open"></i> company@example.com
+					<i class="si si-envelope-open"></i> <a href="">nothing628</a>
 				</div>
 			</div>
 		</div>
