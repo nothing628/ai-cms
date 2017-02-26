@@ -18,6 +18,7 @@ class AddHeaderMiddleware
 	{
 		$response = $next($request);
 
+		$response->headers->set('X-XSS-Protection', '1; mode=block');
 		$response->setLastModified(new DateTime("now"));
 		$response->setExpires(new DateTime("tomorrow"));
 
