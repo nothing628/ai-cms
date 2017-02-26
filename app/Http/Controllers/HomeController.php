@@ -4,13 +4,19 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use SEOMeta;
-use SEO;
+use OpenGraph;
+use Twitter;
 use Setting;
 
 class HomeController extends Controller
 {
 	public function index()
 	{
+		OpenGraph::setDescription(Setting::get('app.description'));
+		OpenGraph::setTitle(Setting::get('app.title'));
+		OpenGraph::setUrl(route('home'));
+		OpenGraph::addProperty('type', 'articles');
+
 		SEOMeta::setTitle(Setting::get('app.title'));
 		SEOMeta::setDescription(Setting::get('app.description'));
 		SEOMeta::addMeta('robots', 'index,follow');
