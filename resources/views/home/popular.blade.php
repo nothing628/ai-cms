@@ -8,13 +8,13 @@
 			</ul>
 			<vue-block-content :data-class="['remove-padding','tab-content']" id="lts-grp">
 				<div role="tabpanel" id="popular" class="tab-pane active">
-					<manga-grid data-source="{{ route('api.manga.get') }}" :data-options="{scope: 'popular'}"></manga-grid>
+					<manga-grid data-source="{{ route('api.manga.get') }}" :data-options="{scope: 'popular'}">Most Popular Manga</manga-grid>
 				</div>
 				<div role="tabpanel" id="view" class="tab-pane">
-					<manga-grid data-source="{{ route('api.manga.get') }}" :data-options="{scope: 'view'}"></manga-grid>
+					<manga-grid data-source="{{ route('api.manga.get') }}" :data-options="{scope: 'view'}">Most View Manga</manga-grid>
 				</div>
 				<div role="tabpanel" id="random" class="tab-pane">
-					<manga-grid data-source="{{ route('api.manga.get') }}" :data-options="{scope: 'random'}"></manga-grid>
+					<manga-grid data-source="{{ route('api.manga.get') }}" :data-options="{scope: 'random'}">Random Manga</manga-grid>
 				</div>
 			</vue-block-content>
 		</vue-block>
