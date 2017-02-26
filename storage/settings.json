@@ -1,1 +1,29 @@
-{"app":{"name":"AI-CMS","desc":"Free Reading Manga","additional":{"script":[],"meta":[]}}}
+{
+  "app": {
+    "name": "AI-CMS",
+    "title": "Read free manga online at AI-CMS",
+    "desc": "Free Reading Manga Online",
+    "description": "Read your favorite manga scans and scanlations online at AI-CMS. Read Free Manga Online - Updated Daily. Read popular manga like Naruto, Bleach, One Piece",
+    "keyword": [
+      "free",
+      "manga",
+      "read manga",
+      "online",
+      "full manga",
+      "reading manga",
+      "manga online",
+      "ai-cms",
+      "cms",
+      "free manga",
+      "favorite manga",
+      "popular manga",
+      "manga scan",
+      "manga scans",
+      "scanlations"
+    ],
+    "additional": {
+      "script": [],
+      "meta": []
+    }
+  }
+}

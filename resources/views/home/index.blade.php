@@ -1,9 +1,5 @@
 @extends ('layouts.base')
 
-@section ('title')
-Welcome to {{ Setting::get('app.name') }}
-@endsection
-
 @section ('content')
 <div class="bg-primary-dark banner" style="position: relative;">
 	<div class="background-layer">
