@@ -1,7 +1,7 @@
 @extends ('layouts.base')
 
 @section ('content')
-<div class="bg-primary-dark banner" style="position: relative;">
+<div class="bg-primary-dark banner">
 	<div class="background-layer">
 		<div class="overlay"></div>
 	</div>

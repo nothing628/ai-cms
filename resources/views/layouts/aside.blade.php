@@ -5,7 +5,7 @@
 				<i class="fa fa-times"></i>
 			</button>
 			<span>
-				<img class="img-avatar img-avatar32" src="{{ asset('images/small/Cover 002.jpg')}}" alt="">
+				<img class="img-avatar img-avatar32" src="{{ asset('images/small/Cover 002.jpg')}}" alt="Jack Greene">
 				<span class="font-w600 push-10-l">Jack Greene</span>
 			</span>
 		</div>
@@ -71,36 +71,36 @@
 							<div class="block-content block-content-full">
 								<ul class="nav-users remove-margin-b">
 									<li>
-										<a href="base_pages_profile.php">
-											<img class="img-avatar" src="{{ asset('images/small/Cover 001.jpg')}}" alt="">
+										<a href="">
+											<img class="img-avatar" src="{{ asset('images/small/Cover 001.jpg')}}" alt="Megan Dean">
 											<i class="fa fa-circle text-success"></i> Megan Dean
 											<div class="font-w400 text-muted"><small>Copywriter</small></div>
 										</a>
 									</li>
 									<li>
-										<a href="base_pages_profile.php">
-											<img class="img-avatar" src="{{ asset('images/small/Cover 002.jpg')}}" alt="">
+										<a href="">
+											<img class="img-avatar" src="{{ asset('images/small/Cover 002.jpg')}}" alt="Ronald George">
 											<i class="fa fa-circle text-success"></i> Ronald George
 											<div class="font-w400 text-muted"><small>Web Developer</small></div>
 										</a>
 									</li>
 									<li>
-										<a href="base_pages_profile.php">
-											<img class="img-avatar" src="{{ asset('images/small/Cover 003.jpg')}}" alt="">
+										<a href="">
+											<img class="img-avatar" src="{{ asset('images/small/Cover 003.jpg')}}" alt="Susan Elliott">
 											<i class="fa fa-circle text-success"></i> Susan Elliott
 											<div class="font-w400 text-muted"><small>Web Designer</small></div>
 										</a>
 									</li>
 									<li>
-										<a href="base_pages_profile.php">
-											<img class="img-avatar" src="{{ asset('images/small/Cover 004.jpg')}}" alt="">
+										<a href="">
+											<img class="img-avatar" src="{{ asset('images/small/Cover 004.jpg')}}" alt="Sara Holland">
 											<i class="fa fa-circle text-warning"></i> Sara Holland
 											<div class="font-w400 text-muted"><small>Photographer</small></div>
 										</a>
 									</li>
 									<li>
-										<a href="base_pages_profile.php">
-											<img class="img-avatar" src="{{ asset('images/small/Cover 002.jpg')}}" alt="">
+										<a href="">
+											<img class="img-avatar" src="{{ asset('images/small/Cover 002.jpg')}}" alt="Jack Greene">
 											<i class="fa fa-circle text-warning"></i> Jack Greene
 											<div class="font-w400 text-muted"><small>Graphic Designer</small></div>
 										</a>
@@ -118,7 +118,7 @@
 								<h3 class="block-title">Quick Settings</h3>
 							</div>
 							<div class="block-content">
-								<form class="form-bordered" action="base_pages_dashboard.php" method="post" onsubmit="return false;">
+								<form class="form-bordered" method="post" onsubmit="return false;">
 									<div class="form-group">
 										<div class="row">
 											<div class="col-xs-8">

@@ -20,6 +20,10 @@
 	min-width: 24px;
 }
 
+.banner {
+	position: relative;
+}
+
 .banner .background-layer {
 	background-image: url('/images/original/banner.jpg');
 	background-position-x: center;
@@ -68,6 +72,10 @@
 	text-overflow: ellipsis;
 	word-break: break-all;
 	word-wrap: break-word;
+}
+
+#css-main {
+	display: none;
 }
 
 #social-media > a {
