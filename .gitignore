@@ -3,7 +3,6 @@
 /public/css/*
 !/public/css/bootstrap.min.css
 !/public/css/font-awesome.min.css
-!/public/css/font.css
 /public/js/*
 !/public/js/bootstrap.min.js
 /vendor

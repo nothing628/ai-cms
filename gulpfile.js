@@ -29,6 +29,7 @@ elixir(mix => {
 	mix.styles('./node_modules/select2/dist/css/select2.min.css');
 	mix.scripts('./node_modules/select2/dist/js/select2.full.min.js');
 
+	mix.styles('font.css');
 	mix.styles(['dropzone.css', 'oneui.css', 'modern.css', 'app.css', 'sweetalert2.css'], 'public/css/app.css');
 	//mix.styles(['app.css'], 'public/css/app.css');
 	mix.scripts('oneui.js');
