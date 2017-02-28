@@ -23,7 +23,13 @@ if ($item['priority'] !== null) {
 }
 
 if ($item['lastmod'] !== null) {
-  echo "\t\t" . '<lastmod>' . date('Y-m-d\TH:i:sP', strtotime($item['lastmod'])) . '</lastmod>' . "\n";
+	echo "\t\t" . '<lastmod>';
+	if ($item['lastmod'] instanceof DateTime) {
+		echo $item['lastmod']->format('Y-m-d\TH:i:sP');
+	} else {
+		echo date('Y-m-d\TH:i:sP', strtotime($item['lastmod']));
+	}
+	echo '</lastmod>' . "\n";
 }
 
 if ($item['freq'] !== null) {
