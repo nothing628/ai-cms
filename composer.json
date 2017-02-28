@@ -18,6 +18,7 @@
 		"anlutro/l4-settings": "0.4.9",
 		"pion/laravel-chunk-upload": "^0.3.2",
 		"chumper/zipper": "^1.0",
+		"roumen/sitemap": "2.6.*",
 		"cviebrock/eloquent-sluggable": "^4.1",
 		"artesaos/seotools": "^0.10.0"
 	},

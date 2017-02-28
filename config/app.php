@@ -183,6 +183,7 @@ return [
 		anlutro\LaravelSettings\ServiceProvider::class,
 		Pion\Laravel\ChunkUpload\Providers\ChunkUploadServiceProvider::class,
 		Chumper\Zipper\ZipperServiceProvider::class,
+		Roumen\Sitemap\SitemapServiceProvider::class,
 		Artesaos\SEOTools\Providers\SEOToolsServiceProvider::class,
 		Cviebrock\EloquentSluggable\ServiceProvider::class,
 	],
