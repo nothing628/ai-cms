@@ -23,6 +23,16 @@ class MangaController extends Controller
 		return view('admin.manga.index');
 	}
 
+	public function staffPick()
+	{
+		return view('admin.manga.staffpick');
+	}
+
+	public function crawl()
+	{
+		return view('admin.manga.crawl.index');
+	}
+
 	public function create()
 	{
 		$categories = Category::all();

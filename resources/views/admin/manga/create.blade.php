@@ -11,9 +11,9 @@
 @endsection
 
 @section ('page-content')
-<div class="block">
+<vue-block :is-themed="true">
 	<vue-block-head :data-class="['bg-gray-lighter']">Upload New Manga</vue-block-head>
-	<div class="block-content block-content-narrow">
+	<vue-block-content :data-class="['block-content-narrow']">
 		<vue-form :data-class="['form-horizontal', 'push-10-t']" data-enctype="multipart/form-data"
 		data-action="{{ route('api.manga.store') }}" data-name="form-create">
 			{!! csrf_field() !!}
@@ -44,8 +44,8 @@
 			</vue-form-group>
 			<div class="clearfix"></div>
 		</vue-form>
-	</div>
-</div>
+	</vue-block-content>
+</vue-block>
 @endsection
 
 @section('styles')
