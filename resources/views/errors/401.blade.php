@@ -8,7 +8,7 @@
 	<meta http-equiv="X-UA-Compatible" content="IE=edge">
 	<meta http-equiv="Content-Type" content="Type=text/html; charset=utf-8"/>
 	<meta name="viewport" content="width=device-width, initial-scale=1">
-	<title>Error 503</title>
+	<title>Error 401</title>
 	<div id="css-main">
 		<link rel="stylesheet" type="text/css" href="{{ asset('css/font.css') }}">
 		<link rel="stylesheet" type="text/css" href="{{ asset('css/bootstrap.min.css') }}">
@@ -21,8 +21,8 @@
 	<div class="content bg-white text-center pulldown overflow-hidden">
 		<div class="row">
 			<div class="col-sm-6 col-sm-offset-3">
-				<h1 class="font-s128 font-w300 text-smooth animated rollIn">503</h1>
-				<h2 class="h3 font-w300 push-50 animated fadeInUp">We are sorry but our service is currently not available..</h2>
+				<h1 class="font-s128 font-w300 text-amethyst animated fadeInDown">401</h1>
+				<h2 class="h3 font-w300 push-50 animated fadeInUp">We are sorry but you are not authorized to access this page..</h2>
 				<form class="form-horizontal push-50" method="post">
 					<div class="form-group">
 						<div class="col-sm-6 col-sm-offset-3">
