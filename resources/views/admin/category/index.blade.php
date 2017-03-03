@@ -19,11 +19,12 @@
 			<vue-table-body data-source="{{ route('api.category.get') }}" :data-map="[
 			{key: 'category', class: 'text-center'},
 			{key: 'total_manga', class: 'text-center'}]" :is-action="true">
-				<div class="btn-group btn-group-xs">
-					<a data-toggle="tooltip" title="" class="btn btn-default" data-original-title="View"><i class="fa fa-eye"></i></a>
-					<a data-toggle="tooltip" title="" class="btn btn-default" data-original-title="Edit"><i class="fa fa-pencil text-primary"></i></a>
-					<a data-toggle="tooltip" title="" class="btn btn-default" data-original-title="Delete"><i class="fa fa-times text-danger"></i></a>
-				</div>
+				<template scope="props">
+					<div class="btn-group btn-group-sm">
+						<a data-toggle="tooltip" title="" class="btn btn-default" data-original-title="Edit"><i class="fa fa-pencil text-primary"></i></a>
+						<vue-action :data-item = "props.item" :is-delete="true" data-link="{{ route('api.category.delete') }}"><i class="fa fa-times text-danger"></i></vue-action>
+					</div>
+				</template>
 			</vue-table-body>
 		</vue-table>
 
