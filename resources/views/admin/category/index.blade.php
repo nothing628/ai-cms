@@ -1,9 +1,5 @@
 @extends('admin.base')
 
-@section('title')
-@parent Category List
-@endsection
-
 @section('breadcrumb')
 <li><a>Home</a></li>
 <li><a>Category List</a></li>
@@ -13,9 +9,9 @@
 <vue-block>
 	<vue-block-head :data-class="['bg-gray-lighter']">Category List</vue-block-head>
 	<vue-block-content>
-		<a href="{{ route('admin.category.create') }}" class="btn btn-success btn-flat btn-line"><i class="fa fa-plus"></i> Add</a>
+		<vue-modal-button data-target="modal-form" :data-class="['btn', 'btn-success']"><i class="fa fa-plus"></i> Add</vue-modal-button>
 		
-		<vue-table :data-class="['push-15-t']">
+		<vue-table :data-class="['push-15-t']" data-name="table" data-target="bdata">
 			<vue-table-head :data-column="[
 			{value:'Category', class:'text-center'},
 			{value:'Manga', class:'text-center'},
@@ -31,9 +27,11 @@
 			</vue-table-body>
 		</vue-table>
 
-		<nav class="text-right">
-			<vue-pagination :data-max-page="20" :data-page="1"></vue-pagination>
-		</nav>
+		<div class="row">
+			<div class="col-md-6"><record-status data-name="bdata"></record-status></div>
+			<div class="col-md-6"><vue-pagination data-name="bdata" data-target="table"></vue-pagination></div>
+		</div>
 	</vue-block-content>
 </vue-block>
+@include('admin.category.create')
 @endsection

@@ -11,7 +11,8 @@ class CategoryController extends Controller
 {
 	public function get()
 	{
-		//
+		$result = Category::orderBy('category', 'asc')->paginate(15);
+		return response()->json($result);
 	}
 
 	public function getSelect()
@@ -22,5 +23,19 @@ class CategoryController extends Controller
 		});
 
 		return $result;
+	}
+
+	public function store(Request $request)
+	{
+		try {
+			$category = new Category;
+			$category->category = $request->category;
+			$category->description = $request->description;
+			$category->save();
+
+			return response()->json(['success' => true, 'message' => 'Success save category']);
+		} catch (Exception $ex) {
+			return response()->json(['success' => false, 'message' => $ex->getMessage() ]);
+		}
 	}
 }
