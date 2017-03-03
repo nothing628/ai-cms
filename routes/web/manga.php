@@ -15,13 +15,4 @@ Route::get('browse', ['as' => 'browse', 'uses' => 'MangaController@browseManga']
 Route::get('search', ['as' => 'search', 'uses' => 'HomeController@search']);
 Route::get('contact/us', ['as' => 'contact.us', 'uses' => 'HomeController@contactUs']);
 Route::get('faq', ['as' => 'faq', 'uses' => 'HomeController@faq']);
-Route::get('sitemap.xml', function () {
-	$sitemap = App::make("sitemap");
-	$sitemap->setCache('laravel.sitemap', 60);
-
-	if (!$sitemap->isCached()) {
-		$sitemap->add(URL::to('/'), '2012-08-25T20:10:00+02:00', '1.0', 'daily');
-	}
-
-	return $sitemap->render('xml');
-});
+Route::get('sitemap.xml', ['as' => 'sitemap.xml', 'uses' => 'PageController@sitemap']);

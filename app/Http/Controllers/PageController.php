@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 use App\Models\Chapter;
 use App\Models\Page;
 use Uuid;
+use App;
 
 class PageController extends Controller
 {
@@ -19,6 +20,19 @@ class PageController extends Controller
 
 		return redirect()->route('admin.manga.index');
 	}
+
+	public function sitemap()
+	{
+		$sitemap = App::make("sitemap");
+		$sitemap->setCache('laravel.sitemap', 60);
+
+		if (!$sitemap->isCached()) {
+			$sitemap->add(URL::to('/'), '2012-08-25T20:10:00+02:00', '1.0', 'daily');
+		}
+
+		return $sitemap->render('xml');
+	}
+
 	// public function upload($chapter_id, Request $request)
 	// {
 	// 	$chapter = Chapter::find($chapter_id);
