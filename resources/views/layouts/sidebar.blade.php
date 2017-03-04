@@ -22,7 +22,7 @@
 						</a>
 					</li>
 					<li>
-						<a href="{{ route('browse') }}">
+						<a href="{{ route('manga.browse') }}">
 							<i class="si si-grid"></i>
 							<span class="sidebar-mini-hide">Browse</span>
 						</a>

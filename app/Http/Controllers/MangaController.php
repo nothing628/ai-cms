@@ -4,6 +4,8 @@ namespace App\Http\Controllers;
 
 use Auth;
 use Image;
+use SEOMeta;
+use Setting;
 use Illuminate\Http\Request;
 use Illuminate\Database\Eloquent\ModelNotFoundException;
 use App\Models\Category;
@@ -66,7 +68,7 @@ class MangaController extends Controller
 
 			return view('manga.detail', ['manga' => $manga]);
 		} catch (ModelNotFoundException $ex) {
-			return redirect()->route('manga.list');
+			return redirect()->route('manga.browse');
 		}
 	}
 
@@ -79,12 +81,14 @@ class MangaController extends Controller
 
 			return view('manga.read', ['manga' => $manga, 'chapter' => $chapter, 'page' => $page]);
 		} catch (ModelNotFoundException $ex) {
-			return redirect()->route('manga.list');
+			return redirect()->route('manga.browse');
 		}
 	}
 
 	public function browseManga()
 	{
+		SEOMeta::setTitle(Setting::get('app.name') . " - Search Manga");
+
 		$mangas = Manga::all();
 		return view('manga.index', ['mangas' => $mangas]);
 	}

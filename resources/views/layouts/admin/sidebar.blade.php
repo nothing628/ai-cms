@@ -14,7 +14,7 @@
 					<li>
 						<a class="active" href="{{ route('admin.home') }}"><i class="si si-speedometer"></i><span class="sidebar-mini-hide">Dashboard</span></a>
 					</li>
-					<li class="nav-main-heading"><span class="sidebar-mini-hide">User Interface</span></li>
+					<li class="nav-main-heading"><span class="sidebar-mini-hide">Main Setting</span></li>
 					<li>
 						<a class="nav-submenu" data-toggle="nav-submenu" href="#"><i class="si si-docs"></i><span class="sidebar-mini-hide">Manga</span></a>
 						<ul>

@@ -11,7 +11,7 @@ Route::group(['middleware' => 'auth'], function () {
 });
 
 Route::get('tag', ['as' => 'tag.directory', 'uses' => 'TagController@directory']);
-Route::get('browse', ['as' => 'browse', 'uses' => 'MangaController@browseManga']);
+Route::get('browse', ['as' => 'manga.browse', 'uses' => 'MangaController@browseManga']);
 Route::get('search', ['as' => 'search', 'uses' => 'HomeController@search']);
 Route::get('contact/us', ['as' => 'contact.us', 'uses' => 'HomeController@contactUs']);
 Route::get('faq', ['as' => 'faq', 'uses' => 'HomeController@faq']);
