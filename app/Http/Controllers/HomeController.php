@@ -11,6 +11,13 @@ use App\Models\Manga;
 
 class HomeController extends Controller
 {
+	public function __construct()
+	{
+		SEOMeta::setDescription(Setting::get('app.description'));
+		SEOMeta::addMeta('robots', 'index,follow');
+		SEOMeta::addKeyword(Setting::get('app.keyword'));
+	}
+
 	public function index()
 	{
 		OpenGraph::setDescription(Setting::get('app.description'));
@@ -22,9 +29,6 @@ class HomeController extends Controller
 		Twitter::setDescription(Setting::get('app.description'));
 
 		SEOMeta::setTitle(Setting::get('app.title'));
-		SEOMeta::setDescription(Setting::get('app.description'));
-		SEOMeta::addMeta('robots', 'index,follow');
-		SEOMeta::addKeyword(Setting::get('app.keyword'));
 
 		$popular = Manga::popular()->limit(15)->get();
 		$view = Manga::mostView()->limit(15)->get();

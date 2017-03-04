@@ -5,6 +5,8 @@ namespace App\Http\Controllers;
 use Auth;
 use Image;
 use SEOMeta;
+use OpenGraph;
+use Twitter;
 use Setting;
 use Illuminate\Http\Request;
 use Illuminate\Database\Eloquent\ModelNotFoundException;
@@ -15,6 +17,13 @@ use App\Models\Page;
 
 class MangaController extends Controller
 {
+	public function __construct()
+	{
+		SEOMeta::setDescription(Setting::get('app.description'));
+		SEOMeta::addMeta('robots', 'index,follow');
+		SEOMeta::addKeyword(Setting::get('app.keyword'));
+	}
+
 	public function index()
 	{
 		return view('manga.index');
@@ -66,6 +75,14 @@ class MangaController extends Controller
 		try {
 			$manga = Manga::where('slug', $manga_slug)->firstOrFail();
 
+			SEOMeta::setTitle(Setting::get('app.name') . ' - ' . $manga->title);
+			OpenGraph::setTitle(Setting::get('app.name') . ' - ' . $manga->title);
+			OpenGraph::setDescription($manga->meta['desc']);
+			OpenGraph::addProperty('article:published_time', $manga->created_at);
+			OpenGraph::addProperty('article:modified_time', $manga->updated_at);
+			OpenGraph::addProperty('type', 'article');
+			OpenGraph::addImage($manga->thumb_url);
+
 			return view('manga.detail', ['manga' => $manga]);
 		} catch (ModelNotFoundException $ex) {
 			return redirect()->route('manga.browse');
@@ -78,6 +95,8 @@ class MangaController extends Controller
 			$manga = Manga::where('slug', $manga_slug)->firstOrFail();
 			$chapter = $manga->chapters()->where('chapter_num', $chapter_num)->firstOrFail();
 			$page = $chapter->pages()->where('page_num', $page_num)->firstOrFail();
+
+			SEOMeta::setTitle(Setting::get('app.name') . ' - ' . $manga->title . ' - ' . $chapter->chapter_title);
 
 			return view('manga.read', ['manga' => $manga, 'chapter' => $chapter, 'page' => $page]);
 		} catch (ModelNotFoundException $ex) {

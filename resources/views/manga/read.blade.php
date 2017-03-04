@@ -8,9 +8,11 @@
 <div class="content bg-gray-lighter">
 	<div class="row items-push">
 		<div class="col-sm-7">
+			<a href="{{ $manga->manga_url }}">
 			<h1 class="page-heading">
 				{{ $manga->title }}
 			</h1>
+			</a>
 		</div>
 		<div class="col-md-5">
 			<button class="btn btn-danger pull-right"><i class="fa fa-heart"></i></button>
