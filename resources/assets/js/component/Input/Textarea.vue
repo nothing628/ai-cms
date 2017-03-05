@@ -34,6 +34,14 @@
 				}
 			}
 		},
+		methods: {
+			clear() {
+				this.currentVal = null;
+			}
+		},
+		created() {
+			bus.$on('input-clear', this.clear);
+		},
 		mounted() {
 			this.currentVal = this.dataValue;
 		}

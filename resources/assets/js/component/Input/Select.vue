@@ -50,6 +50,10 @@
 			}
 		},
 		methods: {
+			clear() {
+				$("select[name='" + that.dataName + "']").val('');
+				$("select[name='" + that.dataName + "']").trigger('select2.change');
+			},
 			refreshSelect() {
 				var that = this;
 
@@ -84,6 +88,9 @@
 					break;
 				}
 			}
+		},
+		created() {
+			bus.$on('input-clear', this.clear);
 		},
 		mounted() {
 			this.loadData();

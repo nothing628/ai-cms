@@ -1,7 +1,7 @@
 <template>
-	<div class="comp-page-container">
+	<div class="block-content comp-page-container">
 		<img v-if="activePage == null" :src="fallbackImage" id="mainimage" class="img-responsive">
-		<img v-else :src="pageUrl" id="mainimage" @load="onLoad" @error="onError" class="img-responsive">
+		<img v-else id="mainimage" @load="onLoad" @error="onError" class="img-responsive">
 
 		<div class="overlay">
 			<div @click="prevPage"></div>
@@ -36,14 +36,24 @@
 			return {
 				chapters: [],
 				current_chapter: 1,
-				current_page: 1
+				current_page: 1,
+				is_loading: false,
+				data_image: null
 			};
 		},
 		props: {
 			dataControl: { type: String, default: '' },
 			fallbackImage: { type: String, default: '' }
 		},
-		watch: {},
+		watch: {
+			is_loading(value, old) {
+				this.$dispatch('loading', {state: this.is_loading});
+			},
+			pageUrl(value, old) {
+				this.is_loading = true;
+				this.changeUrl();
+			}
+		},
 		computed: {
 			activeChapter() {
 				var that = this;
@@ -80,11 +90,23 @@
 			}
 		},
 		methods: {
+			changeUrl() {
+				var downloadingImage = new Image();
+				var img = document.querySelector('#mainimage');
+				var that = this;
+
+				downloadingImage.onload = function(){
+					that.is_loading = false;
+					img.src = this.src;
+				};
+
+				downloadingImage.src = this.pageUrl;
+			},
 			onError(e) {
-				//
+				// this.is_loading = false;
 			},
 			onLoad(e) {
-				//
+				// this.is_loading = false;
 			},
 			refreshData(data) {
 				var that = this;

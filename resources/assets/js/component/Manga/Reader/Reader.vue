@@ -1,6 +1,6 @@
 <template>
 	<div class="col-md-10 col-md-offset-1">
-		<div class="block block-bordered block-themed">
+		<div class="block block-bordered block-themed" :class="classBlock">
 			<slot></slot>
 		</div>
 	</div>
@@ -12,7 +12,8 @@
 			return {
 				chapters: [],
 				current_chapter: 1,
-				current_page: 1
+				current_page: 1,
+				is_loading: false
 			};
 		},
 		props: {
@@ -24,11 +25,17 @@
 			dataMethod: { type: String, default: "get" }
 		},
 		computed: {
+			classBlock() {
+				return (this.is_loading)?['block-opt-refresh']:[];
+			},
 			methodName() {
 				return this.dataMethod.toUpperCase();
 			}
 		},
 		methods: {
+			changeLoading(data) {
+				this.is_loading = data.state;
+			},
 			refresh() {
 				//Get chapter and pages
 
@@ -107,6 +114,7 @@
 			this.$catch('prev-page', this.prevPage);
 			this.$catch('next-page', this.nextPage);
 			this.$catch('set-page', this.setPage);
+			this.$catch('loading', this.changeLoading);
 		},
 		mounted() {
 			this.current_chapter = this.dataChapter;
