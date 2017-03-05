@@ -121,7 +121,7 @@ class Manga extends Model
 	public function scopeWithCategory($query)
 	{
 		return $query->with(['category', 'user', 'chapters' => function ($subquery) {
-			return $subquery->latest()->limit(4);
+			return $subquery->orderBy('chapter_num', 'desc')->limit(3);
 		}]);
 	}
 
