@@ -5,10 +5,10 @@ Route::group(['prefix' => 'manga', 'as' => 'manga.'], function () {
 	Route::get('{manga_slug}/{chapter_num}/{page_num?}', ['as' => 'read', 'uses' => 'MangaController@readManga']);
 });
 
-Route::group(['middleware' => 'auth'], function () {
-	Route::post('upload', ['as' => 'upload', 'uses' => 'UploadController@upload']);
-	Route::get('upload', ['as' => 'upload.test', 'uses' => 'UploadController@test']);
-});
+// Route::group(['middleware' => 'auth'], function () {
+// 	Route::post('upload', ['as' => 'upload', 'uses' => 'UploadController@upload']);
+// 	Route::get('upload', ['as' => 'upload.test', 'uses' => 'UploadController@test']);
+// });
 
 Route::get('tag', ['as' => 'tag.directory', 'uses' => 'TagController@directory']);
 Route::get('browse', ['as' => 'manga.browse', 'uses' => 'MangaController@browseManga']);

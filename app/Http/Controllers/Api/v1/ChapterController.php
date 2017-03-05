@@ -22,6 +22,7 @@ class ChapterController extends Controller
 		$manga = Manga::find($request->manga_id);
 
 		if ($manga) {
+			$manga->touch();
 			$chapter = new Chapter;
 			$chapter->manga_id = $manga->id;
 			$chapter->chapter_title = $request->title;
