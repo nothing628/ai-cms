@@ -1,6 +1,6 @@
 <template>
 	<div class="col-md-10 col-md-offset-1">
-		<div class="block block-bordered block-themed" :class="classBlock">
+		<div class="block block-bordered block-themed block-full" :class="classBlock">
 			<slot></slot>
 		</div>
 	</div>

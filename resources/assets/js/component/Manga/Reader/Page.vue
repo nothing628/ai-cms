@@ -1,5 +1,5 @@
 <template>
-	<div class="block-content comp-page-container">
+	<div class="block-content block-content-mini comp-page-container">
 		<img v-if="activePage == null" :src="fallbackImage" id="mainimage" class="img-responsive">
 		<img v-else id="mainimage" @load="onLoad" @error="onError" class="img-responsive">
 
