@@ -51,8 +51,8 @@
 		},
 		methods: {
 			clear() {
-				$("select[name='" + that.dataName + "']").val('');
-				$("select[name='" + that.dataName + "']").trigger('select2.change');
+				$("select[name='" + this.dataName + "']").val('');
+				$("select[name='" + this.dataName + "']").trigger('select2.change');
 			},
 			refreshSelect() {
 				var that = this;
