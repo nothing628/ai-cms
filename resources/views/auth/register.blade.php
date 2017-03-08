@@ -22,7 +22,7 @@ bg-white
 					<div class="form-group">
 						<div class="col-xs-12">
 							<div class="form-material form-material-success">
-								<input type="text" name="username" class="form-control" placeholder="Please input username...">
+								<input type="text" name="username" class="form-control" placeholder="Please input username">
 								<label>Username</label>
 							</div>
 						</div>
@@ -31,7 +31,7 @@ bg-white
 					<div class="form-group">
 						<div class="col-xs-12">
 							<div class="form-material form-material-success">
-								<input type="password" name="password" class="form-control" placeholder="Please input password...">
+								<input type="password" name="password" class="form-control" placeholder="Please input password">
 								<label>Password</label>
 							</div>
 						</div>
@@ -40,7 +40,7 @@ bg-white
 					<div class="form-group">
 						<div class="col-xs-12">
 							<div class="form-material form-material-success">
-								<input type="password" name="repeat_password" class="form-control" placeholder="Please repeat password...">
+								<input type="password" name="repeat_password" class="form-control" placeholder="Please repeat password">
 								<label>Repeat Password</label>
 							</div>
 						</div>
@@ -49,7 +49,7 @@ bg-white
 					<div class="form-group">
 						<div class="col-xs-12">
 							<div class="form-material form-material-success">
-								<input type="email" name="email" class="form-control" placeholder="Please input valid E-mail...">
+								<input type="email" name="email" class="form-control" placeholder="Please input valid E-mail">
 								<label>E-Mail</label>
 							</div>
 						</div>
@@ -58,7 +58,7 @@ bg-white
 					<div class="form-group">
 						<div class="col-xs-12">
 							<div class="form-material form-material-success">
-								<input type="text" name="fullname" class="form-control" placeholder="Please input your fullname...">
+								<input type="text" name="fullname" class="form-control" placeholder="Please input your fullname">
 								<label>Fullname</label>
 							</div>
 						</div>

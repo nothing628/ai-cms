@@ -7,6 +7,7 @@ use App\Http\Controllers\Controller;
 use App\Models\Manga;
 use App\Models\Chapter;
 use App\Models\Page;
+use DB;
 
 class ChapterController extends Controller
 {
@@ -90,5 +91,47 @@ class ChapterController extends Controller
 		}
 
 		return response()->json(['success' => false, 'message' => 'Chapter Not Found', 'type' => 'error']);
+	}
+
+	public function order(Request $request)
+	{
+		$chapter = Chapter::find($request->chapter['id']);
+		$position = $request->position;
+
+		if ($chapter) {
+			$manga = $chapter->manga;
+			$max_num = $manga->chapters->count();
+			$last_num = $chapter->chapter_num;
+			$target = -1;
+
+			switch ($position) {
+				case 'next':
+					$target_num = $last_num + 1;
+				break;
+				case 'first':
+					$target_num = 1;
+				break;
+				case 'prev':
+					$target_num = $last_num - 1;
+				break;
+				case 'last':
+					$target_num = $max_num;
+				break;
+			}
+
+			if ($target_num < 0) $target_num = 1;
+			if ($target_num > $max_num) $target_num = $max_num;
+
+			if ($target_num < $last_num) {
+				//
+			} elseif ($target_num > $last_num) {
+				//
+			}
+
+			$chapter->chapter_num = $target_num;
+			$chapter->save();
+		}
+
+		return $chapter;
 	}
 }

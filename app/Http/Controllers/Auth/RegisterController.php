@@ -6,6 +6,10 @@ use App\User;
 use Validator;
 use App\Http\Controllers\Controller;
 use Illuminate\Foundation\Auth\RegistersUsers;
+use SEOMeta;
+use OpenGraph;
+use Twitter;
+use Setting;
 
 class RegisterController extends Controller
 {
@@ -37,6 +41,10 @@ class RegisterController extends Controller
     public function __construct()
     {
         $this->middleware('guest');
+        SEOMeta::setTitle(Setting::get('app.name') . ' - Sign Up');
+        SEOMeta::setDescription(Setting::get('app.description'));
+        SEOMeta::addKeyword(Setting::get('app.keyword'));
+        SEOMeta::addMeta('robots', 'index,follow');
     }
 
     /**
