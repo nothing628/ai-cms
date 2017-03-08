@@ -1,9 +1,9 @@
 <template>
 	<div class="btn-group btn-group-sm">
-		<button class="btn btn-default" @click="move('first')"><i class="fa fa-angle-double-left"></i></button>
-		<button class="btn btn-default" @click="move('prev')"><i class="fa fa-angle-left"></i></button>
-		<button class="btn btn-default" @click="move('next')"><i class="fa fa-angle-right"></i></button>
-		<button class="btn btn-default" @click="move('last')"><i class="fa fa-angle-double-right"></i></button>
+		<button class="btn btn-default" @click="move('last')"><i class="fa fa-angle-double-left"></i></button>
+		<button class="btn btn-default" @click="move('next')"><i class="fa fa-angle-left"></i></button>
+		<button class="btn btn-default" @click="move('prev')"><i class="fa fa-angle-right"></i></button>
+		<button class="btn btn-default" @click="move('first')"><i class="fa fa-angle-double-right"></i></button>
 	</div>
 </template>
 

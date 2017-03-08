@@ -123,15 +123,24 @@ class ChapterController extends Controller
 			if ($target_num > $max_num) $target_num = $max_num;
 
 			if ($target_num < $last_num) {
-				//
+				DB::table('chapters')
+					->where('manga_id', $manga->id)
+					->where('chapter_num', '>=', $target_num)
+					->where('chapter_num', '<', $last_num)
+					->increment('chapter_num');
 			} elseif ($target_num > $last_num) {
-				//
+				DB::table('chapters')
+					->where('manga_id', $manga->id)
+					->where('chapter_num', '<=', $target_num)
+					->where('chapter_num', '>', $last_num)
+					->decrement('chapter_num');
 			}
 
 			$chapter->chapter_num = $target_num;
 			$chapter->save();
+			return response()->json(['success' => true, 'message' => 'Success move chapter']);
 		}
 
-		return $chapter;
+		return response()->json(['success' => false, 'message' => 'Chapter Not Moved', 'type' => 'error']);
 	}
 }
