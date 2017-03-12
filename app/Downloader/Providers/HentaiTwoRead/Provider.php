@@ -79,8 +79,59 @@ class Provider implements IFaceDownloadProvider
 		//
 	}
 
+	public function parseFromImageList($html)
+	{
+		$base = self::base_uri;
+		$array_data = ['manga_name' => '', 'pages' => []];
+		$explod = explode("\n", $html);
+		$explod = array_filter(array_map(function ($val) {
+			if (stripos($val, 'rff_pageTitle') || stripos($val, 'rff_imageList')) {
+				return trim($val, " \t\n\r\0\x0B");
+			}
+
+			return null;
+		}, $explod));
+
+		foreach ($explod as $value) {
+			$dat = explode('=', $value);
+			$trimmed_dat = trim($dat[1]);
+
+			if (stripos($dat[0], 'rff_imageList')) {
+				$arr_img = json_decode(substr($trimmed_dat, 0, strlen($trimmed_dat) -1));
+				$arr_img = array_map(function ($val) use ($base) { return $base . $val; }, $arr_img);
+				$array_data['pages'] = $arr_img;
+			} else {
+				$trimmed_dat = substr($trimmed_dat, 1, strlen($trimmed_dat) -3);
+				$array_data['manga_name'] = str_ireplace('Page {pageNum} | ', '', $trimmed_dat);
+			}
+		}
+
+		return $array_data;
+	}
+
+	public function parseFromGdata($html)
+	{
+		$tester = '/var gData\s=\s{/i';
+		$ireplace = trim(str_ireplace("\n", "", $html), " \t\n\r\0\x0B");
+		$ireplace = preg_replace($tester, "{", $ireplace);
+		$ireplace = str_ireplace('};', '}', $ireplace);
+		$ireplace = str_ireplace("'", "\"", $ireplace);
+
+		$result = json_decode($ireplace);
+
+		$base = self::base_uri;
+		$last_res = [];
+		$last_res['manga_name'] = $result->title;
+		$last_res['pages'] = array_map(function ($val) use ($base) {
+			return $base . $val;
+		}, $result->images);
+
+		return $last_res;
+	}
+
 	public function listPage($url_chapter)
 	{
+		$that = $this;
 		$response = $this->client->get($url_chapter);
 		$code = $response->getStatusCode();
 		$base = self::base_uri;
@@ -93,35 +144,20 @@ class Provider implements IFaceDownloadProvider
 			$test = $crawl->filter('script');
 			$catch = null;
 
-			$catch = array_values(array_filter($test->each(function (Crawler $craw) {
+			$catch = array_values(array_filter($test->each(function (Crawler $craw) use ($that) {
 				$html = $craw->html();
 
 				if (stripos($html, 'rff_imageList')) {
-					return $html;
+					return $that->parseFromImageList($html);
+				}
+
+				if (stripos($html, 'var gData')) {
+					return $that->parseFromGdata($html);
 				}
 			})));
 
-			$explod = explode("\n", $catch[0]);
-			$explod = array_filter(array_map(function ($val) {
-				if (stripos($val, 'rff_pageTitle') || stripos($val, 'rff_imageList')) {
-					return trim($val, " \t\n\r\0\x0B");
-				}
-
-				return null;
-			}, $explod));
-
-			foreach ($explod as $value) {
-				$dat = explode('=', $value);
-				$trimmed_dat = trim($dat[1]);
-
-				if (stripos($dat[0], 'rff_imageList')) {
-					$arr_img = json_decode(substr($trimmed_dat, 0, strlen($trimmed_dat) -1));
-					$arr_img = array_map(function ($val) use ($base) { return $base . $val; }, $arr_img);
-					$array_data['pages'] = $arr_img;
-				} else {
-					$trimmed_dat = substr($trimmed_dat, 1, strlen($trimmed_dat) -3);
-					$array_data['manga_name'] = str_ireplace('Page {pageNum} | ', '', $trimmed_dat);
-				}
+			if (count($catch) > 0) {
+				$array_data = $catch[0];
 			}
 		}
 

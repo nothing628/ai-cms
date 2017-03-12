@@ -12,7 +12,8 @@ class DownloadController extends Controller
 	{
 		$url = $request->url;
 		$dest = $request->dest;
+		$provider = $request->provider;
 
-		DownloaderFacade::downloadPage($url, $dest, '');
+		return DownloaderFacade::downloadPage($url, $dest, $provider);
 	}
 }
