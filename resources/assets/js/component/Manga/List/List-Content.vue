@@ -1,5 +1,5 @@
 <template>
-	<li>
+	<li class="ribbon ribbon-modern ribbon-primary ribbon-right">
 		<div class="ribbon-box"><i class="fa fa-fw fa-heartbeat"></i></div>
 		<a :href="item.manga_url" class="link-effect">
 			<img :src="item.thumb_url" class="img-avatar" alt="">
