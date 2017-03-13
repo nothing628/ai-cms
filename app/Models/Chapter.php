@@ -12,6 +12,18 @@ class Chapter extends Model
 		'release_at' => 'date'
 	];
 
+	public static function boot()
+	{
+		parent::boot();
+		static::deleting(function ($model) {
+			$pages = $model->pages;
+
+			foreach ($pages as $page) {
+				$page->delete();
+			}
+		});
+	}
+
 	public function manga()
 	{
 		return $this->belongsTo(Manga::class);
