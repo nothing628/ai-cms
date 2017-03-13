@@ -22,9 +22,9 @@
 			<vue-form-group>
 				<vue-input data-name="title" data-label="Chapter Title" :data-required="false" data-placeholder="Chapter Title" :data-col="['col-md-6', 'col-md-offset-3']"></vue-input>
 			</vue-form-group>
-			<vue-form-group>
+			<<!-- vue-form-group>
 				<vue-file data-name="cover" data-label="Cover" :data-col="['col-md-6', 'col-md-offset-3']"></vue-file>
-			</vue-form-group>
+			</vue-form-group> -->
 			<vue-form-group>
 				<div class="col-md-offset-3 col-md-9">
 					<vue-form-submit :data-class="['btn-success']">Submit</vue-form-submit>
