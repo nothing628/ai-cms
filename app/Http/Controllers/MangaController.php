@@ -74,6 +74,8 @@ class MangaController extends Controller
 	{
 		try {
 			$manga = Manga::where('slug', $manga_slug)->firstOrFail();
+			$manga->views++;
+			$manga->save();
 
 			SEOMeta::setTitle(Setting::get('app.name') . ' - ' . $manga->title);
 			OpenGraph::setTitle(Setting::get('app.name') . ' - ' . $manga->title);
@@ -94,6 +96,8 @@ class MangaController extends Controller
 		try {
 			$manga = Manga::where('slug', $manga_slug)->firstOrFail();
 			$chapter = $manga->chapters()->where('chapter_num', $chapter_num)->firstOrFail();
+			$chapter->views++;
+			$chapter->save();
 			$page = $chapter->pages()->where('page_num', $page_num)->firstOrFail();
 
 			SEOMeta::setTitle(Setting::get('app.name') . ' - ' . $manga->title . ' - ' . $chapter->chapter_title);
