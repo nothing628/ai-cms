@@ -19,6 +19,7 @@ class Manga extends Model
 		'rating_by',
 		'thumb_url',
 		'manga_url',
+		'latest_chapters',
 	];
 	protected $casts = [
 		'meta' => 'array',
@@ -56,6 +57,11 @@ class Manga extends Model
 	public function ratings()
 	{
 		return $this->hasMany(Rating::class);
+	}
+
+	public function getLatestChaptersAttribute()
+	{
+		return $this->chapters->take(3);
 	}
 
 	public function getCategoryNameAttribute()
@@ -121,7 +127,7 @@ class Manga extends Model
 	public function scopeWithCategory($query)
 	{
 		return $query->with(['category', 'user', 'chapters' => function ($subquery) {
-			return $subquery->orderBy('chapter_num', 'desc')->limit(3);
+			return $subquery->orderBy('chapter_num', 'desc');
 		}]);
 	}
 

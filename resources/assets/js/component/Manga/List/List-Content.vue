@@ -39,7 +39,7 @@
 		},
 		computed: {
 			sortChapter() {
-				var chapters = this.item.chapters;
+				var chapters = this.item.latest_chapters;
 
 				return chapters.sort(function (a, b) {
 					if (a.chapter_num > b.chapter_num) return -1;
