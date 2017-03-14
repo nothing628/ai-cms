@@ -9,6 +9,8 @@ Route::group(['prefix' => 'manga', 'as' => 'manga.'], function () {
 Route::get('lang/get/select', ['as' => 'lang.get.select', 'uses' => 'MangaController@lang']);
 Route::get('category/get/select', ['as' => 'category.get.select', 'uses' => 'CategoryController@getSelect']);
 
+Route::post('comment/store', ['as' => 'comment.store', 'uses' => 'CommentController@store']);
+
 Route::group(['prefix' => 'category', 'as' => 'category.'], function () {
 	Route::get('/', ['as' => 'get', 'uses' => 'CategoryController@get']);
 	Route::post('store', ['as' => 'store', 'uses' => 'CategoryController@store']);

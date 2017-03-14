@@ -99,9 +99,9 @@
 							</div>
 						</div>
 					</div>
-					<form class="form-horizontal" action="base_ui_timeline_social.php" method="post" onsubmit="return false;">
-						<input class="form-control" placeholder="Write a comment.." type="text">
-					</form>
+					<vue-form :data-class="['form-horizontal']" data-enctype="multipart/form-data" data-action="{{ route('api.comment.store') }}" data-name="form-create">
+						<input class="form-control" placeholder="Write a comment.." name="comment" required="" type="text">
+					</vue-form>
 				</vue-block-content>
 			</vue-block>
 		</div>
