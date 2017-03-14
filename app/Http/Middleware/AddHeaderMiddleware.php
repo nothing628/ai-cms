@@ -19,12 +19,12 @@ class AddHeaderMiddleware
 	{
 		$days2 = new DateInterval("P2D");
 		$expire = new DateTime();
-		$expire->add($days2);
-		$max_age = $days2->d * 60 * 60 * 24;
+		// $expire->add($days2);
+		// $max_age = $days2->d * 60 * 60 * 24;
 		$response = $next($request);
 
 		$response->headers->set('X-XSS-Protection', '1; mode=block');
-		$response->headers->set('Cache-Control', 'max-age=' . $max_age);
+		// $response->headers->set('Cache-Control', 'max-age=' . $max_age);
 		$response->setLastModified(new DateTime("now"));
 		$response->setExpires($expire);
 
