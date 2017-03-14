@@ -43,14 +43,14 @@
 			}
 		},
 		methods: {
-			loading(state) {
-				this.is_loading = state;
+			loading(data) {
+				this.is_loading = data.state;
 			},
-			fullscreen(state) {
-				this.is_fullscreen = state;
+			fullscreen(data) {
+				this.is_fullscreen = data.state;
 			},
-			hidecontent(state) {
-				this.is_hide_content = state;
+			hidecontent(data) {
+				this.is_hide_content = data.state;
 			},
 			toggleLoading(data) {
 				if (data.name == this.dataName && this.dataName != '') {
