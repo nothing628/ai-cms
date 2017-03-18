@@ -11,7 +11,7 @@
 	export default {
 		data() {
 			return {
-				//
+				showModal: false		//Show modal after getting data?
 			};
 		},
 		props: {
@@ -19,6 +19,7 @@
 			dataMethod: { type: String, required: false, default: 'POST' },
 			dataName: { type: String, required: false, default: '' },
 			dataAction: { type: String, required: false, default: '' },
+			dataGet: { type: String, required: false, default: '' },
 			dataTimeout: { type: Number, required: false, default: 15000 },
 			dataEnctype: { type: String, required: false, default: 'application/x-www-form-urlencoded' },
 			isFollowRedirect: { type: Boolean, default: true },
@@ -33,6 +34,13 @@
 				}
 
 				return this.dataAction;
+			},
+			getUrl() {
+				if (this.dataGet == '') {
+					return window.location.href;
+				}
+
+				return this.dataGet;
 			},
 			selectorName() {
 				return '#' + this.dataName;
@@ -141,10 +149,47 @@
 					//this.submit();
 					document.querySelector('#' + this.dataName +' > button').click();
 				}
+			},
+			formGetData(data) {
+				if (typeof data == "undefined" || data.name != this.dataName || this.dataGet == '') return;
+
+				if (data.hasOwnProperty('modal') && data.modal) {
+					this.showModal = data.modal;
+				} else {
+					this.showModal = false;
+				}
+
+				this.$http.post(this.getUrl, data.data, {
+					timeout: this.dataTimeout,
+					emulateJSON: true
+				}).then(this.onGetSuccess, this.onGetFailed);
+			},
+			onGetSuccess(response) {
+				var data = response.data;
+
+				if (data.success) {
+					this.$broadcast('input-fill', data.data);
+
+					if (this.showModal) {
+						this.$dispatch('show-modal');
+					}
+				} else {
+					bus.$emit('alert-show', {title: "Error", text: data.message, type: 'error'});
+					bus.$emit('refresh');
+				}
+			},
+			onGetFailed(response) {
+				var code = response.status.toString();
+				var msg = response.statusText;
+
+				bus.$emit('alert-show', {title: code, text: msg, type: 'error'});
+				bus.$emit('refresh');
 			}
 		},
 		created() {
+			this.$catch('form-get', this.formGetData);
 			bus.$on('form-submit', this.formSubmit);
+			bus.$on('form-get', this.formGetData);
 		}
 	}
 </script>

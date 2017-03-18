@@ -1,9 +1,5 @@
 @extends('admin.base')
 
-@section('title')
-@parent Manga Detail
-@endsection
-
 @section('breadcrumb')
 <li><a>Manga</a></li>
 <li><a class="link-effect">Manga</a></li>

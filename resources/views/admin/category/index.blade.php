@@ -21,7 +21,9 @@
 			{key: 'total_manga', class: 'text-center'}]" :is-action="true">
 				<template scope="props">
 					<div class="btn-group btn-group-sm">
-						<a data-toggle="tooltip" title="" class="btn btn-default" data-original-title="Edit"><i class="fa fa-pencil text-primary"></i></a>
+						<vue-action :data-item = "props.item" :is-modal="true" data-target="modal-form">
+							<i class="fa fa-pencil text-primary"></i>
+						</vue-action>
 						<vue-action :data-item = "props.item" :is-delete="true" data-link="{{ route('api.category.delete') }}"><i class="fa fa-times text-danger"></i></vue-action>
 					</div>
 				</template>
@@ -34,5 +36,5 @@
 		</div>
 	</vue-block-content>
 </vue-block>
-@include('admin.category.create')
+@include('admin.category.form')
 @endsection

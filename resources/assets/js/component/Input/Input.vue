@@ -1,5 +1,8 @@
 <template>
-	<div :class="dataCol">
+	<div v-if="dataType == 'hidden'" >
+		<input :name="dataName" :id="dataName" type="hidden" v-model="currentVal">
+	</div>
+	<div v-else :class="dataCol">
 		<div class="form-material form-material-primary" :class="{'floating':isFloating}">
 			<input v-if="dataType == 'text'" type="text" :name="dataName" :id="dataName" :class="dataClass" :required="dataRequired" :placeholder="valPlaceholder" v-model="currentVal">
 			<input v-if="dataType == 'password'" type="password" :name="dataName" :id="dataName" :class="dataClass" :required="dataRequired" :placeholder="valPlaceholder" v-model="currentVal">
@@ -39,9 +42,15 @@
 		methods: {
 			clear() {
 				this.currentVal = null;
+			},
+			fill(data) {
+				if (data.hasOwnProperty(this.dataName)) {
+					this.currentVal = data[this.dataName];
+				}
 			}
 		},
 		created() {
+			this.$catch('input-fill', this.fill);
 			bus.$on('input-clear', this.clear);
 		},
 		mounted() {

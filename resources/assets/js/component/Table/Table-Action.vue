@@ -1,5 +1,5 @@
 <template>
-	<button v-if="isDelete || isModal" class="btn" :class="dataClass" @click="action"><slot></slot></button>
+	<button v-if="isDelete || isForm" class="btn" :class="dataClass" @click="action"><slot></slot></button>
 	<a v-else class="btn" :class="dataClass" :href="link"><slot></slot></a>
 </template>
 
@@ -16,7 +16,7 @@
 			dataMethod: { type: String, default: 'delete' },
 			dataTarget: { type: String, default: '' },
 			isDelete: { type: Boolean, default: false },
-			isModal: { type: Boolean, default: false }
+			isForm: { type: Boolean, default: false }
 		},
 		computed: {
 			keyval() {
@@ -47,8 +47,8 @@
 					this.deleteAct();
 				}
 
-				if (this.isModal) {
-					this.showModal();
+				if (this.isForm) {
+					this.showForm();
 				}
 			},
 			deleteAct() {
@@ -107,8 +107,15 @@
 				bus.$emit('alert-show', {title: code, text: msg, type: 'error'});
 				bus.$emit('refresh');
 			},
-			showModal() {
-				//
+			showForm() {
+				var dataemit = {
+					name: this.dataTarget,
+					modal: true,
+					data: {}
+				};
+				dataemit.data[this.dataKey] = this.dataItem.origin[this.dataKey];
+
+				bus.$emit('form-get', dataemit);
 			}
 		}
 	}

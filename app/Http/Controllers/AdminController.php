@@ -5,9 +5,16 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Models\Manga;
 use Setting;
+use SEOMeta;
 
 class AdminController extends Controller
 {
+	public function __construct()
+	{
+		SEOMeta::addMeta('robots', 'noindex,nofollow');
+		SEOMeta::addKeyword(Setting::get('app.keyword'));
+	}
+
 	public function index() {
 		return view('admin.index');
 	}
@@ -26,6 +33,12 @@ class AdminController extends Controller
 		return view('admin.setting');
 	}
 
+	public function widget()
+	{
+		SEOMeta::setTitle(Setting::get('app.name') . ' - Widget');
+		return view('admin.widget');
+	}
+
 	public function saveSetting(Request $request)
 	{
 		Setting::set('app.name', $request->input('app_name'));
@@ -36,6 +49,7 @@ class AdminController extends Controller
 	}
 
 	public function users() {
+		SEOMeta::setTitle(Setting::get('app.name') . ' - Users');
 		return view('admin.users');
 	}
 }

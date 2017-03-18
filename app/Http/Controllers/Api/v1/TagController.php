@@ -52,4 +52,29 @@ class TagController extends Controller
 
 		return response()->json(['success' => false, 'message' => 'Tag Not Found', 'type' => 'error']);
 	}
+
+	public function edit(Request $request)
+	{
+		$tag = Tag::find($request->id);
+
+		if ($tag) {
+			return response()->json(['success' => true, 'data' => $tag]);
+		}
+
+		return response()->json(['success' => false, 'message' => 'tag not found.']);
+	}
+
+	public function update(Request $request)
+	{
+		$tag = Tag::find($request->id);
+
+		if ($tag) {
+			$tag->name = $request->name;
+			$tag->save();
+
+			return response()->json(['success' => true, 'message' => 'Success save tag']);
+		}
+
+		return response()->json(['success' => false, 'message' => 'Tag Not Found']);
+	}
 }

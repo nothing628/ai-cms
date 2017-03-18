@@ -26,7 +26,7 @@
 			{key: 'count', class: 'text-center'}]" :is-action="true">
 				<template scope="props">
 					<div class="btn-group btn-group-xs">
-						<vue-action :data-item = "props.item" :is-modal="true" data-target="modal-form"><i class="fa fa-pencil text-primary"></i></vue-action>
+						<vue-action :data-item = "props.item" :is-form="true" data-target="form-tag-edit"><i class="fa fa-pencil text-primary"></i></vue-action>
 						<vue-action :data-item = "props.item" :is-delete="true" data-link="{{ route('api.tag.delete') }}"><i class="fa fa-times text-danger"></i></vue-action>
 					</div>
 				</template>
@@ -39,20 +39,5 @@
 		</div>
 	</vue-block-content>
 </vue-block>
-
-<vue-modal data-name="modal-form" :data-class="['modal-dialog-slideup']" :is-fade="true">
-	<vue-modal-head>Add New Tag</vue-modal-head>
-	<vue-modal-body>
-		<vue-form :data-class="['form-horizontal', 'push-10-t']" data-action="{{ route('api.tag.store') }}" data-name="form-tag-add" data-method="post">
-			{!! csrf_field() !!}
-			<vue-form-group>
-				<vue-input data-name="tag" :data-col="['col-md-12']" data-label="Tag" :data-required="true" data-placeholder="Tag"></vue-input>
-			</vue-form-group>
-		</vue-form>
-	</vue-modal-body>
-	<vue-modal-footer slot="footer">
-		<button class="btn btn-sm btn-danger" type="button" data-dismiss="modal"><i class="fa fa-times"></i> Close</button>
-		<vue-form-submit :data-class="['btn-success', 'btn-sm']" data-target="form-tag-add"><i class="fa fa-check"></i> Submit</vue-form-submit>
-	</vue-modal-footer>
-</vue-modal>
+@include('admin.tag.form')
 @endsection

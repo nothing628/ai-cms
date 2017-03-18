@@ -20,6 +20,8 @@ Route::group(['prefix' => 'category', 'as' => 'category.'], function () {
 
 Route::group(['prefix' => 'tag', 'as' => 'tag.'], function () {
 	Route::get('/', ['as' => 'get', 'uses' => 'TagController@get']);
+	Route::post('detail', ['as' => 'detail', 'uses' => 'TagController@edit']);
+	Route::put('update', ['as' => 'update', 'uses' => 'TagController@update']);
 	Route::get('get/select', ['as' => 'get.select', 'uses' => 'TagController@tags']);
 	Route::post('store', ['as' => 'store', 'uses' => 'TagController@store']);
 	Route::delete('delete', ['as' => 'delete', 'uses' => 'TagController@delete']);

@@ -70,6 +70,15 @@
 			}
 		},
 		created() {
+			var that = this;
+
+			this.$catch('hide-modal', function (data) {
+				that.hideModal(that.dataName);
+			});
+
+			this.$catch('show-modal', function (data) {
+				that.showModal(that.dataName);
+			});
 			bus.$on('show-modal', this.showModal);
 			bus.$on('hide-modal', this.hideModal);
 			bus.$on('toggle-modal', this.toggleModal);

@@ -19,14 +19,8 @@ Route::group(['prefix' => 'admin', 'as' => 'admin.', 'middleware' => ['auth', 'a
 	Route::get('chapter/upload/{chapter_id?}', ['as' => 'chapter.upload', 'uses' => 'ChapterController@upload']);
 
 	Route::get('tags', ['as' => 'tags', 'uses' => 'TagController@index']);
-	Route::get('tags/create', ['as' => 'tags.create', 'uses' => 'TagController@create']);
-
 	Route::get('category', ['as' => 'category', 'uses' => 'CategoryController@admin']);
-	Route::get('category/create', ['as' => 'category.create', 'uses' => 'CategoryController@create']);
-	Route::post('category/create', ['as' => 'category.store', 'uses' => 'CategoryController@store']);
-	Route::get('category/edit/{category_id}', ['as' => 'category.edit', 'uses' => 'CategoryController@edit']);
-	Route::post('category/edit/{category_id}', ['as' => 'category.update', 'uses' => 'CategoryController@update']);
-	Route::get('category/delete/{category_id}', ['as' => 'category.delete', 'uses' => 'CategoryController@delete']);
+
 	Route::get('comment', ['as' => 'comment', 'uses' => 'AdminController@comments']);
 
 	Route::get('setting/page', ['as' => 'setting.page', 'uses' => 'AdminController@setting']);
