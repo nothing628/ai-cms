@@ -83,25 +83,33 @@
 			<vue-block :is-themed="true">
 				<vue-block-head :data-class="['bg-muted']"><i class="si si-comment"></i> Comment</vue-block-head>
 				<vue-block-content :data-class="['block-content-full', 'bg-gray-lighter']">
-					<div class="media push-15">
+					@foreach($manga->comments as $comment)
+					<div class="media push-15" >
 						<div class="media-left">
 							<a href="javascript:void(0)">
 								<img class="img-avatar img-avatar32" src="{{ url('images/medium/bg.jpg')}}" alt="">
 							</a>
 						</div>
 						<div class="media-body font-s13">
-							<a class="font-w600" href="javascript:void(0)">Rebecca Gray</a>
-							<div class="push-5">It was awesome! Looking forward for the new roadtrip!</div>
+							<a class="font-w600" href="javascript:void(0)">{{ $comment->user->username }}</a>
+							<div class="push-5">{{ $comment->comment }}</div>
 							<div class="font-s12">
-								<a href="javascript:void(0)">Like!</a> -
-								<a href="javascript:void(0)">Reply</a> -
-								<span class="text-muted"><em>10 min ago</em></span>
+								<!-- <a href="javascript:void(0)">Like!</a> - -->
+								<!-- <a href="javascript:void(0)">Reply</a> - -->
+								<span class="text-muted"><em>{{ $comment->created_at->diffForHumans() }}</em></span>
 							</div>
 						</div>
 					</div>
-					<vue-form :data-class="['form-horizontal']" data-enctype="multipart/form-data" data-action="{{ route('api.comment.store') }}" data-name="form-create">
+					@endforeach
+
+					@if(Auth::check())
+					<vue-form :data-class="['form-horizontal']" data-action="{{ route('api.comment.store') }}" data-name="form-create">
+						<input type="hidden" value="{{ url('') }}" name="redirect_url">
+						<input type="hidden" value="{{ $manga->id }}" name="manga_id">
+						<input type="hidden" value="{{ Auth::user()->id }}" name="user_id">
 						<input class="form-control" placeholder="Write a comment.." name="comment" required="" type="text">
 					</vue-form>
+					@endif
 				</vue-block-content>
 			</vue-block>
 		</div>

@@ -59,6 +59,11 @@ class Manga extends Model
 		return $this->hasMany(Rating::class);
 	}
 
+	public function comments()
+	{
+		return $this->morphToMany(Comment::class, 'commentable', 'commentable');
+	}
+
 	public function getLatestChaptersAttribute()
 	{
 		return $this->chapters->take(3);
