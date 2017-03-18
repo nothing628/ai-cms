@@ -6,6 +6,7 @@ use App\Contracts\TaggingUtility;
 use App\Models\Tag;
 use App\Observers\TagObserver;
 use App\Tagging\Util;
+use App\Menu\Sidebar;
 use Illuminate\Support\ServiceProvider;
 
 class AppServiceProvider extends ServiceProvider
@@ -28,6 +29,9 @@ class AppServiceProvider extends ServiceProvider
 	public function register()
 	{
 		$this->app->register(DownloaderServiceProvider::class);
+		$this->app->singleton('menu.manager', function () {
+			return new Sidebar($this->app);
+		});
 		$this->app->singleton(TaggingUtility::class, function () {
 			return new Util;
 		});
@@ -39,6 +43,9 @@ class AppServiceProvider extends ServiceProvider
 	 */
 	public function provides()
 	{
-		return [TaggingUtility::class];
+		return [
+			TaggingUtility::class,
+			Sidebar::class,
+		];
 	}
 }

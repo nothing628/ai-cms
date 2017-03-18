@@ -242,6 +242,7 @@ return [
 		'OpenGraph' => Artesaos\SEOTools\Facades\OpenGraph::class,
 		'SEO' => Artesaos\SEOTools\Facades\SEOTools::class,
 		'Twitter'   => Artesaos\SEOTools\Facades\TwitterCard::class,
+		'Menu'		=> App\Menu\MenuFacade::class,
 	],
 
 ];
