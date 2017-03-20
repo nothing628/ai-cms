@@ -4,9 +4,9 @@
 	</div>
 	<div v-else :class="dataCol">
 		<div class="form-material form-material-primary" :class="{'floating':isFloating}">
-			<input v-if="dataType == 'text'" type="text" :name="dataName" :id="dataName" :class="dataClass" :required="dataRequired" :placeholder="valPlaceholder" v-model="currentVal">
-			<input v-if="dataType == 'password'" type="password" :name="dataName" :id="dataName" :class="dataClass" :required="dataRequired" :placeholder="valPlaceholder" v-model="currentVal">
-			<input v-if="dataType == 'email'" type="email" :name="dataName" :id="dataName" :class="dataClass" :required="dataRequired" :placeholder="valPlaceholder" v-model="currentVal">
+			<input v-if="dataType == 'text'" type="text" :name="dataName" :id="dataName" :class="dataClass" :required="dataRequired" :placeholder="valPlaceholder" v-model="currentVal" :disabled="isDisabled" :readonly="isReadonly">
+			<input v-if="dataType == 'password'" type="password" :name="dataName" :id="dataName" :class="dataClass" :required="dataRequired" :placeholder="valPlaceholder" v-model="currentVal" :disabled="isDisabled" :readonly="isReadonly">
+			<input v-if="dataType == 'email'" type="email" :name="dataName" :id="dataName" :class="dataClass" :required="dataRequired" :placeholder="valPlaceholder" v-model="currentVal" :disabled="isDisabled" :readonly="isReadonly">
 			<label :for="dataName">{{ dataLabel }}</label>
 		</div>
 	</div>
@@ -27,8 +27,10 @@
 			dataPlaceholder: { type: String, required: false, default: ''},
 			dataRequired: { type: Boolean, required: false, default: false},
 			dataType: { type: String, required: false, default: 'text'},
-			dataValue: { type: Object, required: false, default: null},
-			isFloating: { type: Boolean, required: false, default: false}
+			dataValue: { type: String, required: false, default: null},
+			isFloating: { type: Boolean, required: false, default: false },
+			isReadonly: { type: Boolean, required: false, default: false },
+			isDisabled: { type: Boolean, required: false, default: false }
 		},
 		computed: {
 			valPlaceholder() {
