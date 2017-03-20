@@ -20,6 +20,10 @@
 			{!! csrf_field() !!}
 			<input type="hidden" name="id" value="{{ $chapter->id }}">
 			<vue-form-group>
+				<vue-input data-label="Manga Title / Chapter Title" :data-col="['col-md-5','col-md-offset-2']" data-name="manga_name" data-value="{{ $chapter->manga->title }} / {{ $chapter->chapter_title }}" :is-readonly="true"></vue-input>
+				<vue-input data-label="Chapter Num" :data-col="['col-md-2']" data-name="chapter_num" data-value="{{ $chapter->chapter_num }}" :is-readonly="true"></vue-input>
+			</vue-form-group>
+			<vue-form-group>
 				<vue-dropzone :data-col="['col-md-8','col-md-offset-2']"
 				data-upload="{{ route('api.upload.page') }}"
 				data-name="pages"

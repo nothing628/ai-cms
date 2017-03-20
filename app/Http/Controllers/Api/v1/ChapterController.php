@@ -44,7 +44,7 @@ class ChapterController extends Controller
 			return response()->json([
 				'success' => true,
 				'message' => 'Success Save Chapter',
-				'redirect_url' => route('admin.manga.chapter', ['manga_id' => $manga->id])
+				'redirect_url' => route('admin.chapter.upload', ['chapter_id' => $chapter->id])
 			]);
 		}
 
