@@ -13,6 +13,7 @@ This project is something like this :
 ## Feature
 
 - API Support
+- Multiple Language
 
 ## Laravel
 
