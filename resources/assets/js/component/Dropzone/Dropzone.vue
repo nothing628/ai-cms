@@ -31,6 +31,7 @@
 <script>
 	import mOxie from 'mOxie/bin/js/moxie.js';
 	import plupload from 'plupload/js/plupload.min.js';
+	import mime from 'mime-types';
 
 	if (typeof window.mOxie == "undefined") window.mOxie = mOxie;
 	if (typeof window.plupload == "undefined") window.plupload = plupload;
@@ -95,7 +96,7 @@
 						message_err: ''
 					};
 
-					if (files[i].type.match(this.dataAccept) == null) {
+					if (this.CheckFile(files[i]) != this.dataAccept) {
 						console.log('this file is not allowed');
 						continue;
 					}
@@ -143,6 +144,9 @@
 				} catch (err) {
 					console.log(err);
 				}
+			},
+			CheckFile(file) {
+				return mime.lookup(file.name);
 			}
 		},
 		created() {

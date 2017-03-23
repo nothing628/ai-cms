@@ -33,7 +33,16 @@ elixir(mix => {
 	mix.styles(['dropzone.css', 'oneui.css', 'modern.css', 'app.css', 'sweetalert2.css'], 'public/css/app.css');
 	//mix.styles(['app.css'], 'public/css/app.css');
 	mix.scripts('oneui.js');
-	mix.webpack('app.js');
+	mix.webpack('app.js','public/js','resources/assets/js',{
+		module: {
+			loaders: [
+				{
+					test: /\.json$/,
+					loader: 'json-loader'
+				}
+			]
+		}
+	});
 
 	mix.webpack('base/chosen.js');
 	mix.webpack('base/jquery.js');
