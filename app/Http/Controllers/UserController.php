@@ -41,4 +41,9 @@ class UserController extends Controller
 
 		return redirect()->route('user.password')->with(['message' => 'Success change password.']);
 	}
+
+	public function setting()
+	{
+		return view('user.setting');
+	}
 }

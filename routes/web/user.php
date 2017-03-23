@@ -9,4 +9,5 @@ Route::group(['prefix' => 'user', 'as' => 'user.', 'middleware' => 'auth'], func
 	Route::get('favorite',	['as' => 'favorite', 'uses' => 'UserController@favorite']);
 	Route::get('password',  ['as' => 'password', 'uses' => 'UserController@password']);
 	Route::post('password', ['as' => 'password.post', 'uses' => 'UserController@changePassword']);
+	Route::get('setting', ['as' => 'setting', 'uses' => 'UserController@setting']);
 });

@@ -1,9 +1,5 @@
 @extends('layouts.base')
 
-@section('title')
-@parent Change Password
-@endsection
-
 @section('content')
 <div class="row">
 	<div class="col-md-6 col-md-offset-3">
