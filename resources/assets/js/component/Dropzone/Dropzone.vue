@@ -2,7 +2,7 @@
 	<div :class="dataCol">
 		<div class="drop-area">
 			<label for="fileselect">Files to upload:</label>
-			<input v-show="false" type="file" :accept="dataAccept" @change.prevent.stop="FileSelectHandler" id="fileselect" multiple="multiple" />
+			<input v-show="false" type="file" :accept="dataAccept" @change.prevent="FileSelectHandler" id="fileselect" multiple="multiple" />
 			<div @click="FileBrowse" class="dropzone dz-clickable" :class="classme"
 			@dragover.prevent.stop="FileDragHover"
 			@dragleave.prevent.stop="FileDragHover"
