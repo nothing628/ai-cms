@@ -30,6 +30,11 @@ class CommentController extends Controller
 			]);
 		}
 
-		return response()->json(['success' => false, 'message' => 'invalid request format']);
+		return response()->json([
+			'success' => false,
+			'message' => 'invalid request format',
+			'type' => 'error',
+			'title' => 'Invalid Format'
+		]);
 	}
 }
