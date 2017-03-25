@@ -10,7 +10,7 @@
 				<i class="fa fa-star text-warning"></i>
 				<i class="fa fa-star text-warning"></i>
 				<i class="fa fa-star text-warning"></i>
-				<i class="fa fa-star half-rating"></i>
+				<i class="fa fa-star-half-o"></i>
 				{{ item.category.category }}
 			</b>
 		</a>

@@ -15,7 +15,7 @@
 	<div class="row">
 		<div class="col-md-8">
 			<vue-block :is-themed="true">
-				<vue-block-head :data-class="['bg-muted']"><i class="si si-layers"></i> Detail</vue-block-head>
+				<vue-block-head :data-class="['bg-primary-dark']"><i class="si si-layers"></i> Detail</vue-block-head>
 				<vue-block-content :data-class="['block-content-full']">
 					<div class="row">
 						<div class="col-md-3">
@@ -60,7 +60,7 @@
 				</vue-block-content>
 			</vue-block>
 			<vue-block :is-themed="true">
-				<vue-block-head :data-class="['bg-muted']"><i class="si si-list"></i> Chapter List</vue-block-head>
+				<vue-block-head :data-class="['bg-primary-dark']"><i class="si si-list"></i> Chapter List</vue-block-head>
 				<vue-block-content :data-class="['block-content-full']">
 					<div id="lts-grp">
 					<ul class="nav-users">
@@ -81,7 +81,7 @@
 				</vue-block-content>
 			</vue-block>
 			<vue-block :is-themed="true">
-				<vue-block-head :data-class="['bg-muted']"><i class="si si-comment"></i> Comment</vue-block-head>
+				<vue-block-head :data-class="['bg-primary-dark']"><i class="si si-comment"></i> Comment</vue-block-head>
 				<vue-block-content :data-class="['block-content-full', 'bg-gray-lighter']">
 					@foreach($manga->comments as $comment)
 					<div class="media push-15" >
@@ -115,15 +115,18 @@
 		</div>
 		<div class="col-md-4">
 			<vue-block :is-themed="true">
-				<vue-block-head :data-class="['bg-muted']"><i class="si si-badge"></i> Popular</vue-block-head>
+				<vue-block-head :data-class="['bg-primary-dark']"><i class="si si-badge"></i> Popular</vue-block-head>
 				<vue-block-content :data-class="['block-content-full']">
 					//
 				</vue-block-content>
 			</vue-block>
 			<vue-block :is-themed="true">
-				<vue-block-head :data-class="['bg-muted']"><i class="si si-link"></i> Related Manga</vue-block-head>
+				<vue-block-head :data-class="['bg-primary-dark']"><i class="si si-link"></i> Related Manga</vue-block-head>
 				<vue-block-content :data-class="['block-content-full']">
-					//
+					<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
+					tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,
+					quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo
+					consequat. Duis aute</p>
 				</vue-block-content>
 			</vue-block>
 		</div>

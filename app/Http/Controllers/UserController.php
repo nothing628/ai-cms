@@ -15,6 +15,11 @@ class UserController extends Controller
 		return view('user.home');
 	}
 
+	public function profile()
+	{
+		return view('user.profile');
+	}
+
 	public function favorites()
 	{
 		return view('user.favorite');

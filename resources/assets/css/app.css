@@ -54,16 +54,6 @@
 	background-color: rgba(0,0,0,0.6);
 }
 
-.half-rating {
-	background: -webkit-linear-gradient(0deg, transparent 50%, transparent 50%, #c9c9c9 0);
-	background: -moz-linear-gradient(90deg, transparent 50%, transparent 50%, #c9c9c9 0);
-	background: linear-gradient(90deg, transparent 50%, transparent 50%, #c9c9c9 0);
-	background-color: #e49e36;
-	background-clip: text;
-	-webkit-background-clip: text;
-	color: transparent;
-}
-
 .h6 {
 	font-size: 14px;
 }
