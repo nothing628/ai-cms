@@ -4,7 +4,7 @@
 		<vue-form :data-class="['form-horizontal', 'push-10-t']" data-action="{{ route('api.category.store') }}" data-name="form-category-add" data-method="post">
 			{!! csrf_field() !!}
 			<vue-form-group>
-				<vue-input data-name="category" :data-col="['col-md-12']" data-label="Category" :data-required="true" data-placeholder="Category"></vue-input>
+				<vue-input data-name="category" :data-col="['col-md-12']" data-label="Category" :is-required="true" data-placeholder="Category"></vue-input>
 			</vue-form-group>
 			<vue-form-group>
 				<vue-textarea data-name="description" :data-col="['col-md-12']" data-label="Description" data-placeholder="Description"></vue-textarea>

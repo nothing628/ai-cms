@@ -1,7 +1,7 @@
 <template>
 	<div :class="dataCol">
 		<div class="form-material form-material-primary" :class="{'floating':isFloating}">
-			<select :class="dataClass" :data-tags="dataMultiple" :data-placeholder="valPlaceholder" :name="dataName" :required="dataRequired" :multiple="dataMultiple">
+			<select :class="dataClass" :data-tags="dataMultiple" :data-placeholder="valPlaceholder" :name="dataName" :required="isRequired" :multiple="dataMultiple">
 				<option v-if="!dataMultiple"></option>
 				<option v-for="item in sourceData" :value="item.value">{{ item.key }}</option>
 			</select>
@@ -28,9 +28,9 @@
 			dataMethod: { type: String, required: false, default: 'get' },
 			dataOptions: { type: Object, required: false, default() { return {}; } },
 			dataPlaceholder: { type: String, required: false, default: ''},
-			dataRequired: { type: Boolean, required: false, default: false},
 			dataSource: { type: String, required: false, default: 'custom' },
 			dataValue: { type: String, required: false, default: ''},
+			isRequired: { type: Boolean, required: false, default: false},
 			isFloating: { type: Boolean, required: false, default: false}
 		},
 		computed: {

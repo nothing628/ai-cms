@@ -20,8 +20,8 @@
 			dataLabel: { type: String, required: false, default: ''},
 			dataName: { type: String, required: true},
 			dataPlaceholder: { type: String, required: false, default: ''},
-			dataRequired: { type: Boolean, required: false, default: false},
 			dataValue: { type: Object, required: false, default: null},
+			isRequired: { type: Boolean, required: false, default: false},
 		},
 		computed: {
 			//

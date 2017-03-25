@@ -4,7 +4,7 @@
 		<vue-form :data-class="['form-horizontal', 'push-10-t']" data-action="{{ route('api.tag.store') }}" data-name="form-tag-add" data-method="post">
 			{!! csrf_field() !!}
 			<vue-form-group>
-				<vue-input data-name="tag" :data-col="['col-md-12']" data-label="Tag" :data-required="true" data-placeholder="Tag"></vue-input>
+				<vue-input data-name="tag" :data-col="['col-md-12']" data-label="Tag" :is-required="true" data-placeholder="Tag"></vue-input>
 			</vue-form-group>
 		</vue-form>
 	</vue-modal-body>
@@ -21,7 +21,7 @@
 			{!! csrf_field() !!}
 			<vue-input data-name="id" :data-col="['col-md-12']" data-type="hidden"></vue-input>
 			<vue-form-group>
-				<vue-input data-name="name" :data-col="['col-md-12']" data-label="Tag" :data-required="true" data-placeholder="Tag"></vue-input>
+				<vue-input data-name="name" :data-col="['col-md-12']" data-label="Tag" :is-required="true" data-placeholder="Tag"></vue-input>
 			</vue-form-group>
 		</vue-form>
 	</vue-modal-body>

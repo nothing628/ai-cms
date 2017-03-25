@@ -51,48 +51,28 @@
 								<div class="font-s13 font-w600">Enable Infinite Reading Mode <b class="text-danger">[Default: Single Reading Mode]</b></div>
 								<div class="font-s13 font-w400 text-muted">Display next image when you reach the bottom of the reader page while browsing.</div>
 							</div>
-							<div class="col-sm-4 text-right">
-								<label class="css-input switch switch-sm switch-primary" for="simple-classic-progress-terms">
-									<input type="checkbox" id="simple-classic-progress-terms" name="simple-classic-progress-terms">
-									<span></span>
-								</label>
-							</div>
+							<vue-checkbox data-col="['col-sm-4','text-right']" data-name="test1"></vue-checkbox>
 						</vue-form-group>
 						<vue-form-group>
 							<div class="col-xs-8">
 								<div class="font-s13 font-w600">Enable Information Tooltip <b class="text-danger">[Default: Enabled]</b></div>
 								<div class="font-s13 font-w400 text-muted">Display manga information in a small window when you hover over a manga title.</div>
 							</div>
-							<div class="col-sm-4 text-right">
-								<label class="css-input switch switch-sm switch-primary" for="simple-classic-progress-terms">
-									<input type="checkbox" id="simple-classic-progress-terms" name="simple-classic-progress-terms">
-									<span></span>
-								</label>
-							</div>
+							<vue-checkbox data-col="['col-sm-4','text-right']" data-name="test2"></vue-checkbox>
 						</vue-form-group>
 						<vue-form-group>
 							<div class="col-xs-8">
 								<div class="font-s13 font-w600">Enable Night Mode <b class="text-danger">[Default: Disabled]</b></div>
 								<div class="font-s13 font-w400 text-muted">Switch background color to black for easier reading.</div>
 							</div>
-							<div class="col-sm-4 text-right">
-								<label class="css-input switch switch-sm switch-primary" for="simple-classic-progress-terms">
-									<input type="checkbox" id="simple-classic-progress-terms" name="simple-classic-progress-terms">
-									<span></span>
-								</label>
-							</div>
+							<vue-checkbox data-col="['col-sm-4','text-right']" data-name="test3"></vue-checkbox>
 						</vue-form-group>
 						<vue-form-group>
 							<div class="col-xs-8">
 								<div class="font-s13 font-w600">Hide Blacklisted Manga <b class="text-danger">[Default: Disabled]</b></div>
 								<div class="font-s13 font-w400 text-muted">Hide series that belong to a blacklisted tag.</div>
 							</div>
-							<div class="col-sm-4 text-right">
-								<label class="css-input switch switch-sm switch-primary" for="simple-classic-progress-terms">
-									<input type="checkbox" id="simple-classic-progress-terms" name="simple-classic-progress-terms">
-									<span></span>
-								</label>
-							</div>
+							<vue-checkbox data-col="['col-sm-4','text-right']" data-name="test4"></vue-checkbox>
 						</vue-form-group>
 
 						<vue-form-group>

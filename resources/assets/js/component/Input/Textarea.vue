@@ -1,7 +1,7 @@
 <template>
 	<div :class="dataCol">
 		<div class="form-material form-material-primary" :class="{'floating':isFloating}">
-			<textarea :class="dataClass" :rows="dataRows" :name="dataName" :required="dataRequired" :placeholder="valPlaceholder" v-model="currentVal"></textarea>
+			<textarea :class="dataClass" :rows="dataRows" :name="dataName" :required="isRequired" :placeholder="valPlaceholder" v-model="currentVal"></textarea>
 			<label>{{ dataLabel }}</label>
 		</div>
 	</div>
@@ -20,9 +20,9 @@
 			dataLabel: { type: String, required: false, default: ''},
 			dataName: { type: String, required: true},
 			dataPlaceholder: { type: String, required: false, default: ''},
-			dataRequired: { type: Boolean, required: false, default: false},
 			dataRows: { type: Number, required: false, default: 3 },
 			dataValue: { type: Object, required: false, default: null},
+			isRequired: { type: Boolean, required: false, default: false},
 			isFloating: { type: Boolean, required: false, default: false}
 		},
 		computed: {

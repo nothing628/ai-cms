@@ -16,6 +16,7 @@ Vue.component('record-status',	require('./Element/Record-Status.vue'));
 Vue.component('vue-pagination',	require('./Element/Pagination.vue'));
 
 Vue.component('vue-input',		require('./Input/Input.vue'));
+Vue.component('vue-checkbox',	require('./Input/Checkbox.vue'));
 Vue.component('vue-file',		require('./Input/File.vue'));
 Vue.component('vue-select',		require('./Input/Select.vue'));
 Vue.component('vue-textarea',	require('./Input/Textarea.vue'));
