@@ -40,7 +40,7 @@
 	<div class="row">
 		<div class="col-sm-7 col-lg-7">
 			<vue-block :is-themed="true" :data-class="['block-bordered']">
-				<vue-block-head :data-class="['bg-primary-dark']">About Me</vue-block-head>
+				<vue-block-head :data-class="['bg-primary-dark']"><i class="fa fa-comment"></i> About Me</vue-block-head>
 				<vue-block-content>
 					<p>This is my profile</p>
 					<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
@@ -80,8 +80,115 @@
 		</div>
 	</div>
 	<div class="row">
-		<div class="col-md-6 col-lg-6"></div>
-		<div class="col-md-6 col-lg-6"></div>
+		<div class="col-md-6 col-lg-6">
+			<vue-block :is-themed="true">
+				<vue-block-head :data-class="['bg-primary-dark']"><i class="fa fa-sort"></i> Last Bookmarked</vue-block-head>
+				<vue-block-content>
+					<div class="pull-r-l">
+						<table class="table table-hover table-vcenter">
+							<tbody>
+								<tr>
+									<td style="width: 80px;">
+										<div class="img-container">
+											<img src="{{ url('images/small/test-2.jpeg') }}" class="img-responsive">
+										</div>
+									</td>
+									<td>
+										<a class="font-w600" href="#">Welcome to our service</a>
+										<div class="text-muted push-5-t">It's a pleasure to have you on our service..</div>
+									</td>
+									<td class="visible-lg text-muted" style="width: 120px;"><em>2 min ago</em></td>
+								</tr>
+							</tbody>
+						</table>
+					</div>
+				</vue-block-content>
+			</vue-block>
+		</div>
+		<div class="col-md-6 col-lg-6">
+			<vue-block :is-themed="true">
+				<vue-block-head :data-class="['bg-primary-dark']"><i class="fa fa-sort"></i> Recommeded</vue-block-head>
+				<vue-block-content>
+					<div class="pull-r-l">
+						<table class="table table-hover table-vcenter">
+							<tbody>
+								<tr>
+									<td style="width: 80px;">
+										<div class="img-container">
+											<img src="{{ url('images/small/test-2.jpeg') }}" class="img-responsive">
+										</div>
+									</td>
+									<td>
+										<a class="font-w600" href="#">Welcome to our service</a>
+										<div class="text-muted push-5-t">It's a pleasure to have you on our service..</div>
+									</td>
+									<td class="visible-lg text-muted" style="width: 120px;"><em>2 min ago</em></td>
+								</tr>
+							</tbody>
+						</table>
+					</div>
+				</vue-block-content>
+			</vue-block>
+		</div>
+	</div>
+	<div class="row">
+		<div class="col-md-6 col-lg-6">
+			<vue-block :is-themed="true">
+				<vue-block-head :data-class="['bg-primary-dark']"><i class="fa fa-newspaper-o"></i> Activity</vue-block-head>
+				<vue-block-content>
+					<vue-block :data-class="['block-transparent', 'pull-r-l']">
+						<div class="block-header bg-gray-lighter">
+							<ul class="block-options">
+								<li><span><em class="text-muted">3 hrs ago</em></span></li>
+							</ul>
+							<h3 class="block-title">Plan to Read</h3>
+						</div>
+						<vue-block-content>
+							<a class="col-xs-3" href="#">
+								<div class="img-container">
+									<img class="img-responsive" src="{{ url('images/small/test.jpeg') }}">
+								</div>
+							</a>
+							<a class="col-xs-3" href="#">
+								<div class="img-container">
+									<img class="img-responsive" src="{{ url('images/small/test-2.jpeg') }}">
+								</div>
+							</a>
+							<a class="col-xs-3" href="#">
+								<div class="img-container">
+									<img class="img-responsive" src="{{ url('images/small/Test/Page-01.jpg') }}">
+								</div>
+							</a>
+							<div class="clearfix"></div>
+						</vue-block-content>
+					</vue-block>
+					<vue-block :data-class="['block-transparent', 'pull-r-l']">
+						<div class="block-header bg-gray-lighter">
+							<ul class="block-options">
+								<li><span><em class="text-muted">6 hrs ago</em></span></li>
+							</ul>
+							<h3 class="block-title">Completed</h3>
+						</div>
+						<vue-block-content>
+							<a class="col-xs-3" href="#">
+								<div class="img-container">
+									<img class="img-responsive" src="{{ url('images/small/test-2.jpeg') }}">
+								</div>
+							</a>
+							<div class="clearfix"></div>
+						</vue-block-content>
+					</vue-block>
+				</vue-block-content>
+			</vue-block>
+		</div>
+		<div class="col-md-6 col-lg-6">
+			<vue-block :is-themed="true">
+				<vue-block-head :data-class="['bg-primary-dark']"><i class="fa fa-envelope"></i> Notification</vue-block-head>
+				<vue-block-content>
+					
+				</vue-block-content>
+			</vue-block>
+		</div>
 	</div>
 </div>
 @endsection
