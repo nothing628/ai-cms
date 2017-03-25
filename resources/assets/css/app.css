@@ -140,7 +140,7 @@ a.ribbon-link:hover {
 	visibility: visible;
 }
 
-.img-container .img-overlay > a > h2.rf-title {
+.img-container .img-overlay > h2.rf-title {
 	color: #ed9512;
 	font-weight: normal;
 	font-size: 1em;
@@ -184,7 +184,7 @@ a.ribbon-link:hover {
 	top: 10px;
 	width: 42px;
 	height: 42px;
-	border-radius: 50%;
+	border-radius: 0;
 }
 
 a.link-effect {

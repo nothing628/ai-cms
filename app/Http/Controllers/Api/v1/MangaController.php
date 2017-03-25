@@ -30,6 +30,12 @@ class MangaController extends Controller
 		return response()->json($response);
 	}
 
+	public function search(Request $request)
+	{
+		//I will change this later
+		return response()->json($this->popular());
+	}
+
 	public function get(Request $request)
 	{
 		if ($request->has('scope')) {

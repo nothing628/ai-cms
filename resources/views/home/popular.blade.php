@@ -6,7 +6,7 @@
 				<li><a data-toggle="tab" href="#view">Most Viewed</a></li>
 				<li><a data-toggle="tab" href="#random">Random</a></li>
 			</ul>
-			<vue-block-content :data-class="['remove-padding','tab-content']" id="lts-grp">
+			<vue-block-content :data-class="['remove-padding','tab-content']">
 				<div role="tabpanel" id="popular" class="tab-pane active">
 					<div is="manga-grid" data-source="{{ route('api.manga.get') }}" :data-options="{scope: 'popular'}">
 						@foreach ($popular as $manga)
