@@ -1,5 +1,5 @@
 <template>
-	<div class="col-md-20p col-xl-2 col-sm-4 col-xs-6">
+	<div class="col-md-2 col-lg-2 col-sm-4 col-xs-6">
 		<a class="img-container ribbon ribbon-modern ribbon-danger ribbon-left border" :href="item.manga_url">
 			<img :src="item.thumb_url" :alt="item.title" class="img-responsive">
 			<div class="ribbon-box">

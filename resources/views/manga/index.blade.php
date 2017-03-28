@@ -14,7 +14,7 @@
 		</div>
 	</div>
 </div>
-<div class="content content-boxed">
+<div class="content">
 	<vue-block :is-themed="true">
 		<vue-block-head :data-class="['bg-primary-dark']"><i class="fa fa-gear"></i> Browse Manga</vue-block-head>
 		<div is="manga-grid" data-source="{{ route('api.manga.search') }}"
