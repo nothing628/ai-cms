@@ -186,6 +186,7 @@ return [
 		Roumen\Sitemap\SitemapServiceProvider::class,
 		Artesaos\SEOTools\Providers\SEOToolsServiceProvider::class,
 		Cviebrock\EloquentSluggable\ServiceProvider::class,
+		Jenssegers\Agent\AgentServiceProvider::class,
 	],
 
 	/*
@@ -243,6 +244,7 @@ return [
 		'SEO' => Artesaos\SEOTools\Facades\SEOTools::class,
 		'Twitter'   => Artesaos\SEOTools\Facades\TwitterCard::class,
 		'Menu'		=> App\Menu\MenuFacade::class,
+		'Agent'		=> Jenssegers\Agent\Facades\Agent::class,
 	],
 
 ];

@@ -20,7 +20,8 @@
 		"chumper/zipper": "^1.0",
 		"roumen/sitemap": "2.6.*",
 		"cviebrock/eloquent-sluggable": "^4.1",
-		"artesaos/seotools": "^0.10.0"
+		"artesaos/seotools": "^0.10.0",
+		"jenssegers/agent": "^2.5"
 	},
 	"require-dev": {
 		"fzaninotto/faker": "~1.4",
