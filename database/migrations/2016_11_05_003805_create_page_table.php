@@ -14,8 +14,8 @@ class CreatePageTable extends Migration
 	public function up()
 	{
 		Schema::create('pages', function (Blueprint $table) {
-			$table->increments('id');
-			$table->integer('chapter_id')->unsigned();
+			$table->bigIncrements('id');
+			$table->bigInteger('chapter_id')->unsigned();
 			$table->integer('page_num')->unsigned();
 			$table->string('path', 255);
 			$table->timestamps();

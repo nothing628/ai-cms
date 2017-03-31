@@ -14,22 +14,22 @@ class CreateTaggableTable extends Migration
 	public function up()
 	{
 		Schema::create('tagging_tagged', function(Blueprint $table) {
-			$table->increments('id');
-			$table->integer('taggable_id')->unsigned()->index();
+			$table->bigIncrements('id');
+			$table->bigInteger('taggable_id')->unsigned()->index();
 			$table->string('taggable_type', 255)->index();
 			$table->string('tag_name', 255);
 			$table->string('tag_slug', 255)->index();
 		});
 
 		Schema::create('tagging_tag_groups', function(Blueprint $table) {
-			$table->increments('id');
+			$table->bigIncrements('id');
 			$table->string('slug', 255)->index();
 			$table->string('name', 255);
 		});
 
 		Schema::create('tagging_tags', function(Blueprint $table) {
-			$table->increments('id');
-			$table->integer('tag_group_id')->unsigned()->nullable();
+			$table->bigIncrements('id');
+			$table->bigInteger('tag_group_id')->unsigned()->nullable();
 			$table->string('slug', 255)->index();
 			$table->string('name', 255);
 			$table->boolean('suggest')->default(false);

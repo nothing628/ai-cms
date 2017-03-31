@@ -14,14 +14,14 @@ class CreateDownloadTable extends Migration
 	public function up()
 	{
 		Schema::create('sources', function (Blueprint $table) {
-			$table->increments('id');
+			$table->bigIncrements('id');
 			$table->string('source');
 			$table->timestamps();
 		});
 
 		Schema::create('indexed_mangas', function (Blueprint $table) {
-			$table->increments('id');
-			$table->integer('source_id')->unsigned();
+			$table->bigIncrements('id');
+			$table->bigInteger('source_id')->unsigned();
 			$table->string('title');
 			$table->string('url');
 			$table->boolean('is_indexed')->default(false);
@@ -30,8 +30,8 @@ class CreateDownloadTable extends Migration
 		});
 
 		Schema::create('indexed_chapters', function (Blueprint $table) {
-			$table->increments('id');
-			$table->integer('manga_id')->unsigned();
+			$table->bigIncrements('id');
+			$table->bigInteger('manga_id')->unsigned();
 			$table->string('chapter')->nullable();
 			$table->integer('chapter_num')->unsigned();
 			$table->string('url')->nullable();
@@ -41,8 +41,8 @@ class CreateDownloadTable extends Migration
 		});
 
 		Schema::create('indexed_pages', function (Blueprint $table) {
-			$table->increments('id');
-			$table->integer('chapter_id')->unsigned();
+			$table->bigIncrements('id');
+			$table->bigInteger('chapter_id')->unsigned();
 			$table->integer('page_num')->unsigned();
 			$table->string('url')->nullable();
 			$table->boolean('is_indexed')->default(false);

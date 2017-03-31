@@ -24,7 +24,7 @@ class RemoveSettingTable extends Migration
 	public function down()
 	{
 		Schema::create('settings', function (Blueprint $table) {
-			$table->increments('id');
+			$table->bigIncrements('id');
 			$table->string('key')->unique();
 			$table->text('value')->nullable();
 			$table->timestamps();

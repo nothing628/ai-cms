@@ -14,7 +14,7 @@ class AddMangaField extends Migration
 	public function up()
 	{
 		Schema::table('mangas', function (Blueprint $table) {
-			$table->integer('category_id')->unsigned()->after('user_id');
+			$table->bigInteger('category_id')->unsigned()->after('user_id');
 			$table->boolean('is_completed')->default(true)->after('views');
 		});
 	}

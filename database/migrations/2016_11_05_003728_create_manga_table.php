@@ -14,7 +14,7 @@ class CreateMangaTable extends Migration
 	public function up()
 	{
 		Schema::create('categories', function (Blueprint $table) {
-			$table->increments('id');
+			$table->bigIncrements('id');
 			$table->string('category', 40)->unique();
 			$table->text('description')->nullable();
 			$table->string('cover',255)->nullable();
@@ -22,8 +22,8 @@ class CreateMangaTable extends Migration
 		});
 
 		Schema::create('mangas', function(Blueprint $table){
-			$table->increments('id');
-			$table->integer('user_id')->unsigned()->nullable();
+			$table->bigIncrements('id');
+			$table->bigInteger('user_id')->unsigned()->nullable();
 			$table->string('title', 200);
 			$table->string('cover', 255);
 			$table->integer('views')->unsigned()->default(0);
@@ -34,17 +34,17 @@ class CreateMangaTable extends Migration
 		});
 
 		Schema::create('category_manga', function (Blueprint $table) {
-			$table->integer('category_id')->unsigned();
-			$table->integer('manga_id')->unsigned();
+			$table->bigInteger('category_id')->unsigned();
+			$table->bigInteger('manga_id')->unsigned();
 
 			$table->foreign('category_id')->references('id')->on('categories')->onDelete('CASCADE')->onUpdate('CASCADE');
 			$table->foreign('manga_id')->references('id')->on('mangas')->onDelete('CASCADE')->onUpdate('CASCADE');
 		});
 
 		Schema::create('ratings', function (Blueprint $table){
-			$table->increments('id');
-			$table->integer('manga_id')->unsigned();
-			$table->integer('user_id')->unsigned();
+			$table->bigIncrements('id');
+			$table->bigInteger('manga_id')->unsigned();
+			$table->bigInteger('user_id')->unsigned();
 			$table->tinyInteger('rating')->unsigned();
 			$table->timestamps();
 
@@ -53,8 +53,8 @@ class CreateMangaTable extends Migration
 		});
 
 		Schema::create('comments', function (Blueprint $table) {
-			$table->increments('id');
-			$table->integer('user_id')->unsigned();
+			$table->bigIncrements('id');
+			$table->bigInteger('user_id')->unsigned();
 
 			$table->text('comment');
 			$table->timestamps();
@@ -63,14 +63,14 @@ class CreateMangaTable extends Migration
 		});
 
 		Schema::create('commentable', function (Blueprint $table) {
-			$table->integer('comment_id');
-			$table->integer('commentable_id')->unsigned();
+			$table->bigInteger('comment_id');
+			$table->bigInteger('commentable_id')->unsigned();
 			$table->string('commentable_type');
 		});
 
 		Schema::create('favorites', function (Blueprint $table) {
-			$table->integer('manga_id')->unsigned();
-			$table->integer('user_id')->unsigned();
+			$table->bigInteger('manga_id')->unsigned();
+			$table->bigInteger('user_id')->unsigned();
 			$table->timestamps();
 
 			$table->foreign('manga_id')->references('id')->on('mangas')->onDelete('CASCADE')->onUpdate('CASCADE');
