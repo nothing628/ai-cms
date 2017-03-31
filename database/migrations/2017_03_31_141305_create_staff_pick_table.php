@@ -29,6 +29,6 @@ class CreateStaffPickTable extends Migration
      */
     public function down()
     {
-        Schema::dropTable('staff_picks');
+        Schema::drop('staff_picks');
     }
 }

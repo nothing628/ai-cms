@@ -51,9 +51,9 @@ class CreatePageViewTable extends Migration
 	 */
 	public function down()
 	{
-		Schema::dropTable('track_os');
-		Schema::dropTable('track_browsers');
-		Schema::dropTable('track_details');
-		Schema::dropTable('track_views');
+		Schema::drop('track_os');
+		Schema::drop('track_browsers');
+		Schema::drop('track_details');
+		Schema::drop('track_views');
 	}
 }
