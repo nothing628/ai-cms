@@ -21,8 +21,8 @@ class CreatePageViewTable extends Migration
 
 		Schema::create('track_details', function (Blueprint $table) {
 			$table->bigIncrements('id');
-			$table->bigInteger('track_views_id')->unsigned()->index();
-			$table->bigInteger('track_browsers_id')->unsigned()->index();
+			$table->bigInteger('track_view_id')->unsigned()->index();
+			$table->bigInteger('track_browser_id')->unsigned()->index();
 			$table->bigInteger('track_os_id')->unsigned()->index();
 			$table->bigInteger('views')->unsigned();
 			$table->timestamps();
