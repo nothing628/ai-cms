@@ -1,6 +1,14 @@
 <template>
 	<div class="block-content row items-push-10 bg-white bc-xs">
-		<manga-grid-content v-for="item in items" :item="item"></manga-grid-content>
+		<manga-grid-content v-for="item in items"
+		:title="item.title"
+		:views="item.views.toString()"
+		:manga-url="item.manga_url"
+		:thumb-url="item.thumb_url"
+		:uploader="item.user.username"
+		:with-ribbon="true"
+		:with-uploader="true"
+		></manga-grid-content>
 	</div>
 </template>
 

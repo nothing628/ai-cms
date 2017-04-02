@@ -143,22 +143,25 @@
 							</ul>
 							<h3 class="block-title">Plan to Read</h3>
 						</div>
-						<vue-block-content>
-							<a class="col-xs-3" href="#">
-								<div class="img-container">
-									<img class="img-responsive" src="{{ url('images/small/test.jpeg') }}">
-								</div>
-							</a>
-							<a class="col-xs-3" href="#">
-								<div class="img-container">
-									<img class="img-responsive" src="{{ url('images/small/test-2.jpeg') }}">
-								</div>
-							</a>
-							<a class="col-xs-3" href="#">
-								<div class="img-container">
-									<img class="img-responsive" src="{{ url('images/small/Test/Page-01.jpg') }}">
-								</div>
-							</a>
+						<vue-block-content :data-class="['row']">
+							<manga-grid-content
+							title="Test 1"
+							thumb-url="{{ url('images/small/test.jpeg') }}"
+							manga-url="#"
+							:data-class="['col-lg-3', 'col-md-4']"
+							></manga-grid-content>
+							<manga-grid-content
+							title="Test 2"
+							thumb-url="{{ url('images/small/test-2.jpeg') }}"
+							manga-url="#"
+							:data-class="['col-lg-3', 'col-md-4']"
+							></manga-grid-content>
+							<manga-grid-content
+							title="Test 3"
+							thumb-url="{{ url('images/small/Test/Page-01.jpg') }}"
+							manga-url="#"
+							:data-class="['col-lg-3', 'col-md-4']"
+							></manga-grid-content>
 							<div class="clearfix"></div>
 						</vue-block-content>
 					</vue-block>

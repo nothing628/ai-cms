@@ -1,18 +1,19 @@
 <template>
-	<div class="col-md-2 col-lg-2 col-sm-4 col-xs-6">
-		<a class="img-container ribbon ribbon-modern ribbon-danger ribbon-left border" :href="item.manga_url">
-			<img :src="item.thumb_url" :alt="item.title" class="img-responsive">
-			<div class="ribbon-box">
+	<div :class="dataClass">
+		<a class="img-container ribbon ribbon-modern ribbon-danger ribbon-left" :href="mangaUrl">
+			<img :src="thumbUrl" :alt="title" class="img-responsive">
+			<div class="ribbon-box" v-if="withRibbon">
 				<a href="#" class="ribbon-link"><i class="fa fa-fw fa-ellipsis-h"></i></a>
-				<i class="fa fa-fw fa-fire"></i>{{ item.views }}
+				<i class="fa fa-fw fa-fire"></i>{{ views }}
 			</div>
 			<div class="img-overlay text-center">
-				<h2 class="rf-title">{{ item.title }}</h2>
+				<h2 class="rf-title">{{ title }}</h2>
 				<div class="rf-info">
 					<h4 class="h6 text-muted">
-						<b>{{ item.category.category }}</b> By {{ item.user.username }}
+						<b v-if="withCategory">{{ category }}</b>
+						<span v-if="withUploader"> By {{ uploader }}</span>
 					</h4>
-					<div class="rating">
+					<div class="rating" v-if="withRating">
 						<i class="fa fa-star text-warning"></i>
 						<i class="fa fa-star text-warning"></i>
 						<i class="fa fa-star text-warning"></i>
@@ -31,7 +32,20 @@
 			return {};
 		},
 		props: {
-			item: { type: Object, required: true }
+			mangaUrl: { type: String, default: null },
+			thumbUrl: { type: String, default: null },
+			title: { type: String, default: null },
+			views: { type: String, default: null },
+			category: { type: String, default: null },
+			uploader: { type: String, default: null },
+			dataClass: { type: Array, default() { return ['col-md-2','col-lg-2','col-sm-4','col-xs-6']; }},
+			withRibbon: { type: Boolean, default: false },
+			withRating: { type: Boolean, default: false },
+			withCategory: { type: Boolean, default: false },
+			withUploader: { type: Boolean, default: false }
+		},
+		computed: {
+			//
 		}
 	}
 </script>
