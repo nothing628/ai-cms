@@ -17,10 +17,10 @@
 				<vue-block-content>
 					<vue-form :data-class="['form-horizontal']" data-action="{{ route('api.comment.store') }}" data-name="form-create">
 						<vue-form-group>
-							<vue-input data-name="username" data-placeholder="your email here" data-label="Username" :data-col="['col-md-12']"></vue-input>
+							<vue-input data-name="username" data-value="{{ Auth::user()->username }}" data-placeholder="your email here" data-label="Username" :data-col="['col-md-12']"></vue-input>
 						</vue-form-group>
 						<vue-form-group>
-							<vue-input data-name="email" data-placeholder="your email here" data-label="Email" :data-col="['col-md-12']"></vue-input>
+							<vue-input data-name="email" data-value="{{ Auth::user()->email }}" data-placeholder="your email here" data-label="Email" :data-col="['col-md-12']"></vue-input>
 						</vue-form-group>
 						<vue-form-group>
 							<vue-input data-name="current_password" data-type="password" data-placeholder="Current Password" data-label="Current Password" :data-col="['col-md-12']"></vue-input>

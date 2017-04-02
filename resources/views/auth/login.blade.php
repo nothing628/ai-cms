@@ -20,11 +20,11 @@ bg-white
 				<vue-form :data-class="['form-horizontal']" data-enctype="multipart/form-data" data-name="form-create" :is-raw="true">
 					{!! csrf_field() !!}
 					<vue-form-group>
-						<vue-input data-name="email" data-type="email" data-label="Email" :is-required="true" :data-col="['col-xs-12']" :is-floating="true"></vue-input>
+						<vue-input data-name="login" data-type="text" data-label="Username" data-placeholder="Username or Email" :is-required="true" :data-col="['col-xs-12']"></vue-input>
 					</vue-form-group>
 
 					<vue-form-group>
-						<vue-input data-name="password" data-type="password" data-label="Password" :is-required="true" :data-col="['col-xs-12']" :is-floating="true"></vue-input>
+						<vue-input data-name="password" data-type="password" data-label="Password" data-placeholder="Password" :is-required="true" :data-col="['col-xs-12']"></vue-input>
 					</vue-form-group>
 
 					<vue-form-group>
