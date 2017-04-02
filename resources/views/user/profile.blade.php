@@ -12,19 +12,19 @@
 <div class="content bg-white border-b">
 	<div class="row items-push text-uppercase">
 		<div class="col-xs-6 col-sm-3">
-			<div class="font-w700 text-gray-darker animated fadeIn">Days Watched</div>
-			<a class="h2 font-w300 text-primary animated flipInX" href="javascript:void(0)">107</a>
+			<div class="font-w700 text-gray-darker animated fadeIn">Member for</div>
+			<a class="h2 font-w300 text-primary animated flipInX" href="javascript:void(0)">107 Days</a>
 		</div>
 		<div class="col-xs-6 col-sm-3">
-			<div class="font-w700 text-gray-darker animated fadeIn">Chapters Read</div>
-			<a class="h2 font-w300 text-primary animated flipInX" href="javascript:void(0)">237</a>
+			<div class="font-w700 text-gray-darker animated fadeIn">Manga Read</div>
+			<a class="h2 font-w300 text-primary animated flipInX" href="javascript:void(0)">{{ Auth::user()->bookmarks->count() }}</a>
 		</div>
 		<div class="col-xs-6 col-sm-3">
-			<div class="font-w700 text-gray-darker animated fadeIn">Favourites</div>
-			<a class="h2 font-w300 text-primary animated flipInX" href="javascript:void(0)">12</a>
+			<div class="font-w700 text-gray-darker animated fadeIn">Favourite</div>
+			<a class="h2 font-w300 text-primary animated flipInX" href="javascript:void(0)">{{ Auth::user()->favorites->count() }}</a>
 		</div>
 		<div class="col-xs-6 col-sm-3">
-			<div class="font-w700 text-gray-darker animated fadeIn">739 Ratings</div>
+			<div class="font-w700 text-gray-darker animated fadeIn">Average Rating</div>
 			<div class="text-warning push-10-t animated flipInX">
 				<i class="fa fa-star"></i>
 				<i class="fa fa-star"></i>
@@ -42,11 +42,7 @@
 			<vue-block :is-themed="true" :data-class="['block-bordered']">
 				<vue-block-head :data-class="['bg-primary-dark']"><i class="fa fa-comment"></i> About Me</vue-block-head>
 				<vue-block-content>
-					<p>This is my profile</p>
-					<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
-					tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,
-					quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo
-					consequat. Duis aute</p>
+					<p>{{ Auth::user()->about }}</p>
 				</vue-block-content>
 			</vue-block>
 		</div>

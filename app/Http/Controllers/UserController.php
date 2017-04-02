@@ -4,12 +4,19 @@ namespace App\Http\Controllers;
 
 use Auth;
 use Hash;
+use SEOMeta;
+use Setting;
 use Illuminate\Http\Request;
 use App\Http\Requests\ChangePasswordRequest;
 use App\Models\User;
 
 class UserController extends Controller
 {
+	public function __construct()
+	{
+		SEOMeta::addMeta('robots', 'noindex,nofollow');
+	}
+
 	public function home()
 	{
 		return view('user.home');
@@ -17,6 +24,7 @@ class UserController extends Controller
 
 	public function profile()
 	{
+		SEOMeta::setTitle(Setting::get('app.name') . ' - User Profile');
 		return view('user.profile');
 	}
 
@@ -49,6 +57,7 @@ class UserController extends Controller
 
 	public function setting()
 	{
+		SEOMeta::setTitle(Setting::get('app.name') . ' - User Settings');
 		return view('user.setting');
 	}
 }

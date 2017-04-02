@@ -32,6 +32,11 @@ class User extends Authenticatable
 		return $this->first_name . " " . $this->last_name;
 	}
 
+	public function activities()
+	{
+		return $this->hasMany(Activity::class);
+	}
+
 	public function bookmarks()
 	{
 		return $this->hasMany(Bookmark::class);

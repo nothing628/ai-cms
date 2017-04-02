@@ -59,6 +59,11 @@ class Manga extends Model
 		return $this->hasMany(Rating::class);
 	}
 
+	public function activities()
+	{
+		return $this->morphMany(Activity::class, 'activity_model');
+	}
+
 	public function comments()
 	{
 		return $this->morphToMany(Comment::class, 'commentable', 'commentable');

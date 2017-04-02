@@ -12,4 +12,9 @@ class Comment extends Model
 	{
 		return $this->belongsTo(User::class);
 	}
+
+	public function mangas()
+	{
+		return $this->morphedByMany(Manga::class, 'commentable');
+	}
 }
