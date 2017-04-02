@@ -169,7 +169,7 @@
 							<h3 class="block-title">Completed</h3>
 						</div>
 						<vue-block-content>
-							<a class="col-xs-3" href="#">
+							<a class="col-xs-3" id="test">
 								<div class="img-container">
 									<img class="img-responsive" src="{{ url('images/small/test-2.jpeg') }}">
 								</div>
@@ -190,4 +190,34 @@
 		</div>
 	</div>
 </div>
+<div class="test" style="display: none;" id="good">
+	<table class="table table-striped">
+		<tbody>
+			<tr>
+				<td>Title</td>
+				<td>Test</td>
+			</tr>
+			<tr>
+				<td>Release at</td>
+				<td>October 2010</td>
+			</tr>
+		</tbody>
+	</table>
+</div>
+@endsection
+
+@section('scripts')
+<script type="text/javascript">
+	$(document).ready(function () {
+		$('#test').popover({
+			container: 'body',
+			delay: 200,
+			placement: 'right auto',
+			html: true,
+			trigger: 'hover',
+			content: $('#good').html(),
+			title: '<span class="font-w700">Detail Manga</span>'
+		});
+	});
+</script>
 @endsection

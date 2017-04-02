@@ -269,6 +269,14 @@ div.dataTables_paginate ul.pagination {
 	background-color: white;
 }
 
+.popover {
+	max-width: 400px;
+}
+
+.popover .popover-content .table {
+	width: 500px;
+}
+
 @media (min-width: 992px) {
 	.col-md-20p {
 		width: 20%;
