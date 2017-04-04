@@ -1,4 +1,18 @@
-@extends('layouts.base') @section('title') @parent - {{ $manga->title }} @endsection @section('content')
+@extends('layouts.base')
+
+@section('title')
+@parent - {{ $manga->title }}
+@endsection
+
+@section('content')
+@if(Auth::check())
+@set('user', Auth::user())
+@set('favor', $user->favorites()->where('manga_id', $manga->id)->get())
+@else
+@set('favor', collect())
+@endif
+
+@set('is_favorited', $favor->count() > 0?'true':'false')
 <div class="content bg-gray-lighter">
 	<div class="row items-push">
 		<div class="col-sm-7">
@@ -7,7 +21,7 @@
 			</h1>
 		</div>
 		<div class="col-md-5">
-			<button class="btn btn-danger pull-right"><i class="fa fa-heart"></i></button>
+			<manga-favorite :data-class="['pull-right', 'bg-gray', 'btn-square']" data-manga-id="{{ $manga->id }}" data-submit="{{ route('api.manga.favorite') }}" :is-favorited="{{ $is_favorited }}"></manga-favorite>
 		</div>
 	</div>
 </div>
@@ -63,7 +77,7 @@
 				<vue-block-head :data-class="['bg-primary-dark']"><i class="si si-list"></i> Chapter List</vue-block-head>
 				<vue-block-content :data-class="['block-content-full']">
 					<div id="lts-grp">
-					<ul class="nav-users">
+					<ul class="nav-users left-padding-fix">
 						@foreach($manga->chapters->sortByDesc('chapter_num') as $chapter)
 						<li>
 							<a href="{{ $chapter->chapter_url }}" class="link-effect">

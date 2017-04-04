@@ -4,6 +4,7 @@ namespace App\Http\Controllers\Api\v1;
 
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
+use App\Models\Favorite;
 use App\Models\Manga;
 use App\Models\Language;
 use Exception;
@@ -12,6 +13,30 @@ use DB;
 
 class MangaController extends Controller
 {
+	public function toggleFavorite(Request $request)
+	{
+		$manga = Manga::find($request->input('manga_id'));
+
+		if ($manga && Auth::check()) {
+			$user = Auth::user();
+			$user_favorite = $user->favorites()->where('manga_id', $manga->id)->get();
+
+			if ($user_favorite->count() > 0) {
+				$favorite = $user_favorite->first();
+				$favorite->delete();
+			} else {
+				$favorite = new Favorite;
+				$favorite->manga_id = $manga->id;
+				$favorite->user_id = Auth::user()->id;
+				$favorite->save();
+			}
+
+			return response()->json(['success' => true]);
+		}
+
+		return response()->json(['success' => false]);
+	}
+
 	public function read(Request $request)
 	{
 		$manga_id = $request->manga_id;

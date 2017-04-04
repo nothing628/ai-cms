@@ -69,6 +69,7 @@ class CreateMangaTable extends Migration
 		});
 
 		Schema::create('favorites', function (Blueprint $table) {
+			$table->bigIncrements('id');
 			$table->bigInteger('manga_id')->unsigned();
 			$table->bigInteger('user_id')->unsigned();
 			$table->timestamps();

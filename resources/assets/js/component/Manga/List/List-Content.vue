@@ -14,7 +14,7 @@
 				{{ item.category.category }}
 			</b>
 		</a>
-		<ul class="nav-users">
+		<ul class="nav-users left-padding-fix">
 			<li v-for="chapter in sortChapter">
 				<a :href="chapter.chapter_url" class="link-effect">
 					<h6 class="text-ellipsis">
