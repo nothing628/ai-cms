@@ -15,7 +15,7 @@
 	<div class="row items-push text-uppercase">
 		<div class="col-xs-6 col-sm-3">
 			<div class="font-w700 text-gray-darker animated fadeIn">Member for</div>
-			<a class="h2 font-w300 text-primary animated flipInX" href="javascript:void(0)">{{ $user->created_at->diffInDays($now)) }} Days</a>
+			<a class="h2 font-w300 text-primary animated flipInX" href="javascript:void(0)">{{ $user->created_at->diffInDays($now) }} Days</a>
 		</div>
 		<div class="col-xs-6 col-sm-3">
 			<div class="font-w700 text-gray-darker animated fadeIn">Manga Read</div>
