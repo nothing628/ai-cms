@@ -1,27 +1,29 @@
 @extends('layouts.base')
 
 @section('content')
+@set('user', Auth::user())
+@set('now', new \Carbon\Carbon())
 <div class="content bg-image" style="background-image: url('{{ url('images/large/bg.jpg') }}');background-position:top center;">
 	<div class="push-50-t push-10 clearfix">
 		<div class="push-15-r pull-left animated fadeIn">
 			<img class="img-avatar img-avatar-thumb" src="{{ url('images/small/bg.jpg') }}" alt="">
 		</div>
-		<h1 class="h2 text-white push-5-t animated zoomIn">{{ Auth::user()->username }}</h1>
+		<h1 class="h2 text-white push-5-t animated zoomIn">{{ $user->fullname }}</h1>
 	</div>
 </div>
 <div class="content bg-white border-b">
 	<div class="row items-push text-uppercase">
 		<div class="col-xs-6 col-sm-3">
 			<div class="font-w700 text-gray-darker animated fadeIn">Member for</div>
-			<a class="h2 font-w300 text-primary animated flipInX" href="javascript:void(0)">107 Days</a>
+			<a class="h2 font-w300 text-primary animated flipInX" href="javascript:void(0)">{{ $user->created_at->diffInDays($now)) }} Days</a>
 		</div>
 		<div class="col-xs-6 col-sm-3">
 			<div class="font-w700 text-gray-darker animated fadeIn">Manga Read</div>
-			<a class="h2 font-w300 text-primary animated flipInX" href="javascript:void(0)">{{ Auth::user()->bookmarks->count() }}</a>
+			<a class="h2 font-w300 text-primary animated flipInX" href="javascript:void(0)">{{ $user->bookmarks->count() }}</a>
 		</div>
 		<div class="col-xs-6 col-sm-3">
 			<div class="font-w700 text-gray-darker animated fadeIn">Favourite</div>
-			<a class="h2 font-w300 text-primary animated flipInX" href="javascript:void(0)">{{ Auth::user()->favorites->count() }}</a>
+			<a class="h2 font-w300 text-primary animated flipInX" href="javascript:void(0)">{{ $user->favorites->count() }}</a>
 		</div>
 		<div class="col-xs-6 col-sm-3">
 			<div class="font-w700 text-gray-darker animated fadeIn">Average Rating</div>

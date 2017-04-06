@@ -20,9 +20,11 @@
 				{{ $manga->title }}
 			</h1>
 		</div>
+		@if (Auth::check())
 		<div class="col-md-5">
-			<manga-favorite :data-class="['pull-right', 'bg-gray', 'btn-square']" data-manga-id="{{ $manga->id }}" data-submit="{{ route('api.manga.favorite') }}" :is-favorited="{{ $is_favorited }}"></manga-favorite>
+			<manga-favorite :data-class="['pull-right', 'btn-square']" data-manga-id="{{ $manga->id }}" data-submit="{{ route('api.manga.favorite') }}" :is-favorited="{{ $is_favorited }}"></manga-favorite>
 		</div>
+		@endif
 	</div>
 </div>
 <div class="content">
@@ -68,7 +70,6 @@
 									</tr>
 								</tbody>
 							</table>
-							<button class="btn btn-line btn-flat btn-danger"><i class="fa fa-love"></i> Favorite</button>
 						</div>
 					</div>
 				</vue-block-content>

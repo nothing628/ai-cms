@@ -1,6 +1,7 @@
 <?php
 
 use Illuminate\Database\Seeder;
+use App\Models\User;
 
 class UsersSeeder extends Seeder
 {
@@ -11,18 +12,22 @@ class UsersSeeder extends Seeder
 	 */
 	public function run()
 	{
-		DB::table('users')->insert([
-			'username' => 'admin123',
-			'email'    => 'admin@admin.com',
-			'password' => bcrypt('admin'),
-			'api_token' => '11111',
-			'is_admin' => true ]);
+		$user = new User;
+		$user->username = 'admin';
+		$user->email = 'admin@admin.com';
+		$user->fullname = 'Administrator';
+		$user->password = bcrypt('admin');
+		$user->api_token = '11111';
+		$user->is_admin = true;
+		$user->save();
 
-		DB::table('users')->insert([
-			'username' => 'user123',
-			'email'    => 'user@user.com',
-			'password' => bcrypt('user'),
-			'api_token' => '11112',
-			'is_admin' => false ]);
+		$user = new User;
+		$user->username = 'user';
+		$user->email = 'user@user.com';
+		$user->fullname = 'User test';
+		$user->password = bcrypt('user');
+		$user->api_token = '11112';
+		$user->is_admin = false;
+		$user->save();
 	}
 }
