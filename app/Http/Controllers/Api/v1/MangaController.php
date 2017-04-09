@@ -4,6 +4,7 @@ namespace App\Http\Controllers\Api\v1;
 
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
+use App\Models\Bookmark;
 use App\Models\Favorite;
 use App\Models\Manga;
 use App\Models\Language;
@@ -35,6 +36,36 @@ class MangaController extends Controller
 		}
 
 		return response()->json(['success' => false]);
+	}
+
+	public function toggleBookmark(Request $request)
+	{
+		$status = $request->input('status');
+		$manga = Manga::find($request->input('manga_id'));
+
+		if ($manga && Auth::check()) {
+			$user = Auth::user();
+			$user_bookmark = $user->bookmarks()->where('manga_id', $manga->id)->first();
+
+			$bookmark = new Bookmark;
+			$bookmark->manga_id = $manga->id;
+			$bookmark->user_id = $user->id;
+
+			if ($user_bookmark) {
+				$bookmark = $user_bookmark;
+			}
+
+			if ($status == -1 && $bookmark->exists()) {
+				$bookmark->delete();
+			} else {
+				$bookmark->status = $status;
+				$bookmark->save();
+			}
+
+			return response()->json(['success' => true, 'status' => $status]);
+		}
+
+		return response()->json(['success' => true, 'status' => -1 ]);
 	}
 
 	public function read(Request $request)

@@ -23,6 +23,7 @@
 		@if (Auth::check())
 		<div class="col-md-5">
 			<manga-favorite :data-class="['pull-right', 'btn-square']" data-manga-id="{{ $manga->id }}" data-submit="{{ route('api.manga.favorite') }}" :is-favorited="{{ $is_favorited }}"></manga-favorite>
+			<manga-bookmark data-manga-id="{{ $manga->id }}" data-submit="{{ route('api.manga.bookmark') }}" :data-value="{{ $manga->bookmarkStatus($user) }}"></manga-bookmark>
 		</div>
 		@endif
 	</div>

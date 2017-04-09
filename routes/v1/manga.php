@@ -5,6 +5,7 @@ Route::group(['prefix' => 'manga', 'as' => 'manga.'], function () {
 	Route::put('update', ['as' => 'update', 'uses' => 'MangaController@update']);
 	Route::delete('delete', ['as' => 'delete', 'uses' => 'MangaController@delete']);
 	Route::post('favorite', ['as' => 'favorite', 'uses' => 'MangaController@toggleFavorite']);
+	Route::post('bookmark', ['as' => 'bookmark', 'uses' => 'MangaController@toggleBookmark']);
 });
 
 Route::get('lang/get/select', ['as' => 'lang.get.select', 'uses' => 'MangaController@lang']);

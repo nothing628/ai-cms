@@ -69,6 +69,11 @@ class Manga extends Model
 		return $this->morphToMany(Comment::class, 'commentable', 'commentable');
 	}
 
+	public function bookmarks()
+	{
+		return $this->hasMany(Bookmark::class);
+	}
+
 	public function getLatestChaptersAttribute()
 	{
 		return $this->chapters->take(3);
@@ -159,5 +164,16 @@ class Manga extends Model
 	public function scopeRandom($query)
 	{
 		return $this->scopeWithCategory($query)->orderBy(DB::raw('RAND()'));
+	}
+
+	public function bookmarkStatus($user)
+	{
+		$bookmark = $this->bookmarks()->where('user_id', $user->id)->first();
+
+		if ($bookmark) {
+			return $bookmark->status;
+		}
+
+		return -1;
 	}
 }

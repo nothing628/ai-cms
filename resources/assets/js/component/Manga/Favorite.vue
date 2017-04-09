@@ -1,6 +1,6 @@
 <template>
 	<button class="btn" :class="btnclass" @click="submit">
-		<i v-if="false" class="fa fa-heart" :class="iclass"></i> {{ txtFavorite }}
+		<i class="fa fa-heart"></i> {{ txtFavorite }}
 	</button>
 </template>
 
@@ -20,14 +20,6 @@
 			isFavorited: { type: Boolean, default: false }
 		},
 		computed: {
-			iclass() {
-				return [];
-				if (this.is_favorited) {
-					return this.dataYclass;
-				}
-
-				return this.dataNclass;
-			},
 			btnclass() {
 				if (this.is_favorited) {
 					return this.dataClass.concat(['btn-success']);
