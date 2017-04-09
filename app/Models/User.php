@@ -41,4 +41,9 @@ class User extends Authenticatable
 	{
 		return $this->hasMany(Favorite::class);
 	}
+
+	public function getBookmark($status)
+	{
+		return $this->bookmarks()->where('status', $status)->get();
+	}
 }

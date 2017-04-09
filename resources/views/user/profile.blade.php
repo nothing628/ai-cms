@@ -58,19 +58,19 @@
 					<div class="row items-push text-center">
 						<div class="col-xs-3 border-r">
 							<div class="push-5">Total</div>
-							<div class="h5 font-w300 text-muted">23</div>
+							<div class="h5 font-w300 text-muted">{{ $user->bookmarks->count() }}</div>
 						</div>
 						<div class="col-xs-3 border-r">
 							<div class="push-5">Plan To Read</div>
-							<div class="h5 font-w300 text-muted">11</div>
+							<div class="h5 font-w300 text-muted">{{ $user->getBookmark(0)->count() }}</div>
 						</div>
 						<div class="col-xs-3 border-r">
 							<div class="push-5">Reading</div>
-							<div class="h5 font-w300 text-muted">11</div>
+							<div class="h5 font-w300 text-muted">{{ $user->getBookmark(1)->count() }}</div>
 						</div>
 						<div class="col-xs-3">
 							<div class="push-5">Completed</div>
-							<div class="h5 font-w300 text-muted">11</div>
+							<div class="h5 font-w300 text-muted">{{ $user->getBookmark(2)->count() }}</div>
 						</div>
 					</div>
 				</div>
@@ -85,18 +85,23 @@
 					<div class="pull-r-l">
 						<table class="table table-hover table-vcenter">
 							<tbody>
+								@foreach($user->bookmarks as $bookmark)
+								@set('manga', $bookmark->manga)
 								<tr>
 									<td style="width: 80px;">
 										<div class="img-container">
-											<img src="{{ url('images/small/test-2.jpeg') }}" class="img-responsive">
+											<img src="{{ $manga->thumb_url }}" class="img-responsive" alt="{{ $manga->title }}">
 										</div>
 									</td>
 									<td>
-										<a class="font-w600" href="#">Welcome to our service</a>
-										<div class="text-muted push-5-t">It's a pleasure to have you on our service..</div>
+										<a href="{{ $manga->manga_url }}">{{ $manga->title }}</a>
+										<div class="text-muted push-5-t">{{ $manga->meta['desc'] }}</div>
 									</td>
-									<td class="visible-lg text-muted" style="width: 120px;"><em>2 min ago</em></td>
+									<td class="visible-lg text-muted" style="width: 120px;">
+										<em>{{ $bookmark->updated_at->diffForHumans() }}</em>
+									</td>
 								</tr>
+								@endforeach
 							</tbody>
 						</table>
 					</div>
