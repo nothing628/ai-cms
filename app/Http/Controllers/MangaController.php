@@ -31,6 +31,7 @@ class MangaController extends Controller
 
 	public function admin()
 	{
+		SEOMeta::setTitle(Setting::get('app.name') . ' - Manga List');
 		return view('admin.manga.index');
 	}
 
