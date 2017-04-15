@@ -15,7 +15,7 @@
 			<vue-block :is-themed="true">
 				<vue-block-head :data-class="['bg-primary-dark']"><i class="fa fa-gear"></i> Account Setting</vue-block-head>
 				<vue-block-content>
-					<vue-form :data-class="['form-horizontal']" data-action="{{ route('api.comment.store') }}" data-name="form-create">
+					<vue-form :data-class="['form-horizontal']" data-action="{{ route('api.user.profile.store') }}" data-name="form-create">
 						<vue-form-group>
 							<vue-input data-name="username" data-value="{{ Auth::user()->username }}" data-placeholder="your email here" data-label="Username" :data-col="['col-md-12']"></vue-input>
 						</vue-form-group>

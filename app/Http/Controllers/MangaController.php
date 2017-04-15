@@ -47,6 +47,7 @@ class MangaController extends Controller
 
 	public function create()
 	{
+		SEOMeta::setTitle(Setting::get('app.name') . ' - New Manga');
 		$categories = Category::all();
 
 		return view('admin.manga.create', ['categories' => $categories]);

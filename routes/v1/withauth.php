@@ -45,3 +45,8 @@ Route::group(['prefix' => 'download', 'as' => 'download.'], function () {
 Route::group(['prefix' => 'upload', 'as' => 'upload.'], function () {
 	Route::post('page', ['uses' => 'UploadController@page', 'as' => 'page']);
 });
+
+Route::group(['prefix' => 'user', 'as' => 'user.'], function () {
+	Route::post('profile/store', ['uses' => 'UserController@profileStore', 'as' => 'profile.store']);
+	Route::post('setting/store', ['uses' => 'UserController@settingStore', 'as' => 'setting.store']);
+});

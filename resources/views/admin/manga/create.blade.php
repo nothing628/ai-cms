@@ -1,18 +1,18 @@
 @extends('admin.base')
 
 @section('title')
-@parent New Manga
+New Manga
 @endsection
 
 @section('breadcrumb')
 <li><a>Home</a></li>
 <li><a>Manga</a></li>
-<li><a class="link-effect">Upload New Manga</a></li>
+<li><a class="link-effect">New Manga</a></li>
 @endsection
 
 @section ('page-content')
 <vue-block :is-themed="true">
-	<vue-block-head :data-class="['bg-gray-lighter']">Upload New Manga</vue-block-head>
+	<vue-block-head :data-class="['bg-modern-dark']">New Manga</vue-block-head>
 	<vue-block-content :data-class="['block-content-narrow']">
 		<vue-form :data-class="['form-horizontal', 'push-10-t']" data-enctype="multipart/form-data"
 		data-action="{{ route('api.manga.store') }}" data-name="form-create">
