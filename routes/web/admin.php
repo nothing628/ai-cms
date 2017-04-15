@@ -27,4 +27,11 @@ Route::group(['prefix' => 'admin', 'as' => 'admin.', 'middleware' => ['auth', 'a
 	Route::post('setting/page', ['as' => 'setting.page.save', 'uses' => 'AdminController@saveSetting']);
 	Route::get('setting/user', ['as' => 'setting.user', 'uses' => 'AdminController@users']);
 	Route::get('setting/widget', ['as' => 'setting.widget', 'uses' => 'AdminController@widget']);
+
+	Route::group(['prefix' => 'report', 'as' => 'report.'], function () {
+		Route::get('page', ['uses' => 'ReportController@page', 'as' => 'page']);
+		Route::get('manga', ['uses' => 'ReportController@manga', 'as' => 'manga']);
+		Route::get('upload', ['uses' => 'ReportController@upload', 'as' => 'upload']);
+		Route::get('search', ['uses' => 'ReportController@search', 'as' => 'search']);
+	});
 });

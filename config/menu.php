@@ -26,10 +26,10 @@ return [
 	'Report'	=> [
 		'icon'	=> 'si si-bar-chart',
 		'submenu' => [
-			'Page Views'	=> '#',
-			'Manga Views'	=> '#',
-			'Upload History'	=> '#',
-			'Top Search'	=> '#',
+			'Page Views'	=> 'admin.report.page',
+			'Manga Views'	=> 'admin.report.manga',
+			'Upload History'	=> 'admin.report.upload',
+			'Top Search'	=> 'admin.report.search',
 		]
 	],
 	'Notifications'	=> [
