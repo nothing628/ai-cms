@@ -80,11 +80,14 @@
 				var title = res.hasOwnProperty('title')?res.title:'Success';
 				var text = res.hasOwnProperty('message')?res.message:'Success save your data';
 				var type = res.hasOwnProperty('type')?res.type:'success';
+				var timer = res.hasOwnProperty('timer')?res.timer:800;
 
-				bus.$emit('alert-show', {title:title, text: text, type: type, timer: 800});
+				bus.$emit('alert-show', {title:title, text: text, type: type, timer: timer});
 
 				if (this.isFollowRedirect && redirect_url != '') {
-					window.location = redirect_url;
+					setTimeout(function () {
+						window.location = redirect_url;
+					}, timer + 200);
 				}
 			},
 			onFailed(response) {
