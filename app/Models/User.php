@@ -27,6 +27,10 @@ class User extends Authenticatable
 		'password', 'remember_token',
 	];
 
+	protected $casts = [
+		'setting' => 'array',
+	];
+
 	public function activities()
 	{
 		return $this->hasMany(Activity::class);
