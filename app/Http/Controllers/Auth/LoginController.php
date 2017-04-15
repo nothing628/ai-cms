@@ -56,6 +56,9 @@ class LoginController extends Controller
 	 */
 	public function username()
 	{
+		if (LaravelRequest::has('email'))
+			return 'email';
+
 		return filter_var(LaravelRequest::input('login'), FILTER_VALIDATE_EMAIL ) ? 'email' : 'username';
 	}
 
@@ -122,5 +125,16 @@ class LoginController extends Controller
 		$this->incrementLoginAttempts($request);
 
 		return $this->sendFailedLoginResponse($request);
+	}
+
+	/**
+	 * Get the needed authorization credentials from the request.
+	 *
+	 * @param  \Illuminate\Http\Request  $request
+	 * @return array
+	 */
+	protected function credentials(Request $request)
+	{
+		return $request->only($this->username(), 'password');
 	}
 }
