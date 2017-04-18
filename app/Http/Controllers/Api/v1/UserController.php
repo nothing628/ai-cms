@@ -24,7 +24,7 @@ class UserController extends Controller
 			//Start validation for password changing
 			if (Hash::check($curPassword, $user->password) && $newPassword == $repPassword) {
 				//Validation OK;
-				$user->password = Hash::make($newPassowrd);
+				$user->password = Hash::make($newPassword);
 				$redirect_url = 'logout.get';
 			} else {
 				return response()->json([
