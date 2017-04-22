@@ -21,7 +21,8 @@
 		"roumen/sitemap": "2.6.*",
 		"cviebrock/eloquent-sluggable": "^4.1",
 		"artesaos/seotools": "^0.10.0",
-		"jenssegers/agent": "^2.5"
+		"jenssegers/agent": "^2.5",
+		"league/fractal": "^0.16.0"
 	},
 	"require-dev": {
 		"fzaninotto/faker": "~1.4",
