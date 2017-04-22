@@ -1,9 +1,7 @@
 <template>
 	<div :class="dataCol">
 		<label>Page Selector:</label>
-		<div class="page-control">
-			<button class="btn btn-success"><i class="fa fa-upload"></i> Test</button>
-		</div>
+		<page-upload></page-upload>
 		<div class="page-list">
 			<page-data v-for="page in pages" :data-num="page.page_num" :data-src="page.thumb_url" :key="page.id"></page-data>
 			<div class="clearfix"></div>
@@ -16,7 +14,7 @@
 		min-height: 200px;
 		width: 100%;
 		border: 1px solid #bbb;
-		border-radius: 3px;
+		border-radius: 0px 0px 3px 3px;
 		padding: 15px 10px;
 	}
 
@@ -28,12 +26,25 @@
 		margin-right: 15px;
 	}
 
-	.page span {
-		display: block;
-		text-align: center;
+	.page .page-overlay {
 		background-color: rgba(30,30,30,0.85);
 		color: #EEE;
-		padding: 5px;
+	}
+
+	.page .page-overlay span {
+		width: 90px;
+		text-align: center;
+		display: block;
+		padding: 4px;
+		float: left;
+	}
+
+	.page .page-overlay .btn {
+		float: left;
+		width: 20px;
+		border-radius: 0;
+		padding-top: 4px;
+		padding-bottom: 4px;
 	}
 
 	.page .page-img {
@@ -63,12 +74,6 @@
 			dataCol: { type: Array, required: false, default() { return ['col-md-6']; }}
 		},
 		methods: {
-			pageUp() {
-				//
-			},
-			pageDown() {
-				//
-			},
 			successLoad(response) {
 				var res = response.data;
 				var pages = res.data;
