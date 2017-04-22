@@ -1,7 +1,7 @@
 <template>
 	<div :class="dataCol">
 		<div class="form-material form-material-primary">
-			<input type="file" :name="dataName" :accept="dataAccept" @change.stop.prevent="valueChanged">
+			<input type="file" :required="isRequired" :name="dataName" :accept="dataAccept" @change.stop.prevent="valueChanged">
 			<label>{{ dataLabel}}</label>
 		</div>
 	</div>

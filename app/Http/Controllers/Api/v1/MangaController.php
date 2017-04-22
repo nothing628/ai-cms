@@ -136,7 +136,7 @@ class MangaController extends Controller
 		$manga->is_completed = $request->input('status');
 		$manga->meta = $meta;
 
-		if ($request->file('cover')->isValid()) {
+		if ($request->hasFile('cover') && $request->file('cover')->isValid()) {
 			$cover = $request->file('cover');
 			$newfilename = str_slug($manga->title) . '.' . $cover->extension();
 			$path = $cover->move(storage_path('images/cover'), $newfilename);

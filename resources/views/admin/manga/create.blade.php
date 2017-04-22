@@ -18,23 +18,25 @@ New Manga
 		data-action="{{ route('api.manga.store') }}" data-name="form-create">
 			{!! csrf_field() !!}
 			<vue-form-group>
-				<vue-input data-name="title" data-label="Manga Title" :is-required="true" data-placeholder="Manga Title"></vue-input>
-				<vue-select :data-col="['col-md-4']" data-value="1" :data-custom-source="[{key:'Complete', value:1}, {key:'On Going', value:0}]" data-name="status" data-label="Status" :is-required="true" data-placeholder="Status"></vue-select>
+				<vue-input data-name="title" :data-col="['col-md-12']" data-label="Manga Title" :is-required="true" data-placeholder="Manga Title"></vue-input>
 			</vue-form-group>
 			<vue-form-group>
-				<vue-input data-name="artist" data-label="Artist" :is-required="false" data-placeholder="Artist" :data-col="['col-md-5']"></vue-input>
-				<vue-input data-name="author" data-label="Author" :is-required="false" data-placeholder="Author" :data-col="['col-md-5']"></vue-input>
+				<vue-input data-name="artist" data-label="Artist" :is-required="false" data-placeholder="Artist"></vue-input>
+				<vue-input data-name="author" data-label="Author" :is-required="false" data-placeholder="Author"></vue-input>
 			</vue-form-group>
 			<vue-form-group>
-				<vue-select data-source="{{ route('api.category.get.select') }}" data-name="category_id" data-label="Category" :is-required="true" data-placeholder="Category" :data-col="['col-md-5']"></vue-select>
-				<vue-select data-source="{{ route('api.tag.get.select') }}" data-name="tags[]" :data-multiple="true" data-label="Tags" :is-required="false" data-placeholder="Tags" :data-col="['col-md-5']"></vue-select>
+				<vue-select data-source="{{ route('api.category.get.select') }}" data-name="category_id" data-label="Category" :is-required="true" data-placeholder="Category"></vue-select>
+				<vue-select data-source="{{ route('api.tag.get.select') }}" data-name="tags[]" :data-multiple="true" data-label="Tags" :is-required="true" data-placeholder="Tags"></vue-select>
 			</vue-form-group>
 			<vue-form-group>
-				<vue-textarea data-name="desc" data-label="Synopsis" :is-required="true" data-placeholder="Please write synopsis"></vue-textarea>
-				<vue-select data-source="{{ route('api.lang.get.select') }}" data-name="lang_id" data-label="Language" :is-required="true" data-placeholder="Language" :data-col="['col-md-4']" data-value="en"></vue-select>
+				<vue-textarea data-name="desc" data-label="Synopsis" :is-required="true" :data-col="['col-md-12']" data-placeholder="Please write synopsis"></vue-textarea>
 			</vue-form-group>
 			<vue-form-group>
-				<vue-file data-name="cover" data-label="Cover"></vue-file>
+				<vue-select data-source="{{ route('api.lang.get.select') }}" data-name="lang_id" data-label="Language" :is-required="true" data-placeholder="Language" data-value="en"></vue-select>
+				<vue-select data-value="1" :data-custom-source="[{key:'Complete', value:1}, {key:'On Going', value:0}]" data-name="status" data-label="Status" :is-required="true" data-placeholder="Status"></vue-select>
+			</vue-form-group>
+			<vue-form-group>
+				<vue-file data-name="cover" data-label="Cover" :is-required="true"></vue-file>
 			</vue-form-group>
 			<vue-form-group>
 				<div class="col-md-offset-2 col-md-9">
