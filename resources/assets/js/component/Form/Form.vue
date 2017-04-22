@@ -17,15 +17,15 @@
 		props: {
 			dataClass: { type: Array, required: false, default() {return ['form-horizontal']}},
 			dataMethod: { type: String, required: false, default: 'POST' },
-			dataName: { type: String, required: false, default: '' },
+			dataName: { type: String, required: true },
 			dataAction: { type: String, required: false, default: '' },
 			dataGet: { type: String, required: false, default: '' },
 			dataTimeout: { type: Number, required: false, default: 15000 },
 			dataEnctype: { type: String, required: false, default: 'application/x-www-form-urlencoded' },
 			isFollowRedirect: { type: Boolean, default: true },
 			isRaw: { type: Boolean, default: false }
-			//application/x-www-form-urlencoded
-			//multipart/form-data
+			//application/x-www-form-urlencoded				//Put and patch only use this enctype
+			//multipart/form-data							//Only POST
 		},
 		computed: {
 			actionUrl() {
@@ -61,7 +61,17 @@
 				var emp = {};
 
 				formData.forEach(function (value, key) {
-					emp[key] = value;
+					if (key.indexOf('[]') != -1) {
+						var newkeyname = key.replace('[]', '');
+
+						if (!(newkeyname in emp)) {
+							emp[newkeyname] = [];
+						}
+
+						emp[newkeyname].push(value);
+					} else {
+						emp[key] = value;
+					}
 				});
 
 				return emp;
@@ -81,6 +91,11 @@
 				var text = res.hasOwnProperty('message')?res.message:'Success save your data';
 				var type = res.hasOwnProperty('type')?res.type:'success';
 				var timer = res.hasOwnProperty('timer')?res.timer:800;
+
+				if (!res.success) {
+					if (title == 'Success') title = "Failed";
+					timer = 60000;
+				}
 
 				bus.$emit('alert-show', {title:title, text: text, type: type, timer: timer});
 
@@ -118,8 +133,7 @@
 				switch (this.methodName) {
 					case 'POST':
 						this.$http.post(this.actionUrl, formData, {
-							timeout: this.dataTimeout,
-							emulateJSON: true
+							timeout: this.dataTimeout
 						}).then(this.onSuccess, this.onFailed);
 					break;
 					case 'GET':

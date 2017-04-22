@@ -24,7 +24,7 @@
 				if (this.is_favorited) {
 					return this.dataClass.concat(['btn-success']);
 				} else {
-					return this.dataClass.concat(['btn-danger']);
+					return this.dataClass.concat(['btn-default']);
 				}
 			},
 			txtFavorite() {
@@ -42,8 +42,7 @@
 			submit() {
 				//submit the favorited status
 				this.$http.post(this.dataSubmit, { manga_id: this.dataMangaId }, {
-					timeout: 15000,
-					emulateJSON: true
+					timeout: 15000
 				}).then(this.onSuccess, function () {});
 			}
 		},

@@ -26,10 +26,11 @@
 			dataName: { type: String, required: true},
 			dataMultiple: { type: Boolean, required: false, default: false },
 			dataMethod: { type: String, required: false, default: 'get' },
-			dataOptions: { type: Object, required: false, default() { return {}; } },
+			dataOptions: { type: Object, required: false, default() { return {}; }},
 			dataPlaceholder: { type: String, required: false, default: ''},
 			dataSource: { type: String, required: false, default: 'custom' },
 			dataValue: { type: String, required: false, default: ''},
+			dataValues: { type: Array, required: false, default() { return []; }},
 			isRequired: { type: Boolean, required: false, default: false},
 			isFloating: { type: Boolean, required: false, default: false}
 		},
@@ -51,27 +52,39 @@
 		},
 		methods: {
 			clear() {
-				$("select[name='" + this.dataName + "']").val('');
-				$("select[name='" + this.dataName + "']").trigger('select2.change');
+				$("select[name='" + this.dataName + "']").val("");
+				$("select[name='" + this.dataName + "']").trigger('change');
 			},
 			refreshSelect() {
 				var that = this;
 
 				this.$nextTick(function () {
+					$("select[name='" + that.dataName + "']").select2();
 					$("select[name='" + that.dataName + "']").val(that.currentVal).trigger('change');
+					$("select[name='" + that.dataName + "']").on('select2:select', that.valueChanged);
+					$("select[name='" + that.dataName + "']").on('select2:unselect', that.valueChanged);
 				});
 			},
+			valueChanged(evt) {
+				this.currentVal = $("select[name='" + this.dataName + "']").val();
+			},
+			setValue() {
+				if (this.dataMultiple) {
+					this.currentVal = this.dataValues;
+				} else {
+					this.currentVal = this.dataValue;
+				}
+
+				this.refreshSelect();
+			},
 			errorResponse(response) {
-				//
+				this.setValue();
 			},
 			successResponse(response) {
 				this.items = [];
 				this.items = response.data;
 
-				if (this.dataValue != '') {
-					this.currentVal = this.dataValue;
-					this.refreshSelect();
-				}
+				this.setValue();
 			},
 			loadData(url) {
 				//Load Data From url;
@@ -94,8 +107,6 @@
 		},
 		mounted() {
 			this.loadData();
-			this.currentVal = this.dataValue;
-			this.refreshSelect();
 		}
 	}
 </script>

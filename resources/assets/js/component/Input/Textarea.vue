@@ -21,7 +21,7 @@
 			dataName: { type: String, required: true},
 			dataPlaceholder: { type: String, required: false, default: ''},
 			dataRows: { type: Number, required: false, default: 3 },
-			dataValue: { type: Object, required: false, default: null},
+			dataValue: { type: String, required: false, default: null},
 			isRequired: { type: Boolean, required: false, default: false},
 			isFloating: { type: Boolean, required: false, default: false}
 		},

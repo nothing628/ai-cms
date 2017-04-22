@@ -41,7 +41,19 @@
 			},
 			btntxt() {
 				if (this.bookmarkValue > -1) {
-					return 'Bookmarked';
+					switch (this.bookmarkValue) {
+						case 0:
+							return 'Plan To Read';
+							break;
+						case 1:
+							return 'Reading';
+							break;
+						case 2:
+							return 'Completed';
+							break;
+						default:
+							return 'Bookmarked';
+					}
 				}
 
 				return 'Bookmark';
@@ -62,8 +74,7 @@
 					manga_id: this.dataMangaId,
 					status: type
 				}, {
-					timeout: 15000,
-					emulateJSON: true
+					timeout: 15000
 				}).then(this.onSuccess, function () {});
 			},
 			removeBookmark() {
@@ -72,8 +83,7 @@
 					manga_id: this.dataMangaId,
 					status: -1
 				}, {
-					timeout: 15000,
-					emulateJSON: true
+					timeout: 15000
 				}).then(this.onSuccess, function () {});
 			}
 		},
