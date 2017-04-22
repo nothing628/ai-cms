@@ -12,7 +12,7 @@ New Manga
 
 @section ('page-content')
 <vue-block :is-themed="true">
-	<vue-block-head :data-class="['bg-modern-dark']">New Manga</vue-block-head>
+	<vue-block-head :data-class="['bg-modern-dark']"><i class="fa fa-upload"></i> New Manga</vue-block-head>
 	<vue-block-content :data-class="['block-content-narrow']">
 		<vue-form :data-class="['form-horizontal', 'push-10-t']" data-enctype="multipart/form-data"
 		data-action="{{ route('api.manga.store') }}" data-name="form-create">
@@ -56,11 +56,4 @@ New Manga
 
 @section('scripts')
 <script type="text/javascript" src="{{ asset('js/select2.full.min.js') }}"></script>
-<script type="text/javascript">
-	$(document).ready(function () {
-		$(function(){
-			App.initHelpers('select2');
-		});
-	});
-</script>
 @endsection

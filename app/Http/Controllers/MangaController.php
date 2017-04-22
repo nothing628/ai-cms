@@ -59,6 +59,7 @@ class MangaController extends Controller
 		$categories = Category::all();
 
 		if ($manga) {
+			SEOMeta::setTitle(Setting::get('app.name') . " - Edit Manga - $manga->title ");
 			return view('admin.manga.edit', ['manga' => $manga, 'categories' => $categories]);
 		}
 
@@ -69,6 +70,7 @@ class MangaController extends Controller
 	{
 		$manga = Manga::find($manga_id);
 
+		SEOMeta::setTitle(Setting::get('app.name') . " - Detail Manga - $manga->title ");
 		return view('admin.manga.chapter', ['manga' => $manga]);
 	}
 

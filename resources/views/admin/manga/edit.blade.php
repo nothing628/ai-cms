@@ -12,60 +12,44 @@ Edit Manga
 
 @section ('page-content')
 <vue-block :is-themed="true">
-	<vue-block-head :data-class="['bg-modern-dark']">Edit Manga</vue-block-head>
+	<vue-block-head :data-class="['bg-modern-dark']"><i class="fa fa-pencil"></i> Edit Manga</vue-block-head>
 	<vue-block-content :data-class="['block-content-narrow']">
-		<vue-form :data-class="['form-horizontal', 'push-10-t']" data-enctype="multipart/form-data"
-		data-action="{{ route('api.manga.update') }}">
+		<vue-form :data-class="['form-horizontal', 'push-10-t']" data-method="put" data-enctype="application/x-www-form-urlencoded"
+		data-action="{{ route('api.manga.update') }}" data-name="form-edit">
 			{!! csrf_field() !!}
 			<input type="hidden" name="manga_id" value="{{ $manga->id }}">
 			<vue-form-group>
 				<vue-input data-name="title" data-value="{{ $manga->title }}" :data-col="['col-md-12']" data-label="Manga Title" :is-required="true" data-placeholder="Manga Title"></vue-input>
 			</vue-form-group>
 			<vue-form-group>
-				<label class="control-label col-md-2">Artist</label>
-				<div class="col-md-3">
-					<input type="text" name="artist" value="{{ $manga->meta['artist'] }}" class="form-control" placeholder="Artist">
-				</div>
-				<label class="control-label col-md-2">Author</label>
-				<div class="col-md-3">
-					<input type="text" name="author" value="{{ $manga->meta['author'] }}" class="form-control" placeholder="Author">
-				</div>
+				<vue-input data-name="artist" data-value="{{ $manga->meta['artist'] }}" data-label="Artist" :is-required="false" data-placeholder="Artist"></vue-input>
+				<vue-input data-name="author" data-value="{{ $manga->meta['author'] }}" data-label="Author" :is-required="false" data-placeholder="Author"></vue-input>
 			</vue-form-group>
 			<vue-form-group>
-				<label class="control-label col-md-2">Category</label>
-				<div class="col-md-3">
-					<select class="form-control" name="category_id" required="">
-						@foreach($categories as $category)
-						<option value="{{ $category->id }}">{{ $category->category }}</option>
-						@endforeach
-					</select>
-				</div>
+				<vue-textarea data-name="desc" data-value="{{$manga->meta['desc']}}" data-label="Synopsis" :is-required="true" :data-col="['col-md-12']" data-placeholder="Please write synopsis"></vue-textarea>
 			</vue-form-group>
 			<vue-form-group>
-				<label class="control-label col-md-2">Genre</label>
-				<div class="col-md-6">
-					<input type="text" name="genre" class="form-control">
-				</div>
+				<vue-select data-source="{{ route('api.category.get.select') }}" data-name="category_id" data-value="{{ $manga->category_id }}" data-label="Category" :is-required="true" data-placeholder="Category"></vue-select>
+				<vue-select data-source="{{ route('api.tag.get.select') }}" data-name="tags[]" :data-values="{{ json_encode($manga->tagSlugs()) }}" :data-multiple="true" data-label="Tags" :is-required="true" data-placeholder="Tags"></vue-select>
 			</vue-form-group>
 			<vue-form-group>
-				<label class="control-label col-md-2">Synopsis</label>
-				<div class="col-md-6">
-					<textarea class="form-control" name="desc" required="">{{$manga->meta['desc']}}</textarea>
-				</div>
-			</vue-form-group>
-			<vue-form-group>
-				<label class="control-label col-md-2">Cover</label>
-				<div class="col-md-6">
-					<input type="file" name="cover" accept="image/*">
-				</div>
+				<vue-file data-name="cover" data-label="Cover"></vue-file>
 			</vue-form-group>
 			<vue-form-group>
 				<div class="col-md-offset-2 col-md-9">
-					<button class="btn btn-success btn-flat btn-line">Submit</button>
-					<a href="{{ route('admin.manga.index') }}" class="btn btn-danger btn-line btn-flat">Cancel</a>
+					<vue-form-submit :data-class="['btn-success']">Submit</vue-form-submit>
+					<a href="{{ route('admin.manga.chapter', ['manga_id' => $manga->id]) }}" class="btn btn-default">Cancel</a>
 				</div>
 			</vue-form-group>
 		</vue-form>
 	</vue-block-content>
 </vue-block>
+@endsection
+
+@section('styles')
+<link rel="stylesheet" type="text/css" href="{{ asset('css/select2.min.css') }}">
+@endsection
+
+@section('scripts')
+<script type="text/javascript" src="{{ asset('js/select2.full.min.js') }}"></script>
 @endsection

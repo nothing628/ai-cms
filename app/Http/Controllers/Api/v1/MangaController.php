@@ -153,13 +153,14 @@ class MangaController extends Controller
 		}
 	}
 
-	public function update($manga_id, Request $request)
+	public function update(Request $request)
 	{
-		$manga = Manga::find($request->input('manga_id'));
+		$tags = $request->input('tags');
 		$meta = [];
 		$meta['artist'] = $request->input('artist');
 		$meta['author'] = $request->input('author');
 		$meta['desc'] = $request->input('desc');
+		$manga = Manga::find($request->input('manga_id'));
 
 		if ($manga) {
 			$manga->title = $request->input('title');
@@ -175,12 +176,20 @@ class MangaController extends Controller
 				$manga->cover = $newfilename;
 			}
 
-			$manga->save();
-
-			return redirect()->route('admin.manga.chapter', $manga->id);
+			try {
+				$manga->save();
+				$manga->tag($tags);
+				return response()->json([
+					'success' => true,
+					'message' => 'Success save manga',
+					'redirect_url' => route('admin.manga.chapter', ['manga_id' => $manga->id])
+				]);
+			} catch (Exception $ex) {
+				return response()->json(['success' => false, 'message' => $ex->getMessage(), 'type' => 'error']);
+			}
 		}
 
-		return redirect()->route('admin.manga.index');
+		return response()->json(['success' => false, 'message' => 'Manga Not Found', 'type' => 'error']);
 	}
 
 	public function delete(Request $request)

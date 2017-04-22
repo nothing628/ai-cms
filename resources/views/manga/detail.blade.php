@@ -58,7 +58,11 @@
 										<td>{{ $manga->category->category }}</td>
 									</tr>
 									<tr>
-										<td>Total Views</td>
+										<td>Tags</td>
+										<td>{{ $manga->tag_names }}</td>
+									</tr>
+									<tr>
+										<td>Views</td>
 										<td>{{ $manga->views }}</td>
 									</tr>
 									<tr>

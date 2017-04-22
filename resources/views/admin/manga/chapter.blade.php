@@ -34,12 +34,20 @@
 							<td>{{ $manga->category->category }}</td>
 						</tr>
 						<tr>
+							<td>Tags</td>
+							<td>{{ $manga->tag_names }}</td>
+						</tr>
+						<tr>
 							<td>Total Pages</td>
 							<td>{{ $manga->total_page }}</td>
 						</tr>
 						<tr>
 							<td>Views</td>
 							<td>{{ $manga->views }}</td>
+						</tr>
+						<tr>
+							<td>Synopsis</td>
+							<td>{{ $manga->meta['desc'] }}</td>
 						</tr>
 					</tbody>
 				</table>
