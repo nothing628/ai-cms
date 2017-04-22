@@ -44,6 +44,9 @@ Vue.component('manga-list-content',	require('./Manga/List/List-Content.vue'));
 Vue.component('manga-grid',			require('./Manga/Grid/Grid.vue'));
 Vue.component('manga-grid-content',	require('./Manga/Grid/Grid-Content.vue'));
 
+Vue.component('page-selector',		require('./Manga/Page/Page-Container.vue'));
+Vue.component('page-data',			require('./Manga/Page/Page.vue'));
+
 Vue.component('reader',				require('./Manga/Reader/Reader.vue'));
 Vue.component('reader-page',		require('./Manga/Reader/Page.vue'));
 Vue.component('reader-control',		require('./Manga/Reader/Control.vue'));

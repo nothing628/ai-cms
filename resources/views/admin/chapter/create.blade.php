@@ -13,7 +13,7 @@
 
 @section('page-content')
 <vue-block :is-themed="true">
-	<vue-block-head :data-class="['bg-modern-dark']">Upload New Chapter</vue-block-head>
+	<vue-block-head :data-class="['bg-modern-dark']"><i class="fa fa-upload"></i> Upload New Chapter</vue-block-head>
 	<vue-block-content>
 		<vue-form :data-class="['form-horizontal', 'push-10-t']" data-enctype="multipart/form-data"
 		data-action="{{ route('api.chapter.store') }}" data-name="form-create">

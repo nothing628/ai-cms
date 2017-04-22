@@ -33,7 +33,10 @@
 				:is-auto-upload="true"
 				:submit-after-complete="true"></vue-dropzone>
 			</vue-form-group>
-			<vue-form-group></vue-form-group>
+			<vue-form-group>
+				<page-selector :data-col="['col-md-12']"
+				data-src="{{ route('api.chapter.pages', ['chapter_id' => $chapter->id]) }}"></page-selector>
+			</vue-form-group>
 			<vue-form-group>
 				<div class="col-md-offset-2 col-md-8">
 					<vue-form-submit :data-class="['btn-success']">Submit</vue-form-submit>

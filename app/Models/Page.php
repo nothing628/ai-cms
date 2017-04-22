@@ -7,7 +7,7 @@ use File;
 
 class Page extends Model
 {
-	protected $appends = ['page_url'];
+	protected $appends = ['page_url', 'thumb_url'];
 
 	public static function boot()
 	{
@@ -31,5 +31,12 @@ class Page extends Model
 		$path_image = $this->path;
 
 		return url('images/original/' . $path_image);
+	}
+
+	public function getThumbUrlAttribute()
+	{
+		$path_image = $this->path;
+
+		return url('images/small/' . $path_image);
 	}
 }

@@ -6,6 +6,8 @@ use Illuminate\Http\Request;
 use App\Models\Manga;
 use App\Models\Chapter;
 use App\Models\Page;
+use SEOMeta;
+use Setting;
 
 class ChapterController extends Controller
 {
@@ -25,6 +27,7 @@ class ChapterController extends Controller
 		$chapter = Chapter::find($chapter_id);
 
 		if ($chapter) {
+			SEOMeta::setTitle(Setting::get('app.name') . ' - Upload Chapter');
 			return view('admin.chapter.upload', ['chapter' => $chapter]);
 		}
 		
