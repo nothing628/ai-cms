@@ -38,6 +38,11 @@ Route::group(['prefix' => 'chapter', 'as' => 'chapter.'], function () {
 	Route::get('pages/{chapter_id?}', ['as' => 'pages', 'uses' => 'PageController@getPages']);
 });
 
+Route::group(['prefix' => 'page', 'as' => 'page.'], function () {
+	Route::delete('delete', ['as' => 'delete', 'uses' => 'PageController@delete']);
+	Route::post('move', ['as' => 'move', 'uses' => 'PageController@move']);
+});
+
 Route::group(['prefix' => 'download', 'as' => 'download.'], function () {
 	Route::post('/', ['uses' => 'DownloadController@download', 'as' => 'download']);
 	Route::post('list', ['uses' => 'DownloadController@listPage', 'as' => 'download.list']);

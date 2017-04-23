@@ -69,7 +69,7 @@ class UploadController extends Controller
 				$file->move($destination, $request->name);		//Move file to folder manga
 				$files = $this->extractTo($source, $destination);
 			} else {
-				$files = [ $this->duplicateSave($file, $source) ];
+				$files = [ $this->duplicateSave($file, $destination, $request->name) ];
 			}
 
 			$this->savePage($chapter, $files);
@@ -98,15 +98,13 @@ class UploadController extends Controller
 		return $files;
 	}
 
-	public function duplicateSave($file, $destination) {
-		$fileName = "";
-		$dirname = "";
+	public function duplicateSave($file, $destination, $name) {
+		$fileName = $destination . DIRECTORY_SEPARATOR . $name;
 
-		if (File::exists($destination)) {
+		if (File::exists($fileName)) {
 			// Split filename into parts
-			$pathInfo = pathinfo($destination);
+			$pathInfo = pathinfo($fileName);
 			$extension = '.'.$file->getClientOriginalExtension();
-			$dirname = $pathInfo['dirname'];
 
 			// Look for a number before the extension; add one if there isn't already
 			if (preg_match('/(.*?)(\d+)$/', $pathInfo['filename'], $match)) {
@@ -122,12 +120,12 @@ class UploadController extends Controller
 			// Choose a name with an incremented number until a file with that name 
 			// doesn't exist
 			do {
-				$fileName = $dirname . DIRECTORY_SEPARATOR . $base . ++$number . $extension;
+				$fileName = $destination . DIRECTORY_SEPARATOR . $base . ++$number . $extension;
 			} while (File::exists($fileName));
 		}
 
 		// Store the file
-		$file->move($dirname, str_replace($dirname, '', $fileName));
+		$file->move($destination, str_replace($destination, '', $fileName));
 		return str_replace(storage_path('manga/'), '', $fileName);
 	}
 

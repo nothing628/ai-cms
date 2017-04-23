@@ -37,6 +37,8 @@
 				<page-selector :data-col="['col-md-12']"
 				data-name="pages"
 				data-upload="{{ route('api.upload.page') }}"
+				data-delete="{{ route('api.page.delete') }}"
+				data-order="{{ route('api.page.move') }}"
 				data-src="{{ route('api.chapter.pages', ['chapter_id' => $chapter->id]) }}"
 				:data-options="{ chapter_id: {{ $chapter->id }} }"></page-selector>
 			</vue-form-group>

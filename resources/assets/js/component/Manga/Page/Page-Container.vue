@@ -6,7 +6,7 @@
 		:data-upload="dataUpload"
 		:data-options="dataOptions"></page-upload>
 		<div class="page-list">
-			<page-data v-for="page in pages" :data-num="page.page_num" :data-src="page.thumb_url" :key="page.id"></page-data>
+			<page-data v-for="page in pages" :data-page="page" :key="page.id"></page-data>
 			<div class="clearfix"></div>
 		</div>
 	</div>
@@ -19,6 +19,10 @@
 		border: 1px solid #bbb;
 		border-radius: 0px 0px 3px 3px;
 		padding: 15px 10px;
+	}
+
+	.page-control .progress {
+		margin-bottom: 5px;
 	}
 
 	.page-list .page {
@@ -87,6 +91,8 @@
 			dataUpload: { type: String, required: true },
 			dataName: { type: String, required: true },
 			dataSrc: { type: String, required: true },
+			dataDelete: { type: String, required: true },
+			dataOrder: { type: String, required: true },
 			dataCol: { type: Array, required: false, default() { return ['col-md-6']; }}
 		},
 		methods: {
@@ -117,10 +123,48 @@
 			},
 			refresh(data) {
 				this.loadData();
+			},
+			removePage(data) {
+				var that = this;
+				var body = Object.assign({}, {
+					page_num: data.page
+				}, this.dataOptions);
+
+				this.$http.delete(this.dataDelete, {
+					body: body,
+					timeout: 15000
+				}).then(function (response) {
+					var data = response.data;
+
+					if (data.success) {
+						that.loadData();
+					}
+				}, function (response) {
+				});
+			},
+			movePage(data) {
+				var that = this;
+				var body = Object.assign({}, {
+					page_num: data.page,
+					move_order: data.move
+				}, this.dataOptions);
+
+				this.$http.post(this.dataOrder, body, {
+					timeout: 15000
+				}).then(function (response) {
+					var data = response.data;
+
+					if (data.success) {
+						that.loadData();
+					}
+				}, function (response) {
+				});
 			}
 		},
 		created() {
 			this.$catch('upload-complete', this.refresh);
+			this.$catch('page-remove', this.removePage);
+			this.$catch('page-order', this.movePage);
 		},
 		mounted() {
 			this.loadData();

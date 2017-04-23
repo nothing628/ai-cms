@@ -67,7 +67,8 @@
 				params.title = 'Are you sure?';
 				params.text = 'You won\'t be able to revert this!'
 				params.type = 'warning';
-				params.confirmButtonText = 'Yes, delete it!';
+				params.confirmButtonText = 'Yes';
+				params.cancelButtonText = 'No';
 				params.onOK = this.RemovePage;
 				params.onCancel = function () {};
 
