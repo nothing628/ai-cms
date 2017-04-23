@@ -30,6 +30,12 @@
 		methods: {
 			toggleSelected() {
 				this.is_selected = !this.is_selected;
+
+				if (this.is_selected) {
+					this.$dispatch('page-select', { page: this.dataPage.page_num });
+				} else {
+					this.$dispatch('page-unselect', { page: this.dataPage.page_num });
+				}
 			},
 			moveUp() {
 				this.$dispatch('page-order', { page: this.dataPage.page_num, move: -1 });

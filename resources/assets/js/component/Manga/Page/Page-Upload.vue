@@ -56,23 +56,8 @@
 			}
 		},
 		methods: {
-			RemovePage() {
-				//Process page to delete.
-				bus.$emit('alert-show', {title:'Success', text: 'Success delete page.', type: 'success', timer: 800});
-				this.$dispatch('upload-complete', { file: file, response: objresponse});
-			},
 			RemoveConfirm() {
-				//Confirm delete
-				var params = {};
-				params.title = 'Are you sure?';
-				params.text = 'You won\'t be able to revert this!'
-				params.type = 'warning';
-				params.confirmButtonText = 'Yes';
-				params.cancelButtonText = 'No';
-				params.onOK = this.RemovePage;
-				params.onCancel = function () {};
-
-				bus.$emit('confirm-show', params);
+				this.$dispatch('page-removes', {});
 			},
 			FileBrowse(evt) {
 				var target = evt.target;

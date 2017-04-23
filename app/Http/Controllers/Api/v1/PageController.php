@@ -37,16 +37,33 @@ class PageController extends Controller
 
 	public function delete(Request $request)
 	{
-		$page = Page::where('chapter_id', $request->input('chapter_id'))->where('page_num', $request->input('page_num'))->first();
+		$success = true;
+		$chapter_id = $request->input('chapter_id');
+		$pages = Page::where('chapter_id', $chapter_id)->get();
 
-		if ($page) {
-			$page->delete();
-			$this->reorderPage($request->input('chapter_id'));
+		if ($request->has('page_nums')) {
+			foreach ($request->input('page_nums') as $page_num) {
+				$page = $pages->where('page_num', $page_num)->first();
 
-			return response()->json(['success' => true]);
+				if ($page) {
+					$page->delete();
+				} else {
+					$success = false;
+				}
+			}
+		} else {
+			$page = $pages->where('page_num', $request->input('page_num'))->first();
+
+			if ($page) {
+				$page->delete();
+			} else {
+				$success = false;
+			}
 		}
 
-		return response()->json(['succes' => false]);
+		$this->reorderPage($chapter_id);
+
+		return response()->json(['success' => $success]);
 	}
 
 	public function reorderPage($chapter_id)

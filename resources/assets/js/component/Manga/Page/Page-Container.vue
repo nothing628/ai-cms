@@ -83,7 +83,8 @@
 	export default {
 		data() {
 			return {
-				pages: []
+				pages: [],
+				selectedPage: []
 			};
 		},
 		props: {
@@ -101,6 +102,7 @@
 				var pages = res.data;
 				var that = this;
 
+				this.selectedPage = [];
 				this.pages = [];
 
 				if (res.success) {
@@ -123,6 +125,41 @@
 			},
 			refresh(data) {
 				this.loadData();
+			},
+			removeConfirm() {
+				//Confirm delete
+				var params = {
+					title: 'Are you sure?',
+					text: 'Are you sure want to delete ' + this.selectedPage.length + ' Pages ?',
+					type: 'warning',
+					confirmButtonText: 'Yes',
+					cancelButtonText: 'No',
+					onOK: this.removePages,
+					onCancel: function () {}
+				};
+
+				if (this.selectedPage.length == 0) return;
+
+				bus.$emit('confirm-show', params);
+			},
+			removePages() {
+				var that = this;
+				var body = Object.assign({}, {
+					page_nums: this.selectedPage
+				}, this.dataOptions);
+
+				this.$http.delete(this.dataDelete, {
+					body: body,
+					timeout: 15000
+				}).then(function (response) {
+					var data = response.data;
+
+					if (data.success) {
+						bus.$emit('alert-show', {title:'Success', text: 'Success delete page.', type: 'success', timer: 800});
+						that.loadData();
+					}
+				}, function (response) {
+				});
 			},
 			removePage(data) {
 				var that = this;
@@ -159,12 +196,25 @@
 					}
 				}, function (response) {
 				});
+			},
+			selectPage(data) {
+				this.selectedPage.push(data.page);
+			},
+			unselectPage(data) {
+				var idx = this.selectedPage.findIndex(function (item) {
+					return item == data.page;
+				});
+
+				this.selectedPage.splice(idx);
 			}
 		},
 		created() {
 			this.$catch('upload-complete', this.refresh);
 			this.$catch('page-remove', this.removePage);
 			this.$catch('page-order', this.movePage);
+			this.$catch('page-select', this.selectPage);
+			this.$catch('page-unselect', this.unselectPage);
+			this.$catch('page-removes', this.removeConfirm);
 		},
 		mounted() {
 			this.loadData();
