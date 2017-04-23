@@ -30,7 +30,7 @@ class ChapterController extends Controller
 			$chapter->chapter_num = $request->has('chapter_num')?$request->chapter_num:($manga->chapters->count() + 1);
 			$chapter->release_at = date('Y-m-d H:i:s');
 
-/*
+			/*
 			if ($request->file('cover')->isValid()) {
 				$cover = $request->file('cover');
 				$newfilename = str_slug($manga->title) . '_' . $chapter->chapter_title . '.' . $cover->extension();
@@ -38,7 +38,7 @@ class ChapterController extends Controller
 
 				$chapter->cover = $newfilename;
 			}
-*/
+			*/
 			$chapter->save();
 
 			return response()->json([

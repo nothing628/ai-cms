@@ -1,8 +1,9 @@
 <template>
 	<div class="page-control push-5 row">
 		<div class="col-md-2">
-			<button type="button" class="btn btn-success" @click="FileBrowse"><i class="fa fa-upload"></i> Upload Pages</button>
+			<button type="button" class="btn btn-success" @click="FileBrowse"><i class="fa fa-upload"></i></button>
 			<input type="file" style="display: none;" @change.prevent="FileSelectHandler" accept="image/*, application/zip" />
+			<button type="button" class="btn btn-danger" @click="RemoveConfirm"><i class="fa fa-trash"></i></button>
 		</div>
 		
 		<div class="col-md-10">
@@ -55,6 +56,23 @@
 			}
 		},
 		methods: {
+			RemovePage() {
+				//Process page to delete.
+				bus.$emit('alert-show', {title:'Success', text: 'Success delete page.', type: 'success', timer: 800});
+				this.$dispatch('upload-complete', { file: file, response: objresponse});
+			},
+			RemoveConfirm() {
+				//Confirm delete
+				var params = {};
+				params.title = 'Are you sure?';
+				params.text = 'You won\'t be able to revert this!'
+				params.type = 'warning';
+				params.confirmButtonText = 'Yes, delete it!';
+				params.onOK = this.RemovePage;
+				params.onCancel = function () {};
+
+				bus.$emit('confirm-show', params);
+			},
 			FileBrowse(evt) {
 				var target = evt.target;
 				var jqueryObj = $(target);
@@ -113,6 +131,7 @@
 				this.is_completed = false;
 				this.is_error = true;
 				this.error_msg = err.response;
+				this.files = [];
 			},
 			UploadedResponse(file, response) {
 				try {

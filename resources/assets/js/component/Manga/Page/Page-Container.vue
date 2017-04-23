@@ -23,6 +23,7 @@
 
 	.page-list .page {
 		width: 150px;
+		cursor: pointer;
 		float: left;
 		position: relative;
 		margin-bottom: 15px;
@@ -62,6 +63,15 @@
 		position: absolute;
 		width: 100%;
 		top: 0px;
+	}
+
+	.page .page-selected {
+		position: absolute;
+		top: 0px;
+		bottom: 0px;
+		left: 0px;
+		right: 0px;
+		background-color: rgba(0,0,0,0.6);
 	}
 </style>
 
@@ -106,8 +116,7 @@
 				this.$http.get(this.dataSrc, {timeout: 15000}).then(this.successLoad, this.failedLoad);
 			},
 			refresh(data) {
-				console.log(data.file, data.response);
-				//this.loaddata();
+				this.loadData();
 			}
 		},
 		created() {

@@ -72,6 +72,8 @@ class UploadController extends Controller
 				$files = [ $this->duplicateSave($file, $source) ];
 			}
 
+			$this->savePage($chapter, $files);
+
 			return response()->json(['success' => true, 'message' => 'Success upload file', 'files' => $files]);
 		} else {
 			return response()->json(['success' => false, 'message' => 'Chapter Not Found']);
@@ -132,5 +134,18 @@ class UploadController extends Controller
 	public function isZip($file) 
 	{
 		return ($file->getMimeType() == 'application/zip');
+	}
+
+	public function savePage($chapter, $files)
+	{
+		$count_page = $chapter->page;
+
+		foreach ($files as $index => $page_path) {
+			$page = new Page;
+			$page->chapter_id = $chapter->id;
+			$page->page_num = $index + $count_page + 1;
+			$page->path = $page_path;
+			$page->save();
+		}
 	}
 }

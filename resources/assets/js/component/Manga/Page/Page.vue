@@ -1,6 +1,6 @@
 <template>
 	<div class="page">
-		<div class="page-img">
+		<div class="page-img" @click="toggleSelected">
 			<img :src="dataSrc" alt="" class="img-responsive">
 		</div>
 
@@ -11,6 +11,8 @@
 			<a class="btn btn-xs btn-danger" @click="remove"><i class="fa fa-trash"></i></a>
 			<div class="clearfix"></div>
 		</div>
+
+		<div class="page-selected" v-if="is_selected"></div>
 	</div>
 </template>
 
@@ -18,7 +20,8 @@
 	export default {
 		data() {
 			return {
-				is_use: true
+				is_use: true,
+				is_selected: false
 			};
 		},
 		props: {
@@ -26,7 +29,11 @@
 			dataNum: { type: Number, required: true },
 			isUse: { type: Boolean, default: true }
 		},
+		computed: {},
 		methods: {
+			toggleSelected() {
+				this.is_selected = !this.is_selected;
+			},
 			toggleUse() {
 				this.is_use = !this.is_use;
 			},
