@@ -82,12 +82,27 @@ class UploadController extends Controller
 
 	public function extractTo($filepath, $destination)
 	{
-		$zipper = Zipper::make($filepath);
-		$zipper->folder('')->extractTo($destination);
-		$zipper->close();
+		$pathinfo = pathinfo($filepath);
+		$zip_destination = $pathinfo['dirname'] . DIRECTORY_SEPARATOR . $pathinfo['filename'];
 
+		$zipper = Zipper::make($filepath);
+		$zipper->folder('')->extractTo($zip_destination);
+		$zipper->close();
 		File::delete($filepath);	//Delete zip after extract
-		$files = File::files($destination);
+
+		$files = [];
+		$zip_files = File::files($zip_destination);
+
+		//move to chapter_folder
+		foreach ($zip_files as $index => $zip_file) {
+			$new_file = $this->duplicateName($destination, basename($zip_file));		//Prevent duplication filename
+
+			File::move($zip_file, $new_file);
+
+			$files[] = $new_file;
+		}
+
+		File::deleteDirectory($zip_destination);			//Delete temporary zip folder
 
 		natcasesort($files);								//Order by natural order
 		$files = array_values($files);
@@ -98,13 +113,14 @@ class UploadController extends Controller
 		return $files;
 	}
 
-	public function duplicateSave($file, $destination, $name) {
+	public function duplicateName($destination, $name)
+	{
 		$fileName = $destination . DIRECTORY_SEPARATOR . $name;
 
 		if (File::exists($fileName)) {
 			// Split filename into parts
 			$pathInfo = pathinfo($fileName);
-			$extension = '.'.$file->getClientOriginalExtension();
+			$extension = isset($pathInfo['extension'])?('.'.$pathInfo['extension']):'';
 
 			// Look for a number before the extension; add one if there isn't already
 			if (preg_match('/(.*?)(\d+)$/', $pathInfo['filename'], $match)) {
@@ -123,6 +139,12 @@ class UploadController extends Controller
 				$fileName = $destination . DIRECTORY_SEPARATOR . $base . ++$number . $extension;
 			} while (File::exists($fileName));
 		}
+
+		return $fileName;
+	}
+
+	public function duplicateSave($file, $destination, $name) {
+		$fileName = $this->duplicateName($destination, $name);
 
 		// Store the file
 		$file->move($destination, str_replace($destination, '', $fileName));
