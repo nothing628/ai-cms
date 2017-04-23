@@ -6,7 +6,7 @@
 [![Latest Unstable Version](https://poser.pugx.org/laravel/framework/v/unstable.svg)](https://packagist.org/packages/laravel/framework)
 [![License](https://poser.pugx.org/laravel/framework/license.svg)](https://packagist.org/packages/laravel/framework)
 
-AI-CMS is cms for managing manga, it's using laravel framework to run.
+AI-CMS is cms for managing manga using laravel framework to run.
 This project is something like this :
 ![Screenshot](storage/images/sc.png)
 
