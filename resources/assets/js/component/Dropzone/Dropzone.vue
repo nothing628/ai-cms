@@ -14,7 +14,7 @@
 					:data-size="file.size"
 					:data-file="file.file"
 					:enable-thumb="true"
-					></vue-dropzone-preview>
+				></vue-dropzone-preview>
 			</div>
 
 			<input type="hidden" :name="inputname" :value="file" v-for="file in additional_file">

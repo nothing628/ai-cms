@@ -1,7 +1,10 @@
 <template>
 	<div :class="dataCol">
 		<label>Page Selector:</label>
-		<page-upload></page-upload>
+		<page-upload
+		:data-name="dataName"
+		:data-upload="dataUpload"
+		:data-options="dataOptions"></page-upload>
 		<div class="page-list">
 			<page-data v-for="page in pages" :data-num="page.page_num" :data-src="page.thumb_url" :key="page.id"></page-data>
 			<div class="clearfix"></div>
@@ -70,6 +73,9 @@
 			};
 		},
 		props: {
+			dataOptions: { type: Object, required: false, default() { return {}; }},
+			dataUpload: { type: String, required: true },
+			dataName: { type: String, required: true },
 			dataSrc: { type: String, required: true },
 			dataCol: { type: Array, required: false, default() { return ['col-md-6']; }}
 		},
@@ -98,7 +104,14 @@
 			},
 			loadData() {
 				this.$http.get(this.dataSrc, {timeout: 15000}).then(this.successLoad, this.failedLoad);
+			},
+			refresh(data) {
+				console.log(data.file, data.response);
+				//this.loaddata();
 			}
+		},
+		created() {
+			this.$catch('upload-complete', this.refresh);
 		},
 		mounted() {
 			this.loadData();

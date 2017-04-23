@@ -60,12 +60,17 @@ class UploadController extends Controller
 		$chapter = Chapter::find($request->chapter_id);
 
 		if ($chapter) {
+			$files = [];
 			$manga = $chapter->manga;
 			$destination = storage_path('manga/' . str_slug($manga->title) . '/' . str_slug($chapter->chapter_title));
-			$source = $destination . '/' . $request->name;
+			$source = $destination . DIRECTORY_SEPARATOR . $request->name;
 
-			$file->move($destination, $request->name);		//Move file to folder manga
-			$files = $this->extractTo($source, $destination);
+			if ($this->isZip($file)) {
+				$file->move($destination, $request->name);		//Move file to folder manga
+				$files = $this->extractTo($source, $destination);
+			} else {
+				$files = [ $this->duplicateSave($file, $source) ];
+			}
 
 			return response()->json(['success' => true, 'message' => 'Success upload file', 'files' => $files]);
 		} else {
@@ -89,5 +94,43 @@ class UploadController extends Controller
 		}, $files);
 
 		return $files;
+	}
+
+	public function duplicateSave($file, $destination) {
+		$fileName = "";
+		$dirname = "";
+
+		if (File::exists($destination)) {
+			// Split filename into parts
+			$pathInfo = pathinfo($destination);
+			$extension = '.'.$file->getClientOriginalExtension();
+			$dirname = $pathInfo['dirname'];
+
+			// Look for a number before the extension; add one if there isn't already
+			if (preg_match('/(.*?)(\d+)$/', $pathInfo['filename'], $match)) {
+				// Have a number; increment it
+				$base = $match[1];
+				$number = intVal($match[2]);
+			} else {
+				// No number; add one
+				$base = $pathInfo['filename'];
+				$number = 0;
+			}
+
+			// Choose a name with an incremented number until a file with that name 
+			// doesn't exist
+			do {
+				$fileName = $dirname . DIRECTORY_SEPARATOR . $base . ++$number . $extension;
+			} while (File::exists($fileName));
+		}
+
+		// Store the file
+		$file->move($dirname, str_replace($dirname, '', $fileName));
+		return str_replace(storage_path('manga/'), '', $fileName);
+	}
+
+	public function isZip($file) 
+	{
+		return ($file->getMimeType() == 'application/zip');
 	}
 }
