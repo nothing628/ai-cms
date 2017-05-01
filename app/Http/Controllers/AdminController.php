@@ -30,13 +30,13 @@ class AdminController extends Controller
 
 	public function setting()
 	{
-		return view('admin.setting');
+		return view('admin.setting.page');
 	}
 
 	public function widget()
 	{
 		SEOMeta::setTitle(Setting::get('app.name') . ' - Widget');
-		return view('admin.widget');
+		return view('admin.setting.widget');
 	}
 
 	public function saveSetting(Request $request)
@@ -50,6 +50,6 @@ class AdminController extends Controller
 
 	public function users() {
 		SEOMeta::setTitle(Setting::get('app.name') . ' - Users');
-		return view('admin.users');
+		return view('admin.setting.users');
 	}
 }

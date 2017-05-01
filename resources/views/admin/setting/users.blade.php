@@ -1,5 +1,9 @@
 @extends('admin.base')
 
+@section('title')
+List Users
+@endsection
+
 @section('breadcrumb')
 <li><a>Home</a></li>
 <li><a>Setting</a></li>

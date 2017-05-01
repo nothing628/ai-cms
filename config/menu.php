@@ -49,8 +49,8 @@ return [
 	'Settings'	=> [
 		'icon'	=> 'si si-settings',
 		'submenu'	=> [
-			'Users'			=> 'admin.setting.page',
-			'Page Setting'	=> 'admin.setting.user',
+			'Users'			=> 'admin.setting.user',
+			'Page Setting'	=> 'admin.setting.page',
 			'Widgets'		=> 'admin.setting.widget',
 		]
 	]

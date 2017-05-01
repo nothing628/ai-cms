@@ -3,17 +3,26 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use Setting;
+use SEOMeta;
 
 class ReportController extends Controller
 {
+	public function __construct()
+	{
+		SEOMeta::addMeta('robots', 'index,follow');
+	}
+
 	public function page()
 	{
-		return response()->json([]);
+		SEOMeta::setTitle(Setting::get('app.name') . ' - Report Page Views');
+		return view('admin.report.page');
 	}
 
 	public function manga()
 	{
-		return response()->json([]);
+		SEOMeta::setTitle(Setting::get('app.name') . ' - Report Manga');
+		return view('admin.report.manga');
 	}
 
 	public function upload()

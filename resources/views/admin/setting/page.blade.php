@@ -1,7 +1,7 @@
 @extends('admin.base')
 
 @section('title')
-@parent Setting Page
+Setting Page
 @endsection
 
 @section('breadcrumb')
