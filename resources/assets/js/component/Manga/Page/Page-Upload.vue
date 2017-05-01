@@ -2,7 +2,7 @@
 	<div class="page-control push-5 row">
 		<div class="col-md-2">
 			<button type="button" class="btn btn-success" @click="FileBrowse"><i class="fa fa-upload"></i></button>
-			<input type="file" style="display: none;" @change.prevent="FileSelectHandler" accept="image/*, application/zip" />
+			<input type="file" multiple="" style="display: none;" @change.prevent="FileSelectHandler" accept="image/*, application/zip" />
 			<button type="button" class="btn btn-danger" @click="RemoveConfirm"><i class="fa fa-trash"></i></button>
 		</div>
 		

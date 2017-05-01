@@ -12,6 +12,7 @@ use Pion\Laravel\ChunkUpload\Handler\ChunksInRequestUploadHandler;
 use Pion\Laravel\ChunkUpload\Handler\HandlerFactory;
 use Zipper;
 use File;
+use DB;
 
 class UploadController extends Controller
 {
@@ -160,12 +161,20 @@ class UploadController extends Controller
 	{
 		$count_page = $chapter->page;
 
-		foreach ($files as $index => $page_path) {
-			$page = new Page;
-			$page->chapter_id = $chapter->id;
-			$page->page_num = $index + $count_page + 1;
-			$page->path = $page_path;
-			$page->save();
+		DB::beginTransaction();
+
+		try {
+			foreach ($files as $index => $page_path) {
+				$page = new Page;
+				$page->chapter_id = $chapter->id;
+				$page->page_num = $index + $count_page + 1;
+				$page->path = $page_path;
+				$page->save();
+			}
+		} catch (\Exception $ex) {
+			DB::rollback();
 		}
+
+		DB::commit();
 	}
 }
