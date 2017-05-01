@@ -16,6 +16,7 @@ class AdminController extends Controller
 	}
 
 	public function index() {
+		SEOMeta::setTitle(Setting::get('app.name') . ' - Dashboard');
 		return view('admin.index');
 	}
 
