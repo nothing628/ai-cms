@@ -1,4 +1,4 @@
-@extends('layouts.base')
+@extends('layouts.web.base')
 
 @section('content')
 <div class="bg-gray-lighter">

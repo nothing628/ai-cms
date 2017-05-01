@@ -1,4 +1,10 @@
-@extends ('layouts.base') @section('title') @parent - Frequently Asked Questions @endsection @section('content')
+@extends ('layouts.web.base')
+
+@section('title')
+@parent - Frequently Asked Questions
+@endsection
+
+@section('content')
 <div class="content bg-gray-lighter">
 	<div class="row items-push">
 		<div class="col-sm-7">

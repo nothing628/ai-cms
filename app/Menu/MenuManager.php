@@ -72,6 +72,11 @@ class MenuManager {
 				}
 			}
 
+			if (Route::has($menu->href))
+				$menu->href = route($menu->href);
+			else
+				$menu->href = url($menu->href);
+
 			$result[] = $menu;
 		}
 

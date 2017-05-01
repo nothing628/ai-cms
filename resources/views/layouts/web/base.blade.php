@@ -21,11 +21,11 @@
 	<body>
 		<div id="page-container" class="sidebar-l sidebar-mini sidebar-o side-scroll">
 			@if (Auth::check())
-				@include('layouts.aside')
+				@include('layouts.web.aside')
 			@endif
 
-			@include('layouts.sidebar')
-			@include('layouts.header')
+			@include('layouts.web.sidebar')
+			@include('layouts.web.header')
 
 			<main id="main-container">
 				@section('content')
@@ -34,7 +34,7 @@
 			<div id="page-loader"></div>
 
 			<swal></swal>
-			@include('layouts.footer')
+			@include('layouts.web.footer')
 		</div>
 		@include('layouts.laravel')
 

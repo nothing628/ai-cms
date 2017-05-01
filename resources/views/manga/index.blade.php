@@ -1,4 +1,4 @@
-@extends ('layouts.base')
+@extends ('layouts.web.base')
 
 @section('title')
 @parent - Browse Manga

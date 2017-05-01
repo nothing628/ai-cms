@@ -1,4 +1,4 @@
-@extends('layouts.base')
+@extends('layouts.web.base')
 
 @section('content')
 <div class="content bg-image" style="background-image: url('{{ url('images/large/bg.jpg') }}');background-position:top center;">
