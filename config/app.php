@@ -177,6 +177,7 @@ return [
 		// App\Providers\BroadcastServiceProvider::class,
 		App\Providers\EventServiceProvider::class,
 		App\Providers\RouteServiceProvider::class,
+		App\Providers\MenuServiceProvider::class,
 
 		Radic\BladeExtensions\BladeExtensionsServiceProvider::class,
 		Intervention\Image\ImageServiceProvider::class,
@@ -243,7 +244,7 @@ return [
 		'OpenGraph' => Artesaos\SEOTools\Facades\OpenGraph::class,
 		'SEO' => Artesaos\SEOTools\Facades\SEOTools::class,
 		'Twitter'   => Artesaos\SEOTools\Facades\TwitterCard::class,
-		'Menu'		=> App\Menu\MenuFacade::class,
+		'Menu'		=> App\Menu\Facades\MenuFacade::class,
 		'Agent'		=> Jenssegers\Agent\Facades\Agent::class,
 	],
 

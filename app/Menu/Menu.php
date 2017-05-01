@@ -5,38 +5,37 @@ namespace App\Menu;
 use View;
 
 class Menu {
-	public $href = '';
-	public $title = '';
-	public $icon = '';
-	public $isRaw = false;
+	public $href = "#";
+	public $html = "";
+	public $isEnable = true;
 	public $isHeading = false;
-	public $submenu = [];
+	public $submenus;
 
-	public function hasSubmenu()
+	public function __construct()
 	{
-		return count($this->submenu) > 0;
+		$this->submenus = collect();
 	}
 
-	public function __get($key)
+	public function render($viewname)
 	{
-		switch ($key) {
-			case 'submenus':
-				return $this->submenu;
-				break;
-			default:
-				# code...
-				break;
+		$view = View::make($viewname, ['menu' => $this]);
+
+		if (!$this->isEnable) return "";
+		if ($this->isHasSubmenu()) {
+			$data = [];
+
+			foreach ($this->submenus as $menu) {
+				$data[] = $menu->render($viewname);
+			}
+
+			$view->with('submenus', collect($data));
 		}
+
+		return $view->render();
 	}
 
-	public function render()
+	public function isHasSubmenu()
 	{
-		if ($this->isHeading) {
-			$view = View::make('layouts.menu.heading', ['menu' => $this]);
-			return $view->render();
-		} else {
-			$view = View::make('layouts.menu.menu', ['menu' => $this]);
-			return $view->render();
-		}
+		return $this->submenus->count() > 0;
 	}
 }

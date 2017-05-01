@@ -29,9 +29,6 @@ class AppServiceProvider extends ServiceProvider
 	public function register()
 	{
 		$this->app->register(DownloaderServiceProvider::class);
-		$this->app->singleton('menu.manager', function () {
-			return new Sidebar($this->app);
-		});
 		$this->app->singleton(TaggingUtility::class, function () {
 			return new Util;
 		});
@@ -45,7 +42,6 @@ class AppServiceProvider extends ServiceProvider
 	{
 		return [
 			TaggingUtility::class,
-			Sidebar::class,
 		];
 	}
 }

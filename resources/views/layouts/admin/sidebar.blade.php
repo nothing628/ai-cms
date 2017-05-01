@@ -10,7 +10,11 @@
 				</a>
 			</div>
 			<div class="side-content">
-				{!! Menu::render() !!}
+				<ul class="nav-main">
+					<li class="nav-main-heading"><span class="sidebar-mini-hide">Main Setting</span></li>
+				</ul>
+
+				{!! Menu::render('Admin') !!}
 			</div>
 		</div>
 	</div>

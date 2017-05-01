@@ -11,41 +11,7 @@
 				</a>
 			</div>
 			<div class="side-content">
-				<ul class="nav-main">
-					<li>
-						<a class="active" href="{{ route('home') }}"><i class="si si-home"></i><span class="sidebar-mini-hide">Home</span></a>
-					</li>
-					<li>
-						<a href="{{ route('search') }}">
-							<i class="si si-magnifier"></i>
-							<span class="sidebar-mini-hide">Advanced Search</span>
-						</a>
-					</li>
-					<li>
-						<a href="{{ route('manga.browse') }}">
-							<i class="si si-grid"></i>
-							<span class="sidebar-mini-hide">Browse</span>
-						</a>
-					</li>
-					<li>
-						<a href="{{ route('tag.directory') }}">
-							<i class="si si-tag"></i>
-							<span class="sidebar-mini-hide">Tag Directory</span>
-						</a>
-					</li>
-					<li>
-						<a href="{{ route('faq') }}">
-							<i class="si si-question"></i>
-							<span class="sidebar-mini-hide">FAQs</span>
-						</a>
-					</li>
-					<li>
-						<a href="{{ route('contact.us') }}">
-							<i class="si si-bubble"></i>
-							<span class="sidebar-mini-hide">Contact Us</span>
-						</a>
-					</li>
-				</ul>
+				{!! Menu::render('Web') !!}
 			</div>
 		</div>
 	</div>
