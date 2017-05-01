@@ -24,11 +24,6 @@ class MangaController extends Controller
 		SEOMeta::addKeyword(Setting::get('app.keyword'));
 	}
 
-	public function index()
-	{
-		return view('manga.index');
-	}
-
 	public function admin()
 	{
 		SEOMeta::setTitle(Setting::get('app.name') . ' - Manga List');
@@ -37,11 +32,13 @@ class MangaController extends Controller
 
 	public function staffPick()
 	{
+		SEOMeta::setTitle(Setting::get('app.name') . ' - Staff Pick');
 		return view('admin.manga.staffpick');
 	}
 
 	public function crawl()
 	{
+		SEOMeta::setTitle(Setting::get('app.name') . ' - Crawl');
 		return view('admin.manga.crawl.index');
 	}
 

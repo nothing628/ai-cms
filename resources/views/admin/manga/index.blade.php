@@ -1,9 +1,5 @@
 @extends('admin.base')
 
-@section('title')
-All Manga
-@endsection
-
 @section('breadcrumb')
 <li><a>Manga</a></li>
 <li><a class="link-effect">All Manga</a></li>
