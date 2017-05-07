@@ -120,12 +120,21 @@
 				});
 			},
 			setPage(data) {
-				if (this.current_chapter < data.chapter || this.current_page < data.page) {
-					//scroll top
-					this.scrollTop();
+				if (this.current_chapter == data.chapter) {
+					if (this.current_page == data.page) return;
+					if (this.current_page < data.page) {
+						//scroll top
+						this.scrollTop();
+					} else {
+						//scroll down
+						this.scrollDown();
+					}
 				} else {
-					//scroll down
-					this.scrollDown();
+					if (this.current_chapter < data.chapter ) {
+						this.scrollTop();
+					} else {
+						this.scrollDown();
+					}
 				}
 
 				this.current_page = data.page;

@@ -156,7 +156,7 @@
 </div>
 @endsection
 
-@section('scripts')
+@section('styles')
 <style>
 	#comment {
 		background-color: #FFF !important;

@@ -6,7 +6,11 @@
 					<i class="fa fa-angle-left"></i>
 				</button>
 			</li>
-			<li><button>{{ current_page }} / {{ totalPages }}</button></li>
+			<li>
+				<select :name="selectPageName">
+					<option v-for="n in totalPages" :value="n">{{ n }}</option>
+				</select>
+			</li>
 			<li>
 				<button @click="nextPage" type="button">
 					<i class="fa fa-angle-right"></i>
@@ -25,9 +29,9 @@
 				</button>
 			</li>
 			<li>
-				<button v-if="activeChapter!=null">
-					{{ activeChapter.chapter_title }}
-				</button>
+				<select :name="selectChapterName">
+					<option v-for="chapter in chapters" :value="chapter.chapter_num">{{ chapter.chapter_title }}</option>
+				</select>
 			</li>
 			<li>
 				<button @click="nextChapter" type="button">
@@ -75,6 +79,12 @@
 			},
 			totalChapter() {
 				return this.chapters.length;
+			},
+			selectPageName() {
+				return this.dataName + "-page-selector";
+			},
+			selectChapterName() {
+				return this.dataName + "-chapter-selector";
 			}
 		},
 		methods: {
@@ -88,6 +98,15 @@
 				data.chapters.forEach(function (value, index) {
 					that.chapters.push(value);
 				});
+
+				setTimeout(function () {
+					$("select[name='" + that.selectChapterName + "']").select2();
+					$("select[name='" + that.selectChapterName + "']").val(that.current_chapter).trigger('change');
+					$("select[name='" + that.selectChapterName + "']").on('select2:select', that.chapterChanged);
+					$("select[name='" + that.selectPageName + "']").select2();
+					$("select[name='" + that.selectPageName + "']").val(that.current_page).trigger('change');
+					$("select[name='" + that.selectPageName + "']").on('select2:select', that.pageChanged);
+				}, 100);
 			},
 			broadcastEvent() {
 				var data = {
@@ -100,6 +119,9 @@
 			setPage(data) {
 				this.current_page = data.page;
 				this.current_chapter = data.chapter;
+
+				$("select[name='" + this.selectChapterName + "']").val(this.current_chapter).trigger('change');
+				$("select[name='" + this.selectPageName + "']").val(this.current_page).trigger('change');
 			},
 			nextChapter() {
 				if (this.current_chapter + 1 > this.totalChapter) {
@@ -156,6 +178,15 @@
 				if (e.name == this.dataName) {
 					this.prevPage();
 				}
+			},
+			chapterChanged(evt) {
+				this.current_chapter = $("select[name='" + this.selectChapterName + "']").val();
+				this.current_page = 1;
+				this.broadcastEvent();
+			},
+			pageChanged(evt) {
+				this.current_page = parseInt($("select[name='" + this.selectPageName + "']").val());
+				this.broadcastEvent();
 			}
 		},
 		created() {
@@ -165,6 +196,8 @@
 			this.$catch('prev-page', this.handlePrev);
 		},
 		mounted() {
+			var that = this;
+
 			if (typeof (document.onkeydown) == 'object' && document.onkeydown == null) {
 				document.onkeydown = this.handleKey;
 			}
