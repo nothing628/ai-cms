@@ -37,6 +37,9 @@ Vue.component('vue-action',		require('./Table/Table-Action.vue'));
 
 Vue.component('chapter-order',		require('./Manga/Chapter/Order.vue'));
 
+Vue.component('manga-comment',		require('./Manga/Comment/Comment-List.vue'));
+Vue.component('manga-comment-data',	require('./Manga/Comment/Comment.vue'));
+
 Vue.component('manga-favorite',		require('./Manga/Favorite.vue'));
 Vue.component('manga-bookmark',		require('./Manga/Bookmark.vue'));
 Vue.component('manga-list',			require('./Manga/List/List.vue'));

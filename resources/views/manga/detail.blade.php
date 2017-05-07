@@ -103,6 +103,7 @@
 			<vue-block :is-themed="true">
 				<vue-block-head :data-class="['bg-primary-dark']"><i class="si si-comment"></i> Comment</vue-block-head>
 				<vue-block-content :data-class="['block-content-full', 'bg-gray-lighter']">
+					<div is="manga-comment" data-src="{{ route('api.manga.comment') }}" data-id="{{ $manga->id }}">
 					@foreach($manga->comments as $comment)
 					<div class="media push-15" >
 						<div class="media-left">
@@ -121,13 +122,14 @@
 						</div>
 					</div>
 					@endforeach
+					</div>
 
 					@if(Auth::check())
 					<vue-form :data-class="['form-horizontal']" data-action="{{ route('api.comment.store') }}" data-name="form-create">
-						<input type="hidden" value="{{ route('manga.detail', [ $manga->slug ]) }}" name="redirect_url">
 						<input type="hidden" value="{{ $manga->id }}" name="manga_id">
 						<input type="hidden" value="{{ Auth::user()->id }}" name="user_id">
-						<input class="form-control" placeholder="Write a comment.." name="comment" required="" type="text">
+						<vue-input data-name="comment" :is-floating="false" :data-col="['col-md-12', 'input-bg-white']" :is-required="true" data-placeholder="Write a comment.."></vue-input>
+						<div class="clearfix"></div>
 					</vue-form>
 					@endif
 				</vue-block-content>
@@ -152,4 +154,16 @@
 		</div>
 	</div>
 </div>
+@endsection
+
+@section('scripts')
+<style>
+	#comment {
+		background-color: #FFF !important;
+		border: 1px solid #e6e6e6;
+		-webkit-box-shadow: none;
+		box-shadow: none;
+		padding: 6px 12px;
+	}
+</style>
 @endsection

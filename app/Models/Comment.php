@@ -7,6 +7,26 @@ use Illuminate\Database\Eloquent\Model;
 class Comment extends Model
 {
 	public $with = ['user'];
+	protected $appends = [
+		'username',
+		'comment_date',
+		'avatar',
+	];
+
+	public function getUsernameAttribute()
+	{
+		return $this->user->username;
+	}
+
+	public function getCommentDateAttribute()
+	{
+		return $this->created_at->diffForHumans();
+	}
+
+	public function getAvatarAttribute()
+	{
+		return url('images/small/' . $this->user->photo);
+	}
 
 	public function user()
 	{

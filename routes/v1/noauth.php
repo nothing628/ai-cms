@@ -4,6 +4,7 @@ Route::group(['prefix' => 'manga', 'as' => 'manga.'], function () {
 	Route::get('/', ['as' => 'get', 'uses' => 'MangaController@get']);
 	Route::get('search', ['as' => 'search', 'uses' => 'MangaController@search']);
 	Route::get('read', ['as' => 'read', 'uses' => 'MangaController@read']);
+	Route::post('comment', ['as' => 'comment', 'uses' => 'CommentController@getComment']);
 });
 
 Route::group(['prefix' => 'down', 'as' => 'down.'], function () {

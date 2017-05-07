@@ -26,7 +26,6 @@ class CommentController extends Controller
 			return response()->json([
 				'success' => true,
 				'message' => 'success add comment',
-				'redirect_url' => $request->redirect_url
 			]);
 		}
 
@@ -34,7 +33,18 @@ class CommentController extends Controller
 			'success' => false,
 			'message' => 'invalid request format',
 			'type' => 'error',
-			'title' => 'Invalid Format'
+			'title' => 'Invalid Format',
 		]);
+	}
+
+	public function getComment(Request $request)
+	{
+		$manga = Manga::find($request->id);
+
+		if ($manga) {
+			return response()->json($manga->comments);
+		}
+
+		return response()->json([]);
 	}
 }
