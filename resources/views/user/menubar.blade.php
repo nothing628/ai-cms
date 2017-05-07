@@ -1,3 +1,5 @@
+@set('user', Auth::user())
+
 <li>
 	<div class="btn-group">
 		<button class="btn btn-image dropdown-toggle" data-toggle="dropdown" type="button" aria-expanded="false">
@@ -25,7 +27,10 @@
 			</li>
 			<li class="divider"></li>
 			<li class="dropdown-header">Actions</li>
+			@if ($user->is_admin)
 			<li><a tabindex="-1" href="{{ route('admin.home') }}"><i class="si si-lock pull-right"></i>Admin Panel</a></li>
+			<li><a tabindex="-1" href="{{ route('home') }}"><i class="si si-action-undo pull-right"></i> Homepage</a></li>
+			@endif
 			<li><a tabindex="-1" href="{{ route('logout') }}"><i class="si si-logout pull-right"></i>Log out</a></li>
 		</ul>
 	</div>

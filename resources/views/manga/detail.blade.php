@@ -124,7 +124,7 @@
 
 					@if(Auth::check())
 					<vue-form :data-class="['form-horizontal']" data-action="{{ route('api.comment.store') }}" data-name="form-create">
-						<input type="hidden" value="{{ url('') }}" name="redirect_url">
+						<input type="hidden" value="{{ route('manga.detail', [ $manga->slug ]) }}" name="redirect_url">
 						<input type="hidden" value="{{ $manga->id }}" name="manga_id">
 						<input type="hidden" value="{{ Auth::user()->id }}" name="user_id">
 						<input class="form-control" placeholder="Write a comment.." name="comment" required="" type="text">

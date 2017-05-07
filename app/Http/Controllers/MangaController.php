@@ -33,7 +33,7 @@ class MangaController extends Controller
 	public function staffPick()
 	{
 		SEOMeta::setTitle(Setting::get('app.name') . ' - Staff Pick');
-		return view('admin.manga.staffpick');
+		return view('admin.manga.staff.index');
 	}
 
 	public function crawl()

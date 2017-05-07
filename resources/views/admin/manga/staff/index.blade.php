@@ -13,7 +13,7 @@ Staff Pick
 <vue-block :is-themed="true">
 	<vue-block-head :data-class="['bg-modern-dark']">Staff Pick</vue-block-head>
 	<vue-block-content>
-		<a href="{{ route('admin.manga.create') }}" class="btn btn-success"><i class="fa fa-plus"></i> Add Manga</a>
+		<vue-modal-button data-target="modal-form" :data-class="['btn', 'btn-success']"><i class="fa fa-plus"></i> Add Manga</vue-modal-button>
 
 		<vue-table :data-class="['push-15-t']" data-name="table" data-target="bdata"></vue-table>
 
@@ -23,4 +23,5 @@ Staff Pick
 		</div>
 	</vue-block-content>
 </vue-block>
+@include('admin.manga.staff.form')
 @endsection
